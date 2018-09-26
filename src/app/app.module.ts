@@ -7,6 +7,7 @@ import { LayoutModule } from './/layouts/layout.module';
 import { ScriptLoaderService } from './_services/script-loader.service';
 import { CalendarModule } from 'angular-calendar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -16,9 +17,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     LayoutModule,
-    CalendarModule,
+    CalendarModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [ScriptLoaderService],
   bootstrap: [AppComponent]
