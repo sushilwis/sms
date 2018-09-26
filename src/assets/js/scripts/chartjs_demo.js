@@ -1,6 +1,5 @@
 $(function() {
     // Line Chart example
-
     var lineData = {
         labels: ["January", "February", "March", "April", "May", "June", "July"],
         datasets: [
@@ -23,6 +22,7 @@ $(function() {
         responsive: true,
         maintainAspectRatio: false
     };
+
     var ctx = document.getElementById("line_chart").getContext("2d");
     new Chart(ctx, {type: 'line', data: lineData, options:lineOptions});
 
@@ -44,6 +44,7 @@ $(function() {
             }
         ]
     };
+    
     var barOptions = {
         responsive: true,
         maintainAspectRatio: false

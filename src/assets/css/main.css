@@ -3351,7 +3351,9 @@ body.has-backdrop .backdrop {
     font-size: 26px;
     color: #687991; }
   .to-top:hover {
-    background-color: #687991; }
+    /* background-color: #687991;  */
+    background-color: none; 
+  }
     .to-top:hover i {
       display: block;
       color: #fff; }
@@ -3370,23 +3372,35 @@ body.has-backdrop .backdrop {
   color: #b4bcc8; }
   .side-menu > li a:hover, .side-menu > li a:focus {
     color: #fff;
-    background-color: #3498db; }
+    /* background-color: #3498db; */
+    background-color: none; 
+  }
 
 .side-menu > li.active {
   background-color: #2e4255; }
   .side-menu > li.active > a, .side-menu > li.active > a:hover, .side-menu > li.active > a:focus {
     color: #fff;
-    background-color: #3498db; }
+    background-color: #3498db; 
+  }
 
 .side-menu li a.active {
-  color: #fff; }
+  color: #fff; 
+}
+
+.side-menu li a.active:hover {
+  color: yellow; 
+}
 
 .sidebar-mini .side-menu > li:hover > a {
   background-color: #3498db;
-  color: #fff; }
+  /* background-color: none; */
+  color: #fff; 
+}
 
 .sidebar-mini .side-menu > li:hover .nav-2-level {
-  background-color: #253544; }
+  /* background-color: #253544; */
+  background-color: none; 
+}
 
 .header .page-brand {
   color: #fff;
@@ -3511,7 +3525,12 @@ table.dataTable {
 .dev-img {
   position: absolute;
   right: 0;
-  bottom: 0; }
+  bottom: 0; 
+}
+
+.submenu-arrow {
+  font-size: 9px;
+}
 
 @media (max-width: 1230px) {
   .adminca-banner {
