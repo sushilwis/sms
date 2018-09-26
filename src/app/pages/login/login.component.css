@@ -1,4 +1,12 @@
-
+.cover-image {
+	display: flex; 
+	align-items: center; 
+	justify-content: center; 
+	height: 100%;  
+	background: url('../../../assets/img/login-back.jpg') no-repeat; 
+	background-position: center; 
+	background-size: cover;
+}
 .brand {
 	font-size: 44px;
     text-align: center;

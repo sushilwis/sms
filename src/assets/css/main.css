@@ -1604,7 +1604,8 @@ body.fullscreen-mode {
   .list-group .list-group-item.active {
     background-color: transparent;
     border-color: transparent;
-    color: #2ecc71; }
+    color: #000; 
+  }
 
 .list-group.list-group-full .list-group-item {
   padding-left: 0;
@@ -3530,6 +3531,10 @@ table.dataTable {
 
 .submenu-arrow {
   font-size: 9px;
+}
+
+.notice-st {
+  font-size: 11px;
 }
 
 @media (max-width: 1230px) {
