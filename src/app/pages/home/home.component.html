@@ -62,8 +62,6 @@
 
     <div class="row">
 
-
-
         <div class="col-lg-6">
             <div class="ibox">
                 <div class="ibox-body">
@@ -146,7 +144,9 @@
                             <div class="ibox-title">Calender Events</div>
                         </div>
                         <div class="ibox-body">
-                            
+                            <div class="w-100">                  
+                                <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" [displayMonths]="displayMonths" [navigation] = "arrows"></ngb-datepicker>
+                            </div>
                         </div>                       
                     </div>
             </div>
