@@ -13,8 +13,7 @@ export class AppHeader implements AfterViewInit {
     private router: Router
   ) { }
 
-  ngAfterViewInit()  {
-  }
+  ngAfterViewInit()  { }
   
 
 
