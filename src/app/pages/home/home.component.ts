@@ -7,58 +7,58 @@ import { ColorPickerService, Rgba } from 'ngx-color-picker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-const equals = (one: NgbDateStruct, two: NgbDateStruct) =>
-  one && two && two.year === one.year && two.month === one.month && two.day === one.day;
+// const equals = (one: NgbDateStruct, two: NgbDateStruct) =>
+//   one && two && two.year === one.year && two.month === one.month && two.day === one.day;
 
-const before = (one: NgbDateStruct, two: NgbDateStruct) =>
-  !one || !two ? false : one.year === two.year ? one.month === two.month ? one.day === two.day
-    ? false : one.day < two.day : one.month < two.month : one.year < two.year;
+// const before = (one: NgbDateStruct, two: NgbDateStruct) =>
+//   !one || !two ? false : one.year === two.year ? one.month === two.month ? one.day === two.day
+//     ? false : one.day < two.day : one.month < two.month : one.year < two.year;
 
-const after = (one: NgbDateStruct, two: NgbDateStruct) =>
-  !one || !two ? false : one.year === two.year ? one.month === two.month ? one.day === two.day
-    ? false : one.day > two.day : one.month > two.month : one.year > two.year;
+// const after = (one: NgbDateStruct, two: NgbDateStruct) =>
+//   !one || !two ? false : one.year === two.year ? one.month === two.month ? one.day === two.day
+//     ? false : one.day > two.day : one.month > two.month : one.year > two.year;
 
 
 
-const now = new Date();
+// const now = new Date();
 
-export class Cmyk {
-  constructor(public c: number, public m: number, public y: number, public k: number) { }
-}
+// export class Cmyk {
+//   constructor(public c: number, public m: number, public y: number, public k: number) { }
+// }
 
-import {
-  CalendarEvent,
-  CalendarEventTimesChangedEvent,
-  CalendarEventAction,
-  CalendarDateFormatter,
-  DateFormatterParams
-} from 'angular-calendar';
+// import {
+//   CalendarEvent,
+//   CalendarEventTimesChangedEvent,
+//   CalendarEventAction,
+//   CalendarDateFormatter,
+//   DateFormatterParams
+// } from 'angular-calendar';
 
-import { Subject } from 'rxjs/Subject';
+// import { Subject } from 'rxjs/Subject';
 
-import { startOfDay, endOfDay, subDays, endOfMonth, addHours, addDays, isSameMonth, isSameDay } from 'date-fns';
+// import { startOfDay, endOfDay, subDays, endOfMonth, addHours, addDays, isSameMonth, isSameDay } from 'date-fns';
 
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/filter';
+// import 'rxjs/add/observable/of';
+// import 'rxjs/add/operator/filter';
 
-export const colors: any = {
-  red: {
-    primary: '#e74a25',
-    secondary: '#FAE3E3'
-  },
-  blue: {
-    primary: '#00bbd9',
-    secondary: '#D1E8FF'
-  },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA'
-  },
-  green: {
-    primary: '#2ecc71',
-    secondary: '#b1fdcf'
-  }
-};
+// export const colors: any = {
+//   red: {
+//     primary: '#e74a25',
+//     secondary: '#FAE3E3'
+//   },
+//   blue: {
+//     primary: '#00bbd9',
+//     secondary: '#D1E8FF'
+//   },
+//   yellow: {
+//     primary: '#e3bc08',
+//     secondary: '#FDF1BA'
+//   },
+//   green: {
+//     primary: '#2ecc71',
+//     secondary: '#b1fdcf'
+//   }
+// };
 
 @Component({
   selector: 'app-home',
@@ -66,7 +66,8 @@ export const colors: any = {
   styleUrls: ['./home.component.css',
   '../../../../node_modules/angular-calendar/css/angular-calendar.css',
   ],
-  encapsulation: ViewEncapsulation.None,
+
+  // encapsulation: ViewEncapsulation.None,
   //   changeDetection: ChangeDetectionStrategy.OnPush,
   //   providers: [
   //     {
@@ -78,219 +79,219 @@ export const colors: any = {
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
-  public monthViewColumnHeader({date, locale}: DateFormatterParams): string {
-    return new Intl.DateTimeFormat(locale, {weekday: 'short'}).format(date);
-  }
+  // public monthViewColumnHeader({date, locale}: DateFormatterParams): string {
+  //   return new Intl.DateTimeFormat(locale, {weekday: 'short'}).format(date);
+  // }
 
 
-  public rows = [
-    { leaves: 'Personal Leave'},  
-    { leaves: 'Casual Leave'},  
-    { leaves: 'Sick Leave'},
-    { leaves: 'Personal Leave'}  
-  ];
+  // public rows = [
+  //   { leaves: 'Personal Leave'},  
+  //   { leaves: 'Casual Leave'},  
+  //   { leaves: 'Sick Leave'},
+  //   { leaves: 'Personal Leave'}  
+  // ];
 
 
-  items = [];
-  public view = 'month';
-  viewDate: Date = new Date();
-  isChecked = true;
-  public colorOption = ['red', 'blue', 'yellow', 'green'];
+  // items = [];
+  // public view = 'month';
+  // viewDate: Date = new Date();
+  // isChecked = true;
+  // public colorOption = ['red', 'blue', 'yellow', 'green'];
 
-  public actions: CalendarEventAction[] = [
-    {
-      label: '<i class="fa fa-fw fa-times"></i>',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter(iEvent => iEvent !== event);
-      }
-    }
-  ];
+  // public actions: CalendarEventAction[] = [
+  //   {
+  //     label: '<i class="fa fa-fw fa-times"></i>',
+  //     onClick: ({ event }: { event: CalendarEvent }): void => {
+  //       this.events = this.events.filter(iEvent => iEvent !== event);
+  //     }
+  //   }
+  // ];
 
-  externalEvents: CalendarEvent[] = [
-    {
-      title: 'My Event One',
-      color: colors.yellow,
-      start: new Date(),
-      end: new Date(),
-      draggable: true,
-      actions: this.actions
-    },
-    {
-      title: 'My Event Two',
-      color: colors.blue,
-      start: new Date(),
-      end: new Date(),
-      draggable: true,
-      actions: this.actions
-    },
-    {
-      title: 'My Event Three',
-      color: colors.blue,
-      start: new Date(),
-      end: new Date(),
-      draggable: true,
-      actions: this.actions
-    },
-    {
-      title: 'My Event Four',
-      color: colors.blue,
-      start: new Date(),
-      end: new Date(),
-      draggable: true,
-      actions: this.actions
-    }
-  ];
+  // externalEvents: CalendarEvent[] = [
+  //   {
+  //     title: 'My Event One',
+  //     color: colors.yellow,
+  //     start: new Date(),
+  //     end: new Date(),
+  //     draggable: true,
+  //     actions: this.actions
+  //   },
+  //   {
+  //     title: 'My Event Two',
+  //     color: colors.blue,
+  //     start: new Date(),
+  //     end: new Date(),
+  //     draggable: true,
+  //     actions: this.actions
+  //   },
+  //   {
+  //     title: 'My Event Three',
+  //     color: colors.blue,
+  //     start: new Date(),
+  //     end: new Date(),
+  //     draggable: true,
+  //     actions: this.actions
+  //   },
+  //   {
+  //     title: 'My Event Four',
+  //     color: colors.blue,
+  //     start: new Date(),
+  //     end: new Date(),
+  //     draggable: true,
+  //     actions: this.actions
+  //   }
+  // ];
 
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: new Date(),
-      title: 'A draggable and resizable event',
-      color: colors.green,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    }
-  ];
-  public activeDayIsOpen = true;
-  refresh: Subject<any> = new Subject();
+  // events: CalendarEvent[] = [
+  //   {
+  //     start: subDays(startOfDay(new Date()), 1),
+  //     end: addDays(new Date(), 1),
+  //     title: 'A 3 day event',
+  //     color: colors.red,
+  //     actions: this.actions
+  //   },
+  //   {
+  //     start: startOfDay(new Date()),
+  //     title: 'An event with no end date',
+  //     color: colors.yellow,
+  //     actions: this.actions
+  //   },
+  //   {
+  //     start: subDays(endOfMonth(new Date()), 3),
+  //     end: addDays(endOfMonth(new Date()), 3),
+  //     title: 'A long event that spans 2 months',
+  //     color: colors.blue
+  //   },
+  //   {
+  //     start: addHours(startOfDay(new Date()), 2),
+  //     end: new Date(),
+  //     title: 'A draggable and resizable event',
+  //     color: colors.green,
+  //     actions: this.actions,
+  //     resizable: {
+  //       beforeStart: true,
+  //       afterEnd: true
+  //     },
+  //     draggable: true
+  //   }
+  // ];
+  // public activeDayIsOpen = true;
+  // refresh: Subject<any> = new Subject();
 
-  eventDropped({event, newStart, newEnd}: CalendarEventTimesChangedEvent): void {
-    const externalIndex: number = this.externalEvents.indexOf(event);
-    if (externalIndex > -1) {
-      if (!this.isChecked) {
-        this.externalEvents.splice(externalIndex, 1);
-      }
-      console.log(event);
-      this.events.push(event);
-    }
-    event.start = newStart;
-    if (newEnd) {
-      event.end = newEnd;
-    }
-    this.viewDate = newStart;
-    this.activeDayIsOpen = true;
-  }
+  // eventDropped({event, newStart, newEnd}: CalendarEventTimesChangedEvent): void {
+  //   const externalIndex: number = this.externalEvents.indexOf(event);
+  //   if (externalIndex > -1) {
+  //     if (!this.isChecked) {
+  //       this.externalEvents.splice(externalIndex, 1);
+  //     }
+  //     console.log(event);
+  //     this.events.push(event);
+  //   }
+  //   event.start = newStart;
+  //   if (newEnd) {
+  //     event.end = newEnd;
+  //   }
+  //   this.viewDate = newStart;
+  //   this.activeDayIsOpen = true;
+  // }
 
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-    if (isSameMonth(date, this.viewDate)) {
-      if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
-      ) {
-        this.activeDayIsOpen = false;
-      } else {
-        this.activeDayIsOpen = true;
-        this.viewDate = date;
-      }
-    }
-  }
+  // dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+  //   if (isSameMonth(date, this.viewDate)) {
+  //     if (
+  //       (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
+  //       events.length === 0
+  //     ) {
+  //       this.activeDayIsOpen = false;
+  //     } else {
+  //       this.activeDayIsOpen = true;
+  //       this.viewDate = date;
+  //     }
+  //   }
+  // }
 
-  public model: any;
-  modelCustomDay: any;
+  // public model: any;
+  // modelCustomDay: any;
 
-  displayMonths = 4;
-  navigation = 'label';
-  showWeekNumbers = false;
+  // displayMonths = 4;
+  // navigation = 'label';
+  // showWeekNumbers = false;
 
-  hoveredDate: NgbDateStruct;
-  fromDate: NgbDateStruct;
-  toDate: NgbDateStruct;
+  // hoveredDate: NgbDateStruct;
+  // fromDate: NgbDateStruct;
+  // toDate: NgbDateStruct;
 
-  disabled = true;
+  // disabled = true;
 
-  @Input() testRangeDate: Date;
+  // @Input() testRangeDate: Date;
 
-  toggle = false;
-  public lastColor: string;
-  public rgbaText: string;
+  // toggle = false;
+  // public lastColor: string;
+  // public rgbaText: string;
 
-  public color = '#2889e9';
-  public color2 = 'hsla(300,82%,52%)';
-  public color3 = '#fff500';
-  public color4 = 'rgb(236,64,64)';
-  public color5 = 'rgba(45,208,45,1)';
+  // public color = '#2889e9';
+  // public color2 = 'hsla(300,82%,52%)';
+  // public color3 = '#fff500';
+  // public color4 = 'rgb(236,64,64)';
+  // public color5 = 'rgba(45,208,45,1)';
 
-  public color13 = 'rgba(0, 255, 0, 0.5)';
-  public color14 = 'rgb(0, 255, 255)';
-  public color15 = '#a51ad633';
+  // public color13 = 'rgba(0, 255, 0, 0.5)';
+  // public color14 = 'rgb(0, 255, 255)';
+  // public color15 = '#a51ad633';
 
-  public basicColor = '#4099ff';
-  public showColorCode = '#db968d';
-  public showColorCodeHSAL = 'hsl(149,27%,65%)';
-  public showColorCodeRGBA = 'rgb(221,14,190)';
-  public changeMeColor = '#523698';
+  // public basicColor = '#4099ff';
+  // public showColorCode = '#db968d';
+  // public showColorCodeHSAL = 'hsl(149,27%,65%)';
+  // public showColorCodeRGBA = 'rgb(221,14,190)';
+  // public changeMeColor = '#523698';
 
-  public arrayColors: any = {};
-  public selectedColor = 'color';
+  // public arrayColors: any = {};
+  // public selectedColor = 'color';
 
-  modelPopup: NgbDateStruct;
-  public date: {year: number, month: number};
+  // modelPopup: NgbDateStruct;
+  // public date: {year: number, month: number};
 
-  modelDisabled: NgbDateStruct = {
-    year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()
-  };
+  // modelDisabled: NgbDateStruct = {
+  //   year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()
+  // };
 
-  public cmyk: Cmyk = new Cmyk(0, 0, 0, 0);
+  // public cmyk: Cmyk = new Cmyk(0, 0, 0, 0);
 
-  isWeekend(date: NgbDateStruct) {
-    const d = new Date(date.year, date.month - 1, date.day);
-    return d.getDay() === 0 || d.getDay() === 6;
-  }
+  // isWeekend(date: NgbDateStruct) {
+  //   const d = new Date(date.year, date.month - 1, date.day);
+  //   return d.getDay() === 0 || d.getDay() === 6;
+  // }
 
-  isDisabled(date: NgbDateStruct, current: {month: number}) {
-    return date.month !== current.month;
-  }
+  // isDisabled(date: NgbDateStruct, current: {month: number}) {
+  //   return date.month !== current.month;
+  // }
 
 
-  chart = [];
+  // chart = [];
 
-  constructor(private _script: ScriptLoaderService, public parserFormatter: NgbDateParserFormatter, public calendar: NgbCalendar, public cpService: ColorPickerService) {
-    this.fromDate = calendar.getToday();
-    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+  // constructor(private _script: ScriptLoaderService, public parserFormatter: NgbDateParserFormatter, public calendar: NgbCalendar, public cpService: ColorPickerService) {
+  //   this.fromDate = calendar.getToday();
+  //   this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
 
-    this.arrayColors['color'] = '#2883e9';
-    this.arrayColors['color2'] = '#e920e9';
-    this.arrayColors['color3'] = 'rgb(255,245,0)';
-    this.arrayColors['color4'] = 'rgb(236,64,64)';
-    this.arrayColors['color5'] = 'rgba(45,208,45,1)';
+  //   this.arrayColors['color'] = '#2883e9';
+  //   this.arrayColors['color2'] = '#e920e9';
+  //   this.arrayColors['color3'] = 'rgb(255,245,0)';
+  //   this.arrayColors['color4'] = 'rgb(236,64,64)';
+  //   this.arrayColors['color5'] = 'rgba(45,208,45,1)';
 
-    const windowWidth = window.innerWidth;
-    if (windowWidth >= 768 && windowWidth <= 1024) {
-      this.displayMonths = 2;
-      this.navigation = 'select';
-    } else if (windowWidth < 768) {
-      this.displayMonths = 1;
-      this.navigation = 'select';
-    } else {
-      this.displayMonths = 1;
-      this.navigation = 'none';
-    }
+  //   const windowWidth = window.innerWidth;
+  //   if (windowWidth >= 768 && windowWidth <= 1024) {
+  //     this.displayMonths = 2;
+  //     this.navigation = 'select';
+  //   } else if (windowWidth < 768) {
+  //     this.displayMonths = 1;
+  //     this.navigation = 'select';
+  //   } else {
+  //     this.displayMonths = 1;
+  //     this.navigation = 'none';
+  //   }
 
   
-   }
+  //  }
 
   ngOnInit() {}
 
