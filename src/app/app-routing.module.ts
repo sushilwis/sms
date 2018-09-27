@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 
 import { LayoutComponent } from './/layouts/layout.component';
 
@@ -45,6 +45,12 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { LockscreenComponent } from './pages/lockscreen/lockscreen.component';
 import { Error404Component } from './pages/error-404/error-404.component';
 import { Error500Component } from './pages/error-500/error-500.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { CalendarModule } from "angular-calendar";
+import { HttpClientModule } from '@angular/common/http';
+import { GuardGuard } from './_services/guard/guard.guard';
+
 
 
 const routes: Routes = [
@@ -54,8 +60,9 @@ const routes: Routes = [
         "component": LayoutComponent,
         "children": [
             {
-                path: "index",
-                component: HomeComponent
+                path: "dashboard",
+                component: HomeComponent,
+                canActivate: [GuardGuard]
             },
             {
                 path: "ui/colors",
@@ -235,7 +242,16 @@ const routes: Routes = [
     Error404Component,
     Error500Component,
   ],
-  imports: [ RouterModule.forRoot(routes) ],
+
+  imports: [ 
+      RouterModule.forRoot(routes),
+      FormsModule, 
+      ReactiveFormsModule,
+      NgbModule.forRoot(),
+      CalendarModule.forRoot(),
+      HttpClientModule
+    ],
+
   exports: [ 
     RouterModule,
   ]

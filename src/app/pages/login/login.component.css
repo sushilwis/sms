@@ -21,8 +21,11 @@
 .content form {
 	padding: 15px 20px 20px 20px;
 	background-color: #fff;
+	width: 30%;
 }
-.login-header {margin:10px 0 20px 0;}
+.login-header {
+	margin:10px 0 20px 0;
+}
 .login-img {
 	display: inline-block;
     width: 60px;
@@ -65,5 +68,15 @@
 	padding: 15px;
 	background-color: #ebedee;
 	text-align: center;
+}
+
+.ui-checkbox, .text-font-md {
+	font-size: 13px;
+}
+
+.input-span{
+	width: 15px;
+	height: 15px;
+	margin-top: 2px;
 }
 

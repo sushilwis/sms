@@ -10,7 +10,9 @@ interface Script {
 
 @Injectable()
 export class ScriptLoaderService {
+	
 	private _scripts: Script[] = [];
+
 
 	load(...scripts: string[]) {
 		scripts.forEach((script: string) => this._scripts[script] = {src: script, loaded: false});
@@ -19,6 +21,7 @@ export class ScriptLoaderService {
 		scripts.forEach((script) => promises.push(this.loadScript(script)));
 		return Promise.all(promises);
 	}
+
 
 	loadScript(src: string) {
 		return new Promise((resolve, reject) => {
