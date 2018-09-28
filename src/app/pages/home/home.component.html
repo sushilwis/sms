@@ -144,9 +144,9 @@
           <div class="ibox-title">Calender Events</div>
         </div>
         <div class="ibox-body">
-          <div class="w-100">
+          <div class="" style="width:100%;">
             <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" [displayMonths]="displayMonths"
-              [navigation]="arrows">
+              [navigation]="arrows" style="width:100%;">
             </ngb-datepicker>
             <!-- <ngb-datepicker #dp (navigate)="date = $event.next"></ngb-datepicker> -->
           </div>

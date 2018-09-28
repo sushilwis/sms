@@ -3416,9 +3416,9 @@ body.has-backdrop .backdrop {
     color: #fff;
     /* background-color: #3498db;*/ }
 
-.side-menu > li.active {
-  background-color: #051f3e; }
-  .side-menu > li.active > a, .side-menu > li.active > a:hover, .side-menu > li.active > a:focus {
+/* .side-menu > li.active {
+  background-color: #051f3e; } */
+.side-menu > li.active > a, .side-menu > li.active > a:hover, .side-menu > li.active > a:focus {
     color: #fdc600;
     /* background-color: #3498db;*/ } 
 
@@ -3461,6 +3461,19 @@ table.dataTable {
   background-color: #3498db;
   color: #fff !important;
   border: 0; }
+
+  .widget-stat .fa-birthday-cake{
+    color: blue !important;
+  }
+  .widget-stat .fa-file-text-o{
+    color: burlywood !important;
+  }
+  .widget-stat .fa-calendar{
+    color: brown !important;
+  }
+  .widget-stat .fa-money{
+    color: crimson !important;
+  }
 
 #external-events .ex-event {
   padding: 5px 10px;
