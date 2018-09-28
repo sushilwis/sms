@@ -20,6 +20,18 @@ export class StudentListComponent implements OnInit {
     },
     { 
       name: 'John', roll: '002', gender: 'Male', class: '7', section: 'B', email: "abc@gmail.com" 
+    },
+    { 
+      name: 'John', roll: '002', gender: 'Male', class: '7', section: 'B', email: "abc@gmail.com" 
+    },
+    { 
+      name: 'John', roll: '002', gender: 'Male', class: '7', section: 'B', email: "abc@gmail.com" 
+    },
+    { 
+      name: 'John', roll: '002', gender: 'Male', class: '7', section: 'B', email: "abc@gmail.com" 
+    },
+    { 
+      name: 'John', roll: '002', gender: 'Male', class: '7', section: 'B', email: "abc@gmail.com" 
     }
   ];
 
