@@ -152,18 +152,23 @@ export class AddStudentComponent implements OnInit {
   onAddStudentSubmit ()
   {
     var addStudentData = this.addStudentForm.value;
+    let data = [];
+    data.push(addStudentData);
+    let stdData = {
+      data: data
+    };
+    console.log(stdData);
 
-    console.log(addStudentData);
-
-    // this.authServ.loginUser(addStudentData).subscribe((res:any) => {
-    //   if(res.success){
-    //     this.cookie.set( 'sessionId', res.data.sessionID );
-    //     this.router.navigate(['/dashboard']);
-    //   }else{
-    //     console.log("Unsuccessfull");
-    //     this.router.navigate(['/login']);
-    //   }
-    // });
+    this.authServ.addStudent(stdData).subscribe((res:any) => {
+      // if(res.success){
+        console.log(res);
+        // this.cookie.set( 'sessionId', res.data.sessionID );
+        // this.router.navigate(['/dashboard']);
+      // }else{
+        // console.log("Unsuccessfull");
+        // this.router.navigate(['/login']);
+      // }
+    });
     // console.log('Stored Cookie value : ',this.cookie.get( 'sessionId'));
   }
 

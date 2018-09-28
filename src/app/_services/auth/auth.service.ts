@@ -26,6 +26,14 @@ export class AuthService {
   }
 
 
+  addStudent(newStudentData)
+  {
+    let header = new HttpHeaders();
+    header.set('Content-Type', 'application/json');
+    return this.http.post('http://13.59.10.105:8080/campusquo_services/api/admin/addStudent', newStudentData, {headers: header}).map(res => {return res});
+  }
+
+
 
   isAuthenticated(){
     return this.cookie.get( 'sessionId');
