@@ -4,6 +4,7 @@ import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { LayoutComponent } from './/layouts/layout.component';
 
 import { HomeComponent } from './pages/home/home.component';
+import { AddStudentComponent } from './pages/students/add-student/add-student.component';
 
 import { ColorsComponent } from './pages/ui/colors/colors.component';
 import { TypographyComponent } from './pages/ui/typography/typography.component';
@@ -54,11 +55,15 @@ import { GuardGuard } from './_services/guard/guard.guard';
 
 
 const routes: Routes = [
-    {path: '', redirectTo: 'index', pathMatch: 'full'},
+    {path: '', 
+    redirectTo: 'dashboard', 
+    pathMatch: 'full'
+    },
     {
         "path": "",
         "component": LayoutComponent,
-        "children": [
+        "children": 
+        [
             {
                 path: "dashboard",
                 component: HomeComponent,
@@ -172,6 +177,10 @@ const routes: Routes = [
                 path: "profile",
                 component: ProfileComponent
             },
+            {
+                path: "students/add",
+                component: AddStudentComponent
+            },            
         ]
     },
     {
@@ -241,6 +250,7 @@ const routes: Routes = [
     ForgotPasswordComponent,
     Error404Component,
     Error500Component,
+    AddStudentComponent
   ],
 
   imports: [ 
