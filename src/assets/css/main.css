@@ -1262,7 +1262,14 @@ btn .caret {
     .ibox.ibox-fullscreen .fullscreen-link > i::before {
       content: "\f066"; }
   .ibox.collapsed-mode .ibox-collapse > i::before {
-    content: "\f067"; }
+    content: "\f067";
+    font-size: 9.2px;
+  }
+
+  .ibox.collapsed-mode .ibox-collapse .refresh-icon::before {
+    content: "\f021";
+    font-size: 10px;
+  }
 
 .ibox-primary .ibox-head {
   color: #fff;
