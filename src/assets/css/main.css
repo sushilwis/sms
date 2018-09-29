@@ -3573,7 +3573,8 @@ table.dataTable {
   width: 170px;
   -webkit-border-radius: 50px;
   border-radius: 50px;
-  color: #333; }
+  color: #333; 
+}
 
 .dev-img {
   position: absolute;

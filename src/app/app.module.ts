@@ -15,11 +15,14 @@ import { AuthService } from './_services/auth/auth.service';
 import { SharedModule } from './shared/shared.module';
 import { CookieService } from 'ngx-cookie-service';
 import { GuardGuard } from './_services/guard/guard.guard';
+import { AddStudentComponent } from './pages/students/add-student/add-student.component';
+import { StudentListComponent } from './pages/students/student-list/student-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    StudentListComponent,
   ],
 
   imports: [
