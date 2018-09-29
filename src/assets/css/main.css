@@ -3178,9 +3178,9 @@ body.fixed-layout.sidebar-mini .content-wrapper {
 
 .content-wrapper {
   position: relative;
-  background-color: #f7f7f7;
-  background-color: #f2f2f2;
-  background-color: #f1f1f1;
+  /* background-color: #f7f7f7;
+  background-color: #f2f2f2; */
+  background-color: #f0f1f3;
   margin-left: 220px;
   padding: 0 15px 60px 15px;
   -webkit-transition: margin .2s ease-in-out;
@@ -3419,12 +3419,14 @@ body.has-backdrop .backdrop {
 
 .side-menu > li a {
   color: #b4bcc8; }
+
   .side-menu > li a:hover, .side-menu > li a:focus {
     color: #fff;
     /* background-color: #3498db;*/ }
 
-/* .side-menu > li.active {
-  background-color: #051f3e; } */
+.side-menu > li.active {
+  background-color: #051f3e; }
+
 .side-menu > li.active > a, .side-menu > li.active > a:hover, .side-menu > li.active > a:focus {
     color: #fdc600;
     /* background-color: #3498db;*/ } 
