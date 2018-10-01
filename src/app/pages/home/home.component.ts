@@ -18,7 +18,8 @@ import {
 
 import { ColorPickerService, Rgba } from "ngx-color-picker";
 // import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import 'rxjs/add/operator/map';
 // import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 const equals = (one: NgbDateStruct, two: NgbDateStruct) =>
@@ -158,6 +159,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
       actions: this.actions
     }
   ];
+  leavCount: number;
+  stdntbthdy: number;
+  userBdayList: number;
+  eventList: number;
+  feesList: number;
 
   events: CalendarEvent[] = [
     {
@@ -285,7 +291,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   chart = [];
 
-  constructor(private _script: ScriptLoaderService, public parserFormatter: NgbDateParserFormatter, public calendar: NgbCalendar, public cpService: ColorPickerService) {
+  constructor(private _script: ScriptLoaderService, public parserFormatter: NgbDateParserFormatter, 
+    public calendar: NgbCalendar, public cpService: ColorPickerService, private http: HttpClient,) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
 
@@ -310,7 +317,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   
    }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.pageDetails()
+  }
 
   ngAfterViewInit() {
     // this._script.load('./assets/js/scripts/dashboard_1_demo.js');
@@ -505,4 +514,23 @@ export class HomeComponent implements OnInit, AfterViewInit {
       options: barOptions
     });
   }
+
+  pageDetails(){
+    let header = new HttpHeaders();
+    header.set('Content-Type', 'application/json');
+    let senddata = {
+      "institutionID" : 12    
+    }
+    this.http.post('http://13.59.10.105:8080/campusquo_services/api/admin/getInsSpecDataForIns', senddata)
+    .map(res=> res).subscribe(data => {
+      // console.log(data);
+      this.stdntbthdy = data['studentBdayList'].length;
+      this.eventList = data['eventDetList'].length
+      this.leavCount = data['leaveDetList'].length;
+      this.userBdayList = data['userBdayList'].length;
+      this.feesList = data['feeDetails']['collectedFees'];
+    })
+  }
+
+
 }
