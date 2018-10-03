@@ -17,6 +17,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { GuardGuard } from './_services/guard/guard.guard';
 import { AddStudentComponent } from './pages/students/add-student/add-student.component';
 import { StudentListComponent } from './pages/students/student-list/student-list.component';
+import { ViewStudentComponent } from './pages/students/view-student/view-student.component';
 
 
 
@@ -24,6 +25,7 @@ import { StudentListComponent } from './pages/students/student-list/student-list
   declarations: [
     AppComponent,
     StudentListComponent,
+    ViewStudentComponent,
   ],
 
   imports: [

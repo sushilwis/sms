@@ -6,6 +6,7 @@ import { LayoutComponent } from './/layouts/layout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AddStudentComponent } from './pages/students/add-student/add-student.component';
 import { StudentListComponent } from './pages/students/student-list/student-list.component';
+import { ViewStudentComponent } from './pages/students/view-student/view-student.component';
 
 import { ColorsComponent } from './pages/ui/colors/colors.component';
 import { TypographyComponent } from './pages/ui/typography/typography.component';
@@ -185,6 +186,10 @@ const routes: Routes = [
             {
                 path: "students/list",
                 component: StudentListComponent
+            },
+            {
+                path: "students/viewDetail",
+                component: ViewStudentComponent
             },           
         ]
     },
