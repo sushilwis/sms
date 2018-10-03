@@ -68,7 +68,7 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <select class="mdl-textfield__input" name="gender" formControlName="bloodGroup">
+                            <select class="mdl-textfield__input" name="gender" formControlName="gender">
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                             </select>
@@ -100,7 +100,7 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <select class="mdl-textfield__input" name="religion"  formControlName="religion">
+                            <select class="mdl-textfield__input" name="caste"  formControlName="caste">
                                     <option value="general">General</option>
                                     <option value="sc">SC</option>
                                     <option value="st">ST</option>
@@ -119,14 +119,17 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-12">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="file" id="sample3" name="studentProfPicEncoded" formControlName="studentProfPicEncoded">
-                            <!-- <label class="mdl-textfield__label" for="sample3">Profile Picture</label> -->
+                            <input class="mdl-textfield__input" type="file" id="sample3" name="studentProfPicEncoded" formControlName="studentProfPicEncoded" (change)="onSelectFile($event)" accept="image/*">
                             </div>
                     </div>
+
                     <div class="col-sm-3">
-                        <img src="assets/img/admin-avatar.png" alt=""/>
+                        <div>
+                            <img [src]="url" class="img-thumbnail w-75"
+                            alt="profile-picture"/>
+                        </div>                        
                     </div>
 
                     <!-- <div class="col-sm-3 form-group">

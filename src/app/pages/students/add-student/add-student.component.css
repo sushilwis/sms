@@ -18,28 +18,33 @@
 .form-group-label{
     position: relative;
 }
+
 .form-group-label label{
     position: absolute;
     visibility: hidden;
 }
+
 .form-group-label .form-control{
     border-left: 0px;
     border-right: 0px;
     border-top: 0px;
 }
+
 .form-group-label .form-control:focus label{
     position: relative !important;
     font-size: 50% !important;
-    opacity: 1 !important;
+    opacity: 0.7 !important;
     top: -20px;
     transform: translate3d(0, -100%, 0);
     visibility: visible;
 }
 
 .mdl-textfield__label:after{
-    bottom: 14px !important;
+    bottom: 10px !important;
 }
+
 .mdl-textfield__label{
     color: rgba(0, 0, 0, 1) !important;
-    font-size: 14px;
+    font-size: 11px;
 }
+

@@ -10,6 +10,10 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./add-student.component.css']
 })
 export class AddStudentComponent implements OnInit {
+  // ./assets/img/pro-pic-placeholder.jpg
+
+  url = ''; 
+  base64textString: string = ''; 
 
   addStudentForm: FormGroup;
 
@@ -60,6 +64,7 @@ export class AddStudentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.url = './assets/img/pro-pic-placeholder.jpg';
     this.createFormControls();
     this.createFormGroup();
   }
@@ -152,24 +157,80 @@ export class AddStudentComponent implements OnInit {
   onAddStudentSubmit ()
   {
     var addStudentData = this.addStudentForm.value;
+
+    addStudentData.institutionID = "1";
+    addStudentData.subscriptionID = "1";
+    addStudentData.studentProfPicEncoded = this.url;
+
     let data = [];
+
     data.push(addStudentData);
+
     let stdData = {
       data: data
     };
-    console.log(stdData);
 
     this.authServ.addStudent(stdData).subscribe((res:any) => {
-      // if(res.success){
-        console.log(res);
-        // this.cookie.set( 'sessionId', res.data.sessionID );
-        // this.router.navigate(['/dashboard']);
-      // }else{
-        // console.log("Unsuccessfull");
-        // this.router.navigate(['/login']);
-      // }
+      if(res.success){
+        this.router.navigate(['/students/list']);
+      }else{
+        this.router.navigate(['/students/add']);
+      }
     });
     // console.log('Stored Cookie value : ',this.cookie.get( 'sessionId'));
+    this.addStudentForm.reset();
+  }
+
+  // No subscriptions left for the institution
+
+
+  // onSelectFile(event) {
+  //   if (event.target.files && event.target.files[0]) {
+
+  //     // this.url = event.target.result;
+  //     var reader = new FileReader();
+
+  //     reader.onload = this._handleReaderLoaded.bind(this);
+  //     // reader.readAsBinaryString(event.target.files[0]);
+  //     reader.readAsDataURL(event.target.files[0]);
+
+  //     reader.onload = (event) => {
+  //       this.url = event.target.result;
+  //     }
+  //   }
+  // }
+
+
+
+  // _handleReaderLoaded(readerEvt) {    
+  //   var binaryString = readerEvt.target.result;
+  //   this.base64textString = btoa(binaryString);
+  //   console.log(btoa(binaryString));
+  // }
+
+
+  // No subscriptions left for the institution
+
+
+  onSelectFile(e) {
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    var pattern = /image-*/;
+    var reader = new FileReader();
+
+    if (!file.type.match(pattern)) {
+      alert('invalid format');
+      return;
+    }
+
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
+  }
+
+
+  _handleReaderLoaded(e) {
+    let reader = e.target;
+    this.url = reader.result;
+    // console.log(this.url);
   }
 
 

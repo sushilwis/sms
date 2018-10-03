@@ -3430,7 +3430,7 @@ body.has-backdrop .backdrop {
 
 .side-menu > li.active > a, .side-menu > li.active > a:hover, .side-menu > li.active > a:focus {
     color: #fff;
-    /* background-color: #3498db;*/ } 
+    background-color: #082954; } 
 
 .side-menu li a.active {
   color: #fff; }

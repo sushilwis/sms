@@ -1,5 +1,6 @@
 import { ScriptLoaderService } from "../../_services/script-loader.service";
 import { Chart } from "chart.js";
+import { CookieService } from 'ngx-cookie-service';
 
 import {
   ChangeDetectionStrategy,
@@ -292,7 +293,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   chart = [];
 
   constructor(private _script: ScriptLoaderService, public parserFormatter: NgbDateParserFormatter, 
-    public calendar: NgbCalendar, public cpService: ColorPickerService, private http: HttpClient,) {
+    public calendar: NgbCalendar, public cpService: ColorPickerService, private http: HttpClient, private cookie: CookieService) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
 
@@ -514,6 +515,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
       options: barOptions
     });
   }
+
+
 
   pageDetails(){
     let header = new HttpHeaders();

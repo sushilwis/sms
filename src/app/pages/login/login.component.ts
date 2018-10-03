@@ -91,8 +91,12 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
     console.log(loginData);
     this.authServ.loginUser(loginData).subscribe((res:any) => {
       if(res.success){
-        // console.log(res.data);
+        console.log(res.data);
         this.cookie.set( 'sessionId', res.data.sessionID );
+        this.cookie.set( 'fName', res.data.firstName );
+        this.cookie.set( 'uID', res.data.userID );
+        this.cookie.set( 'uName', res.data.userName );
+        this.cookie.set( 'uRole', res.data.userRole );
         this.router.navigate(['/dashboard']);
       }else{
         console.log("Unsuccessfull");
