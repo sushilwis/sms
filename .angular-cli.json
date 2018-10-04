@@ -37,7 +37,8 @@
         "../node_modules/fullcalendar/dist/fullcalendar.min.css",
         "../node_modules/select2/dist/css/select2.min.css",
         "../node_modules/jquery-minicolors/jquery.minicolors.css",
-        "./assets/css/main.css"
+        "./assets/css/main.css",
+        "assets/css/floating-labels.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",

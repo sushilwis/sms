@@ -19,6 +19,7 @@ import { AddStudentComponent } from './pages/students/add-student/add-student.co
 import { StudentListComponent } from './pages/students/student-list/student-list.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

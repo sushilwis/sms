@@ -28,20 +28,28 @@
                         <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"/>
                         <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
                       </label> -->
-                      <label class="container-checkbox">
-                          <input type="checkbox">
-                          <span class="checkmark-checkbox"></span>
-                      </label>
+                      <div class="pretty p-default">
+                          <input type="checkbox" />
+                          <div class="state p-primary">
+                              <label></label>
+                          </div>
+                      </div>
                     </div>
                   </ng-template>
         
                   <ng-template class="datatable-checkbox" ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
                     let-onCheckboxChangeFn="onCheckboxChangeFn">
                     <div class="checkbox-fade fade-in-default datatable-header-cell-label">
-                      <label>
+                      <!-- <label>
                         <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
                         <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-                      </label>
+                      </label> -->
+                      <div class="pretty p-default">
+                          <input type="checkbox" />
+                          <div class="state p-primary">
+                              <label></label>
+                          </div>
+                      </div>
                     </div>
                   </ng-template>
         

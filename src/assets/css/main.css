@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
+
 .clf:after, .clf:before {
   content: '';
   display: table; }
@@ -3428,7 +3429,7 @@ body.has-backdrop .backdrop {
   background-color: #051f3e; }
 
 .side-menu > li.active > a, .side-menu > li.active > a:hover, .side-menu > li.active > a:focus {
-    color: #fdc600;
+    color: #fff;
     /* background-color: #3498db;*/ } 
 
 .side-menu li a.active {
@@ -3581,6 +3582,8 @@ table.dataTable {
   right: 0;
   bottom: 0; }
 
+ 
+
 @media (max-width: 1230px) {
   .adminca-banner {
     display: inline-block; }
@@ -3595,3 +3598,23 @@ table.dataTable {
     -webkit-justify-content: start !important;
     -ms-flex-pack: start !important;
     justify-content: start !important; } }
+
+
+    #sidebar-collapse .nav-tabs .nav-link.active{
+      background-color: #042954;
+      color: #fdc600;
+      border: none;
+      font-weight: bold;
+      font-size: 16px;
+    border-bottom: 2px solid;
+    }
+    #sidebar-collapse .nav-tabs {
+      border-bottom: 0px solid #000000;
+    }
+    #sidebar-collapse .nav-tabs .nav-link{
+      color: #fff;
+      padding: 1rem 0;
+    }
+    .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover{
+      border-color: #042954 #042954 #042954;
+    }
