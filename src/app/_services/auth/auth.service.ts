@@ -34,6 +34,22 @@ export class AuthService {
   }
 
 
+  addStudentDetails(otherStudentDetails)
+  {
+    let header = new HttpHeaders();
+    header.set('Content-Type', 'application/json');
+    return this.http.post('http://13.59.10.105:8080/campusquo_services/api/admin/addStudentProfileDetails', otherStudentDetails, {headers: header}).map(res => {return res});
+  }
+
+
+  getStudentDetailsForFilters(filterData)
+  {
+    let header = new HttpHeaders();
+    header.set('Content-Type', 'application/json');
+    return this.http.post('http://13.59.10.105:8080/campusquo_services/api/student_profile/getStudentDetailsForFilters', filterData, {headers: header}).map(res => {return res});
+  }
+
+
 
   isAuthenticated(){
     return this.cookie.get( 'sessionId');

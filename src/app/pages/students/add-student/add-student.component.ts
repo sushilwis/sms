@@ -56,7 +56,6 @@ export class AddStudentComponent implements OnInit {
   
 
   constructor(
-
     private authServ: AuthService, 
     private router: Router,
     private cookie: CookieService
@@ -172,6 +171,8 @@ export class AddStudentComponent implements OnInit {
 
     this.authServ.addStudent(stdData).subscribe((res:any) => {
       if(res.success){
+        // console.log(res.studentList[0]);
+        localStorage.setItem('regStd', JSON.stringify(res.studentList[0]));
         this.router.navigate(['/students/list']);
       }else{
         this.router.navigate(['/students/add']);

@@ -40,7 +40,7 @@ export class AppHeader implements OnInit, AfterViewInit {
       uRole : this.cookie.get('uRole')
     }
 
-    console.log(this.userDetails);
+    // console.log(this.userDetails);
   }
 
 
