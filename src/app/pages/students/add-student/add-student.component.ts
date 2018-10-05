@@ -173,7 +173,7 @@ export class AddStudentComponent implements OnInit {
       if(res.success){
         // console.log(res.studentList[0]);
         localStorage.setItem('regStd', JSON.stringify(res.studentList[0]));
-        this.router.navigate(['/students/list']);
+        this.router.navigate(['/students/addDetails']);
       }else{
         this.router.navigate(['/students/add']);
       }

@@ -190,7 +190,7 @@ const routes: Routes = [
                 component: StudentListComponent
             },
             {
-                path: "students/viewDetail",
+                path: "students/viewDetail/:id",
                 component: ViewStudentComponent
             },
             {

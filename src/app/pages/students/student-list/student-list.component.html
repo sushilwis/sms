@@ -15,8 +15,16 @@
     
             <div class="ibox-body" style="font-size: 11px;">
 
-                <ngx-datatable class="data-table dt-chk fullscreen" [columnMode]="'force'" [scrollbarH]="false" [headerHeight]="50"
-                [footerHeight]="0" [rowHeight]="40" [scrollbarV]="true" [rows]="rows" class="material">
+                <ngx-datatable 
+                class="data-table dt-chk fullscreen" 
+                [columnMode]="'force'" 
+                [scrollbarH]="false" 
+                [headerHeight]="50"
+                [footerHeight]="0" 
+                [rowHeight]="50" 
+                [scrollbarV]="false" 
+                [rows]="rows" 
+                class="material fullscreen">
         
         
                 <ngx-datatable-column [width]="20" [sortable]="false" [canAutoResize]="false" [draggable]="false" [resizeable]="false">
@@ -29,7 +37,7 @@
                         <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
                       </label> -->
                       <div class="pretty p-default">
-                          <input type="checkbox" />
+                          <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"/>
                           <div class="state p-primary">
                               <label></label>
                           </div>
@@ -45,7 +53,7 @@
                         <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
                       </label> -->
                       <div class="pretty p-default">
-                          <input type="checkbox" />
+                          <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
                           <div class="state p-primary">
                               <label></label>
                           </div>
@@ -58,59 +66,47 @@
                 <ngx-datatable-column name="Roll" [width]="60"></ngx-datatable-column>
 
                 <ngx-datatable-column name="Photo" [width]="75">
-                    <ng-template let-row="row" ngx-datatable-cell-template>
-                      <!-- <div class="border-checkbox-group border-checkbox-group-default">
-                        <input class="border-checkbox" type="checkbox" id="checkbox0">
-                        <label _ngcontent-c5="" class="border-checkbox-label" for="checkbox1"></label>
-                      </div> -->
-                      <img width="25px" src="./assets/img/admin-avatar.png"/>
-                    </ng-template>
+                  <ng-template let-row="row" ngx-datatable-cell-template>
+                    <img width="25px" src="{{row.photo}}"/>
+                  </ng-template>
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="Name" [width]="60"></ngx-datatable-column>
-
-                <ngx-datatable-column name="Gender" [width]="60">
-                  <!-- <ng-template let-row="row" ngx-datatable-cell-template>
-                    <div class="border-checkbox-group border-checkbox-group-default">
-                      <input class="border-checkbox" type="checkbox" id="checkbox0">
-                      <label _ngcontent-c5="" class="border-checkbox-label" for="checkbox1"></label>
-                    </div>
-                  </ng-template> -->
+                <ngx-datatable-column name="Name">
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="Parents Name" [width]="110">
-                    <ng-template let-row="row" ngx-datatable-cell-template>
-                        Justin Mary
-                    </ng-template>
+                <ngx-datatable-column name="Gender" [width]="80">                  
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="Class" [width]="50"></ngx-datatable-column>
-
-                <ngx-datatable-column name="Section" [width]="50"></ngx-datatable-column>
-
-                <ngx-datatable-column name="Address" [canAutoResize]="true">
-                    <ng-template let-row="row" ngx-datatable-cell-template>
-                        NL-59, South Park
-                    </ng-template>
+                <ngx-datatable-column name="Parents Name" prop="parentsName">
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="Date of Birth" [canAutoResize]="true">
-                    <ng-template let-row="row" ngx-datatable-cell-template>
+                <ngx-datatable-column name="Class" [width]="70"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Section" [width]="90"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Address" prop="address" [canAutoResize]="true">
+                    <!-- <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.address}}
+                    </ng-template> -->
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Date of Birth" prop="dateOfBirth" [canAutoResize]="true">
+                    <!-- <ng-template let-row="row" ngx-datatable-cell-template>
                       22/10/1995
-                    </ng-template>
+                    </ng-template> -->
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="Mobile No" [canAutoResize]="true">
-                    <ng-template let-row="row" ngx-datatable-cell-template>
+                <ngx-datatable-column name="Mobile No" prop="mobileNo" [canAutoResize]="true">
+                    <!-- <ng-template let-row="row" ngx-datatable-cell-template>
                        +89 22956325
-                    </ng-template>
+                    </ng-template> -->
                 </ngx-datatable-column>
 
                 <ngx-datatable-column name="Email" [canAutoResize]="true"></ngx-datatable-column>
 
-                <ngx-datatable-column name="Action" [canAutoResize]="true">
+                <ngx-datatable-column name="Actions" [canAutoResize]="true">
                     <ng-template let-row="row" ngx-datatable-cell-template>
-                        <i class="fa fa-eye text-primary" aria-hidden="true" [routerLink]="['/students/viewDetail']"></i>
+                        <i class="fa fa-eye text-primary" aria-hidden="true" (click)="goToStdView(row.Id)"></i>
                         <i class="fa fa-pencil-square-o text-success ml-1" aria-hidden="true"></i>
                         <i class="fa fa-trash-o text-danger ml-1" aria-hidden="true"></i> 
                     </ng-template>

@@ -4,7 +4,10 @@
   
           <div class="ibox">        
               <div class="ibox-head">
-                <div class="ibox-title">Mehrul Shal Details</div>
+                <div class="ibox-title">
+                  {{stdDetailsData?.firstName | uppercase}} 
+                  {{stdDetailsData?.lastName | uppercase}} DETAILS
+                </div>
                 <div class="ibox-tools">
                   <a class="ibox-collapse">
                     <i class="fa fa-refresh mr-1 text-success refresh-icon" aria-hidden="true"></i>
@@ -47,20 +50,35 @@
                           <p class="ts-1 mt-1">Phone : </p>
                       </div>
                       <div class="col-md-9">
-                          <p class="ts-1 mt-4 mb-1">Mehrul Shal</p>
-                          <p class="ts-1 mt-1 mb-1">Male</p>
-                          <p class="ts-1 mt-1 mb-1">Samir Shal</p>
-                          <p class="ts-1 mt-1 mb-1">Samira Shal</p>
-                          <p class="ts-1 mt-1 mb-1">02/11/2002</p>
-                          <p class="ts-1 mt-1 mb-1">Hindu</p>
-                          <p class="ts-1 mt-1 mb-1">Business</p>
-                          <p class="ts-1 mt-1 mb-1">father@gmail.com</p>
-                          <p class="ts-1 mt-1 mb-1">02/05/2006</p>
-                          <p class="ts-1 mt-1 mb-1">7</p>
-                          <p class="ts-1 mt-1 mb-1">A</p>
-                          <p class="ts-1 mt-1 mb-1">37</p>
-                          <p class="ts-1 mt-1 mb-1">25, Park Street</p>
-                          <p class="ts-1 mt-1">6598552546</p>
+                          <p class="ts-1 mt-4 mb-1">{{stdDetailsData?.firstName}} {{stdDetailsData?.middleName}} {{stdDetailsData?.lastName}}</p>
+                          <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.gender}}</p>
+                          <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.fatherFName}} {{stdDetailsData?.fatherMName}} {{stdDetailsData?.fatherLName}}</p>
+                          <p class="ts-1 mt-1 mb-1">
+                              {{stdDetailsData?.motherFName}} {{stdDetailsData?.motherMName}} {{stdDetailsData?.motherLName}}
+                          </p>
+                          <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.date_of_birth}}</p>
+                          <p class="ts-1 mt-1 mb-1">
+                              {{stdDetailsData?.religion}}
+                          </p>
+                          <p class="ts-1 mt-1 mb-1" *ngIf="stdDetailsData?.profileDetails.fatherOccupation; else elseBlockOccupation">{{stdDetailsData?.profileDetails.fatherOccupation}}</p>
+
+                          <ng-template #elseBlockOccupation>
+                              <p class="ts-1 mt-1 mb-1">Null</p>
+                          </ng-template>                         
+
+                          <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.fatherEmailID}}</p>
+                          <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.admissionDate}}</p>
+                          <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.className}}</p>
+                          <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.sectionName}}</p>
+                          <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.rollNo}}</p>
+
+                          <p class="ts-1 mt-1 mb-1" *ngIf="stdDetailsData?.profileDetails.permanentAddressCity; else elseBlockAddCity">{{stdDetailsData?.profileDetails.permanentAddressCity}}</p>
+
+                          <ng-template #elseBlockAddCity>
+                              <p class="ts-1 mt-1 mb-1">Null</p>
+                          </ng-template>
+                          
+                          <p class="ts-1 mt-1">{{stdDetailsData?.mobileNo}}</p>
                       </div>
                     </div>                                   
                   </div>
