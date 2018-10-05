@@ -59,9 +59,9 @@ import { GuardGuard } from './_services/guard/guard.guard';
 
 
 const routes: Routes = [
-    {path: '', 
-    redirectTo: 'dashboard', 
-    pathMatch: 'full'
+    {   path: '', 
+        redirectTo: 'dashboard', 
+        pathMatch: 'full'
     },
     {
         "path": "",
@@ -73,114 +73,114 @@ const routes: Routes = [
                 component: HomeComponent,
                 canActivate: [GuardGuard]
             },
-            {
-                path: "ui/colors",
-                component: ColorsComponent
-            },
-            {
-                path: "ui/typography",
-                component: TypographyComponent
-            },
-            {
-                path: "ui/panels",
-                component: PanelsComponent
-            },
-            {
-                path: "ui/buttons",
-                component: ButtonsComponent
-            },
-            {
-                path: "ui/tabs",
-                component: TabsComponent
-            },
-            {
-                path: "ui/alerts",
-                component: AlertsComponent
-            },
-            {
-                path: "ui/badges_progress",
-                component: BadgesProgressComponent
-            },
-            {
-                path: "ui/lists",
-                component: ListComponent
-            },
-            {
-                path: "ui/cards",
-                component: CardsComponent
-            },
-            {
-                path: "ui/icons",
-                component: IconsComponent
-            },
-            {
-                path: "forms/form_basic",
-                component: FormBasicComponent
-            },
-            {
-                path: "forms/form_advanced",
-                component: FormAdvancedComponent
-            },
-            {
-                path: "forms/form_masks",
-                component: InputMasksComponent
-            },
-            {
-                path: "forms/form_validation",
-                component: FormValidationComponent
-            },
-            {
-                path: "forms/text_editors",
-                component: TextEditorsComponent
-            },
-            {
-                path: "tables/basic",
-                component: TablesComponent
-            },
-            {
-                path: "tables/datatables",
-                component: DatatablesComponent
-            },
-            {
-                path: "charts/chartjs",
-                component: ChartjsComponent
-            },
-            {
-                path: "charts/charts_morris",
-                component: MorrisChartComponent
-            },
-            {
-                path: "charts/charts_sparkline",
-                component: SparklineChartComponent
-            },
-            {
-                path: "maps_vector",
-                component: MapsVectorComponent
-            },
-            {
-                path: "mailbox/mailbox",
-                component: MailboxComponent
-            },
-            {
-                path: "mailbox/mail_view",
-                component: MailViewComponent
-            },
-            {
-                path: "mailbox/mail_compose",
-                component: MailComposeComponent
-            },
-            {
-                path: "calendar",
-                component: CalendarComponent
-            },
-            {
-                "path": "invoice",
-                "component": InvoiceComponent
-            },
-            {
-                path: "profile",
-                component: ProfileComponent
-            },
+            // {
+            //     path: "ui/colors",
+            //     component: ColorsComponent
+            // },
+            // {
+            //     path: "ui/typography",
+            //     component: TypographyComponent
+            // },
+            // {
+            //     path: "ui/panels",
+            //     component: PanelsComponent
+            // },
+            // {
+            //     path: "ui/buttons",
+            //     component: ButtonsComponent
+            // },
+            // {
+            //     path: "ui/tabs",
+            //     component: TabsComponent
+            // },
+            // {
+            //     path: "ui/alerts",
+            //     component: AlertsComponent
+            // },
+            // {
+            //     path: "ui/badges_progress",
+            //     component: BadgesProgressComponent
+            // },
+            // {
+            //     path: "ui/lists",
+            //     component: ListComponent
+            // },
+            // {
+            //     path: "ui/cards",
+            //     component: CardsComponent
+            // },
+            // {
+            //     path: "ui/icons",
+            //     component: IconsComponent
+            // },
+            // {
+            //     path: "forms/form_basic",
+            //     component: FormBasicComponent
+            // },
+            // {
+            //     path: "forms/form_advanced",
+            //     component: FormAdvancedComponent
+            // },
+            // {
+            //     path: "forms/form_masks",
+            //     component: InputMasksComponent
+            // },
+            // {
+            //     path: "forms/form_validation",
+            //     component: FormValidationComponent
+            // },
+            // {
+            //     path: "forms/text_editors",
+            //     component: TextEditorsComponent
+            // },
+            // {
+            //     path: "tables/basic",
+            //     component: TablesComponent
+            // },
+            // {
+            //     path: "tables/datatables",
+            //     component: DatatablesComponent
+            // },
+            // {
+            //     path: "charts/chartjs",
+            //     component: ChartjsComponent
+            // },
+            // {
+            //     path: "charts/charts_morris",
+            //     component: MorrisChartComponent
+            // },
+            // {
+            //     path: "charts/charts_sparkline",
+            //     component: SparklineChartComponent
+            // },
+            // {
+            //     path: "maps_vector",
+            //     component: MapsVectorComponent
+            // },
+            // {
+            //     path: "mailbox/mailbox",
+            //     component: MailboxComponent
+            // },
+            // {
+            //     path: "mailbox/mail_view",
+            //     component: MailViewComponent
+            // },
+            // {
+            //     path: "mailbox/mail_compose",
+            //     component: MailComposeComponent
+            // },
+            // {
+            //     path: "calendar",
+            //     component: CalendarComponent
+            // },
+            // {
+            //     "path": "invoice",
+            //     "component": InvoiceComponent
+            // },
+            // {
+            //     path: "profile",
+            //     component: ProfileComponent
+            // },
             {
                 path: "students/add",
                 component: AddStudentComponent
