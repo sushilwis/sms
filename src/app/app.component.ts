@@ -16,17 +16,24 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngOnInit() {
   
 		this._router.events.subscribe((route) => {
+
 			if (route instanceof NavigationStart) {
 				Helpers.setLoading(true);
 				Helpers.bodyClass('fixed-navbar');
 			}
+
 			if (route instanceof NavigationEnd) {
 				window.scrollTo(0, 0);
 				Helpers.setLoading(false);
-
 				// Initialize page: handlers ...
 				Helpers.initPage();
 			}
+
+			Helpers.setLoading(true);
+
+			setTimeout(()=> {
+				Helpers.setLoading(false);
+			}, 2000);
 
 		});
   }

@@ -21,7 +21,7 @@
                 [scrollbarH]="false" 
                 [headerHeight]="50"
                 [footerHeight]="0" 
-                [rowHeight]="50" 
+                [rowHeight]="40" 
                 [scrollbarV]="false" 
                 [rows]="rows" 
                 class="material fullscreen">
@@ -32,10 +32,6 @@
                   <ng-template class="datatable-checkbox" ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
                     let-selectFn="selectFn">
                     <div class="checkbox-fade fade-in-default datatable-header-cell-label">
-                      <!-- <label>
-                        <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"/>
-                        <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-                      </label> -->
                       <div class="pretty p-default">
                           <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"/>
                           <div class="state p-primary">
@@ -48,10 +44,6 @@
                   <ng-template class="datatable-checkbox" ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
                     let-onCheckboxChangeFn="onCheckboxChangeFn">
                     <div class="checkbox-fade fade-in-default datatable-header-cell-label">
-                      <!-- <label>
-                        <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
-                        <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-                      </label> -->
                       <div class="pretty p-default">
                           <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
                           <div class="state p-primary">
@@ -67,14 +59,14 @@
 
                 <ngx-datatable-column name="Photo" [width]="75">
                   <ng-template let-row="row" ngx-datatable-cell-template>
-                    <img width="25px" src="{{row.photo}}"/>
+                    <img width="30px" src="{{row.photo}}"/>
                   </ng-template>
                 </ngx-datatable-column>
 
                 <ngx-datatable-column name="Name">
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="Gender" [width]="80">                  
+                <ngx-datatable-column name="Gender" [width]="90">                  
                 </ngx-datatable-column>
 
                 <ngx-datatable-column name="Parents Name" prop="parentsName">
