@@ -76,7 +76,8 @@
 
         <div class="ibox-body">
           <div class="mt-3">
-            <canvas id="collection_chart" style="height:250px;"></canvas>
+            <!-- <canvas id="collection_chart" style="height:250px;"></canvas> -->
+            <div id="collection_chart" style="height:250px;"></div>
           </div>
         </div>
       </div>
@@ -122,10 +123,12 @@
           </div>
         </div>
         <div class="ibox-body">
-          <div class="" style="width:100%;">
+          <div class="w-100">
             <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" [displayMonths]="displayMonths"
+              [navigation]="arrows" class="w-100"></ngb-datepicker>
+            <!-- <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" [displayMonths]="displayMonths"
               [navigation]="arrows" style="width:100%;">
-            </ngb-datepicker>
+            </ngb-datepicker> -->
             <!-- <ngb-datepicker #dp (navigate)="date = $event.next"></ngb-datepicker> -->
           </div>
         </div>

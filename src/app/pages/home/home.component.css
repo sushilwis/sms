@@ -1,20 +1,52 @@
 .dashboard-icon {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
 
 .font-size-01 {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .font-size-02 {
-    font-size: .8rem;
-    line-height: 1rem;
+  font-size: .8rem;
+  line-height: 1rem;
 }
 
 .refresh-icon {
-    font-size: 9.2px;
+  font-size: 9.2px;
 }
 
 .close-icon {
-    font-size: 10.8px;
+  font-size: 10.8px;
+}
+
+.ngb-dp-day,
+.ngb-dp-weekday,
+.ngb-dp-week-number {
+  width: 7.8rem !important;
+  height: 3rem !important;
+}
+
+.ngb-dp-day>div.btn-light {
+  width: 8rem !important;
+}
+
+.ngb-dp-months>div.ngb-dp-month {
+  width: 100% !important;
+}
+
+/* div.ngb-dp-weekday.small.text-center.font-italic.ng-star-inserted,
+div.ngb-dp-day.ng-star-inserted {
+  width: 6.17rem !important;
+}
+
+.ngb-dp-week.ngb-dp-weekdays.bg-light.ng-star-inserted {
+  border: none;
+}
+
+.ngb-dp-week.ng-star-inserted {
+  padding-top: .7rem;
+} */
+
+div.amcharts-chart-div>a {
+  display: none !important;
 }
