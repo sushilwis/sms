@@ -129,8 +129,23 @@ export class StudentListComponent implements OnInit, AfterViewInit {
     req.send(JSON.stringify(stdData));
   }
 
+
+
+
   goToStdView(stdId) {
     console.log(stdId);
     this.router.navigate([`/students/viewDetail/${stdId}`]);
   }
+  
+
+
+
+  goToEditStd(stdId) {
+    console.log(stdId);
+    this.router.navigate([`/students/edit/${stdId}`]);
+  }
+
+
+
+
 }

@@ -1,0 +1,346 @@
+<div class="page-content fade-in-up">
+  <div class="row">
+    <div class="col-md-12">
+
+        <div class="ibox">        
+            <div class="ibox-head">
+              <div class="ibox-title">Edit Student Form</div>
+              <!-- <div class="ibox-tools">
+                <a class="ibox-collapse">
+                  <i class="fa fa-refresh mr-1 text-success refresh-icon" aria-hidden="true"></i>
+                  <i class="fa fa-times text-danger close-icon" aria-hidden="true"></i>
+                </a>
+              </div> -->
+            </div>
+  
+          <div class="ibox-body">
+            <form id="edit-student-form" [formGroup]="editStudentForm" (ngSubmit)="onEditStudentSubmit()">
+                <div class="row student-info">
+                    <div class="col-md-12 mb-3">
+                        <h6 class="h6 font-weight-bold">Student Information</h6>
+                    </div>
+
+                    <div class="col-sm-3">
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input ng-dirty ng-touched" type="text" name="firstName" formControlName="firstName"> 
+                        <label class="mdl-textfield__label">First Name *</label>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="text" id="sample3" name="middleName" formControlName="middleName">
+                        <label class="mdl-textfield__label" for="sample3">Middle Name</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="text" name="lastName" formControlName="lastName">
+                        <label class="mdl-textfield__label">Last Name *</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="number" id="sample3" name="aadharNo" formControlName="aadharNo">
+                        <label class="mdl-textfield__label" for="sample3">Aadhar Number *</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="number" id="mobileNo" name="mobileNo" formControlName="mobileNo">
+                        <label class="mdl-textfield__label" for="sample3">Contact Number</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="date" id="mobileNo" name="studentDOB" formControlName="studentDOB">
+                        <!-- <label class="mdl-textfield__label" for="sample3">Date of Birth *</label> -->
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                            <select class="mdl-textfield__input" name="bloodGroup" formControlName="bloodGroup">
+                            <option value="b+">B+</option>
+                            <option value="o+">O+</option>
+                            </select>
+                        <label class="mdl-textfield__label" for="sample3">Blood Group</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                            <select class="mdl-textfield__input" name="gender" formControlName="gender">
+                                    <option value="MALE">Male</option>
+                                    <option value="FEMALE">Female</option>
+                            </select>
+                        <label class="mdl-textfield__label" for="sample3">Gender</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                            <select class="mdl-textfield__input" name="preference" formControlName="preference">
+                                <option value="FATHER">FATHER</option>
+                                <option value="MOTHER">MOTHER</option>
+                                <option value="GUARDIAN">GUARDIAN</option>
+                            </select>
+                        <label class="mdl-textfield__label" for="sample3">Contact Preference</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                                <select class="mdl-textfield__input" name="religion"  formControlName="religion">
+                                        <option value="hindu">Hindu</option>
+                                        <option value="muslim">Muslim</option>
+                                        <option value="christian">Christian</option> 
+                                        <option value="sikh">Sikh</option> 
+                                        <option value="buddhist">Buddhist</option> 
+                                        <option value="jain">Jain</option> 
+                                        <option value="other religion">Other Religion</option>          
+                                </select>
+                            <label class="mdl-textfield__label" for="sample3">Religion</label>
+                            </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                            <select class="mdl-textfield__input" name="caste"  formControlName="caste">
+                                    <option value="general">General</option>
+                                    <option value="sc">SC</option>
+                                    <option value="st">ST</option>
+                                    <option value="obc">OBC</option>          
+                            </select>
+                        <label class="mdl-textfield__label" for="sample3">Caste</label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                            <select class="mdl-textfield__input" name="nationality" formControlName="nationality">
+                                <option value="indian">Indian</option>
+                            </select>
+                        <label class="mdl-textfield__label" for="sample3">Nationality</label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                                <!-- <input class="mdl-textfield__input" type="file" id="sample3" name="studentProfPicEncoded" formControlName="studentProfPicEncoded" (change)="onSelectFile($event)" accept="image/*"> -->
+
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="studentProfPicEncoded" (change)="onSelectFile($event)" accept="image/*">
+                                    <label class="custom-file-label">Choose file</label>
+                                </div>                                      
+                                <label class="mdl-textfield__label">Upload Profile Picture</label>
+                            </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div>
+                            <img [src]="url" class="img-thumbnail w-75"
+                            alt="profile-picture"/>
+                        </div>                        
+                    </div>
+
+                    <!-- <div class="col-sm-3 form-group">
+                        <label>Select Academic *</label>
+                        <select class="form-control" name="">
+                            <option value="">--Select--</option>
+                            <option value="">Option 1</option>
+                            <option value="">Option 2</option>
+                        </select>
+                    </div>                     -->
+                </div>
+
+                <br/>
+
+                <div class="row">
+                    <div class="col-md-12 mb-3 mt-2">
+                        <h5 class="h6 font-weight-bold">Parent Information</h5>
+                    </div> 
+
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="text" id="sample3" name="fatherFName" formControlName="fatherFName">
+                        <label class="mdl-textfield__label" for="sample3">Father's First Name</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="text" id="sample3" name="fatherMName" formControlName="fatherMName">
+                        <label class="mdl-textfield__label" for="sample3">Father's Middle Name</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="text" id="sample3" name="fatherLName" formControlName="fatherLName">
+                        <label class="mdl-textfield__label" for="sample3">Father's Last Name</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="text" id="sample3" name="motherFName" formControlName="motherFName">
+                        <label class="mdl-textfield__label" for="sample3">Mother's First Name</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="text" id="sample3" name="motherMName" formControlName="motherMName">
+                        <label class="mdl-textfield__label" for="sample3">Mother's Middle Name</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="text" id="sample3" name="motherLName" formControlName="motherLName">
+                        <label class="mdl-textfield__label" for="sample3">Mother's Last Name</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="text" id="sample3"  name="guardianFName" formControlName="guardianFName">
+                        <label class="mdl-textfield__label" for="sample3">Guardian's First Name</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="text" id="sample3"  name="guardianMName" formControlName="guardianMName">
+                        <label class="mdl-textfield__label" for="sample3">Guardian's Middle Name</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="text" id="sample3"  name="guardianLName" formControlName="guardianLName">
+                        <label class="mdl-textfield__label" for="sample3">Guardian's Last Name</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="number" id="sample3"  name="fatherMobileNo" formControlName="fatherMobileNo">
+                        <label class="mdl-textfield__label" for="sample3">Father's Mobile Number</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="number" id="sample3"  name="motherMobileNo" formControlName="motherMobileNo">
+                        <label class="mdl-textfield__label" for="sample3">Mother's Mobile Number</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="number" id="sample3"  name="guardianMobileNo" formControlName="guardianMobileNo">
+                        <label class="mdl-textfield__label" for="sample3">Guardian's Mobile Number</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="email" id="sample3" name="fatherEmailID" formControlName="fatherEmailID">
+                        <label class="mdl-textfield__label" for="sample3">Father's Email Id</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="email" id="sample3" name="motherEmailID" formControlName="motherEmailID">
+                        <label class="mdl-textfield__label" for="sample3">Mother's Email Id</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="email" id="sample3" name="guardianEmailID" formControlName="guardianEmailID">
+                        <label class="mdl-textfield__label" for="sample3">Guardian's Email Id</label>
+                        </div>
+                    </div>
+                </div>
+
+                <br/>
+
+                <div class="row">
+                    <div class="col-md-12 mb-3 mt-2">
+                        <h5 class="h6 font-weight-bold">Admission Information</h5>
+                    </div> 
+
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                            <select class="mdl-textfield__input" name="mediumOfInstruction" formControlName="mediumOfInstruction">
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                            </select>
+                        <label class="mdl-textfield__label" for="sample3">Medium of Instruction</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="text" id="sample3" name="admissionNo" formControlName="admissionNo">
+                        <label class="mdl-textfield__label" for="sample3">Admission Number *</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                        <input class="mdl-textfield__input" type="date" id="sample3" name="admissionDate" formControlName="admissionDate">
+                        <!-- <label class="mdl-textfield__label" for="sample3">Admission Date</label> -->
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                                <select class="mdl-textfield__input" name="streamID" formControlName="streamID">
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            <label class="mdl-textfield__label" for="sample3">Stream / Group *</label>
+                            </div>
+                        </div>
+                    <div class="col-sm-3">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                                <select class="mdl-textfield__input" name="classID" formControlName="classID">
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            <label class="mdl-textfield__label" for="sample3">Class *</label>
+                            </div>
+                        </div>
+                    <div class="col-sm-3">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                                <select class="mdl-textfield__input" name="sectionID" formControlName="sectionID">
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            <label class="mdl-textfield__label" for="sample3">Section *</label>
+                            </div>
+                        </div>
+                    <div class="col-sm-3">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                                <select class="mdl-textfield__input" name="feeQuota" formControlName="feeQuota">
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            <label class="mdl-textfield__label" for="sample3">Fee Quota</label>
+                            </div>
+                        </div>
+                    <div class="col-sm-3">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                                <select class="mdl-textfield__input" name="routeID" formControlName="routeID">
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            <label class="mdl-textfield__label" for="sample3">Bus Route *</label>
+                            </div>
+                        </div>
+
+                  </div>
+
+
+                <div class="row">
+                  <div class="col-md-12 mt-4">
+                      <div class="form-group">
+                          <button class="btn btn-success" type="submit">Update</button>
+                          <button class="btn btn-primary">Reset</button>
+                      </div>
+                  </div>                    
+                </div>
+                
+            </form>
+
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>    
+

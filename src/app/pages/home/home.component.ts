@@ -579,4 +579,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     script.defer = true;
     body.appendChild(script);
   }
+
+
+
+
+  
 }

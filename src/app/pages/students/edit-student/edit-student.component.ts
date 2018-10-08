@@ -1,28 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../_services/auth/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
-  selector: 'app-add-student',
-  templateUrl: './add-student.component.html',
-  styleUrls: ['./add-student.component.css']
+  selector: 'app-edit-student',
+  templateUrl: './edit-student.component.html',
+  styleUrls: ['./edit-student.component.css']
 })
-export class AddStudentComponent implements OnInit {
-  // ./assets/img/pro-pic-placeholder.jpg
+export class EditStudentComponent implements OnInit {
 
   url = ''; 
+  stdId: any;
+  stdRoll: any;
+  stdDetailsData: any;
   base64textString: string = ''; 
 
-  addStudentForm: FormGroup;
+  editStudentForm: FormGroup;
 
   firstName: FormControl;
   middleName: FormControl;
   lastName: FormControl;
   aadharNo: FormControl;
   mobileNo: FormControl;
-  date_of_birth: FormControl;
+  studentDOB: FormControl;
   bloodGroup: FormControl;
   gender: FormControl;
   preference: FormControl;
@@ -52,21 +54,29 @@ export class AddStudentComponent implements OnInit {
   sectionID: FormControl;
   feeQuota: FormControl;
   routeID: FormControl;
-  studentProfPicEncoded: FormControl;  
-  
+  // studentProfPicEncoded: FormControl;
+
 
   constructor(
     private authServ: AuthService, 
     private router: Router,
-    private cookie: CookieService
-
+    private cookie: CookieService,
+    private actRoute: ActivatedRoute,
   ) { }
 
-  ngOnInit() {
-    this.url = './assets/img/pro-pic-placeholder.jpg';
+
+
+  ngOnInit() {       
+    this.actRoute.params.subscribe(data => {
+      this.stdId = data.id;
+    });
+
+    this.getStdDetails();    
+
     this.createFormControls();
-    this.createFormGroup();
-    this.loadScript();
+    this.createFormGroup(); 
+    
+    this.url = './assets/img/pro-pic-placeholder.jpg';    
   }
 
 
@@ -77,7 +87,7 @@ export class AddStudentComponent implements OnInit {
     this.lastName = new FormControl('', []);
     this.aadharNo = new FormControl('', []);
     this.mobileNo = new FormControl('', []);
-    this.date_of_birth = new FormControl('', []);
+    this.studentDOB = new FormControl('', []);
     this.bloodGroup = new FormControl('', []);
     this.gender = new FormControl('', []);
     this.preference = new FormControl('', []);
@@ -107,18 +117,19 @@ export class AddStudentComponent implements OnInit {
     this.sectionID = new FormControl('', []);
     this.feeQuota = new FormControl('', []);
     this.routeID = new FormControl('', []);
-    this.studentProfPicEncoded = new FormControl('', []);
   }
 
 
+
+
   createFormGroup() { 
-    this.addStudentForm = new FormGroup({
+    this.editStudentForm = new FormGroup({
       firstName: this.firstName,
       middleName: this.middleName,
       lastName: this.lastName,
       aadharNo: this.aadharNo,
       mobileNo: this.mobileNo,
-      date_of_birth: this.date_of_birth,
+      studentDOB: this.studentDOB,
       bloodGroup: this.bloodGroup,
       gender: this.gender,
       preference: this.preference,
@@ -147,71 +158,45 @@ export class AddStudentComponent implements OnInit {
       classID: this.classID,
       sectionID: this.sectionID,
       feeQuota: this.feeQuota,
-      routeID: this.routeID,
-      studentProfPicEncoded: this.studentProfPicEncoded
+      routeID: this.routeID
     });
   }
 
 
 
-  onAddStudentSubmit ()
+
+  onEditStudentSubmit ()
   {
-    var addStudentData = this.addStudentForm.value;
+    var editStudentData = this.editStudentForm.value;
 
-    addStudentData.institutionID = "1";
-    addStudentData.subscriptionID = "1";
-    addStudentData.studentProfPicEncoded = this.url;
+    editStudentData.id = this.stdId;
+    editStudentData.rollNo = this.stdRoll;
+    editStudentData.delete = false;
+    editStudentData.studentProfPicEncoded = this.url;
 
-    let data = [];
+    // let data = [];
 
-    data.push(addStudentData);
+    // data.push(editStudentData);
 
-    let stdData = {
-      data: data
-    };
+    // let stdData = {
+    //   data: data
+    // };
 
-    this.authServ.addStudent(stdData).subscribe((res:any) => {
+    console.log(editStudentData);
+    this.authServ.updateStudent(editStudentData).subscribe((res:any) => {
       if(res.success){
-        // console.log(res.studentList[0]);
-        localStorage.setItem('regStd', JSON.stringify(res.studentList[0]));
-        this.router.navigate(['/students/addDetails']);
+        console.log(res);
+        this.router.navigate([`students/editDetails/${this.stdId}`]);
       }else{
-        this.router.navigate(['/students/add']);
+        this.router.navigate(['students/edit']);
       }
     });
     // console.log('Stored Cookie value : ',this.cookie.get( 'sessionId'));
-    this.addStudentForm.reset();
+    this.editStudentForm.reset();
   }
 
-  // No subscriptions left for the institution
 
 
-  // onSelectFile(event) {
-  //   if (event.target.files && event.target.files[0]) {
-
-  //     // this.url = event.target.result;
-  //     var reader = new FileReader();
-
-  //     reader.onload = this._handleReaderLoaded.bind(this);
-  //     // reader.readAsBinaryString(event.target.files[0]);
-  //     reader.readAsDataURL(event.target.files[0]);
-
-  //     reader.onload = (event) => {
-  //       this.url = event.target.result;
-  //     }
-  //   }
-  // }
-
-
-
-  // _handleReaderLoaded(readerEvt) {    
-  //   var binaryString = readerEvt.target.result;
-  //   this.base64textString = btoa(binaryString);
-  //   console.log(btoa(binaryString));
-  // }
-
-
-  // No subscriptions left for the institution
 
 
   onSelectFile(e) {
@@ -229,27 +214,84 @@ export class AddStudentComponent implements OnInit {
   }
 
 
+
+
   _handleReaderLoaded(e) {
     let reader = e.target;
     this.url = reader.result;
+    // console.log(this.url);
   }
 
 
 
 
-  loadScript() {
-    let body = <HTMLDivElement>document.body;
-    let script = document.createElement("script");
-    let link = document.createElement("link");
-    link.innerHTML = "";
-    script.innerHTML = "";
-    link.href = "https://code.getmdl.io/1.3.0/material.indigo-pink.min.css";
-    script.src = "https://code.getmdl.io/1.3.0/material.min.js";
-    script.async = true;
-    script.defer = true;
-    body.appendChild(link);
-    body.appendChild(script);
+  setFormValue(std) {
+    this.editStudentForm.setValue({
+      firstName: std.firstName,
+      middleName: std.middleName,
+      lastName: std.lastName,
+      aadharNo: std.aadharNo,
+      mobileNo: std.mobileNo,
+      studentDOB: std.studentDOB,
+      bloodGroup: std.bloodGroup,
+      gender: std.gender,
+      preference: std.preference,
+      religion: std.religion,
+      caste: std.caste,
+      nationality: std.nationality,
+      fatherFName: std.fatherFName,
+      fatherMName: std.fatherMName,
+      fatherLName: std.fatherLName,
+      motherFName: std.motherFName,
+      motherMName: std.motherMName,
+      motherLName: std.motherLName,
+      guardianFName: std.guardianFName,
+      guardianMName: std.guardianMName,
+      guardianLName: std.guardianLName,
+      fatherMobileNo: std.fatherMobileNo,
+      motherMobileNo: std.motherMobileNo,
+      guardianMobileNo: std.guardianMobileNo,
+      fatherEmailID: std.fatherEmailID,
+      motherEmailID: std.motherEmailID,
+      guardianEmailID: std.guardianEmailID,
+      mediumOfInstruction: std.mediumOfInstruction,
+      admissionNo: std.admissionNo,
+      admissionDate: std.admissionDate,
+      streamID: std.streamID,
+      classID: std.classID,
+      sectionID: std.sectionID,
+      feeQuota: std.feeQuota,
+      routeID: std.routeDetails.routeID
+    })
   }
+
+
+
+
+  getStdDetails ()
+  {
+    let stdData = {
+      "institutionID":1,
+      "studentID": this.stdId
+    }
+
+    this.authServ.getStudentDetailsForFilters(stdData).subscribe((res:any) => {
+      if(res.success){
+        console.log(res.data[0]);
+        this.stdDetailsData = res.data[0];
+        this.url = res.data[0].studentProfPicPath;
+        this.stdRoll = res.data[0].rollNo;
+
+        this.setFormValue(this.stdDetailsData);
+      }else{
+        // this.router.navigate(['/students/add']);
+      }
+    });
+  }
+
+
+
+
 
 
 

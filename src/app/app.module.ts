@@ -20,13 +20,17 @@ import { StudentListComponent } from "./pages/students/student-list/student-list
 import { ViewStudentComponent } from "./pages/students/view-student/view-student.component";
 import { AddStudentDetailsComponent } from "./pages/students/add-student-details/add-student-details.component";
 import { CustExtBrowserXhr } from "./cust-ext-browser-xhr";
+import { EditStudentComponent } from './pages/students/edit-student/edit-student.component';
+import { EditStudentDetailsComponent } from './pages/students/edit-student-details/edit-student-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentListComponent,
     ViewStudentComponent,
-    AddStudentDetailsComponent
+    AddStudentDetailsComponent,
+    EditStudentComponent,
+    EditStudentDetailsComponent
   ],
 
   imports: [

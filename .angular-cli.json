@@ -38,7 +38,8 @@
       "../node_modules/jquery-minicolors/jquery.minicolors.css",
       "./assets/css/main.css",
       "assets/css/floating-labels.css",
-      "../node_modules/amcharts3/amcharts/plugins/export/export.css"
+      "../node_modules/amcharts3/amcharts/plugins/export/export.css",
+      "https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"
     ],
     "scripts": [
       "../node_modules/jquery/dist/jquery.min.js",

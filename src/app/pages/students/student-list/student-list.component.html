@@ -99,7 +99,7 @@
                 <ngx-datatable-column name="Actions" [canAutoResize]="true">
                     <ng-template let-row="row" ngx-datatable-cell-template>
                         <i class="fa fa-eye text-primary" aria-hidden="true" (click)="goToStdView(row.Id)"></i>
-                        <i class="fa fa-pencil-square-o text-success ml-1" aria-hidden="true"></i>
+                        <i class="fa fa-pencil-square-o text-success ml-1" (click)="goToEditStd(row.Id)" aria-hidden="true"></i>
                         <i class="fa fa-trash-o text-danger ml-1" aria-hidden="true"></i> 
                     </ng-template>
                 </ngx-datatable-column>

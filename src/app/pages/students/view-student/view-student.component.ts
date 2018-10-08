@@ -52,5 +52,13 @@ export class ViewStudentComponent implements OnInit {
 
 
 
+  goToEditStd(stdId) {
+    console.log(stdId);
+    this.router.navigate([`/students/edit/${stdId}`]);
+  }
+
+
+
+
 
 }

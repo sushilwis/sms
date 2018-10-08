@@ -25,6 +25,9 @@ export class AuthService {
       });
   }
 
+
+
+
   addStudent(newStudentData) {
     let header = new HttpHeaders();
     header.set("Content-Type", "application/json");
@@ -39,6 +42,27 @@ export class AuthService {
       });
   }
 
+
+
+
+  updateStudent(updateStudentData) {
+    let header = new HttpHeaders();
+    header.set("Content-Type", "application/json");
+    return this.http
+      .post(
+        "http://13.59.10.105:8080/campusquo_services/api/student_profile/updateStudentDetails",
+        updateStudentData,
+        { headers: header }
+      )
+      .map(res => {
+        return res;
+      });
+  }
+
+
+
+
+
   addStudentDetails(otherStudentDetails) {
     let header = new HttpHeaders();
     header.set("Content-Type", "application/json");
@@ -52,6 +76,28 @@ export class AuthService {
         return res;
       });
   }
+  // updateStudentProfileDetails
+
+
+
+
+  updateStudentProfileDetails(studentProfileDetails) {
+    let header = new HttpHeaders();
+    header.set("Content-Type", "application/json");
+    return this.http
+      .post(
+        "http://13.59.10.105:8080/campusquo_services/api/student_profile/updateStudentProfileDetails",
+        studentProfileDetails,
+        { headers: header }
+      )
+      .map(res => {
+        return res;
+      });
+  }
+
+
+
+
 
   getStudentDetailsForFilters(filterData) {
     let header = new HttpHeaders();
@@ -66,6 +112,9 @@ export class AuthService {
         return res;
       });
   }
+
+
+
 
   isAuthenticated() {
     return this.cookie.get("sessionId");

@@ -3,9 +3,11 @@ import { RouterModule, Routes, CanActivate } from "@angular/router";
 import { LayoutComponent } from ".//layouts/layout.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { AddStudentComponent } from "./pages/students/add-student/add-student.component";
+import { EditStudentComponent } from "./pages/students/edit-student/edit-student.component";
 import { StudentListComponent } from "./pages/students/student-list/student-list.component";
 import { ViewStudentComponent } from "./pages/students/view-student/view-student.component";
 import { AddStudentDetailsComponent } from "./pages/students/add-student-details/add-student-details.component";
+import { EditStudentDetailsComponent } from "./pages/students/edit-student-details/edit-student-details.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { Error404Component } from "./pages/error-404/error-404.component";
 import { Error500Component } from "./pages/error-500/error-500.component";
@@ -36,6 +38,10 @@ const routes: Routes = [
         component: AddStudentComponent
       },
       {
+        path: "students/edit/:id",
+        component: EditStudentComponent
+      },
+      {
         path: "students/list",
         component: StudentListComponent
       },
@@ -46,6 +52,10 @@ const routes: Routes = [
       {
         path: "students/addDetails",
         component: AddStudentDetailsComponent
+      },
+      {
+        path: "students/editDetails/:id",
+        component: EditStudentDetailsComponent
       }
     ]
   },
@@ -71,37 +81,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     HomeComponent,
-    // ColorsComponent,
-    // TypographyComponent,
-    // PanelsComponent,
-    // TabsComponent,
-    // AlertsComponent,
-    // CardsComponent,
-    // BadgesProgressComponent,
-    // ListComponent,
-    // IconsComponent,
-    // ButtonsComponent,
-    // FormBasicComponent,
-    // InputMasksComponent,
-    // FormValidationComponent,
-    // TextEditorsComponent,
-    // FormAdvancedComponent,
-    // TablesComponent,
-    // DatatablesComponent,
-    // ChartjsComponent,
-    // MorrisChartComponent,
-    // SparklineChartComponent,
-    // MapsVectorComponent,
-    // MailboxComponent,
-    // MailComposeComponent,
-    // MailViewComponent,
-    // CalendarComponent,
-    // ProfileComponent,
-    // InvoiceComponent,
     LoginComponent,
-    // RegisterComponent,
-    // LockscreenComponent,
-    // ForgotPasswordComponent,
     Error404Component,
     Error500Component,
     AddStudentComponent
