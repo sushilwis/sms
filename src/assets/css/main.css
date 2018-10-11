@@ -1259,12 +1259,15 @@ btn .caret {
     right: 0;
     bottom: 0;
     margin: 0;
-    z-index: 1005; }
+    z-index: 1005; 
+  }
     .ibox.ibox-fullscreen .fullscreen-link > i::before {
-      content: "\f066"; }
+      content: "\f066"; 
+    }
+
   .ibox.collapsed-mode .ibox-collapse > i::before {
-    content: "\f067";
-    font-size: 9.2px;
+    content: "\f104";
+    font-size: 14px;
   }
 
   .ibox.collapsed-mode .ibox-collapse .refresh-icon::before {
@@ -1274,9 +1277,11 @@ btn .caret {
 
 .ibox-primary .ibox-head {
   color: #fff;
-  background-color: #3498db; }
+  background-color: #3498db; 
+}
   .ibox-primary .ibox-head .ibox-tools > a, .ibox-primary .ibox-head .ibox-tools > a:hover {
-    color: #fff; }
+    color: #fff; 
+  }
 
 .ibox-success .ibox-head {
   color: #fff;
@@ -3048,6 +3053,7 @@ a.text-danger:hover, a.text-danger:focus {
     right: 15px;
     margin-top: -9px;
     opacity: 1; }
+
   .side-menu li.active > a > .arrow {
     -webkit-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);

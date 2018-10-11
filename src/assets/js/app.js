@@ -50,6 +50,7 @@ $(function () {
         railOpacity: '0.9',
       });
     } else {
+
       $('#sidebar-collapse').slimScroll({
         destroy: true
       }).css({
@@ -58,7 +59,9 @@ $(function () {
       });
       $('body').removeClass('fixed-layout');
     }
+    
   });
+
 
   // fixed navbar
   $('#_fixedNavbar').change(function () {
@@ -136,9 +139,7 @@ $(function () {
 
 
 
-
-
-
+// dashboard collection and expenses chart
 
 var chart = AmCharts.makeChart("collection_chart", {
   "theme": "light",
