@@ -168,7 +168,7 @@ export class StudentListComponent implements OnInit, AfterViewInit {
   // }
 
 
-  updateFilter(event) {
+  updateRollFilter(event) {
     
     const val = event.target.value.toLowerCase();
     console.log(val);
@@ -215,7 +215,57 @@ export class StudentListComponent implements OnInit, AfterViewInit {
     }    
   }
 
+
+
+
+  updateSectionFilter(event) {
+    
+    const val = event.target.value.toLowerCase();
+    console.log(val);
+
+    if(val == ""){
+      console.log("sECTION value is blank");
+
+      this.fetch(data => {
+        this.allStd = data.data;
+        var shortStdArr = [];
+        this.allStd.forEach(std => {
+          let stdInfo = {
+            roll: std.rollNo,
+            photo: std.studentProfPicPath,
+            name: std.firstName,
+            gender: std.gender,
+            parentsName: std.fatherFName,
+            class: std.className,
+            section: std.sectionName,
+            address: std.profileDetails.permanentAddress1,
+            dateOfBirth: std.date_of_birth,
+            mobileNo: std.mobileNo,
+            email: std.fatherEmailID,
+            Id: std.studentID
+          };
   
+          shortStdArr.push(stdInfo);
+        });
+  
+        this.rows = shortStdArr;
+        // console.log(this.rows);
+      });
+
+    }else {
+      // filter our data
+      const temp = this.rows.filter(function(d) {
+        return d.section.toLowerCase().indexOf(val) !== -1 || !val;
+      });
+
+      // update the rows
+      this.rows = temp;
+      // Whenever the filter changes, always go back to the first page
+      this.table.offset = 0;
+    }    
+  }
+
+
 
 
 
