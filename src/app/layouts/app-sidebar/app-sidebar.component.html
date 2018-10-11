@@ -1,15 +1,21 @@
 <div id="sidebar-collapse">
-  <ul class="nav nav-tabs nav-justified" role="tablist">
+
+  <ul class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#home"> <i class="fa fa-bookmark"></i> Tab One</a>
+      <a class="nav-link active" data-toggle="tab" aria-controls="menu1" href="#menu1" id="menu1-tab" aria-selected="true">
+        <i class="fa fa-bookmark"></i> Tab One
+      </a>
     </li>
+
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#menu1"> <i class="fa fa-bookmark"></i> Tab Two</a>
+      <a class="nav-link" data-toggle="tab" aria-controls="menu2" href="#menu2" id="menu2-tab" aria-selected="false">
+        <i class="fa fa-bookmark"></i> Tab Two
+      </a>
     </li>
   </ul>
 
-  <div class="tab-content">
-    <div id="home" class="tab-pane active"><br>
+  <div class="tab-content" id="nav-tabContent">
+    <div id="menu1" class="tab-pane show active" role="tabpanel" aria-labelledby="menu1-tab"><br>
       <ul class="side-menu metismenu">
         <!-- <li>
                     <a routerLinkActive="active" routerLink="/index"><i class="sidebar-item-icon fa fa-th-large"></i>
@@ -119,7 +125,8 @@
         </li>
       </ul>
     </div>
-    <div id="menu1" class="tab-pane fade"><br>
+
+    <div id="menu2" class="tab-pane" role="tabpanel" aria-labelledby="menu2-tab"><br>
       <ul class="side-menu metismenu">
         <!-- <li>
                     <a routerLinkActive="active" routerLink="/index"><i class="sidebar-item-icon fa fa-th-large"></i>
