@@ -1,6 +1,7 @@
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+// import { NgSelectModule } from '@ng-select/ng-select';
 // import {ToggleFullScreenDirective} from './fullscreen/toggle-fullscreen.directive';
 // import {AccordionAnchorDirective} from './accordion/accordionanchor.directive';
 // import {AccordionLinkDirective} from './accordion/accordionlink.directive';
@@ -26,7 +27,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgbModule.forRoot(),
     HttpClientModule,
     PerfectScrollbarModule,
-    ClickOutsideModule
+    ClickOutsideModule,
+    // NgSelectModule
   ],
   exports: [
     NgbModule,

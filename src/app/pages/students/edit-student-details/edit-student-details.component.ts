@@ -48,7 +48,7 @@ export class EditStudentDetailsComponent implements OnInit {
       permanentAddressPin: FormControl;
       tempAddress1: FormControl;
       tempAddress2: FormControl;
-      studentID: FormControl;
+      // studentID: FormControl;
       motherTongue: FormControl;
       bankIFSCCode: FormControl;
       bankName: FormControl;
@@ -57,7 +57,7 @@ export class EditStudentDetailsComponent implements OnInit {
       bplNo: FormControl;
       bankAccNo: FormControl;
       motherCaste: FormControl;
-      createdBy: FormControl;
+      updatedBy: FormControl;
       previousTCNo: FormControl;
       fatherAadharNo: FormControl;
       previousTCDate: FormControl;
@@ -124,7 +124,7 @@ export class EditStudentDetailsComponent implements OnInit {
     this.permanentAddressPin = new FormControl('', []);
     this.tempAddress1 = new FormControl('', []);
     this.tempAddress2 = new FormControl('', []);
-    this.studentID = new FormControl('', []);
+    // this.studentID = new FormControl('', []);
     this.motherTongue = new FormControl('', []);
     this.bankIFSCCode = new FormControl('', []);
     this.bankName = new FormControl('', []);
@@ -133,7 +133,7 @@ export class EditStudentDetailsComponent implements OnInit {
     this.bplNo = new FormControl('', []);
     this.bankAccNo = new FormControl('', []);
     this.motherCaste = new FormControl('', []);
-    this.createdBy = new FormControl('', []);
+    this.updatedBy = new FormControl('', []);
     this.previousTCNo = new FormControl('', []);
     this.fatherAadharNo = new FormControl('', []);
     this.previousTCDate = new FormControl('', []);
@@ -184,7 +184,7 @@ export class EditStudentDetailsComponent implements OnInit {
       permanentAddressPin: this.permanentAddressPin,
       tempAddress1: this.tempAddress1,
       tempAddress2: this.tempAddress2,
-      studentID: this.studentID,
+      // studentID: this.studentID,
       motherTongue: this.motherTongue,
       bankIFSCCode: this.bankIFSCCode,
       bankName: this.bankName,
@@ -193,7 +193,7 @@ export class EditStudentDetailsComponent implements OnInit {
       bplNo: this.bplNo,
       bankAccNo: this.bankAccNo,
       motherCaste: this.motherCaste,
-      createdBy: this.createdBy,
+      updatedBy: this.updatedBy,
       previousTCNo: this.previousTCNo,
       fatherAadharNo: this.fatherAadharNo,
       previousTCDate: this.previousTCDate,
@@ -220,7 +220,9 @@ export class EditStudentDetailsComponent implements OnInit {
 
     // let regStdDetails = JSON.parse(localStorage.getItem('regStd'));
     // console.log('student ID : ', regStdDetails.studentID);
-    editStudentDetailsData.id = this.stdId; 
+    editStudentDetailsData.id = this.stdId;
+    editStudentDetailsData.delete = false;
+    editStudentDetailsData.specialCategory = null;
     // editStudentDetailsData.updatedBy = "1";
     // editStudentDetailsData.specialCategory = [];
     // editStudentDetailsData.disability = [];
@@ -238,8 +240,8 @@ export class EditStudentDetailsComponent implements OnInit {
     console.log('send data : ', editStudentDetailsData);
 
     this.authServ.updateStudentProfileDetails(editStudentDetailsData).subscribe((res:any) => {
-      if(res){
-        console.log('response data : ', res);
+      console.log('response data : ', res);
+      if(res){        
         // localStorage.setItem('regStd', JSON.stringify(res.studentList[0]));
         // this.router.navigate(['/students/list']);
       }else{

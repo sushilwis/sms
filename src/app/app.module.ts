@@ -5,6 +5,7 @@ import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { ColorPickerModule } from "ngx-color-picker";
 import { BrowserXhr } from "@angular/http";
 
+
 import { AppComponent } from ".//app.component";
 import { AppRoutingModule } from ".//app-routing.module";
 import { LayoutModule } from ".//layouts/layout.module";

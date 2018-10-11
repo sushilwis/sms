@@ -66,7 +66,7 @@ export class AddStudentComponent implements OnInit {
     this.url = './assets/img/pro-pic-placeholder.jpg';
     this.createFormControls();
     this.createFormGroup();
-    this.loadScript();
+    // this.loadScript();
   }
 
 
@@ -229,26 +229,11 @@ export class AddStudentComponent implements OnInit {
   }
 
 
+
+
   _handleReaderLoaded(e) {
     let reader = e.target;
     this.url = reader.result;
-  }
-
-
-
-
-  loadScript() {
-    let body = <HTMLDivElement>document.body;
-    let script = document.createElement("script");
-    let link = document.createElement("link");
-    link.innerHTML = "";
-    script.innerHTML = "";
-    link.href = "https://code.getmdl.io/1.3.0/material.indigo-pink.min.css";
-    script.src = "https://code.getmdl.io/1.3.0/material.min.js";
-    script.async = true;
-    script.defer = true;
-    body.appendChild(link);
-    body.appendChild(script);
   }
 
 

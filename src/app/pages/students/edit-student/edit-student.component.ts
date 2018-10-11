@@ -184,15 +184,15 @@ export class EditStudentComponent implements OnInit {
 
     console.log(editStudentData);
     this.authServ.updateStudent(editStudentData).subscribe((res:any) => {
-      if(res.success){
-        console.log(res);
+      console.log(res);
+      if(res.success){        
         this.router.navigate([`students/editDetails/${this.stdId}`]);
       }else{
-        this.router.navigate(['students/edit']);
+        this.router.navigate([`students/edit/${this.stdId}`]);
       }
     });
     // console.log('Stored Cookie value : ',this.cookie.get( 'sessionId'));
-    this.editStudentForm.reset();
+    // this.editStudentForm.reset();
   }
 
 
@@ -276,8 +276,8 @@ export class EditStudentComponent implements OnInit {
     }
 
     this.authServ.getStudentDetailsForFilters(stdData).subscribe((res:any) => {
-      if(res.success){
-        console.log(res.data[0]);
+      console.log(res.data[0]);
+      if(res.success){        
         this.stdDetailsData = res.data[0];
         this.url = res.data[0].studentProfPicPath;
         this.stdRoll = res.data[0].rollNo;
