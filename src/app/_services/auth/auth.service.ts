@@ -11,6 +11,9 @@ export class AuthService {
 
   constructor(private http: HttpClient, private cookie: CookieService) {}
 
+
+
+
   loginUser(userCredential) {
     let header = new HttpHeaders();
     header.set("Content-Type", "application/json");
@@ -116,7 +119,48 @@ export class AuthService {
 
 
 
+
+  deleteStudent (studentInfoForDelete) {
+    let header = new HttpHeaders();
+    header.set("Content-Type", "application/json");
+    return this.http
+      .post(
+        "http://13.59.10.105:8080/campusquo_services/api/student_profile/updateStudentDetails",
+        studentInfoForDelete,
+        { headers: header }
+      )
+      .map(res => {
+        return res;
+      });
+  }
+
+
+
+
+
+  deleteStudentProfileDetails (studentProfileInfoForDelete) {
+    let header = new HttpHeaders();
+    header.set("Content-Type", "application/json");
+    return this.http
+      .post(
+        "http://13.59.10.105:8080/campusquo_services/api/student_profile/updateStudentProfileDetails",
+        studentProfileInfoForDelete,
+        { headers: header }
+      )
+      .map(res => {
+        return res;
+    });
+  }
+
+
+
+
   isAuthenticated() {
     return this.cookie.get("sessionId");
   }
+
+
+
+
+
 }

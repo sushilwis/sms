@@ -16,6 +16,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { CalendarModule } from "angular-calendar";
 import { HttpClientModule } from "@angular/common/http";
 import { GuardGuard } from "./_services/guard/guard.guard";
+import {ToastyModule} from 'ng2-toasty';
 
 const routes: Routes = [
   {
@@ -93,7 +94,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     NgbModule.forRoot(),
     CalendarModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    ToastyModule.forRoot()
   ],
 
   exports: [RouterModule]

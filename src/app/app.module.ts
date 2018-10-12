@@ -4,6 +4,8 @@ import { CommonModule } from "@angular/common";
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { ColorPickerModule } from "ngx-color-picker";
 import { BrowserXhr } from "@angular/http";
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+// import {ToastyModule} from 'ng2-toasty';
 
 
 import { AppComponent } from ".//app.component";
@@ -45,7 +47,9 @@ import { EditStudentDetailsComponent } from './pages/students/edit-student-detai
     ReactiveFormsModule,
     ColorPickerModule,
     NgbModule.forRoot(),
-    SharedModule
+    SharedModule,
+    SweetAlert2Module.forRoot(),
+    // ToastyModule.forRoot()
   ],
 
   schemas: [NO_ERRORS_SCHEMA],
