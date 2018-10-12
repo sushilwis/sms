@@ -1,17 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { transition, trigger, style, animate } from '@angular/animations';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../_services/auth/auth.service';
 import { CookieService } from 'ngx-cookie-service';
+import {ToastData, ToastOptions, ToastyService} from 'ng2-toasty';
 
 @Component({
   selector: 'app-add-student',
   templateUrl: './add-student.component.html',
-  styleUrls: ['./add-student.component.css']
+  styleUrls: ['./add-student.component.css',
+  '../../../../../node_modules/sweetalert2/src/sweetalert2.scss',
+  '../../../../../node_modules/ng2-toasty/style-bootstrap.css',
+  '../../../../../node_modules/ng2-toasty/style-default.css',
+  '../../../../../node_modules/ng2-toasty/style-material.css'
+  ],
+
+  encapsulation: ViewEncapsulation.None,
+
+  animations: [
+    trigger('fadeInOutTranslate', [
+      transition(':enter', [
+        style({opacity: 0}),
+        animate('400ms ease-in-out', style({opacity: 1}))
+      ]),
+      transition(':leave', [
+        style({transform: 'translate(0)'}),
+        animate('400ms ease-in-out', style({opacity: 0}))
+      ])
+    ])
+  ]
 })
 export class AddStudentComponent implements OnInit {
   // ./assets/img/pro-pic-placeholder.jpg
-
+  position: any = 'top-right';
   url = ''; 
   base64textString: string = ''; 
 
@@ -58,7 +80,8 @@ export class AddStudentComponent implements OnInit {
   constructor(
     private authServ: AuthService, 
     private router: Router,
-    private cookie: CookieService
+    private cookie: CookieService,
+    private toastyService: ToastyService
 
   ) { }
 
@@ -156,6 +179,7 @@ export class AddStudentComponent implements OnInit {
 
   onAddStudentSubmit ()
   {
+    console.log('from add student.');
     var addStudentData = this.addStudentForm.value;
 
     addStudentData.institutionID = "1";
@@ -170,12 +194,25 @@ export class AddStudentComponent implements OnInit {
       data: data
     };
 
+    console.log(stdData);
+
     this.authServ.addStudent(stdData).subscribe((res:any) => {
+      console.log(res);
       if(res.success){
-        // console.log(res.studentList[0]);
+        console.log(res.studentList[0]);
         localStorage.setItem('regStd', JSON.stringify(res.studentList[0]));
+
+        this.addToast(
+          {title:'SUCCESS!', msg:'Student Added Successfully.', timeout: 6000, theme:'default', position:'top-right', type:'success'}
+        );
+
         this.router.navigate(['/students/addDetails']);
       }else{
+        // console.log(res);
+        this.addToast(
+          {title:'FAIL!', msg: res.response, timeout: 6000, theme:'default', position:'top-right', type:'success'}
+        );
+
         this.router.navigate(['/students/add']);
       }
     });
@@ -235,6 +272,35 @@ export class AddStudentComponent implements OnInit {
     let reader = e.target;
     this.url = reader.result;
   }
+
+
+
+
+
+  addToast(options) {
+    if (options.closeOther) {
+      this.toastyService.clearAll();
+    }
+
+    this.position = options.position ? options.position : this.position;
+
+    const toastOptions: ToastOptions = {
+      title: options.title,
+      msg: options.msg,
+      showClose: options.showClose,
+      timeout: options.timeout,
+      theme: options.theme,
+      onAdd: (toast: ToastData) => {
+        /* added */
+      },
+      onRemove: (toast: ToastData) => {
+        /* removed */
+      }
+    }
+
+    this.toastyService.success(toastOptions);
+  };
+
 
 
 

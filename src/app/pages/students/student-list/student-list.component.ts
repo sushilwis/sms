@@ -196,9 +196,9 @@ export class StudentListComponent implements OnInit, AfterViewInit {
   updateRollFilter(event) {
     
     const val = event.target.value.toLowerCase();
-    console.log(val);
+    console.log('Typed value ', val);
 
-    if(val == ""){
+    if(val == "" || val == null){
       console.log("value is blank");
 
       this.fetch(data => {
@@ -230,7 +230,11 @@ export class StudentListComponent implements OnInit, AfterViewInit {
     }else {
       // filter our data
       const temp = this.rows.filter(function(d) {
-        return d.roll.toLowerCase().indexOf(val) !== -1 || !val;
+        console.log(d.roll);
+        if (d.roll != null) {
+          return d.roll.toLowerCase().indexOf(val) !== -1 || !val;
+        }
+        
       });
 
       // update the rows
@@ -246,7 +250,7 @@ export class StudentListComponent implements OnInit, AfterViewInit {
   updateSectionFilter(event) {
     
     const val = event.target.value.toLowerCase();
-    console.log(val);
+    console.log('Typed value ', val);
 
     if(val == ""){
       console.log("sECTION value is blank");

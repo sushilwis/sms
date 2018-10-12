@@ -1,0 +1,11 @@
+{ "/angular": 
+    { "target": 
+        { "host": "13.59.10.105", 
+          "protocol": "http:", 
+          "port": 8080 
+        }, 
+        "secure": false, 
+        "changeOrigin": true, 
+        "logLevel": "info" 
+    } 
+}
