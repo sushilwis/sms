@@ -1,123 +1,115 @@
 <div class="page-content fade-in-up">
-    <div class="row">
-      <div class="col-md-12">
+  <div class="row">
+    <div class="col-md-12">
 
-          <div class="ibox">        
-              <div class="ibox-head">
-                <div class="ibox-title">All Students</div>
-                <div class="ibox-tools">
+      <div class="ibox">
+        <div class="ibox-head">
+          <div class="ibox-title">All Students</div>
+          <div class="ibox-tools">
 
-                  <input type='text' id="searchRoll" placeholder='Type Roll' (keyup)='updateRollFilter($event)' class="ml-3"/>
-                  <input type='text' id="searchSection" placeholder='Type Section' (keyup)='updateSectionFilter($event)' class="ml-3"/>
+            <input type='text' id="searchRoll" placeholder='Type Roll' (keyup)='updateRollFilter($event)' class="ml-3" />
+            <input type='text' id="searchSection" placeholder='Type Section' (keyup)='updateSectionFilter($event)'
+              class="ml-3" />
 
-                  <a class="ibox-collapse">
-                    <i class="fa fa-refresh mr-1 text-success refresh-icon" aria-hidden="true"></i>
-                    <!-- <i class="fa fa-times text-danger close-icon" aria-hidden="true"></i> -->
-                    <i class="fa fa-angle-down arrow" aria-hidden="true"></i>
-                  </a>
+            <a class="ibox-collapse">
+              <i class="fa fa-refresh mr-1 text-success refresh-icon" aria-hidden="true"></i>
+              <!-- <i class="fa fa-times text-danger close-icon" aria-hidden="true"></i> -->
+              <i class="fa fa-angle-down arrow" aria-hidden="true"></i>
+            </a>
 
+          </div>
+        </div>
+
+        <div class="ibox-body" style="font-size: 11px;">
+
+          <ngx-datatable #table class="data-table material table-sm table-bordered table-striped table-responsive"
+            [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="40" [rowHeight]="40"
+            [scrollbarV]="false" [rows]="rows" [limit]="15">
+
+
+            <ngx-datatable-column [width]="20" [sortable]="false">
+
+              <ng-template class="datatable-checkbox" ngx-datatable-header-template let-value="value"
+                let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
+                <div class="checkbox-fade fade-in-default datatable-header-cell-label">
+                  <div class="pretty p-default">
+                    <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+                    <div class="state p-primary">
+                      <label></label>
+                    </div>
+                  </div>
                 </div>
-              </div>
-    
-            <div class="ibox-body" style="font-size: 11px;">
+              </ng-template>
 
-                <ngx-datatable 
-                #table
-                class="data-table dt-chk fullscreen" 
-                [columnMode]="'force'" 
-                [scrollbarH]="false" 
-                [headerHeight]="50"
-                [footerHeight]="0" 
-                [rowHeight]="40" 
-                [scrollbarV]="false" 
-                [rows]="rows" 
-                class="material fullscreen">
-        
-        
-                <ngx-datatable-column [width]="20" [sortable]="false" [canAutoResize]="false" [draggable]="false" [resizeable]="false">
-        
-                  <ng-template class="datatable-checkbox" ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
-                    let-selectFn="selectFn">
-                    <div class="checkbox-fade fade-in-default datatable-header-cell-label">
-                      <div class="pretty p-default">
-                          <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"/>
-                          <div class="state p-primary">
-                              <label></label>
-                          </div>
-                      </div>
+              <ng-template class="datatable-checkbox" ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                let-onCheckboxChangeFn="onCheckboxChangeFn">
+                <div class="checkbox-fade fade-in-default datatable-header-cell-label">
+                  <div class="pretty p-default">
+                    <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+                    <div class="state p-primary">
+                      <label></label>
                     </div>
-                  </ng-template>
-        
-                  <ng-template class="datatable-checkbox" ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
-                    let-onCheckboxChangeFn="onCheckboxChangeFn">
-                    <div class="checkbox-fade fade-in-default datatable-header-cell-label">
-                      <div class="pretty p-default">
-                          <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
-                          <div class="state p-primary">
-                              <label></label>
-                          </div>
-                      </div>
-                    </div>
-                  </ng-template>        
-                </ngx-datatable-column>
-        
-        
-                <ngx-datatable-column name="Roll" [width]="70"></ngx-datatable-column>
+                  </div>
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
 
-                <ngx-datatable-column name="Photo" [width]="90">
-                  <ng-template let-row="row" ngx-datatable-cell-template>
-                    <img width="30px" src="{{row.photo}}"/>
-                  </ng-template>
-                </ngx-datatable-column>
 
-                <ngx-datatable-column name="Name">
-                </ngx-datatable-column>
+            <ngx-datatable-column name="Roll" [width]="70" [sortable]="true"></ngx-datatable-column>
 
-                <ngx-datatable-column name="Gender" [width]="90">                  
-                </ngx-datatable-column>
+            <ngx-datatable-column name="Photo" [width]="90">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <img width="30px" src="{{row.photo}}" />
+              </ng-template>
+            </ngx-datatable-column>
 
-                <ngx-datatable-column name="Parents Name" prop="parentsName">
-                </ngx-datatable-column>
+            <ngx-datatable-column name="Name" [sortable]="false">
+            </ngx-datatable-column>
 
-                <ngx-datatable-column name="Class" [width]="90"></ngx-datatable-column>
+            <ngx-datatable-column name="Gender" [width]="90" [sortable]="true">
+            </ngx-datatable-column>
 
-                <ngx-datatable-column name="Section" [width]="110"></ngx-datatable-column>
+            <ngx-datatable-column name="Parents Name" prop="parentsName" [sortable]="true">
+            </ngx-datatable-column>
 
-                <ngx-datatable-column name="Address" prop="address" [canAutoResize]="true">
-                    <!-- <ng-template let-row="row" ngx-datatable-cell-template>
+            <ngx-datatable-column name="Class" [width]="90" [sortable]="true"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Section" [width]="110" [sortable]="true"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Address" prop="address" [canAutoResize]="true" [sortable]="true">
+              <!-- <ng-template let-row="row" ngx-datatable-cell-template>
                         {{row.address}}
                     </ng-template> -->
-                </ngx-datatable-column>
+            </ngx-datatable-column>
 
-                <ngx-datatable-column name="Date of Birth" prop="dateOfBirth" [canAutoResize]="true">
-                    <!-- <ng-template let-row="row" ngx-datatable-cell-template>
+            <ngx-datatable-column name="Date of Birth" prop="dateOfBirth" [canAutoResize]="true" [sortable]="true">
+              <!-- <ng-template let-row="row" ngx-datatable-cell-template>
                       22/10/1995
                     </ng-template> -->
-                </ngx-datatable-column>
+            </ngx-datatable-column>
 
-                <ngx-datatable-column name="Mobile No" prop="mobileNo" [canAutoResize]="true">
-                    <!-- <ng-template let-row="row" ngx-datatable-cell-template>
+            <ngx-datatable-column name="Mobile No" prop="mobileNo" [canAutoResize]="true" [sortable]="true">
+              <!-- <ng-template let-row="row" ngx-datatable-cell-template>
                        +89 22956325
                     </ng-template> -->
-                </ngx-datatable-column>
+            </ngx-datatable-column>
 
-                <ngx-datatable-column name="Email" [canAutoResize]="true"></ngx-datatable-column>
+            <ngx-datatable-column name="Email" [canAutoResize]="true" [sortable]="true"></ngx-datatable-column>
 
-                <ngx-datatable-column name="Actions" [canAutoResize]="true">
-                    <ng-template let-row="row" ngx-datatable-cell-template>
-                        <i class="fa fa-eye text-primary" aria-hidden="true" (click)="goToStdView(row.Id)"></i>
-                        <i class="fa fa-pencil-square-o text-success ml-1" (click)="goToEditStd(row.Id)" aria-hidden="true"></i>
-                        <i class="fa fa-trash-o text-danger ml-1" (click)="openConfirmsSwal(row.Id)" aria-hidden="true"></i> 
-                    </ng-template>
-                </ngx-datatable-column>
-                
-              </ngx-datatable>
+            <ngx-datatable-column name="Actions" [canAutoResize]="true">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <i class="fa fa-eye text-primary" aria-hidden="true" (click)="goToStdView(row.Id)"></i>
+                <i class="fa fa-pencil-square-o text-success ml-1" (click)="goToEditStd(row.Id)" aria-hidden="true"></i>
+                <i class="fa fa-trash-o text-danger ml-1" (click)="openConfirmsSwal(row.Id)" aria-hidden="true"></i>
+              </ng-template>
+            </ngx-datatable-column>
+
+          </ngx-datatable>
 
 
-            </div>
-          </div> 
-
+        </div>
       </div>
+
     </div>
-</div>    
-    
+  </div>
+</div>

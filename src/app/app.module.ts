@@ -4,9 +4,8 @@ import { CommonModule } from "@angular/common";
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { ColorPickerModule } from "ngx-color-picker";
 import { BrowserXhr } from "@angular/http";
-import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+import { SweetAlert2Module } from "@toverux/ngx-sweetalert2";
 // import {ToastyModule} from 'ng2-toasty';
-
 
 import { AppComponent } from ".//app.component";
 import { AppRoutingModule } from ".//app-routing.module";
@@ -23,8 +22,8 @@ import { StudentListComponent } from "./pages/students/student-list/student-list
 import { ViewStudentComponent } from "./pages/students/view-student/view-student.component";
 import { AddStudentDetailsComponent } from "./pages/students/add-student-details/add-student-details.component";
 import { CustExtBrowserXhr } from "./cust-ext-browser-xhr";
-import { EditStudentComponent } from './pages/students/edit-student/edit-student.component';
-import { EditStudentDetailsComponent } from './pages/students/edit-student-details/edit-student-details.component';
+import { EditStudentComponent } from "./pages/students/edit-student/edit-student.component";
+import { EditStudentDetailsComponent } from "./pages/students/edit-student-details/edit-student-details.component";
 
 @NgModule({
   declarations: [
@@ -48,7 +47,7 @@ import { EditStudentDetailsComponent } from './pages/students/edit-student-detai
     ColorPickerModule,
     NgbModule.forRoot(),
     SharedModule,
-    SweetAlert2Module.forRoot(),
+    SweetAlert2Module.forRoot()
     // ToastyModule.forRoot()
   ],
 
