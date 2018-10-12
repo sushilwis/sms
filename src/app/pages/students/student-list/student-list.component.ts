@@ -376,14 +376,24 @@ export class StudentListComponent implements OnInit, AfterViewInit {
 
             // this.router.navigate(['/students/list']);
           }else{
+            swal(
+              'Sorry!',
+              'Unable to delete student. Please Try Again.',
+              'error'
+            );
             // this.router.navigate(['/students/list']);
-            return false;
+            // return false;
           }
         });
 
       }else{
         // this.router.navigate(['/students/list']);
-        return false;
+        swal(
+          'Sorry!',
+          'Unable to delete student. Please Try Again.',
+          'error'
+        );
+        // return false;
       }
     })
   }
