@@ -2,13 +2,13 @@
 
   <ul class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" aria-controls="menu1" href="#menu1" id="menu1-tab" aria-selected="true">
+      <a class="nav-link active" data-toggle="tab" aria-controls="menu1" href="#menu1" id="menu1-tab">
         <i class="fa fa-bookmark"></i> Tab One
       </a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" aria-controls="menu2" href="#menu2" id="menu2-tab" aria-selected="false">
+      <a class="nav-link" data-toggle="tab" aria-controls="menu2" href="#menu2" id="menu2-tab">
         <i class="fa fa-bookmark"></i> Tab Two
       </a>
     </li>
@@ -17,13 +17,6 @@
   <div class="tab-content" id="nav-tabContent">
     <div id="menu1" class="tab-pane show active" role="tabpanel" aria-labelledby="menu1-tab"><br>
       <ul class="side-menu metismenu">
-        <!-- <li>
-                    <a routerLinkActive="active" routerLink="/index"><i class="sidebar-item-icon fa fa-th-large"></i>
-                        <span class="nav-label">Dashboard</span>
-                    </a>
-                </li> -->
-
-        <!-- <li class="heading">FEATURES</li> -->
         <li routerLinkActive="active">
           <a href="javascript:;">
             <i class="sidebar-item-icon ti-save"></i>
@@ -43,7 +36,8 @@
                 Bulk Upload</a>
             </li>
             <li>
-              <a routerLink="" routerLinkActive="active"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>User
+              <a routerLink="" routerLinkActive="active"><span class="submenu-arrow">
+                <i class="ti-angle-right"></i></span>User
                 Registration</a>
             </li>
             <li>
@@ -97,7 +91,6 @@
             <span class="nav-label">User Managements</span>
           </a>
         </li>
-        <!-- <li class="heading">PAGES</li> -->
         <li routerLinkActive="active">
           <a href="javascript:;"><i class="sidebar-item-icon fa fa-envelope"></i>
             <span class="nav-label">Notifications & Events</span><i class="fa fa-angle-right arrow"></i>

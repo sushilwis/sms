@@ -47,3 +47,10 @@
     color: rgba(0, 0, 0, 1) !important;
     font-size: 11px;
 }
+
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover{
+    border-color: #ffffff !important;
+}
+.nav-tabs .nav-link{
+    border: 0px solid #ffffff;
+}
