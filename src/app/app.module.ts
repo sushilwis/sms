@@ -6,6 +6,9 @@ import { ColorPickerModule } from "ngx-color-picker";
 import { BrowserXhr } from "@angular/http";
 import { SweetAlert2Module } from "@toverux/ngx-sweetalert2";
 // import {ToastyModule} from 'ng2-toasty';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatInputModule, MatCheckboxModule, MatFormFieldModule} from '@angular/material';
+// import { MatFormFieldModule } from '@angular/material';
 
 import { AppComponent } from ".//app.component";
 import { AppRoutingModule } from ".//app-routing.module";
@@ -47,8 +50,13 @@ import { EditStudentDetailsComponent } from "./pages/students/edit-student-detai
     ColorPickerModule,
     NgbModule.forRoot(),
     SharedModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
     // ToastyModule.forRoot()
+    MatFormFieldModule,
+    BrowserAnimationsModule,
+    MatButtonModule, 
+    MatInputModule, 
+    MatCheckboxModule
   ],
 
   schemas: [NO_ERRORS_SCHEMA],

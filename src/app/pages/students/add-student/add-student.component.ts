@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../_services/auth/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 import {ToastData, ToastOptions, ToastyService} from 'ng2-toasty';
+import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material';
+
 
 @Component({
   selector: 'app-add-student',
@@ -253,6 +256,8 @@ export class AddStudentComponent implements OnInit {
 
   onSelectFile(e) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    // console.log(e);
+    // console.log(file);
     var pattern = /image-*/;
     var reader = new FileReader();
 
@@ -261,16 +266,39 @@ export class AddStudentComponent implements OnInit {
       return;
     }
 
-    reader.onload = this._handleReaderLoaded.bind(this);
+    // reader.onload = this._handleReaderLoaded.bind(this);
+    reader.onload = this.onLoadFile.bind(this);
     reader.readAsDataURL(file);
   }
 
 
 
 
-  _handleReaderLoaded(e) {
-    let reader = e.target;
-    this.url = reader.result;
+  // _handleReaderLoaded(e) {
+  //   let reader = e.target;
+  //   this.url = reader.result;
+  // }
+
+
+  onLoadFile(event) {
+    var img = new Image;   
+    img.src = event.target.result;
+
+    console.log(img);
+
+    if (img.width == 600 && img.height == 600) {
+      // alert('image is proper.');
+      this.addToast(
+        {title:'SUCCESS!', msg: 'Image Uploaded Successfully.', timeout: 6000, theme:'default', position:'top-right', type:'success'}
+      );
+      this.url = event.target.result;     
+    }else {
+      // alert('image size is not 600x600');
+      this.addToast(
+        {title:'FAIL!', msg: 'Diamension Should 600x600 and Must Within 1MB.', timeout: 6000, theme:'default', position:'top-right', type:'error'}
+      );
+      this.url = "";
+    }    
   }
 
 
@@ -298,7 +326,16 @@ export class AddStudentComponent implements OnInit {
       }
     }
 
-    this.toastyService.success(toastOptions);
+    // this.toastyService.success(toastOptions);
+
+    switch (options.type) {
+      case 'default': this.toastyService.default(toastOptions); break;
+      case 'info': this.toastyService.info(toastOptions); break;
+      case 'success': this.toastyService.success(toastOptions); break;
+      case 'wait': this.toastyService.wait(toastOptions); break;
+      case 'error': this.toastyService.error(toastOptions); break;
+      case 'warning': this.toastyService.warning(toastOptions); break;
+    }
   };
 
 
