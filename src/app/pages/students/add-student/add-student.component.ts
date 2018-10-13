@@ -281,17 +281,24 @@ export class AddStudentComponent implements OnInit {
 
 
   onLoadFile(event) {
-    var img = new Image;
+    var img = new Image;   
+    img.src = event.target.result;
+
     console.log(img);
 
     if (img.width == 600 && img.height == 600) {
-      alert('image is proper.');
-      this.url = event.target.result;
-      img.src = event.target.result;
-    }else{
-      alert('image size is not 600x600');
+      // alert('image is proper.');
+      this.addToast(
+        {title:'SUCCESS!', msg: 'Image Uploaded Successfully.', timeout: 6000, theme:'default', position:'top-right', type:'success'}
+      );
+      this.url = event.target.result;     
+    }else {
+      // alert('image size is not 600x600');
+      this.addToast(
+        {title:'FAIL!', msg: 'Diamension Should 600x600 and Must Within 1MB.', timeout: 6000, theme:'default', position:'top-right', type:'error'}
+      );
+      this.url = "";
     }    
-    // console.log(img.width);
   }
 
 
@@ -319,7 +326,16 @@ export class AddStudentComponent implements OnInit {
       }
     }
 
-    this.toastyService.success(toastOptions);
+    // this.toastyService.success(toastOptions);
+
+    switch (options.type) {
+      case 'default': this.toastyService.default(toastOptions); break;
+      case 'info': this.toastyService.info(toastOptions); break;
+      case 'success': this.toastyService.success(toastOptions); break;
+      case 'wait': this.toastyService.wait(toastOptions); break;
+      case 'error': this.toastyService.error(toastOptions); break;
+      case 'warning': this.toastyService.warning(toastOptions); break;
+    }
   };
 
 
