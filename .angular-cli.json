@@ -38,10 +38,7 @@
       "../node_modules/jquery-minicolors/jquery.minicolors.css",
       "./assets/css/main.css",
       "assets/css/floating-labels.css",
-      "../node_modules/amcharts3/amcharts/plugins/export/export.css",
-      "src/scss/main.scss",
-      "src/scss/widget.scss",
-      "src/scss/pages.scss"
+      "../node_modules/amcharts3/amcharts/plugins/export/export.css"
     ],
     "scripts": [
       "../node_modules/jquery/dist/jquery.min.js",

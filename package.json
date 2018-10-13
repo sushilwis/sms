@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0",
-    "@ng-select/ng-select": "^2.10.2",
+    "@ng-select/ng-select": "^1.6.2",
     "@swimlane/ngx-datatable": "^13.1.0",
     "@toverux/ngx-sweetalert2": "^4.0.0",
     "amcharts3": "^3.21.13",
