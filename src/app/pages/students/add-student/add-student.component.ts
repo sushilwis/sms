@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../_services/auth/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 import {ToastData, ToastOptions, ToastyService} from 'ng2-toasty';
+import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material';
+
 
 @Component({
   selector: 'app-add-student',
@@ -253,6 +256,8 @@ export class AddStudentComponent implements OnInit {
 
   onSelectFile(e) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    // console.log(e);
+    // console.log(file);
     var pattern = /image-*/;
     var reader = new FileReader();
 
@@ -261,16 +266,32 @@ export class AddStudentComponent implements OnInit {
       return;
     }
 
-    reader.onload = this._handleReaderLoaded.bind(this);
+    // reader.onload = this._handleReaderLoaded.bind(this);
+    reader.onload = this.onLoadFile.bind(this);
     reader.readAsDataURL(file);
   }
 
 
 
 
-  _handleReaderLoaded(e) {
-    let reader = e.target;
-    this.url = reader.result;
+  // _handleReaderLoaded(e) {
+  //   let reader = e.target;
+  //   this.url = reader.result;
+  // }
+
+
+  onLoadFile(event) {
+    var img = new Image;
+    console.log(img);
+
+    if (img.width == 600 && img.height == 600) {
+      alert('image is proper.');
+      this.url = event.target.result;
+      img.src = event.target.result;
+    }else{
+      alert('image size is not 600x600');
+    }    
+    // console.log(img.width);
   }
 
 
