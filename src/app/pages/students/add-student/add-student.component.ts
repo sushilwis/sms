@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../_services/auth/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 import {ToastData, ToastOptions, ToastyService} from 'ng2-toasty';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material';
 
 
@@ -41,7 +41,6 @@ export class AddStudentComponent implements OnInit {
   base64textString: string = ''; 
 
   addStudentForm: FormGroup;
-
   firstName: FormControl;
   middleName: FormControl;
   lastName: FormControl;
@@ -262,13 +261,27 @@ export class AddStudentComponent implements OnInit {
     var reader = new FileReader();
 
     if (!file.type.match(pattern)) {
-      alert('invalid format');
+      this.addToast(
+        {title:'FAIL!', msg: 'Invalid Format.', timeout: 6000, theme:'default', position:'top-right', type:'error'}
+      );
       return;
     }
 
+    console.log('Size in KB : ', (file.size/1024));
+
+    if((file.size/1024) > 1024) {
+      console.log('from size checking.');
+      this.addToast(
+        {title:'FAIL!', msg: 'Size Must be Within 1MB.', timeout: 6000, theme:'default', position:'top-right', type:'error'}
+      );
+    } else {
+      reader.onload = this.onLoadFile.bind(this);
+      reader.readAsDataURL(file);
+    }
+
     // reader.onload = this._handleReaderLoaded.bind(this);
-    reader.onload = this.onLoadFile.bind(this);
-    reader.readAsDataURL(file);
+    // reader.onload = this.onLoadFile.bind(this);
+    // reader.readAsDataURL(file);
   }
 
 
@@ -281,23 +294,27 @@ export class AddStudentComponent implements OnInit {
 
 
   onLoadFile(event) {
-    var img = new Image;   
+    var img = new Image();   
     img.src = event.target.result;
-
-    console.log(img);
+    this.url = img.src;
+    // console.log(img);
+    console.log(img.width,'x',img.height);
 
     if (img.width == 600 && img.height == 600) {
       // alert('image is proper.');
+      // console.log(img);
       this.addToast(
         {title:'SUCCESS!', msg: 'Image Uploaded Successfully.', timeout: 6000, theme:'default', position:'top-right', type:'success'}
       );
-      this.url = event.target.result;     
+      this.url = img.src;     
     }else {
       // alert('image size is not 600x600');
+      this.url = './assets/img/pro-pic-placeholder.jpg';
       this.addToast(
-        {title:'FAIL!', msg: 'Diamension Should 600x600 and Must Within 1MB.', timeout: 6000, theme:'default', position:'top-right', type:'error'}
+        {title:'FAIL!', msg: 'Diamension Should Be 600x600.', timeout: 6000, theme:'default', position:'top-right', type:'error'}
       );
-      this.url = "";
+      // img.src = "";
+      // this.url = "";
     }    
   }
 
