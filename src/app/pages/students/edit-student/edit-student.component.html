@@ -2,159 +2,162 @@
   <div class="row">
     <div class="col-md-12">
 
-        <ul class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" aria-controls="studentDetails" href="#studentDetails" id="studentDetails-tab" aria-selected="true">
-                    Student Details
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" aria-controls="studentProfileDetails" href="#studentProfileDetails" id="studentProfileDetails-tab" aria-selected="false">
-                    Student Profile Details
-                </a>
-            </li>
-        </ul>
+      <ul class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" aria-controls="studentDetails" href="#studentDetails" id="studentDetails-tab"
+            aria-selected="true">
+            Student Details
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" aria-controls="studentProfileDetails" href="#studentProfileDetails" id="studentProfileDetails-tab"
+            aria-selected="false">
+            Student Profile Details
+          </a>
+        </li>
+      </ul>
 
-        <div class="tab-content" id="nav-tabContent">
-            <div class="ibox tab-pane show active" id="studentDetails" role="tabpanel" aria-labelledby="studentDetails-tab">        
-                <div class="ibox-head">
-                <div class="ibox-title">Edit Student Form</div>
-                <!-- <div class="ibox-tools">
+      <div class="tab-content" id="nav-tabContent">
+        <div class="ibox tab-pane show active" id="studentDetails" role="tabpanel" aria-labelledby="studentDetails-tab">
+          <div class="ibox-head">
+            <div class="ibox-title">Edit Student Form</div>
+            <!-- <div class="ibox-tools">
                     <a class="ibox-collapse">
                     <i class="fa fa-refresh mr-1 text-success refresh-icon" aria-hidden="true"></i>
                     <i class="fa fa-times text-danger close-icon" aria-hidden="true"></i>
                     </a>
                 </div> -->
+          </div>
+
+          <div class="ibox-body">
+            <form id="edit-student-form" [formGroup]="editStudentForm" (ngSubmit)="onEditStudentSubmit()">
+              <div class="row student-info">
+
+                <div class="col-md-12 mb-3">
+                  <h6 class="h6 font-weight-bold sub-heading">Student Information</h6>
                 </div>
-    
-            <div class="ibox-body">
-                <form id="edit-student-form" [formGroup]="editStudentForm" (ngSubmit)="onEditStudentSubmit()">
-                    <div class="row student-info">
-                        
-                        <div class="col-md-12 mb-3">
-                            <h6 class="h6 font-weight-bold sub-heading">Student Information</h6>
-                        </div>
 
-                        <div class="col-sm-3">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input ng-dirty ng-touched" type="text" name="firstName" formControlName="firstName"> 
-                            <label class="mdl-textfield__label">First Name *</label>
-                        </div>
-                        </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input ng-dirty ng-touched" type="text" name="firstName"
+                      formControlName="firstName">
+                    <label class="mdl-textfield__label">First Name *</label>
+                  </div>
+                </div>
 
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="text" id="sample3" name="middleName" formControlName="middleName">
-                            <label class="mdl-textfield__label" for="sample3">Middle Name</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="text" name="lastName" formControlName="lastName">
-                            <label class="mdl-textfield__label">Last Name *</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="number" id="sample3" name="aadharNo" formControlName="aadharNo">
-                            <label class="mdl-textfield__label" for="sample3">Aadhar Number *</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="number" id="mobileNo" name="mobileNo" formControlName="mobileNo">
-                            <label class="mdl-textfield__label" for="sample3">Contact Number</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="date" id="mobileNo" name="studentDOB" formControlName="studentDOB">
-                            <!-- <label class="mdl-textfield__label" for="sample3">Date of Birth *</label> -->
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                                <select class="mdl-textfield__input" name="bloodGroup" formControlName="bloodGroup">
-                                <option value="b+">B+</option>
-                                <option value="o+">O+</option>
-                                </select>
-                            <label class="mdl-textfield__label" for="sample3">Blood Group</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                                <select class="mdl-textfield__input" name="gender" formControlName="gender">
-                                        <option value="MALE">Male</option>
-                                        <option value="FEMALE">Female</option>
-                                </select>
-                            <label class="mdl-textfield__label" for="sample3">Gender</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                                <select class="mdl-textfield__input" name="preference" formControlName="preference">
-                                    <option value="FATHER">FATHER</option>
-                                    <option value="MOTHER">MOTHER</option>
-                                    <option value="GUARDIAN">GUARDIAN</option>
-                                </select>
-                            <label class="mdl-textfield__label" for="sample3">Contact Preference</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                                    <select class="mdl-textfield__input" name="religion"  formControlName="religion">
-                                            <option value="hindu">Hindu</option>
-                                            <option value="muslim">Muslim</option>
-                                            <option value="christian">Christian</option> 
-                                            <option value="sikh">Sikh</option> 
-                                            <option value="buddhist">Buddhist</option> 
-                                            <option value="jain">Jain</option> 
-                                            <option value="other religion">Other Religion</option>          
-                                    </select>
-                                <label class="mdl-textfield__label" for="sample3">Religion</label>
-                                </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                                <select class="mdl-textfield__input" name="caste"  formControlName="caste">
-                                        <option value="general">General</option>
-                                        <option value="sc">SC</option>
-                                        <option value="st">ST</option>
-                                        <option value="obc">OBC</option>          
-                                </select>
-                            <label class="mdl-textfield__label" for="sample3">Caste</label>
-                            </div>
-                        </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="middleName" formControlName="middleName">
+                    <label class="mdl-textfield__label" for="sample3">Middle Name</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="text" name="lastName" formControlName="lastName">
+                    <label class="mdl-textfield__label">Last Name *</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="number" id="sample3" name="aadharNo" formControlName="aadharNo">
+                    <label class="mdl-textfield__label" for="sample3">Aadhar Number *</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="number" id="mobileNo" name="mobileNo" formControlName="mobileNo">
+                    <label class="mdl-textfield__label" for="sample3">Contact Number</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="date" id="mobileNo" name="studentDOB" formControlName="studentDOB">
+                    <!-- <label class="mdl-textfield__label" for="sample3">Date of Birth *</label> -->
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <select class="mdl-textfield__input" name="bloodGroup" formControlName="bloodGroup">
+                      <option value="b+">B+</option>
+                      <option value="o+">O+</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">Blood Group</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <select class="mdl-textfield__input" name="gender" formControlName="gender">
+                      <option value="MALE">Male</option>
+                      <option value="FEMALE">Female</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">Gender</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <select class="mdl-textfield__input" name="preference" formControlName="preference">
+                      <option value="FATHER">FATHER</option>
+                      <option value="MOTHER">MOTHER</option>
+                      <option value="GUARDIAN">GUARDIAN</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">Contact Preference</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <select class="mdl-textfield__input" name="religion" formControlName="religion">
+                      <option value="hindu">Hindu</option>
+                      <option value="muslim">Muslim</option>
+                      <option value="christian">Christian</option>
+                      <option value="sikh">Sikh</option>
+                      <option value="buddhist">Buddhist</option>
+                      <option value="jain">Jain</option>
+                      <option value="other religion">Other Religion</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">Religion</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <select class="mdl-textfield__input" name="caste" formControlName="caste">
+                      <option value="general">General</option>
+                      <option value="sc">SC</option>
+                      <option value="st">ST</option>
+                      <option value="obc">OBC</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">Caste</label>
+                  </div>
+                </div>
 
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                                <select class="mdl-textfield__input" name="nationality" formControlName="nationality">
-                                    <option value="indian">Indian</option>
-                                </select>
-                            <label class="mdl-textfield__label" for="sample3">Nationality</label>
-                            </div>
-                        </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <select class="mdl-textfield__input" name="nationality" formControlName="nationality">
+                      <option value="indian">Indian</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">Nationality</label>
+                  </div>
+                </div>
 
-                        <div class="col-sm-12">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                                    <!-- <input class="mdl-textfield__input" type="file" id="sample3" name="studentProfPicEncoded" formControlName="studentProfPicEncoded" (change)="onSelectFile($event)" accept="image/*"> -->
+                <div class="col-sm-12">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <!-- <input class="mdl-textfield__input" type="file" id="sample3" name="studentProfPicEncoded" formControlName="studentProfPicEncoded" (change)="onSelectFile($event)" accept="image/*"> -->
 
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="studentProfPicEncoded" (change)="onSelectFile($event)" accept="image/*">
-                                        <label class="custom-file-label">Choose file</label>
-                                    </div>                                      
-                                    <label class="mdl-textfield__label">Upload Profile Picture</label>
-                                </div>
-                        </div>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" name="studentProfPicEncoded" (change)="onSelectFile($event)"
+                        accept="image/*">
+                      <label class="custom-file-label">Choose file</label>
+                    </div>
+                    <label class="mdl-textfield__label">Upload Profile Picture</label>
+                  </div>
+                </div>
 
-                        <div class="col-sm-3">
-                            <div>
-                                <img [src]="url" class="img-thumbnail w-75"
-                                alt="profile-picture"/>
-                            </div>                        
-                        </div>
+                <div class="col-sm-3">
+                  <div>
+                    <img [src]="url" class="img-thumbnail w-75" alt="profile-picture" />
+                  </div>
+                </div>
 
-                        <!-- <div class="col-sm-3 form-group">
+                <!-- <div class="col-sm-3 form-group">
                             <label>Select Academic *</label>
                             <select class="form-control" name="">
                                 <option value="">--Select--</option>
@@ -162,671 +165,718 @@
                                 <option value="">Option 2</option>
                             </select>
                         </div>                     -->
-                    </div>
+              </div>
 
-                    <br/>
+              <br />
 
-                    <div class="row">
-                        <div class="col-md-12 mb-3 mt-2">
-                            <h5 class="h6 font-weight-bold sub-heading">Parent Information</h5>
-                        </div> 
+              <div class="row">
+                <div class="col-md-12 mb-3 mt-2">
+                  <h5 class="h6 font-weight-bold sub-heading">Parent Information</h5>
+                </div>
 
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="text" id="sample3" name="fatherFName" formControlName="fatherFName">
-                            <label class="mdl-textfield__label" for="sample3">Father's First Name</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="text" id="sample3" name="fatherMName" formControlName="fatherMName">
-                            <label class="mdl-textfield__label" for="sample3">Father's Middle Name</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="text" id="sample3" name="fatherLName" formControlName="fatherLName">
-                            <label class="mdl-textfield__label" for="sample3">Father's Last Name</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="text" id="sample3" name="motherFName" formControlName="motherFName">
-                            <label class="mdl-textfield__label" for="sample3">Mother's First Name</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="text" id="sample3" name="motherMName" formControlName="motherMName">
-                            <label class="mdl-textfield__label" for="sample3">Mother's Middle Name</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="text" id="sample3" name="motherLName" formControlName="motherLName">
-                            <label class="mdl-textfield__label" for="sample3">Mother's Last Name</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="text" id="sample3"  name="guardianFName" formControlName="guardianFName">
-                            <label class="mdl-textfield__label" for="sample3">Guardian's First Name</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="text" id="sample3"  name="guardianMName" formControlName="guardianMName">
-                            <label class="mdl-textfield__label" for="sample3">Guardian's Middle Name</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="text" id="sample3"  name="guardianLName" formControlName="guardianLName">
-                            <label class="mdl-textfield__label" for="sample3">Guardian's Last Name</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="number" id="sample3"  name="fatherMobileNo" formControlName="fatherMobileNo">
-                            <label class="mdl-textfield__label" for="sample3">Father's Mobile Number</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="number" id="sample3"  name="motherMobileNo" formControlName="motherMobileNo">
-                            <label class="mdl-textfield__label" for="sample3">Mother's Mobile Number</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="number" id="sample3"  name="guardianMobileNo" formControlName="guardianMobileNo">
-                            <label class="mdl-textfield__label" for="sample3">Guardian's Mobile Number</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="email" id="sample3" name="fatherEmailID" formControlName="fatherEmailID">
-                            <label class="mdl-textfield__label" for="sample3">Father's Email Id</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="email" id="sample3" name="motherEmailID" formControlName="motherEmailID">
-                            <label class="mdl-textfield__label" for="sample3">Mother's Email Id</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="email" id="sample3" name="guardianEmailID" formControlName="guardianEmailID">
-                            <label class="mdl-textfield__label" for="sample3">Guardian's Email Id</label>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="fatherFName" formControlName="fatherFName">
+                    <label class="mdl-textfield__label" for="sample3">Father's First Name</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="fatherMName" formControlName="fatherMName">
+                    <label class="mdl-textfield__label" for="sample3">Father's Middle Name</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="fatherLName" formControlName="fatherLName">
+                    <label class="mdl-textfield__label" for="sample3">Father's Last Name</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="motherFName" formControlName="motherFName">
+                    <label class="mdl-textfield__label" for="sample3">Mother's First Name</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="motherMName" formControlName="motherMName">
+                    <label class="mdl-textfield__label" for="sample3">Mother's Middle Name</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="motherLName" formControlName="motherLName">
+                    <label class="mdl-textfield__label" for="sample3">Mother's Last Name</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="guardianFName" formControlName="guardianFName">
+                    <label class="mdl-textfield__label" for="sample3">Guardian's First Name</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="guardianMName" formControlName="guardianMName">
+                    <label class="mdl-textfield__label" for="sample3">Guardian's Middle Name</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="guardianLName" formControlName="guardianLName">
+                    <label class="mdl-textfield__label" for="sample3">Guardian's Last Name</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="number" id="sample3" name="fatherMobileNo"
+                      formControlName="fatherMobileNo">
+                    <label class="mdl-textfield__label" for="sample3">Father's Mobile Number</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="number" id="sample3" name="motherMobileNo"
+                      formControlName="motherMobileNo">
+                    <label class="mdl-textfield__label" for="sample3">Mother's Mobile Number</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="number" id="sample3" name="guardianMobileNo"
+                      formControlName="guardianMobileNo">
+                    <label class="mdl-textfield__label" for="sample3">Guardian's Mobile Number</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="email" id="sample3" name="fatherEmailID" formControlName="fatherEmailID">
+                    <label class="mdl-textfield__label" for="sample3">Father's Email Id</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="email" id="sample3" name="motherEmailID" formControlName="motherEmailID">
+                    <label class="mdl-textfield__label" for="sample3">Mother's Email Id</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="email" id="sample3" name="guardianEmailID"
+                      formControlName="guardianEmailID">
+                    <label class="mdl-textfield__label" for="sample3">Guardian's Email Id</label>
+                  </div>
+                </div>
+              </div>
 
-                    <br/>
+              <br />
 
-                    <div class="row">
-                        <div class="col-md-12 mb-3 mt-2">
-                            <h5 class="h6 font-weight-bold">Admission Information</h5>
-                        </div> 
+              <div class="row">
+                <div class="col-md-12 mb-3 mt-2">
+                  <h5 class="h6 font-weight-bold">Admission Information</h5>
+                </div>
 
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                                <select class="mdl-textfield__input" name="mediumOfInstruction" formControlName="mediumOfInstruction">
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                </select>
-                            <label class="mdl-textfield__label" for="sample3">Medium of Instruction</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="text" id="sample3" name="admissionNo" formControlName="admissionNo">
-                            <label class="mdl-textfield__label" for="sample3">Admission Number *</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                            <input class="mdl-textfield__input" type="date" id="sample3" name="admissionDate" formControlName="admissionDate">
-                            <!-- <label class="mdl-textfield__label" for="sample3">Admission Date</label> -->
-                            </div>
-                        </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <select class="mdl-textfield__input" name="mediumOfInstruction" formControlName="mediumOfInstruction">
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">Medium of Instruction</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="admissionNo" formControlName="admissionNo">
+                    <label class="mdl-textfield__label" for="sample3">Admission Number *</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <input class="mdl-textfield__input" type="date" id="sample3" name="admissionDate" formControlName="admissionDate">
+                    <!-- <label class="mdl-textfield__label" for="sample3">Admission Date</label> -->
+                  </div>
+                </div>
 
-                        <div class="col-sm-3">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                                    <select class="mdl-textfield__input" name="streamID" formControlName="streamID">
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                    </select>
-                                <label class="mdl-textfield__label" for="sample3">Stream / Group *</label>
-                                </div>
-                            </div>
-                        <div class="col-sm-3">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                                    <select class="mdl-textfield__input" name="classID" formControlName="classID">
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                    </select>
-                                <label class="mdl-textfield__label" for="sample3">Class *</label>
-                                </div>
-                            </div>
-                        <div class="col-sm-3">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                                    <select class="mdl-textfield__input" name="sectionID" formControlName="sectionID">
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                    </select>
-                                <label class="mdl-textfield__label" for="sample3">Section *</label>
-                                </div>
-                            </div>
-                        <div class="col-sm-3">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                                    <select class="mdl-textfield__input" name="feeQuota" formControlName="feeQuota">
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                    </select>
-                                <label class="mdl-textfield__label" for="sample3">Fee Quota</label>
-                                </div>
-                            </div>
-                        <div class="col-sm-3">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-                                    <select class="mdl-textfield__input" name="routeID" formControlName="routeID">
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                    </select>
-                                <label class="mdl-textfield__label" for="sample3">Bus Route *</label>
-                                </div>
-                            </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <select class="mdl-textfield__input" name="streamID" formControlName="streamID">
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">Stream / Group *</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <select class="mdl-textfield__input" name="classID" formControlName="classID">
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">Class *</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <select class="mdl-textfield__input" name="sectionID" formControlName="sectionID">
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">Section *</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <select class="mdl-textfield__input" name="feeQuota" formControlName="feeQuota">
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">Fee Quota</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+                    <select class="mdl-textfield__input" name="routeID" formControlName="routeID">
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">Bus Route *</label>
+                  </div>
+                </div>
 
-                    </div>
+              </div>
 
 
-                    <div class="row">
-                    <div class="col-md-12 mt-4">
-                        <div class="form-group">
-                            <button class="btn btn-success" type="submit">Update</button>
-                            <button class="btn btn-primary">Reset</button>
-                        </div>
-                    </div>                    
-                    </div>
-                    
-                </form>
+              <div class="row">
+                <div class="col-md-12 mt-4">
+                  <div class="form-group">
+                    <button class="btn btn-success" type="submit">Update</button>
+                    <button class="btn btn-primary">Reset</button>
+                  </div>
+                </div>
+              </div>
 
-            </div>
-            </div>
-            
-            <div class="ibox tab-pane" id="studentProfileDetails" role="tabpanel" aria-labelledby="studentProfileDetails-tab">        
-                    <div class="ibox-head">
-                      <div class="ibox-title">Edit Student Details Form</div>
-                      <!-- <div class="ibox-tools">
+            </form>
+
+          </div>
+        </div>
+
+        <div class="ibox tab-pane" id="studentProfileDetails" role="tabpanel" aria-labelledby="studentProfileDetails-tab">
+          <div class="ibox-head">
+            <div class="ibox-title">Edit Student Details Form</div>
+            <!-- <div class="ibox-tools">
                         <a class="ibox-collapse">
                           <i class="fa fa-refresh mr-1 text-success refresh-icon" aria-hidden="true"></i>
                           <i class="fa fa-times text-danger close-icon" aria-hidden="true"></i>
                         </a>
                       </div> -->
-                    </div>
-          
-                  <div class="ibox-body">
-                    <form id="edit-student-profile-details-form" [formGroup]="editStudentDetailsForm" (ngSubmit)="onEditStudentDetailsSubmit()">
-                        <div class="row student-info">
-                            <div class="col-md-12 mb-3">
-                                <h6 class="h6 font-weight-bold">Previous Institution Information</h6>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <!-- <input class="mdl-textfield__input" type="text" id="sample3" name="region" formControlName="region"> -->
-                                <select class="mdl-textfield__input" name="region" formControlName="region" value="{{stdProfileDetailsData?.region}}">
-                                  <option value="urban">Urban</option>
-                                  <option value="rural">Rural</option>
-                                </select>
-                                <label class="mdl-textfield__label" for="sample3">Region</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" id="sample3" name="previousInsName" formControlName="previousInsName" value="{{stdProfileDetailsData?.previousInsName}}">
-                                <label class="mdl-textfield__label" for="sample3">Name</label>
-                                </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" id="sample3" name="previousInsType" formControlName="previousInsType" value="{{stdProfileDetailsData?.previousInsType}}">
-                                <label class="mdl-textfield__label" for="sample3">Type</label>
-                                </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="mobileNo" name="previousInsAffiliation" formControlName="previousInsAffiliation" value="{{stdProfileDetailsData?.previousInsAffiliation}}">
-                              <label class="mdl-textfield__label" for="sample3">Affiliation</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <textarea class="mdl-textfield__input" name="previousInsAddress" formControlName="previousInsAddress" value="{{stdProfileDetailsData?.previousInsAddress}}"></textarea>
-                              <label class="mdl-textfield__label">Address</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" name="previousInsCity" formControlName="previousInsCity" value="{{stdProfileDetailsData?.previousInsCity}}">
-                              <label class="mdl-textfield__label" for="sample3">City</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" name="previousInsTaluk" formControlName="previousInsTaluk" value="{{stdProfileDetailsData?.previousInsTaluk}}">
-                              <label class="mdl-textfield__label">Taluk</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" name="previousInsDistrict" formControlName="previousInsDistrict" value="{{stdProfileDetailsData?.previousInsDistrict}}">
-                              <label class="mdl-textfield__label">District</label>
-                              </div>
-                          </div>
-        
-                            <div class="col-sm-3">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" name="previousInsState" formControlName="previousInsState" value="{{stdProfileDetailsData?.previousInsState}}">
-                                <label class="mdl-textfield__label">State</label>
-                                </div>
-                            </div>  
-                            
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="number" name="previousInsPin" formControlName="previousInsPin" value="{{stdProfileDetailsData?.previousInsPin}}">
-                              <label class="mdl-textfield__label">Pin</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" name="previousTCNo" formControlName="previousTCNo" value="{{stdProfileDetailsData?.previousTCNo}}">
-                              <label class="mdl-textfield__label">TC No.</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="date" name="previousTCDate" formControlName="previousTCDate" value="{{stdProfileDetailsData?.previousTCDate}}">
-                              <!-- <label class="mdl-textfield__label">TC Date</label> -->
-                              </div>
-                            </div>
-                        </div>
-        
-                        <br/>
-        
-                        <div class="row">
-                            <div class="col-md-12 mb-3 mt-2">
-                                <h5 class="h6 font-weight-bold">Emergency Contact Information</h5>
-                            </div> 
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="sample3" name="emergencyContactName" formControlName="emergencyContactName" value="{{stdProfileDetailsData?.emergencyContactName}}">
-                              <label class="mdl-textfield__label" for="sample3">Name</label>
-                              </div>
-                          </div>
-        
-                            <div class="col-sm-3">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" id="sample3" name="emergencyContactMobile" formControlName="emergencyContactMobile" value="{{stdProfileDetailsData?.emergencyContactMobile}}">
-                                <label class="mdl-textfield__label" for="sample3">Mobile</label>
-                                </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" id="sample3" name="emergencyContactAddress" formControlName="emergencyContactAddress" value="{{stdProfileDetailsData?.emergencyContactAddress}}">
-                                <label class="mdl-textfield__label" for="sample3">Address</label>
-                                </div>
-                            </div>                    
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="sample3"  name="fatherOccupation" formControlName="fatherOccupation" value="{{stdProfileDetailsData?.fatherOccupation}}">
-                              <label class="mdl-textfield__label" for="sample3">Father Occupation</label>
-                              </div>
-                            </div> 
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="sample3"  name="motherOccupation" formControlName="motherOccupation" value="{{stdProfileDetailsData?.motherOccupation}}">
-                              <label class="mdl-textfield__label" for="sample3">Mother Occupation</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="sample3"  name="guardianOccupation" formControlName="guardianOccupation" value="{{stdProfileDetailsData?.guardianOccupation}}">
-                              <label class="mdl-textfield__label" for="sample3">Guardian Occupation</label>
-                              </div>
-                            </div>                    
-        
-                            <div class="col-sm-3">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" id="sample3" name="emergencyContactRelationship" formControlName="emergencyContactRelationship" value="{{stdProfileDetailsData?.emergencyContactRelationship}}">
-                                <label class="mdl-textfield__label" for="sample3">Relationship</label>
-                                </div>
-                            </div>                                    
-                        </div>
-        
-                        <br/>
-        
-                        <div class="row">
-                            <div class="col-md-12 mb-3 mt-2">
-                                <h5 class="h6 font-weight-bold">Permanent Address Information</h5>
-                            </div> 
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" name="permanentAddress1" formControlName="permanentAddress1" value="{{stdProfileDetailsData?.permanentAddress1}}">
-                              <label class="mdl-textfield__label">Address 1</label>
-                              </div>
-                            </div>
-        
-                          <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" name="permanentAddress2" formControlName="permanentAddress2" value="{{stdProfileDetailsData?.permanentAddress2}}">
-                              <label class="mdl-textfield__label">Address 2</label>
-                              </div>
-                          </div>
-        
-                          <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="number" id="sample3"  name="permanentAddressPhNo" formControlName="permanentAddressPhNo" value="{{stdProfileDetailsData?.permanentAddressPhNo}}">
-                            <label class="mdl-textfield__label" for="sample3">Phone</label>
-                            </div>
-                          </div>
-        
-                          <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="sample3"  name="permanentAddressCity" formControlName="permanentAddressCity" value="{{stdProfileDetailsData?.permanentAddressCity}}">
-                            <label class="mdl-textfield__label" for="sample3">City</label>
-                            </div>
-                          </div>
-        
-                          <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="sample3"  name="permanentAddressTaluk" formControlName="permanentAddressTaluk" value="{{stdProfileDetailsData?.permanentAddressTaluk}}">
-                            <label class="mdl-textfield__label" for="sample3">Taluk</label>
-                            </div>
-                          </div>
-        
-                          <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="sample3"  name="permanentAddressDistrict" formControlName="permanentAddressDistrict" value="{{stdProfileDetailsData?.permanentAddressDistrict}}">
-                              <label class="mdl-textfield__label">District</label>
-                              </div>
-                          </div>                 
-        
-                          <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="sample3"  name="permanentAddressCountry" formControlName="permanentAddressCountry" value="{{stdProfileDetailsData?.permanentAddressCountry}}">
-                            <label class="mdl-textfield__label" for="sample3">Country</label>
-                            </div>
-                          </div>                 
-        
-                          <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="sample3"  name="permanentAddressState" formControlName="permanentAddressState" value="{{stdProfileDetailsData?.permanentAddressState}}">
-                            <label class="mdl-textfield__label" for="sample3">State</label>
-                            </div>
-                          </div>
-        
-                          <div class="col-sm-3">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="number" id="sample3"  name="permanentAddressPin" formControlName="permanentAddressPin" value="{{stdProfileDetailsData?.permanentAddressPin}}">
-                            <label class="mdl-textfield__label" for="sample3">Pin</label>
-                            </div>
-                          </div>                  
-        
-                          </div>
-        
-                          <div class="row">
-                            <div class="col-md-12 mb-3 mt-2">
-                              <h5 class="h6 font-weight-bold">Temporary Address Information</h5>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="sample3"  name="tempAddress1" formControlName="tempAddress1" value="{{stdProfileDetailsData?.tempAddress1}}">
-                              <label class="mdl-textfield__label" for="sample3">Address 1</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="sample3"  name="tempAddress2" formControlName="tempAddress2" value="{{stdProfileDetailsData?.tempAddress2}}">
-                              <label class="mdl-textfield__label" for="sample3">Address 2</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="number" id="sample3" name="tempAddressPhNo" formControlName="tempAddressPhNo" value="{{stdProfileDetailsData?.tempAddressPhNo}}">
-                              <label class="mdl-textfield__label" for="sample3">Phone</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="sample3"  name="tempAddressTaluk" formControlName="tempAddressTaluk" value="{{stdProfileDetailsData?.tempAddressTaluk}}">
-                              <label class="mdl-textfield__label" for="sample3">Taluk</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="sample3"  name="tempAddressCity" formControlName="tempAddressCity" value="{{stdProfileDetailsData?.tempAddressCity}}">
-                              <label class="mdl-textfield__label" for="sample3">City</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="sample3"  name="tempAddressDistrict" formControlName="tempAddressDistrict" value="{{stdProfileDetailsData?.tempAddressDistrict}}">
-                              <label class="mdl-textfield__label" for="sample3">District</label>
-                              </div>
-                            </div> 
-                            
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="sample3"  name="tempAddressState" formControlName="tempAddressState" value="{{stdProfileDetailsData?.tempAddressState}}">
-                              <label class="mdl-textfield__label" for="sample3">State</label>
-                              </div>
-                            </div>                                        
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="sample3" name="tempAddressCountry" formControlName="tempAddressCountry" value="{{stdProfileDetailsData?.tempAddressCountry}}">
-                              <label class="mdl-textfield__label" for="sample3">Country</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="number" id="sample3"  name="tempAddressPin" formControlName="tempAddressPin" value="{{stdProfileDetailsData?.tempAddressPin}}">
-                              <label class="mdl-textfield__label" for="sample3">Pin</label>
-                              </div>
-                            </div>                   
-                          </div>
-        
-        
-        
-                          <div class="row">
-                            <div class="col-md-12 mb-3 mt-2">
-                              <h5 class="h6 font-weight-bold">Family Information</h5>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="number" id="sample3" name="previousTCNo" formControlName="fatherAadharNo" value="{{stdProfileDetailsData?.fatherAadharNo}}">
-                              <label class="mdl-textfield__label">Father Aadhar No.</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="number" id="sample3" name="motherAadharNo" formControlName="motherAadharNo" value="{{stdProfileDetailsData?.motherAadharNo}}">
-                              <label class="mdl-textfield__label">Mother Aadhar No.</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <select class="mdl-textfield__input" name="fatherCaste" formControlName="fatherCaste" value="{{stdProfileDetailsData?.fatherCaste}}">
-                                  <option value="option_1">Option 1</option>
-                                  <option value="option_2">Option 2</option>
-                                </select>
-                                <label class="mdl-textfield__label" for="sample3">Father Caste</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <select class="mdl-textfield__input" name="motherCaste" formControlName="motherCaste" value="{{stdProfileDetailsData?.motherCaste}}">
-                                  <option value="option_1">Option 1</option>
-                                  <option value="option_2">Option 2</option>
-                                </select>
-                                <label class="mdl-textfield__label" for="sample3">Mother Caste</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                  <select class="mdl-textfield__input" name="bplStatus" formControlName="bplStatus" value="{{stdProfileDetailsData?.bplStatus}}">
-                                      <option value="yes">Yes</option>
-                                      <option value="no">No</option>
-                                  </select>
-                              <label class="mdl-textfield__label" for="sample3">BPL Status</label>
-                              </div>
-                            </div>                    
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" name="bplNo" formControlName="bplNo" value="{{stdProfileDetailsData?.bplNo}}">
-                                <label class="mdl-textfield__label">BPL Number</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                  <select class="mdl-textfield__input" name="motherTongue" formControlName="motherTongue" value="{{stdProfileDetailsData?.motherTongue}}">
-                                      <option value="bengali">Bengali</option>
-                                      <option value="hindi">Hindi</option>
-                                  </select>
-                              <label class="mdl-textfield__label">Mother Tongue</label>
-                              </div>
-                            </div>
-                          </div>
-        
-        
-        
-                          <div class="row">
-                            <div class="col-md-12 mb-3 mt-2">
-                              <h5 class="h6 font-weight-bold">Bank Information</h5>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="sample3" name="bankName" formControlName="bankName" value="{{stdProfileDetailsData?.bankName}}">
-                              <label class="mdl-textfield__label" for="sample3">Bank Name</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" id="sample3" name="bankIFSCCode" formControlName="bankIFSCCode" value="{{stdProfileDetailsData?.bankIFSCCode}}">
-                                <label class="mdl-textfield__label" for="sample3">Bank IFSC</label>
-                                </div>
-                            </div>  
-        
-                          
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="number" id="sample3" name="bankAccNo" formControlName="bankAccNo" value="{{stdProfileDetailsData?.bankAccNo}}">
-                              <label class="mdl-textfield__label" for="sample3">Bank Account No.</label>
-                              </div>
-                            </div>
-                          </div>
-        
-        
-                          <div class="row">
-                            <div class="col-md-12 mb-3 mt-2">
-                              <h5 class="h6 font-weight-bold">Others Information</h5>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                  <select class="mdl-textfield__input" name="sponsorshipReq" formControlName="sponsorshipReq" value="{{stdProfileDetailsData?.sponsorshipReq}}">
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
-                                  </select>
-                                  <label class="mdl-textfield__label" for="sample3">Sponsorship Request</label>           
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="sample3" name="identificationMark1" formControlName="identificationMark1" value="{{stdProfileDetailsData?.identificationMark1}}">
-                              <label class="mdl-textfield__label" for="sample3">Identification Mark 1</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="sample3" name="identificationMark2" formControlName="identificationMark2" value="{{stdProfileDetailsData?.identificationMark2}}">
-                              <label class="mdl-textfield__label" for="sample3">Identification Mark 2</label>
-                              </div>
-                            </div>                    
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <!-- <input class="mdl-textfield__input" type="text" id="sample3" name="disability" formControlName="disability"> -->
-        
-                              <select class="mdl-textfield__input" name="disability" formControlName="disability" value="{{stdProfileDetailsData?.disability}}">
-                                <option value="yes">Yes</option>
-                                <option value="no">No</option>
-                              </select>
-                              <label class="mdl-textfield__label" for="sample3">Disability</label>
-                              </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="sample3" name="specialCategory" formControlName="specialCategory" value="{{stdProfileDetailsData?.specialCategory}}">
-                              <label class="mdl-textfield__label" for="sample3">Special Category</label>
-                              </div>
-                            </div>
-                          </div>
-        
-        
-                          <div class="row">
-                            <div class="col-md-12 mt-4">
-                                <div class="form-group">
-                                    <button class="btn btn-success" type="submit">Update</button>
-                                    <button class="btn btn-primary">Reset</button>
-                                </div>
-                            </div>                    
-                          </div>
-                        
-                    </form>
-        
+          </div>
+
+          <div class="ibox-body">
+            <form id="edit-student-profile-details-form" [formGroup]="editStudentDetailsForm" (ngSubmit)="onEditStudentDetailsSubmit()">
+              <div class="row student-info">
+                <div class="col-md-12 mb-3">
+                  <h6 class="h6 font-weight-bold">Previous Institution Information</h6>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <!-- <input class="mdl-textfield__input" type="text" id="sample3" name="region" formControlName="region"> -->
+                    <select class="mdl-textfield__input" name="region" formControlName="region" value="{{stdProfileDetailsData?.region}}">
+                      <option value="urban">Urban</option>
+                      <option value="rural">Rural</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">Region</label>
                   </div>
-            </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="previousInsName" formControlName="previousInsName"
+                      value="{{stdProfileDetailsData?.previousInsName}}">
+                    <label class="mdl-textfield__label" for="sample3">Name</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="previousInsType" formControlName="previousInsType"
+                      value="{{stdProfileDetailsData?.previousInsType}}">
+                    <label class="mdl-textfield__label" for="sample3">Type</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="mobileNo" name="previousInsAffiliation"
+                      formControlName="previousInsAffiliation" value="{{stdProfileDetailsData?.previousInsAffiliation}}">
+                    <label class="mdl-textfield__label" for="sample3">Affiliation</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <textarea class="mdl-textfield__input" name="previousInsAddress" formControlName="previousInsAddress"
+                      value="{{stdProfileDetailsData?.previousInsAddress}}"></textarea>
+                    <label class="mdl-textfield__label">Address</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" name="previousInsCity" formControlName="previousInsCity"
+                      value="{{stdProfileDetailsData?.previousInsCity}}">
+                    <label class="mdl-textfield__label" for="sample3">City</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" name="previousInsTaluk" formControlName="previousInsTaluk"
+                      value="{{stdProfileDetailsData?.previousInsTaluk}}">
+                    <label class="mdl-textfield__label">Taluk</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" name="previousInsDistrict" formControlName="previousInsDistrict"
+                      value="{{stdProfileDetailsData?.previousInsDistrict}}">
+                    <label class="mdl-textfield__label">District</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" name="previousInsState" formControlName="previousInsState"
+                      value="{{stdProfileDetailsData?.previousInsState}}">
+                    <label class="mdl-textfield__label">State</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="number" name="previousInsPin" formControlName="previousInsPin"
+                      value="{{stdProfileDetailsData?.previousInsPin}}">
+                    <label class="mdl-textfield__label">Pin</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" name="previousTCNo" formControlName="previousTCNo"
+                      value="{{stdProfileDetailsData?.previousTCNo}}">
+                    <label class="mdl-textfield__label">TC No.</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="date" name="previousTCDate" formControlName="previousTCDate"
+                      value="{{stdProfileDetailsData?.previousTCDate}}">
+                    <!-- <label class="mdl-textfield__label">TC Date</label> -->
+                  </div>
+                </div>
+              </div>
+
+              <br />
+
+              <div class="row">
+                <div class="col-md-12 mb-3 mt-2">
+                  <h5 class="h6 font-weight-bold">Emergency Contact Information</h5>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="emergencyContactName"
+                      formControlName="emergencyContactName" value="{{stdProfileDetailsData?.emergencyContactName}}">
+                    <label class="mdl-textfield__label" for="sample3">Name</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="emergencyContactMobile"
+                      formControlName="emergencyContactMobile" value="{{stdProfileDetailsData?.emergencyContactMobile}}">
+                    <label class="mdl-textfield__label" for="sample3">Mobile</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="emergencyContactAddress"
+                      formControlName="emergencyContactAddress" value="{{stdProfileDetailsData?.emergencyContactAddress}}">
+                    <label class="mdl-textfield__label" for="sample3">Address</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="fatherOccupation"
+                      formControlName="fatherOccupation" value="{{stdProfileDetailsData?.fatherOccupation}}">
+                    <label class="mdl-textfield__label" for="sample3">Father Occupation</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="motherOccupation"
+                      formControlName="motherOccupation" value="{{stdProfileDetailsData?.motherOccupation}}">
+                    <label class="mdl-textfield__label" for="sample3">Mother Occupation</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="guardianOccupation"
+                      formControlName="guardianOccupation" value="{{stdProfileDetailsData?.guardianOccupation}}">
+                    <label class="mdl-textfield__label" for="sample3">Guardian Occupation</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="emergencyContactRelationship"
+                      formControlName="emergencyContactRelationship" value="{{stdProfileDetailsData?.emergencyContactRelationship}}">
+                    <label class="mdl-textfield__label" for="sample3">Relationship</label>
+                  </div>
+                </div>
+              </div>
+
+              <br />
+
+              <div class="row">
+                <div class="col-md-12 mb-3 mt-2">
+                  <h5 class="h6 font-weight-bold">Permanent Address Information</h5>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" name="permanentAddress1" formControlName="permanentAddress1"
+                      value="{{stdProfileDetailsData?.permanentAddress1}}">
+                    <label class="mdl-textfield__label">Address 1</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" name="permanentAddress2" formControlName="permanentAddress2"
+                      value="{{stdProfileDetailsData?.permanentAddress2}}">
+                    <label class="mdl-textfield__label">Address 2</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="number" id="sample3" name="permanentAddressPhNo"
+                      formControlName="permanentAddressPhNo" value="{{stdProfileDetailsData?.permanentAddressPhNo}}">
+                    <label class="mdl-textfield__label" for="sample3">Phone</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="permanentAddressCity"
+                      formControlName="permanentAddressCity" value="{{stdProfileDetailsData?.permanentAddressCity}}">
+                    <label class="mdl-textfield__label" for="sample3">City</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="permanentAddressTaluk"
+                      formControlName="permanentAddressTaluk" value="{{stdProfileDetailsData?.permanentAddressTaluk}}">
+                    <label class="mdl-textfield__label" for="sample3">Taluk</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="permanentAddressDistrict"
+                      formControlName="permanentAddressDistrict" value="{{stdProfileDetailsData?.permanentAddressDistrict}}">
+                    <label class="mdl-textfield__label">District</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="permanentAddressCountry"
+                      formControlName="permanentAddressCountry" value="{{stdProfileDetailsData?.permanentAddressCountry}}">
+                    <label class="mdl-textfield__label" for="sample3">Country</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="permanentAddressState"
+                      formControlName="permanentAddressState" value="{{stdProfileDetailsData?.permanentAddressState}}">
+                    <label class="mdl-textfield__label" for="sample3">State</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="number" id="sample3" name="permanentAddressPin"
+                      formControlName="permanentAddressPin" value="{{stdProfileDetailsData?.permanentAddressPin}}">
+                    <label class="mdl-textfield__label" for="sample3">Pin</label>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 mb-3 mt-2">
+                  <h5 class="h6 font-weight-bold">Temporary Address Information</h5>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="tempAddress1" formControlName="tempAddress1"
+                      value="{{stdProfileDetailsData?.tempAddress1}}">
+                    <label class="mdl-textfield__label" for="sample3">Address 1</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="tempAddress2" formControlName="tempAddress2"
+                      value="{{stdProfileDetailsData?.tempAddress2}}">
+                    <label class="mdl-textfield__label" for="sample3">Address 2</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="number" id="sample3" name="tempAddressPhNo"
+                      formControlName="tempAddressPhNo" value="{{stdProfileDetailsData?.tempAddressPhNo}}">
+                    <label class="mdl-textfield__label" for="sample3">Phone</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="tempAddressTaluk"
+                      formControlName="tempAddressTaluk" value="{{stdProfileDetailsData?.tempAddressTaluk}}">
+                    <label class="mdl-textfield__label" for="sample3">Taluk</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="tempAddressCity" formControlName="tempAddressCity"
+                      value="{{stdProfileDetailsData?.tempAddressCity}}">
+                    <label class="mdl-textfield__label" for="sample3">City</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="tempAddressDistrict"
+                      formControlName="tempAddressDistrict" value="{{stdProfileDetailsData?.tempAddressDistrict}}">
+                    <label class="mdl-textfield__label" for="sample3">District</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="tempAddressState"
+                      formControlName="tempAddressState" value="{{stdProfileDetailsData?.tempAddressState}}">
+                    <label class="mdl-textfield__label" for="sample3">State</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="tempAddressCountry"
+                      formControlName="tempAddressCountry" value="{{stdProfileDetailsData?.tempAddressCountry}}">
+                    <label class="mdl-textfield__label" for="sample3">Country</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="number" id="sample3" name="tempAddressPin"
+                      formControlName="tempAddressPin" value="{{stdProfileDetailsData?.tempAddressPin}}">
+                    <label class="mdl-textfield__label" for="sample3">Pin</label>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-md-12 mb-3 mt-2">
+                  <h5 class="h6 font-weight-bold">Family Information</h5>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="number" id="sample3" name="previousTCNo" formControlName="fatherAadharNo"
+                      value="{{stdProfileDetailsData?.fatherAadharNo}}">
+                    <label class="mdl-textfield__label">Father Aadhar No.</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="number" id="sample3" name="motherAadharNo"
+                      formControlName="motherAadharNo" value="{{stdProfileDetailsData?.motherAadharNo}}">
+                    <label class="mdl-textfield__label">Mother Aadhar No.</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <select class="mdl-textfield__input" name="fatherCaste" formControlName="fatherCaste" value="{{stdProfileDetailsData?.fatherCaste}}">
+                      <option value="option_1">Option 1</option>
+                      <option value="option_2">Option 2</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">Father Caste</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <select class="mdl-textfield__input" name="motherCaste" formControlName="motherCaste" value="{{stdProfileDetailsData?.motherCaste}}">
+                      <option value="option_1">Option 1</option>
+                      <option value="option_2">Option 2</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">Mother Caste</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <select class="mdl-textfield__input" name="bplStatus" formControlName="bplStatus" value="{{stdProfileDetailsData?.bplStatus}}">
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">BPL Status</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" name="bplNo" formControlName="bplNo" value="{{stdProfileDetailsData?.bplNo}}">
+                    <label class="mdl-textfield__label">BPL Number</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <select class="mdl-textfield__input" name="motherTongue" formControlName="motherTongue" value="{{stdProfileDetailsData?.motherTongue}}">
+                      <option value="bengali">Bengali</option>
+                      <option value="hindi">Hindi</option>
+                    </select>
+                    <label class="mdl-textfield__label">Mother Tongue</label>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-md-12 mb-3 mt-2">
+                  <h5 class="h6 font-weight-bold">Bank Information</h5>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="bankName" formControlName="bankName"
+                      value="{{stdProfileDetailsData?.bankName}}">
+                    <label class="mdl-textfield__label" for="sample3">Bank Name</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="bankIFSCCode" formControlName="bankIFSCCode"
+                      value="{{stdProfileDetailsData?.bankIFSCCode}}">
+                    <label class="mdl-textfield__label" for="sample3">Bank IFSC</label>
+                  </div>
+                </div>
+
+
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="number" id="sample3" name="bankAccNo" formControlName="bankAccNo"
+                      value="{{stdProfileDetailsData?.bankAccNo}}">
+                    <label class="mdl-textfield__label" for="sample3">Bank Account No.</label>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-12 mb-3 mt-2">
+                  <h5 class="h6 font-weight-bold">Others Information</h5>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <select class="mdl-textfield__input" name="sponsorshipReq" formControlName="sponsorshipReq" value="{{stdProfileDetailsData?.sponsorshipReq}}">
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">Sponsorship Request</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="identificationMark1"
+                      formControlName="identificationMark1" value="{{stdProfileDetailsData?.identificationMark1}}">
+                    <label class="mdl-textfield__label" for="sample3">Identification Mark 1</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="identificationMark2"
+                      formControlName="identificationMark2" value="{{stdProfileDetailsData?.identificationMark2}}">
+                    <label class="mdl-textfield__label" for="sample3">Identification Mark 2</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <!-- <input class="mdl-textfield__input" type="text" id="sample3" name="disability" formControlName="disability"> -->
+
+                    <select class="mdl-textfield__input" name="disability" formControlName="disability" value="{{stdProfileDetailsData?.disability}}">
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+                    <label class="mdl-textfield__label" for="sample3">Disability</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="specialCategory" formControlName="specialCategory"
+                      value="{{stdProfileDetailsData?.specialCategory}}">
+                    <label class="mdl-textfield__label" for="sample3">Special Category</label>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-12 mt-4">
+                  <div class="form-group">
+                    <button class="btn btn-success btn-lg" type="submit">Update</button>
+                    <button class="btn btn-primary btn-lg">Reset</button>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+
+          </div>
         </div>
+      </div>
 
     </div>
   </div>
-</div>    
-
+</div>

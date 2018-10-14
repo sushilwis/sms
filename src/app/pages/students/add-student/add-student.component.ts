@@ -1,44 +1,48 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
-import { transition, trigger, style, animate } from '@angular/animations';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from '../../../_services/auth/auth.service';
-import { CookieService } from 'ngx-cookie-service';
-import {ToastData, ToastOptions, ToastyService} from 'ng2-toasty';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material';
-
+import { Component, OnInit, ViewEncapsulation, ViewChild } from "@angular/core";
+import { transition, trigger, style, animate } from "@angular/animations";
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators
+} from "@angular/forms";
+import { Router } from "@angular/router";
+import { AuthService } from "../../../_services/auth/auth.service";
+import { CookieService } from "ngx-cookie-service";
+import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
 
 @Component({
-  selector: 'app-add-student',
-  templateUrl: './add-student.component.html',
-  styleUrls: ['./add-student.component.css',
-  '../../../../../node_modules/sweetalert2/src/sweetalert2.scss',
-  '../../../../../node_modules/ng2-toasty/style-bootstrap.css',
-  '../../../../../node_modules/ng2-toasty/style-default.css',
-  '../../../../../node_modules/ng2-toasty/style-material.css'
+  selector: "app-add-student",
+  templateUrl: "./add-student.component.html",
+  styleUrls: [
+    "./add-student.component.css",
+    "../../../../../node_modules/sweetalert2/src/sweetalert2.scss",
+    "../../../../../node_modules/ng2-toasty/style-bootstrap.css",
+    "../../../../../node_modules/ng2-toasty/style-default.css",
+    "../../../../../node_modules/ng2-toasty/style-material.css"
   ],
 
   encapsulation: ViewEncapsulation.None,
 
   animations: [
-    trigger('fadeInOutTranslate', [
-      transition(':enter', [
-        style({opacity: 0}),
-        animate('400ms ease-in-out', style({opacity: 1}))
+    trigger("fadeInOutTranslate", [
+      transition(":enter", [
+        style({ opacity: 0 }),
+        animate("400ms ease-in-out", style({ opacity: 1 }))
       ]),
-      transition(':leave', [
-        style({transform: 'translate(0)'}),
-        animate('400ms ease-in-out', style({opacity: 0}))
+      transition(":leave", [
+        style({ transform: "translate(0)" }),
+        animate("400ms ease-in-out", style({ opacity: 0 }))
       ])
     ])
   ]
 })
 export class AddStudentComponent implements OnInit {
   // ./assets/img/pro-pic-placeholder.jpg
-  position: any = 'top-right';
-  url = ''; 
-  base64textString: string = ''; 
+  position: any = "top-right";
+  url: any = "";
+  base64textString: string = "";
+  isUploadPic: boolean = false;
 
   addStudentForm: FormGroup;
   firstName: FormControl;
@@ -76,67 +80,62 @@ export class AddStudentComponent implements OnInit {
   sectionID: FormControl;
   feeQuota: FormControl;
   routeID: FormControl;
-  studentProfPicEncoded: FormControl;  
-  
+  studentProfPicEncoded: FormControl;
 
   constructor(
-    private authServ: AuthService, 
+    private authServ: AuthService,
     private router: Router,
     private cookie: CookieService,
     private toastyService: ToastyService
-
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.url = './assets/img/pro-pic-placeholder.jpg';
+    this.url = "./assets/img/pro-pic-placeholder.jpg";
     this.createFormControls();
     this.createFormGroup();
     // this.loadScript();
   }
 
-
-
-  createFormControls() { 
-    this.firstName = new FormControl('', []);
-    this.middleName = new FormControl('', []);
-    this.lastName = new FormControl('', []);
-    this.aadharNo = new FormControl('', []);
-    this.mobileNo = new FormControl('', []);
-    this.date_of_birth = new FormControl('', []);
-    this.bloodGroup = new FormControl('', []);
-    this.gender = new FormControl('', []);
-    this.preference = new FormControl('', []);
-    this.religion = new FormControl('', []);
-    this.caste = new FormControl('', []);
-    this.nationality = new FormControl('', []);
-    this.fatherFName = new FormControl('', []);
-    this.fatherMName = new FormControl('', []);
-    this.fatherLName = new FormControl('', []);
-    this.motherFName = new FormControl('', []);
-    this.motherMName = new FormControl('', []);
-    this.motherLName = new FormControl('', []);
-    this.guardianFName = new FormControl('', []);
-    this.guardianMName = new FormControl('', []);
-    this.guardianLName = new FormControl('', []);
-    this.fatherMobileNo = new FormControl('', []);
-    this.motherMobileNo = new FormControl('', []);
-    this.guardianMobileNo = new FormControl('', []);
-    this.fatherEmailID = new FormControl('', []);
-    this.motherEmailID = new FormControl('', []);
-    this.guardianEmailID = new FormControl('', []);
-    this.mediumOfInstruction = new FormControl('', []);
-    this.admissionNo = new FormControl('', []);
-    this.admissionDate = new FormControl('', []);
-    this.streamID = new FormControl('', []);
-    this.classID = new FormControl('', []);
-    this.sectionID = new FormControl('', []);
-    this.feeQuota = new FormControl('', []);
-    this.routeID = new FormControl('', []);
-    this.studentProfPicEncoded = new FormControl('', []);
+  createFormControls() {
+    this.firstName = new FormControl("", []);
+    this.middleName = new FormControl("", []);
+    this.lastName = new FormControl("", []);
+    this.aadharNo = new FormControl("", []);
+    this.mobileNo = new FormControl("", []);
+    this.date_of_birth = new FormControl("", []);
+    this.bloodGroup = new FormControl("", []);
+    this.gender = new FormControl("", []);
+    this.preference = new FormControl("", []);
+    this.religion = new FormControl("", []);
+    this.caste = new FormControl("", []);
+    this.nationality = new FormControl("", []);
+    this.fatherFName = new FormControl("", []);
+    this.fatherMName = new FormControl("", []);
+    this.fatherLName = new FormControl("", []);
+    this.motherFName = new FormControl("", []);
+    this.motherMName = new FormControl("", []);
+    this.motherLName = new FormControl("", []);
+    this.guardianFName = new FormControl("", []);
+    this.guardianMName = new FormControl("", []);
+    this.guardianLName = new FormControl("", []);
+    this.fatherMobileNo = new FormControl("", []);
+    this.motherMobileNo = new FormControl("", []);
+    this.guardianMobileNo = new FormControl("", []);
+    this.fatherEmailID = new FormControl("", []);
+    this.motherEmailID = new FormControl("", []);
+    this.guardianEmailID = new FormControl("", []);
+    this.mediumOfInstruction = new FormControl("", []);
+    this.admissionNo = new FormControl("", []);
+    this.admissionDate = new FormControl("", []);
+    this.streamID = new FormControl("", []);
+    this.classID = new FormControl("", []);
+    this.sectionID = new FormControl("", []);
+    this.feeQuota = new FormControl("", []);
+    this.routeID = new FormControl("", []);
+    this.studentProfPicEncoded = new FormControl("", []);
   }
 
-
-  createFormGroup() { 
+  createFormGroup() {
     this.addStudentForm = new FormGroup({
       firstName: this.firstName,
       middleName: this.middleName,
@@ -177,11 +176,8 @@ export class AddStudentComponent implements OnInit {
     });
   }
 
-
-
-  onAddStudentSubmit ()
-  {
-    console.log('from add student.');
+  onAddStudentSubmit() {
+    console.log("from add student.");
     var addStudentData = this.addStudentForm.value;
 
     addStudentData.institutionID = "1";
@@ -198,24 +194,34 @@ export class AddStudentComponent implements OnInit {
 
     console.log(stdData);
 
-    this.authServ.addStudent(stdData).subscribe((res:any) => {
+    this.authServ.addStudent(stdData).subscribe((res: any) => {
       console.log(res);
-      if(res.success){
+      if (res.success) {
         console.log(res.studentList[0]);
-        localStorage.setItem('regStd', JSON.stringify(res.studentList[0]));
+        localStorage.setItem("regStd", JSON.stringify(res.studentList[0]));
 
-        this.addToast(
-          {title:'SUCCESS!', msg:'Student Added Successfully.', timeout: 6000, theme:'default', position:'top-right', type:'success'}
-        );
+        this.addToast({
+          title: "SUCCESS!",
+          msg: "Student Added Successfully.",
+          timeout: 6000,
+          theme: "default",
+          position: "top-right",
+          type: "success"
+        });
 
-        this.router.navigate(['/students/addDetails']);
-      }else{
+        this.router.navigate(["/students/addDetails"]);
+      } else {
         // console.log(res);
-        this.addToast(
-          {title:'FAIL!', msg: res.response, timeout: 6000, theme:'default', position:'top-right', type:'success'}
-        );
+        this.addToast({
+          title: "FAIL!",
+          msg: res.response,
+          timeout: 6000,
+          theme: "default",
+          position: "top-right",
+          type: "success"
+        });
 
-        this.router.navigate(['/students/add']);
+        this.router.navigate(["/students/add"]);
       }
     });
     // console.log('Stored Cookie value : ',this.cookie.get( 'sessionId'));
@@ -223,7 +229,6 @@ export class AddStudentComponent implements OnInit {
   }
 
   // No subscriptions left for the institution
-
 
   // onSelectFile(event) {
   //   if (event.target.files && event.target.files[0]) {
@@ -241,39 +246,45 @@ export class AddStudentComponent implements OnInit {
   //   }
   // }
 
-
-
-  // _handleReaderLoaded(readerEvt) {    
+  // _handleReaderLoaded(readerEvt) {
   //   var binaryString = readerEvt.target.result;
   //   this.base64textString = btoa(binaryString);
   //   console.log(btoa(binaryString));
   // }
 
-
   // No subscriptions left for the institution
-
 
   onSelectFile(e) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     // console.log(e);
-    // console.log(file);
+    console.log(file);
+    console.log("Size in KB : ", file.size / 1024);
     var pattern = /image-*/;
     var reader = new FileReader();
 
     if (!file.type.match(pattern)) {
-      this.addToast(
-        {title:'FAIL!', msg: 'Invalid Format.', timeout: 6000, theme:'default', position:'top-right', type:'error'}
-      );
-      return;
-    }
+      this.addToast({
+        title: "FAIL!",
+        msg: "Invalid Format.",
+        timeout: 6000,
+        theme: "default",
+        position: "top-right",
+        type: "error"
+      });
 
-    console.log('Size in KB : ', (file.size/1024));
+      file = null;
+    } else if (file.size / 1024 > 1024) {
+      console.log("from size checking.");
+      this.addToast({
+        title: "FAIL!",
+        msg: "Size Must be Within 1MB.",
+        timeout: 6000,
+        theme: "default",
+        position: "top-right",
+        type: "error"
+      });
 
-    if((file.size/1024) > 1024) {
-      console.log('from size checking.');
-      this.addToast(
-        {title:'FAIL!', msg: 'Size Must be Within 1MB.', timeout: 6000, theme:'default', position:'top-right', type:'error'}
-      );
+      file = null;
     } else {
       reader.onload = this.onLoadFile.bind(this);
       reader.readAsDataURL(file);
@@ -284,43 +295,48 @@ export class AddStudentComponent implements OnInit {
     // reader.readAsDataURL(file);
   }
 
-
-
-
   // _handleReaderLoaded(e) {
   //   let reader = e.target;
   //   this.url = reader.result;
   // }
 
-
   onLoadFile(event) {
-    var img = new Image();   
+    var img = new Image();
     img.src = event.target.result;
-    this.url = img.src;
-    // console.log(img);
-    console.log(img.width,'x',img.height);
+    var isUploadPic = null;
 
-    if (img.width == 600 && img.height == 600) {
-      // alert('image is proper.');
-      // console.log(img);
-      this.addToast(
-        {title:'SUCCESS!', msg: 'Image Uploaded Successfully.', timeout: 6000, theme:'default', position:'top-right', type:'success'}
-      );
-      this.url = img.src;     
-    }else {
-      // alert('image size is not 600x600');
-      this.url = './assets/img/pro-pic-placeholder.jpg';
-      this.addToast(
-        {title:'FAIL!', msg: 'Diamension Should Be 600x600.', timeout: 6000, theme:'default', position:'top-right', type:'error'}
-      );
-      // img.src = "";
-      // this.url = "";
-    }    
+    img.onload = function() {
+      console.log(img.width, "x", img.height);
+
+      if (img.width != 600 && img.height != 600) {
+        // this.isUploadPic = false;
+        return;
+      }
+    };
+
+    console.log(isUploadPic);
+
+    if (isUploadPic) {
+      this.addToast({
+        title: "SUCCESS!",
+        msg: "Image Uploaded Successfully.",
+        timeout: 6000,
+        theme: "default",
+        position: "top-right",
+        type: "success"
+      });
+      this.url = event.target.result;
+    } else {
+      this.addToast({
+        title: "FAIL!",
+        msg: "Diamension Should Be 600x600.",
+        timeout: 6000,
+        theme: "default",
+        position: "top-right",
+        type: "error"
+      });
+    }
   }
-
-
-
-
 
   addToast(options) {
     if (options.closeOther) {
@@ -341,23 +357,29 @@ export class AddStudentComponent implements OnInit {
       onRemove: (toast: ToastData) => {
         /* removed */
       }
-    }
+    };
 
     // this.toastyService.success(toastOptions);
 
     switch (options.type) {
-      case 'default': this.toastyService.default(toastOptions); break;
-      case 'info': this.toastyService.info(toastOptions); break;
-      case 'success': this.toastyService.success(toastOptions); break;
-      case 'wait': this.toastyService.wait(toastOptions); break;
-      case 'error': this.toastyService.error(toastOptions); break;
-      case 'warning': this.toastyService.warning(toastOptions); break;
+      case "default":
+        this.toastyService.default(toastOptions);
+        break;
+      case "info":
+        this.toastyService.info(toastOptions);
+        break;
+      case "success":
+        this.toastyService.success(toastOptions);
+        break;
+      case "wait":
+        this.toastyService.wait(toastOptions);
+        break;
+      case "error":
+        this.toastyService.error(toastOptions);
+        break;
+      case "warning":
+        this.toastyService.warning(toastOptions);
+        break;
     }
-  };
-
-
-
-
-
-
+  }
 }

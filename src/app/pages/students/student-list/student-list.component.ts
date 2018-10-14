@@ -9,10 +9,11 @@ import {
 import { Router } from "@angular/router";
 import { AuthService } from "../../../_services/auth/auth.service";
 import { CookieService } from "ngx-cookie-service";
-import { DatatableComponent } from "@swimlane/ngx-datatable";
+// import { DatatableComponent } from "@swimlane/ngx-datatable";
 import { transition, trigger, style, animate } from "@angular/animations";
 import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
 import swal from "sweetalert2";
+// import jquery as $ from "jquery";
 
 @Component({
   selector: "app-student-list",
@@ -24,7 +25,7 @@ import swal from "sweetalert2";
     "../../../../../node_modules/ng2-toasty/style-default.css",
     "../../../../../node_modules/ng2-toasty/style-material.css"
   ],
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation: ViewEncapsulation.None,
   animations: [
     trigger("fadeInOutTranslate", [
       transition(":enter", [
@@ -56,8 +57,8 @@ export class StudentListComponent implements OnInit, AfterViewInit {
     // {roll: "1", name: "Mehur", gender: "Male"}
   ];
 
-  @ViewChild(DatatableComponent)
-  table: DatatableComponent;
+  // @ViewChild(DatatableComponent)
+  // table: DatatableComponent;
 
   constructor(
     private authServ: AuthService,
@@ -88,7 +89,7 @@ export class StudentListComponent implements OnInit, AfterViewInit {
       });
 
       this.rows = shortStdArr;
-      // console.log(this.rows);
+      console.log(this.rows);
     });
   }
 
@@ -100,6 +101,28 @@ export class StudentListComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     // let regStdDetail = localStorage.getItem('regStd');
     // this.getStudentDetailsForFilters();
+    $("#example-table").DataTable({
+      data: this.rows,
+      columns: [
+        { data: 'roll' },
+        { data: 'photo' },
+        { data: 'name' },
+        { data: 'gender' },
+        { data: 'parentsName' },
+        { data: 'class' },
+        { data: 'section' },
+        { data: 'address' },
+        { data: 'dateOfBirth' },
+        { data: 'mobileNo' },
+        { data: 'email' },
+        { data: 'actions' }
+    ]
+      pageLength: 15,
+      ordering: true,
+      searching: false,
+      lengthChange: false
+      // serverSide: true
+    });
   }
 
   // getStudentDetailsForFilters()
@@ -233,7 +256,7 @@ export class StudentListComponent implements OnInit, AfterViewInit {
       // update the rows
       this.rows = temp;
       // Whenever the filter changes, always go back to the first page
-      this.table.offset = 0;
+      // this.table.offset = 0;
     }
   }
 
@@ -278,7 +301,7 @@ export class StudentListComponent implements OnInit, AfterViewInit {
       // update the rows
       this.rows = temp;
       // Whenever the filter changes, always go back to the first page
-      this.table.offset = 0;
+      // this.table.offset = 0;
     }
   }
 

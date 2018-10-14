@@ -22,9 +22,8 @@
 
         <div class="ibox-body" style="font-size: 11px;">
 
-          <ngx-datatable #table class="data-table material"
-            [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="40" [rowHeight]="40"
-            [scrollbarV]="false" [rows]="rows" [limit]="15">
+          <ngx-datatable class="material" [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="40"
+            [rowHeight]="40" [scrollbarV]="false" [rows]="rows" [limit]="15">
 
 
             <ngx-datatable-column [width]="20" [sortable]="false">
@@ -32,7 +31,7 @@
               <ng-template class="datatable-checkbox" ngx-datatable-header-template let-value="value"
                 let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
                 <div class="checkbox-fade fade-in-default datatable-header-cell-label">
-                  <div class="pretty p-default">
+                  <div class="pretty p-default mt-1">
                     <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
                     <div class="state p-primary">
                       <label></label>
@@ -63,7 +62,7 @@
               </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="Name" [sortable]="false">
+            <ngx-datatable-column name="Name" [sortable]="true">
             </ngx-datatable-column>
 
             <ngx-datatable-column name="Gender" [width]="90" [sortable]="true">
@@ -77,21 +76,12 @@
             <ngx-datatable-column name="Section" [width]="110" [sortable]="true"></ngx-datatable-column>
 
             <ngx-datatable-column name="Address" prop="address" [canAutoResize]="true" [sortable]="true">
-              <!-- <ng-template let-row="row" ngx-datatable-cell-template>
-                        {{row.address}}
-                    </ng-template> -->
             </ngx-datatable-column>
 
             <ngx-datatable-column name="Date of Birth" prop="dateOfBirth" [canAutoResize]="true" [sortable]="true">
-              <!-- <ng-template let-row="row" ngx-datatable-cell-template>
-                      22/10/1995
-                    </ng-template> -->
             </ngx-datatable-column>
 
             <ngx-datatable-column name="Mobile No" prop="mobileNo" [canAutoResize]="true" [sortable]="true">
-              <!-- <ng-template let-row="row" ngx-datatable-cell-template>
-                       +89 22956325
-                    </ng-template> -->
             </ngx-datatable-column>
 
             <ngx-datatable-column name="Email" [canAutoResize]="true" [sortable]="true"></ngx-datatable-column>
@@ -99,14 +89,36 @@
             <ngx-datatable-column name="Actions" [canAutoResize]="true">
               <ng-template let-row="row" ngx-datatable-cell-template>
                 <i class="fa fa-eye text-primary" aria-hidden="true" (click)="goToStdView(row.Id)"></i>
-                <i class="fa fa-pencil-square-o text-success ml-1" (click)="goToEditStd(row.Id)" aria-hidden="true"></i>
-                <i class="fa fa-trash-o text-danger ml-1" (click)="openConfirmsSwal(row.Id)" aria-hidden="true"></i>
+                <i class="fa fa-pencil-square-o text-success ml-2" (click)="goToEditStd(row.Id)" aria-hidden="true"></i>
+                <i class="fa fa-trash-o text-danger ml-2" (click)="openConfirmsSwal(row.Id)" aria-hidden="true"></i>
               </ng-template>
             </ngx-datatable-column>
 
           </ngx-datatable>
 
+          <!-- <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
+            <thead>
+              <tr>
+                <th>Roll</th>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Parents Name</th>
+                <th>Class</th>
+                <th>Section</th>
+                <th>Address</th>
+                <th>Date of Birth</th>
+                <th>Mobile No.</th>
+                <th>Email</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
 
+              </tr>
+            </tbody>
+          </table> -->
         </div>
       </div>
 

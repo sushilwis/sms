@@ -1,13 +1,22 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+import {
+  NgModule,
+  NO_ERRORS_SCHEMA,
+  CUSTOM_ELEMENTS_SCHEMA
+} from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { ColorPickerModule } from "ngx-color-picker";
 import { BrowserXhr } from "@angular/http";
 import { SweetAlert2Module } from "@toverux/ngx-sweetalert2";
 // import {ToastyModule} from 'ng2-toasty';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatInputModule, MatCheckboxModule, MatFormFieldModule} from '@angular/material';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import {
+  MatButtonModule,
+  MatInputModule,
+  MatCheckboxModule,
+  MatFormFieldModule
+} from "@angular/material";
 // import { MatFormFieldModule } from '@angular/material';
 
 import { AppComponent } from ".//app.component";
@@ -52,14 +61,14 @@ import { EditStudentDetailsComponent } from "./pages/students/edit-student-detai
     SharedModule,
     SweetAlert2Module.forRoot(),
     // ToastyModule.forRoot()
-    MatFormFieldModule,
     BrowserAnimationsModule,
-    MatButtonModule, 
-    MatInputModule, 
+    // MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
     MatCheckboxModule
   ],
 
-  schemas: [NO_ERRORS_SCHEMA],
+  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     ScriptLoaderService,
     AuthService,

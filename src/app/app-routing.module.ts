@@ -16,7 +16,13 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { CalendarModule } from "angular-calendar";
 import { HttpClientModule } from "@angular/common/http";
 import { GuardGuard } from "./_services/guard/guard.guard";
-import {ToastyModule} from 'ng2-toasty';
+import { ToastyModule } from "ng2-toasty";
+import {
+  MatButtonModule,
+  MatInputModule,
+  MatCheckboxModule,
+  MatFormFieldModule
+} from "@angular/material";
 
 const routes: Routes = [
   {
@@ -36,7 +42,8 @@ const routes: Routes = [
 
       {
         path: "students/add",
-        component: AddStudentComponent
+        component: AddStudentComponent,
+        canActivate: [GuardGuard]
       },
       {
         path: "students/edit/:id",
@@ -95,7 +102,11 @@ const routes: Routes = [
     NgbModule.forRoot(),
     CalendarModule.forRoot(),
     HttpClientModule,
-    ToastyModule.forRoot()
+    ToastyModule.forRoot(),
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCheckboxModule
   ],
 
   exports: [RouterModule]
