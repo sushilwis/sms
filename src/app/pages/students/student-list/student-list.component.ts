@@ -13,7 +13,6 @@ import { CookieService } from "ngx-cookie-service";
 import { transition, trigger, style, animate } from "@angular/animations";
 import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
 import swal from "sweetalert2";
-// import jquery as $ from "jquery";
 
 @Component({
   selector: "app-student-list",
@@ -39,7 +38,7 @@ import swal from "sweetalert2";
     ])
   ]
 })
-export class StudentListComponent implements OnInit, AfterViewInit {
+export class StudentListComponent implements OnInit {
   temp = [];
   rowsFilter = [];
   public data: any;
@@ -98,32 +97,32 @@ export class StudentListComponent implements OnInit, AfterViewInit {
     // this.getStudentDetailsForFilters();
   }
 
-  ngAfterViewInit() {
-    // let regStdDetail = localStorage.getItem('regStd');
-    // this.getStudentDetailsForFilters();
-    $("#example-table").DataTable({
-      data: this.rows,
-      columns: [
-        { data: 'roll' },
-        { data: 'photo' },
-        { data: 'name' },
-        { data: 'gender' },
-        { data: 'parentsName' },
-        { data: 'class' },
-        { data: 'section' },
-        { data: 'address' },
-        { data: 'dateOfBirth' },
-        { data: 'mobileNo' },
-        { data: 'email' },
-        { data: 'actions' }
-    ]
-      pageLength: 15,
-      ordering: true,
-      searching: false,
-      lengthChange: false
-      // serverSide: true
-    });
-  }
+  // ngAfterViewInit() {
+  //   // let regStdDetail = localStorage.getItem('regStd');
+  //   // this.getStudentDetailsForFilters();
+  //   $("#example-table").DataTable({
+  //     data: this.rows,
+  //     columns: [
+  //       { data: "roll" },
+  //       { data: "photo" },
+  //       { data: "name" },
+  //       { data: "gender" },
+  //       { data: "parentsName" },
+  //       { data: "class" },
+  //       { data: "section" },
+  //       { data: "address" },
+  //       { data: "dateOfBirth" },
+  //       { data: "mobileNo" },
+  //       { data: "email" },
+  //       { data: "actions" }
+  //     ],
+  //     pageLength: 15,
+  //     ordering: true,
+  //     searching: false,
+  //     lengthChange: false
+  //     // serverSide: true
+  //   });
+  // }
 
   // getStudentDetailsForFilters()
   // {

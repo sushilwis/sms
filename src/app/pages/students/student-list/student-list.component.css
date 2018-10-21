@@ -88,7 +88,7 @@
 .ngx-datatable *,
 .ngx-datatable ::before,
 .ngx-datatable ::after {
-  line-height: 14px;
+  line-height: 9px;
 }
 
 
@@ -112,5 +112,5 @@
 }
 
 .ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-cell {
-  font-size: 13px;
+  font-size: 12px;
 }

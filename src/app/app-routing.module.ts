@@ -21,8 +21,13 @@ import {
   MatButtonModule,
   MatInputModule,
   MatCheckboxModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from "@angular/material";
+
+// import {MatSelectModule} from '@angular/material/select';
 
 const routes: Routes = [
   {
@@ -106,7 +111,10 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
 
   exports: [RouterModule]

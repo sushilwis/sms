@@ -305,40 +305,33 @@ export class AddStudentComponent implements OnInit {
     img.src = event.target.result;
     var isUploadPic = null;
 
-    img.onload = function() {
+    img.onload = () => {
       console.log(img.width, "x", img.height);
-
+      // var isUploaded = false;
       if (img.width != 600 && img.height != 600) {
-        // this.isUploadPic = false;
-        return;
+        this.addToast({
+          title: "FAIL!",
+          msg: "Diamension Should Be 600x600.",
+          timeout: 6000,
+          theme: "default",
+          position: "top-right",
+          type: "error"
+        });
+      } else {
+        this.addToast({
+          title: "SUCCESS!",
+          msg: "Image Uploaded Successfully.",
+          timeout: 6000,
+          theme: "default",
+          position: "top-right",
+          type: "success"
+        });
+        this.url = event.target.result;
       }
     };
-
-    console.log(isUploadPic);
-
-    if (isUploadPic) {
-      this.addToast({
-        title: "SUCCESS!",
-        msg: "Image Uploaded Successfully.",
-        timeout: 6000,
-        theme: "default",
-        position: "top-right",
-        type: "success"
-      });
-      this.url = event.target.result;
-    } else {
-      this.addToast({
-        title: "FAIL!",
-        msg: "Diamension Should Be 600x600.",
-        timeout: 6000,
-        theme: "default",
-        position: "top-right",
-        type: "error"
-      });
-    }
   }
 
-  addToast(options) {
+  addToast(options): any {
     if (options.closeOther) {
       this.toastyService.clearAll();
     }
