@@ -101,28 +101,27 @@ export class StudentListComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     // let regStdDetail = localStorage.getItem('regStd');
     // this.getStudentDetailsForFilters();
-    $("#example-table").DataTable({
-      data: this.rows,
-      columns: [
-        { data: 'roll' },
-        { data: 'photo' },
-        { data: 'name' },
-        { data: 'gender' },
-        { data: 'parentsName' },
-        { data: 'class' },
-        { data: 'section' },
-        { data: 'address' },
-        { data: 'dateOfBirth' },
-        { data: 'mobileNo' },
-        { data: 'email' },
-        { data: 'actions' }
-    ]
-      pageLength: 15,
-      ordering: true,
-      searching: false,
-      lengthChange: false
-      // serverSide: true
-    });
+    // $("#example-table").DataTable({
+    //   data: this.rows,
+    //   columns: [
+    //     { data: 'roll' },
+    //     { data: 'photo' },
+    //     { data: 'name' },
+    //     { data: 'gender' },
+    //     { data: 'parentsName' },
+    //     { data: 'class' },
+    //     { data: 'section' },
+    //     { data: 'address' },
+    //     { data: 'dateOfBirth' },
+    //     { data: 'mobileNo' },
+    //     { data: 'email' },
+    //     { data: 'actions' }
+    // ],
+    //   pageLength: 15,
+    //   ordering: true,
+    //   searching: false,
+    //   lengthChange: false
+    // });
   }
 
   // getStudentDetailsForFilters()

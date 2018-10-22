@@ -88,29 +88,29 @@
 .ngx-datatable *,
 .ngx-datatable ::before,
 .ngx-datatable ::after {
-  line-height: 14px;
+  line-height: 14px !important;
 }
 
 
 .ngx-datatable .datatable-body .datatable-row-wrapper {
-  border-bottom: 1px solid whitesmoke;
+  border-bottom: 1px solid whitesmoke !important;
 }
 
 .ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell {
-  font-size: 14px;
+  font-size: 14px !important;
 }
 
 .ngx-datatable .datatable-header .datatable-header-cell .datatable-header-cell-template-wrap {
-  line-height: 21px;
+  line-height: 21px !important;
 }
 
 .ngx-datatable.material .datatable-footer .datatable-pager .datatable-icon-left,
 .ngx-datatable.material .datatable-footer .datatable-pager .datatable-icon-skip,
 .ngx-datatable.material .datatable-footer .datatable-pager .datatable-icon-right,
 .ngx-datatable.material .datatable-footer .datatable-pager .datatable-icon-prev {
-  line-height: 28px;
+  line-height: 28px !important;
 }
 
 .ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-cell {
-  font-size: 13px;
+  font-size: 12px !important;
 }

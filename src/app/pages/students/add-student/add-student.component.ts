@@ -309,8 +309,9 @@ export class AddStudentComponent implements OnInit {
       console.log(img.width, "x", img.height);
 
       if (img.width != 600 && img.height != 600) {
-        // this.isUploadPic = false;
-        return;
+        
+      }else{
+
       }
     };
 
