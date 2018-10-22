@@ -15,9 +15,11 @@ import {
   MatButtonModule,
   MatInputModule,
   MatCheckboxModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from "@angular/material";
-// import { MatFormFieldModule } from '@angular/material';
 
 import { AppComponent } from ".//app.component";
 import { AppRoutingModule } from ".//app-routing.module";
@@ -62,10 +64,13 @@ import { EditStudentDetailsComponent } from "./pages/students/edit-student-detai
     SweetAlert2Module.forRoot(),
     // ToastyModule.forRoot()
     BrowserAnimationsModule,
-    // MatFormFieldModule,
+    MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
 
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],

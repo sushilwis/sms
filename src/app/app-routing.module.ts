@@ -17,9 +17,9 @@ import { CalendarModule } from "angular-calendar";
 import { HttpClientModule } from "@angular/common/http";
 import { GuardGuard } from "./_services/guard/guard.guard";
 import { ToastyModule } from "ng2-toasty";
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material';
-import {MatSelectModule} from '@angular/material/select';
+// import {MatDatepickerModule} from '@angular/material/datepicker';
+// import {MatNativeDateModule} from '@angular/material';
+// import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -27,8 +27,13 @@ import {
   MatButtonModule,
   MatInputModule,
   MatCheckboxModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from "@angular/material";
+
+// import {MatSelectModule} from '@angular/material/select';
 
 const routes: Routes = [
   {
@@ -115,7 +120,9 @@ const routes: Routes = [
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
 
   exports: [RouterModule]

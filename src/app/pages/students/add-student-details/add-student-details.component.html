@@ -17,463 +17,399 @@
           <form id="add-student-form" [formGroup]="addStudentDetailsForm" (ngSubmit)="onAddStudentDetailsSubmit()">
             <div class="row student-info">
               <div class="col-md-12 mb-3">
-                <h6 class="h6 font-weight-bold">Previous Institution Information</h6>
+                <h6 class="h6 font-weight-bold sub-heading">Previous Institution Information</h6>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <!-- <input class="mdl-textfield__input" type="text" id="sample3" name="region" formControlName="region"> -->
-                  <select class="mdl-textfield__input" name="region" formControlName="region">
-                    <option value="urban">Urban</option>
-                    <option value="rural">Rural</option>
-                  </select>
-                  <label class="mdl-textfield__label" for="sample3">Region</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Region" name="region" formControlName="region">
+                    <mat-option value="urban">Urban</mat-option>
+                    <mat-option value="rural">Rural</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="previousInsName" formControlName="previousInsName">
-                  <label class="mdl-textfield__label" for="sample3">Name</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Name" name="previousInsName" formControlName="previousInsName">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="previousInsType" formControlName="previousInsType">
-                  <label class="mdl-textfield__label" for="sample3">Type</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Type" name="previousInsType" formControlName="previousInsType">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="mobileNo" name="previousInsAffiliation"
-                    formControlName="previousInsAffiliation">
-                  <label class="mdl-textfield__label" for="sample3">Affiliation</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Affiliation" name="previousInsAffiliation" formControlName="previousInsAffiliation">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <textarea class="mdl-textfield__input" name="previousInsAddress" formControlName="previousInsAddress"></textarea>
-                  <label class="mdl-textfield__label">Address</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Address" name="previousInsAddress" formControlName="previousInsAddress">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" name="previousInsCity" formControlName="previousInsCity">
-                  <label class="mdl-textfield__label" for="sample3">City</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="City" name="previousInsCity" formControlName="previousInsCity">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" name="previousInsTaluk" formControlName="previousInsTaluk">
-                  <label class="mdl-textfield__label">Taluk</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Taluk" name="previousInsTaluk" formControlName="previousInsTaluk">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" name="previousInsDistrict" formControlName="previousInsDistrict">
-                  <label class="mdl-textfield__label">District</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="District" name="previousInsDistrict" formControlName="previousInsDistrict">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" name="previousInsState" formControlName="previousInsState">
-                  <label class="mdl-textfield__label">State</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="State" name="previousInsState" formControlName="previousInsState">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="number" name="previousInsPin" formControlName="previousInsPin">
-                  <label class="mdl-textfield__label">Pin</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="number" placeholder="Pin" name="previousInsPin" formControlName="previousInsPin">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" name="previousTCNo" formControlName="previousTCNo">
-                  <label class="mdl-textfield__label">TC No.</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="TC No." name="previousTCNo" formControlName="previousTCNo">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="date" name="previousTCDate" formControlName="previousTCDate">
-                  <!-- <label class="mdl-textfield__label">TC Date</label> -->
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput [matDatepicker]="previousTCDate" placeholder="TC Date" name="previousTCDate"
+                    formControlName="previousTCDate">
+                  <mat-datepicker-toggle matSuffix [for]="previousTCDate"></mat-datepicker-toggle>
+                  <mat-datepicker #previousTCDate></mat-datepicker>
+                </mat-form-field>
               </div>
             </div>
 
             <br />
 
             <div class="row">
-              <div class="col-md-12 mb-3 mt-2">
-                <h5 class="h6 font-weight-bold">Emergency Contact Information</h5>
+              <div class="col-md-12 mb-3 mt-4">
+                <h5 class="h6 font-weight-bold sub-heading">Emergency Contact Information</h5>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="emergencyContactName"
-                    formControlName="emergencyContactName">
-                  <label class="mdl-textfield__label" for="sample3">Name</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Name" name="emergencyContactName" formControlName="emergencyContactName">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="emergencyContactMobile"
-                    formControlName="emergencyContactMobile">
-                  <label class="mdl-textfield__label" for="sample3">Mobile</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Mobile" name="emergencyContactMobile" formControlName="emergencyContactMobile">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="emergencyContactAddress"
-                    formControlName="emergencyContactAddress">
-                  <label class="mdl-textfield__label" for="sample3">Address</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Address" name="emergencyContactAddress" formControlName="emergencyContactAddress">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="fatherOccupation" formControlName="fatherOccupation">
-                  <label class="mdl-textfield__label" for="sample3">Father Occupation</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Father Occupation" name="fatherOccupation" formControlName="fatherOccupation">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="motherOccupation" formControlName="motherOccupation">
-                  <label class="mdl-textfield__label" for="sample3">Mother Occupation</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Mother Occupation" name="motherOccupation" formControlName="motherOccupation">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="guardianOccupation"
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Guardian Occupation" name="guardianOccupation"
                     formControlName="guardianOccupation">
-                  <label class="mdl-textfield__label" for="sample3">Guardian Occupation</label>
-                </div>
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="emergencyContactRelationship"
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Relationship" name="emergencyContactRelationship"
                     formControlName="emergencyContactRelationship">
-                  <label class="mdl-textfield__label" for="sample3">Relationship</label>
-                </div>
+                </mat-form-field>
               </div>
             </div>
 
             <br />
 
             <div class="row">
-              <div class="col-md-12 mb-3 mt-2">
-                <h5 class="h6 font-weight-bold">Permanent Address Information</h5>
+              <div class="col-md-12 mb-3 mt-4">
+                <h5 class="h6 font-weight-bold sub-heading">Permanent Address Information</h5>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" name="permanentAddress1" formControlName="permanentAddress1">
-                  <label class="mdl-textfield__label">Address 1</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Address 1" name="permanentAddress1" formControlName="permanentAddress1">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" name="permanentAddress2" formControlName="permanentAddress2">
-                  <label class="mdl-textfield__label">Address 2</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Address 2" name="permanentAddress2" formControlName="permanentAddress2">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="number" id="sample3" name="permanentAddressPhNo"
-                    formControlName="permanentAddressPhNo">
-                  <label class="mdl-textfield__label" for="sample3">Phone</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="number" placeholder="Phone" name="permanentAddressPhNo" formControlName="permanentAddressPhNo">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="permanentAddressCity"
-                    formControlName="permanentAddressCity">
-                  <label class="mdl-textfield__label" for="sample3">City</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="City" name="permanentAddressCity" formControlName="permanentAddressCity">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="permanentAddressTaluk"
-                    formControlName="permanentAddressTaluk">
-                  <label class="mdl-textfield__label" for="sample3">Taluk</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Taluk" name="permanentAddressTaluk" formControlName="permanentAddressTaluk">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="permanentAddressDistrict"
-                    formControlName="permanentAddressDistrict">
-                  <label class="mdl-textfield__label">District</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="District" name="permanentAddressDistrict" formControlName="permanentAddressDistrict">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="permanentAddressCountry"
-                    formControlName="permanentAddressCountry">
-                  <label class="mdl-textfield__label" for="sample3">Country</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Country" name="permanentAddressCountry" formControlName="permanentAddressCountry">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="permanentAddressState"
-                    formControlName="permanentAddressState">
-                  <label class="mdl-textfield__label" for="sample3">State</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="State" name="permanentAddressState" formControlName="permanentAddressState">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="number" id="sample3" name="permanentAddressPin"
-                    formControlName="permanentAddressPin">
-                  <label class="mdl-textfield__label" for="sample3">Pin</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="number" placeholder="Pin" name="permanentAddressPin" formControlName="permanentAddressPin">
+                </mat-form-field>
               </div>
-
             </div>
 
             <div class="row">
-              <div class="col-md-12 mb-3 mt-2">
-                <h5 class="h6 font-weight-bold">Temporary Address Information</h5>
+              <div class="col-md-12 mb-3 mt-4">
+                <h5 class="h6 font-weight-bold sub-heading">Temporary Address Information</h5>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="tempAddress1" formControlName="tempAddress1">
-                  <label class="mdl-textfield__label" for="sample3">Address 1</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Address 1" name="tempAddress1" formControlName="tempAddress1">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="tempAddress2" formControlName="tempAddress2">
-                  <label class="mdl-textfield__label" for="sample3">Address 2</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Address 2" name="tempAddress2" formControlName="tempAddress2">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="number" id="sample3" name="tempAddressPhNo" formControlName="tempAddressPhNo">
-                  <label class="mdl-textfield__label" for="sample3">Phone</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Phone" name="tempAddressPhNo" formControlName="tempAddressPhNo">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="tempAddressTaluk" formControlName="tempAddressTaluk">
-                  <label class="mdl-textfield__label" for="sample3">Taluk</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Taluk" name="tempAddressTaluk" formControlName="tempAddressTaluk">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="tempAddressCity" formControlName="tempAddressCity">
-                  <label class="mdl-textfield__label" for="sample3">City</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="City" name="tempAddressCity" formControlName="tempAddressCity">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="tempAddressDistrict"
-                    formControlName="tempAddressDistrict">
-                  <label class="mdl-textfield__label" for="sample3">District</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="District" name="tempAddressDistrict" formControlName="tempAddressDistrict">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="tempAddressState" formControlName="tempAddressState">
-                  <label class="mdl-textfield__label" for="sample3">State</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="State" name="tempAddressState" formControlName="tempAddressState">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="tempAddressCountry"
-                    formControlName="tempAddressCountry">
-                  <label class="mdl-textfield__label" for="sample3">Country</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Country" name="tempAddressCountry" formControlName="tempAddressCountry">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="number" id="sample3" name="tempAddressPin" formControlName="tempAddressPin">
-                  <label class="mdl-textfield__label" for="sample3">Pin</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="number" placeholder="Pin" name="tempAddressPin" formControlName="tempAddressPin">
+                </mat-form-field>
               </div>
             </div>
 
 
 
-            <div class="row">
-              <div class="col-md-12 mb-3 mt-2">
-                <h5 class="h6 font-weight-bold">Family Information</h5>
+            <div class="row mb-2">
+              <div class="col-md-12 mb-3 mt-4">
+                <h5 class="h6 font-weight-bold sub-heading">Family Information</h5>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="number" id="sample3" name="previousTCNo" formControlName="fatherAadharNo">
-                  <label class="mdl-textfield__label">Father Aadhar No.</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="number" placeholder="Father Aadhar No." name="fatherAadharNo" formControlName="fatherAadharNo">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="number" id="sample3" name="motherAadharNo" formControlName="motherAadharNo">
-                  <label class="mdl-textfield__label">Mother Aadhar No.</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="number" placeholder="Mother Aadhar No." name="motherAadharNo" formControlName="motherAadharNo">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <select class="mdl-textfield__input" name="fatherCaste" formControlName="fatherCaste">
-                    <option value="option_1">Option 1</option>
-                    <option value="option_2">Option 2</option>
-                  </select>
-                  <label class="mdl-textfield__label" for="sample3">Father Caste</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Father Caste" name="fatherCaste" formControlName="fatherCaste">
+                    <mat-option value="general">General</mat-option>
+                    <mat-option value="sc">SC</mat-option>
+                    <mat-option value="st">ST</mat-option>
+                    <mat-option value="obc">OBC</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <select class="mdl-textfield__input" name="motherCaste" formControlName="motherCaste">
-                    <option value="option_1">Option 1</option>
-                    <option value="option_2">Option 2</option>
-                  </select>
-                  <label class="mdl-textfield__label" for="sample3">Mother Caste</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Mother Caste" name="motherCaste" formControlName="motherCaste">
+                    <mat-option value="general">General</mat-option>
+                    <mat-option value="sc">SC</mat-option>
+                    <mat-option value="st">ST</mat-option>
+                    <mat-option value="obc">OBC</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <select class="mdl-textfield__input" name="bplStatus" formControlName="bplStatus">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                  </select>
-                  <label class="mdl-textfield__label" for="sample3">BPL Status</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="BPL Status" name="bplStatus" formControlName="bplStatus">
+                    <mat-option value="yes">YES</mat-option>
+                    <mat-option value="no">NO</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" name="bplNo" formControlName="bplNo">
-                  <label class="mdl-textfield__label">BPL Number</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="number" placeholder="BPL Number" name="bplNo" formControlName="bplNo">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <select class="mdl-textfield__input" name="motherTongue" formControlName="motherTongue">
-                    <option value="bengali">Bengali</option>
-                    <option value="hindi">Hindi</option>
-                  </select>
-                  <label class="mdl-textfield__label">Mother Tongue</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Mother Tongue" name="motherTongue" formControlName="motherTongue">
+                    <mat-option value="bengali">Bengali</mat-option>
+                    <mat-option value="hindi">Hindi</mat-option>
+                    <mat-option value="english">English</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
             </div>
 
 
 
-            <div class="row">
-              <div class="col-md-12 mb-3 mt-2">
-                <h5 class="h6 font-weight-bold">Bank Information</h5>
+            <div class="row  mb-2">
+              <div class="col-md-12 mb-3 mt-4">
+                <h5 class="h6 font-weight-bold sub-heading">Bank Information</h5>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="bankName" formControlName="bankName">
-                  <label class="mdl-textfield__label" for="sample3">Bank Name</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Bank Name" name="bankName" formControlName="bankName">
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="bankIFSCCode" formControlName="bankIFSCCode">
-                  <label class="mdl-textfield__label" for="sample3">Bank IFSC</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Bank IFSC" name="bankIFSCCode" formControlName="bankIFSCCode">
+                </mat-form-field>
               </div>
 
-
-
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="number" id="sample3" name="bankAccNo" formControlName="bankAccNo">
-                  <label class="mdl-textfield__label" for="sample3">Bank Account No.</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Bank Account No" name="bankAccNo" formControlName="bankAccNo">
+                </mat-form-field>
               </div>
             </div>
 
 
-            <div class="row">
-              <div class="col-md-12 mb-3 mt-2">
-                <h5 class="h6 font-weight-bold">Others Information</h5>
+            <div class="row mb-2">
+              <div class="col-md-12 mb-3 mt-4">
+                <h5 class="h6 font-weight-bold sub-heading">Others Information</h5>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <select class="mdl-textfield__input" name="sponsorshipReq" formControlName="sponsorshipReq">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                  </select>
-                  <label class="mdl-textfield__label" for="sample3">Sponsorship Request</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Sponsorship Request" name="sponsorshipReq" formControlName="sponsorshipReq">
+                    <mat-option value="yes">YES</mat-option>
+                    <mat-option value="no">NO</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="identificationMark1"
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Identification Mark 1" name="identificationMark1"
                     formControlName="identificationMark1">
-                  <label class="mdl-textfield__label" for="sample3">Identification Mark 1</label>
-                </div>
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="identificationMark2"
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Identification Mark 2" name="identificationMark2"
                     formControlName="identificationMark2">
-                  <label class="mdl-textfield__label" for="sample3">Identification Mark 2</label>
-                </div>
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <!-- <input class="mdl-textfield__input" type="text" id="sample3" name="disability" formControlName="disability"> -->
-
-                  <select class="mdl-textfield__input" name="disability" formControlName="disability">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                  </select>
-                  <label class="mdl-textfield__label" for="sample3">Disability</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Disability" name="disability" formControlName="disability">
+                    <mat-option value="yes">YES</mat-option>
+                    <mat-option value="no">NO</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
 
-              <div class="col-sm-3">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3" name="specialCategory" formControlName="specialCategory">
-                  <label class="mdl-textfield__label" for="sample3">Special Category</label>
-                </div>
+              <div class="col-sm-3 pr-4 pl-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Special Category" name="specialCategory" formControlName="specialCategory">
+                </mat-form-field>
               </div>
             </div>
-
 
             <div class="row">
               <div class="col-md-12 mt-4">
