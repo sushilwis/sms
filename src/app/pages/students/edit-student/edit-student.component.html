@@ -254,7 +254,7 @@
 
               <div class="row">
                 <div class="col-md-12 mb-3 mt-2">
-                  <h5 class="h6 font-weight-bold">Admission Information</h5>
+                  <h5 class="h6 font-weight-bold sub-heading">Admission Information</h5>
                 </div>
 
                 <div class="col-sm-3">
@@ -334,7 +334,7 @@
                 <div class="col-md-12 mt-4">
                   <div class="form-group">
                     <button class="btn btn-success" type="submit">Update</button>
-                    <button class="btn btn-primary">Reset</button>
+                    <!-- <button class="btn btn-primary">Reset</button> -->
                   </div>
                 </div>
               </div>
@@ -359,7 +359,7 @@
             <form id="edit-student-profile-details-form" [formGroup]="editStudentDetailsForm" (ngSubmit)="onEditStudentDetailsSubmit()">
               <div class="row student-info">
                 <div class="col-md-12 mb-3">
-                  <h6 class="h6 font-weight-bold">Previous Institution Information</h6>
+                  <h6 class="h6 font-weight-bold sub-heading">Previous Institution Information</h6>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
@@ -444,7 +444,7 @@
 
               <div class="row">
                 <div class="col-md-12 mb-3 mt-2">
-                  <h5 class="h6 font-weight-bold">Emergency Contact Information</h5>
+                  <h5 class="h6 font-weight-bold sub-heading">Emergency Contact Information</h5>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
@@ -494,7 +494,7 @@
 
               <div class="row">
                 <div class="col-md-12 mb-3 mt-2">
-                  <h5 class="h6 font-weight-bold">Permanent Address Information</h5>
+                  <h5 class="h6 font-weight-bold sub-heading">Permanent Address Information</h5>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
@@ -554,7 +554,7 @@
 
               <div class="row">
                 <div class="col-md-12 mb-3 mt-2">
-                  <h5 class="h6 font-weight-bold">Temporary Address Information</h5>
+                  <h5 class="h6 font-weight-bold sub-heading">Temporary Address Information</h5>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
@@ -616,7 +616,7 @@
 
               <div class="row">
                 <div class="col-md-12 mb-3 mt-2">
-                  <h5 class="h6 font-weight-bold">Family Information</h5>
+                  <h5 class="h6 font-weight-bold sub-heading">Family Information</h5>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
@@ -683,86 +683,70 @@
 
               <div class="row">
                 <div class="col-md-12 mb-3 mt-2">
-                  <h5 class="h6 font-weight-bold">Bank Information</h5>
+                  <h5 class="h6 font-weight-bold sub-heading">Bank Information</h5>
                 </div>
 
-                <div class="col-sm-3">
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="sample3" name="bankName" formControlName="bankName"
-                      value="{{stdProfileDetailsData?.bankName}}">
-                    <label class="mdl-textfield__label" for="sample3">Bank Name</label>
-                  </div>
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Bank Name" name="bankName" formControlName="bankName" value="{{stdProfileDetailsData?.bankName}}">
+                  </mat-form-field>
                 </div>
 
-                <div class="col-sm-3">
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="sample3" name="bankIFSCCode" formControlName="bankIFSCCode"
-                      value="{{stdProfileDetailsData?.bankIFSCCode}}">
-                    <label class="mdl-textfield__label" for="sample3">Bank IFSC</label>
-                  </div>
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Bank IFSC" name="bankIFSCCode" formControlName="bankIFSCCode" value="{{stdProfileDetailsData?.bankIFSCCode}}">
+                  </mat-form-field>
                 </div>
-
-
-
-                <div class="col-sm-3">
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="number" id="sample3" name="bankAccNo" formControlName="bankAccNo"
-                      value="{{stdProfileDetailsData?.bankAccNo}}">
-                    <label class="mdl-textfield__label" for="sample3">Bank Account No.</label>
-                  </div>
+  
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Bank Account No" name="bankAccNo" formControlName="bankAccNo" value="{{stdProfileDetailsData?.bankAccNo}}">
+                  </mat-form-field>
                 </div>
               </div>
 
 
               <div class="row">
                 <div class="col-md-12 mb-3 mt-2">
-                  <h5 class="h6 font-weight-bold">Others Information</h5>
+                  <h5 class="h6 font-weight-bold sub-heading">Others Information</h5>
                 </div>
 
-                <div class="col-sm-3">
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <select class="mdl-textfield__input" name="sponsorshipReq" formControlName="sponsorshipReq" value="{{stdProfileDetailsData?.sponsorshipReq}}">
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
-                    </select>
-                    <label class="mdl-textfield__label" for="sample3">Sponsorship Request</label>
-                  </div>
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <mat-select placeholder="Sponsorship Request" name="sponsorshipReq" formControlName="sponsorshipReq" value="{{stdProfileDetailsData?.sponsorshipReq}}">
+                      <mat-option value="yes">YES</mat-option>
+                      <mat-option value="no">NO</mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
 
-                <div class="col-sm-3">
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="sample3" name="identificationMark1"
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Identification Mark 1" name="identificationMark1"
                       formControlName="identificationMark1" value="{{stdProfileDetailsData?.identificationMark1}}">
-                    <label class="mdl-textfield__label" for="sample3">Identification Mark 1</label>
-                  </div>
+                  </mat-form-field>
                 </div>
-
-                <div class="col-sm-3">
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="sample3" name="identificationMark2"
+  
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Identification Mark 2" name="identificationMark2"
                       formControlName="identificationMark2" value="{{stdProfileDetailsData?.identificationMark2}}">
-                    <label class="mdl-textfield__label" for="sample3">Identification Mark 2</label>
-                  </div>
+                  </mat-form-field>
                 </div>
 
-                <div class="col-sm-3">
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <!-- <input class="mdl-textfield__input" type="text" id="sample3" name="disability" formControlName="disability"> -->
-
-                    <select class="mdl-textfield__input" name="disability" formControlName="disability" value="{{stdProfileDetailsData?.disability}}">
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
-                    </select>
-                    <label class="mdl-textfield__label" for="sample3">Disability</label>
-                  </div>
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <mat-select placeholder="Disability" name="disability" formControlName="disability" value="{{stdProfileDetailsData?.disability}}">
+                      <mat-option value="yes">YES</mat-option>
+                      <mat-option value="no">NO</mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
-
-                <div class="col-sm-3">
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="sample3" name="specialCategory" formControlName="specialCategory"
-                      value="{{stdProfileDetailsData?.specialCategory}}">
-                    <label class="mdl-textfield__label" for="sample3">Special Category</label>
-                  </div>
+  
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Special Category" name="specialCategory" formControlName="specialCategory" value="{{stdProfileDetailsData?.specialCategory}}">
+                  </mat-form-field>
                 </div>
               </div>
 
