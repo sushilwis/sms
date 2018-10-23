@@ -243,4 +243,12 @@ export class AddStudentDetailsComponent implements OnInit {
 
 
 
+
+  resetForm() {
+    this.addStudentDetailsForm.reset();
+  }
+
+
+
+
 }

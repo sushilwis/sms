@@ -97,7 +97,7 @@
 }
 
 .ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell {
-  font-size: 14px !important;
+  font-size: 11px !important;
 }
 
 .ngx-datatable .datatable-header .datatable-header-cell .datatable-header-cell-template-wrap {
@@ -112,5 +112,5 @@
 }
 
 .ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-cell {
-  font-size: 12px !important;
+  font-size: 11px !important;
 }

@@ -375,4 +375,11 @@ export class AddStudentComponent implements OnInit {
         break;
     }
   }
+
+
+
+
+  resetForm() {
+    this.addStudentForm.reset();
+  }
 }

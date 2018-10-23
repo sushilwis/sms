@@ -504,7 +504,7 @@ export class EditStudentComponent implements OnInit {
 
     console.log('send data : ', editStudentDetailsData);
 
-    this.authServ.updateStudentProfileDetails(editStudentDetailsData).subscribe((res:any) => {
+  this.authServ.updateStudentProfileDetails(editStudentDetailsData).subscribe((res:any) => {
       console.log('response data : ', res);
       if(res){        
         // localStorage.setItem('regStd', JSON.stringify(res.studentList[0]));
