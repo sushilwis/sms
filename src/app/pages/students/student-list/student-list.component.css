@@ -115,6 +115,6 @@
   font-size: 9px !important;
 } */
 
-/* div.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell>div {
-  font-size: 10px !important;
-} */
+div.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell>div {
+  font-size: 11px !important;
+}
