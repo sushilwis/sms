@@ -287,22 +287,19 @@
               <div class="col-sm-3">
                   <mat-form-field>
                       <mat-select placeholder="Stream/Group" name="streamID" formControlName="streamID">
-                        <mat-option value="1">Science</mat-option>
-                        <mat-option value="2">Arts</mat-option>
-                        <mat-option value="3">Commerce</mat-option>
+                        <!-- <ng-template ngFor="let stream of selectData.streamList"> -->
+                          <mat-option *ngFor="let stream of streamData" value="{{stream.id}}">{{stream.name}}</mat-option>
+                        <!-- </ng-template>                         -->
+                        <!-- <mat-option value="2">Arts</mat-option>
+                        <mat-option value="3">Commerce</mat-option> -->
                       </mat-select>
                   </mat-form-field>
               </div>
 
               <div class="col-sm-3">
                   <mat-form-field>
-                      <mat-select placeholder="Class" name="classID" formControlName="classID">
-                        <mat-option value="1">V</mat-option>
-                        <mat-option value="2">VI</mat-option>
-                        <mat-option value="3">VII</mat-option>
-                        <mat-option value="4">VIII</mat-option>
-                        <mat-option value="5">IX</mat-option>
-                        <mat-option value="6">X</mat-option>
+                      <mat-select (change)="getSection($event)" placeholder="Class" name="classID" formControlName="classID">
+                        <mat-option *ngFor="let class of classData" value="{{class.classID}}">{{class.className}}</mat-option>
                       </mat-select>
                   </mat-form-field>
               </div>
@@ -310,9 +307,7 @@
               <div class="col-sm-3">
                   <mat-form-field>
                       <mat-select placeholder="Section" name="sectionID" formControlName="sectionID">
-                        <mat-option value="1">A</mat-option>
-                        <mat-option value="2">B</mat-option>
-                        <mat-option value="2">C</mat-option>
+                        <mat-option *ngFor="let section of sectionData" value="{{section.sectionID}}">{{section.sectionName}}</mat-option>
                       </mat-select>
                   </mat-form-field>
               </div>
@@ -329,8 +324,7 @@
               <div class="col-sm-3">
                   <mat-form-field>
                       <mat-select placeholder="Bus Route" name="routeID" formControlName="routeID">
-                        <mat-option value="1">Route 1</mat-option>
-                        <mat-option value="2">Route 2</mat-option>
+                        <mat-option *ngFor="let route of routeData" value="{{route.routeID}}">{{route.routeName}}</mat-option>
                       </mat-select>
                   </mat-form-field>
               </div>
@@ -341,7 +335,7 @@
               <div class="col-md-12 mt-4">
                 <div class="form-group">
                   <button class="btn btn-success btn-lg" type="submit">Register</button>
-                  <button class="btn btn-primary btn-lg" (click)="resetForm()">Reset</button>
+                  <input type="button" class="btn btn-primary btn-lg" (click)="resetForm()" value="Reset"/>
                 </div>
               </div>
             </div>

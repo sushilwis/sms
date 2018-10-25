@@ -85,6 +85,7 @@
     "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.14"
   },
+  
   "devDependencies": {
     "@angular/cli": "1.6.2",
     "@angular/compiler-cli": "^5.2.9",

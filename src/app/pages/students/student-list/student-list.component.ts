@@ -88,7 +88,7 @@ export class StudentListComponent implements OnInit {
       });
 
       this.rows = shortStdArr;
-      console.log(this.rows);
+      // console.log(this.rows);
     });
   }
 
@@ -213,12 +213,12 @@ export class StudentListComponent implements OnInit {
   }
 
   goToStdView(stdId) {
-    console.log(stdId);
+    // console.log(stdId);
     this.router.navigate([`/students/viewDetail/${stdId}`]);
   }
 
   goToEditStd(stdId) {
-    console.log(stdId);
+    // console.log(stdId);
     this.router.navigate([`/students/edit/${stdId}`]);
   }
 
@@ -238,10 +238,10 @@ export class StudentListComponent implements OnInit {
 
   updateRollFilter(event) {
     const val = event.target.value.toLowerCase();
-    console.log("Typed value ", val);
+    // console.log("Typed value ", val);
 
     if (val == "" || val == null) {
-      console.log("value is blank");
+      // console.log("value is blank");
 
       this.fetch(data => {
         this.allStd = data.data;
@@ -271,7 +271,7 @@ export class StudentListComponent implements OnInit {
     } else {
       // filter our data
       const temp = this.rows.filter(function(d) {
-        console.log(d.roll);
+        // console.log(d.roll);
         if (d.roll != null) {
           return d.roll.toLowerCase().indexOf(val) !== -1 || !val;
         }
@@ -286,10 +286,10 @@ export class StudentListComponent implements OnInit {
 
   updateSectionFilter(event) {
     const val = event.target.value.toLowerCase();
-    console.log("Typed value ", val);
+    // console.log("Typed value ", val);
 
     if (val == "") {
-      console.log("sECTION value is blank");
+      // console.log("sECTION value is blank");
 
       this.fetch(data => {
         this.allStd = data.data;
@@ -348,7 +348,7 @@ export class StudentListComponent implements OnInit {
   }
 
   deleteStudent(studentID) {
-    console.log("Enter to delete student. id : ", studentID);
+    // console.log("Enter to delete student. id : ", studentID);
 
     let deleteStudentProfileInfoData = {
       id: studentID,
@@ -358,7 +358,7 @@ export class StudentListComponent implements OnInit {
     this.authServ
       .deleteStudentProfileDetails(deleteStudentProfileInfoData)
       .subscribe((res: any) => {
-        console.log("after student profile delete :", res);
+        // console.log("after student profile delete :", res);
 
         if (res.success) {
           let deleteStudentInfoData = {
@@ -369,7 +369,7 @@ export class StudentListComponent implements OnInit {
           this.authServ
             .deleteStudent(deleteStudentInfoData)
             .subscribe((res: any) => {
-              console.log("after student delete :", res);
+              // console.log("after student delete :", res);
 
               if (res.success) {
                 this.fetch(data => {

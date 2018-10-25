@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 import { AuthService } from "../../../_services/auth/auth.service";
 import { CookieService } from "ngx-cookie-service";
 import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
+import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
 
 @Component({
   selector: "app-add-student",
@@ -37,12 +38,17 @@ import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
     ])
   ]
 })
+
 export class AddStudentComponent implements OnInit {
   // ./assets/img/pro-pic-placeholder.jpg
   position: any = "top-right";
   url: any = "";
   base64textString: string = "";
   isUploadPic: boolean = false;
+  streamData: any;
+  classData: any;
+  routeData: any;
+  sectionData: any;
 
   addStudentForm: FormGroup;
   firstName: FormControl;
@@ -86,7 +92,8 @@ export class AddStudentComponent implements OnInit {
     private authServ: AuthService,
     private router: Router,
     private cookie: CookieService,
-    private toastyService: ToastyService
+    private toastyService: ToastyService,
+    private http: HttpClient,
   ) {}
 
   ngOnInit() {
@@ -94,6 +101,7 @@ export class AddStudentComponent implements OnInit {
     this.createFormControls();
     this.createFormGroup();
     // this.loadScript();
+    this.insSelectDetails();
   }
 
   createFormControls() {
@@ -177,7 +185,7 @@ export class AddStudentComponent implements OnInit {
   }
 
   onAddStudentSubmit() {
-    console.log("from add student.");
+    // console.log("from add student.");
     var addStudentData = this.addStudentForm.value;
 
     addStudentData.institutionID = "1";
@@ -192,12 +200,12 @@ export class AddStudentComponent implements OnInit {
       data: data
     };
 
-    console.log(stdData);
+    // console.log(stdData);
 
     this.authServ.addStudent(stdData).subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
       if (res.success) {
-        console.log(res.studentList[0]);
+        // console.log(res.studentList[0]);
         localStorage.setItem("regStd", JSON.stringify(res.studentList[0]));
 
         this.addToast({
@@ -257,8 +265,8 @@ export class AddStudentComponent implements OnInit {
   onSelectFile(e) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     // console.log(e);
-    console.log(file);
-    console.log("Size in KB : ", file.size / 1024);
+    // console.log(file);
+    // console.log("Size in KB : ", file.size / 1024);
     var pattern = /image-*/;
     var reader = new FileReader();
 
@@ -274,7 +282,7 @@ export class AddStudentComponent implements OnInit {
 
       file = null;
     } else if (file.size / 1024 > 1024) {
-      console.log("from size checking.");
+      // console.log("from size checking.");
       this.addToast({
         title: "FAIL!",
         msg: "Size Must be Within 1MB.",
@@ -306,7 +314,7 @@ export class AddStudentComponent implements OnInit {
     var isUploadPic = null;
 
     img.onload = () => {
-      console.log(img.width, "x", img.height);
+      // console.log(img.width, "x", img.height);
       // var isUploaded = false;
       if (img.width != 600 && img.height != 600) {
         this.addToast({
@@ -381,5 +389,47 @@ export class AddStudentComponent implements OnInit {
 
   resetForm() {
     this.addStudentForm.reset();
+  }
+
+
+
+  insSelectDetails() {
+    let header = new HttpHeaders();
+    header.set("Content-Type", "application/json");
+    
+    let senddata = {
+      institutionID: this.cookie.get('insID')
+    };
+
+    this.http
+      .post(
+        "http://13.59.10.105:8080/campusquo_services/api/institution/getInsSpecificSelectDetails",
+        senddata
+      )
+      .map(res => res)
+      .subscribe((data:any) => {
+        // console.log(data);
+        this.streamData = data.streamList; 
+        this.classData = data.classList; 
+        this.routeData = data.routeList;
+        // this.sectionData = data.classList.sectionDetails;  
+        // this.classData.forEach(ele => {
+        //   this.sectionData.push(ele.sectionDetails);
+        // });    
+      });
+  }
+
+
+
+
+  getSection(e){
+    // console.log(e);
+    this.classData.forEach(ele => {
+      if(ele.classID == e.value){
+        this.sectionData = ele.sectionDetails;
+      }
+    });
+
+    // console.log(this.sectionData);
   }
 }

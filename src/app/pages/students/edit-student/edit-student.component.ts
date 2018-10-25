@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../_services/auth/auth.service';
 import { CookieService } from 'ngx-cookie-service';
+import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
 
 @Component({
   selector: 'app-edit-student',
@@ -18,6 +19,10 @@ export class EditStudentComponent implements OnInit {
   stdDetailsData: any;
   base64textString: string = ''; 
   stdProfileDetailsData: any;
+  streamData: any;
+  classData: any;
+  routeData: any;
+  sectionData: any;
 
   //for student edit
   editStudentForm: FormGroup;
@@ -56,7 +61,7 @@ export class EditStudentComponent implements OnInit {
   sectionID: FormControl;
   feeQuota: FormControl;
   routeID: FormControl;
-  // studentProfPicEncoded: FormControl;
+  studentProfPicEncoded: FormControl;
 
 
       //for student profile details edit
@@ -122,11 +127,14 @@ export class EditStudentComponent implements OnInit {
     private router: Router,
     private cookie: CookieService,
     private actRoute: ActivatedRoute,
+    private http: HttpClient,
   ) { }
 
 
 
-  ngOnInit() {       
+  ngOnInit() { 
+    this.insSelectDetails();
+          
     this.actRoute.params.subscribe(data => {
       this.stdId = data.id;
     });
@@ -182,6 +190,7 @@ export class EditStudentComponent implements OnInit {
     this.sectionID = new FormControl('', []);
     this.feeQuota = new FormControl('', []);
     this.routeID = new FormControl('', []);
+    this.studentProfPicEncoded = new FormControl('', []);
   }
 
 
@@ -223,7 +232,8 @@ export class EditStudentComponent implements OnInit {
       classID: this.classID,
       sectionID: this.sectionID,
       feeQuota: this.feeQuota,
-      routeID: this.routeID
+      routeID: this.routeID,
+      studentProfPicEncoded: this.studentProfPicEncoded
     });
   }
 
@@ -247,9 +257,9 @@ export class EditStudentComponent implements OnInit {
     //   data: data
     // };
 
-    console.log(editStudentData);
+    // console.log(editStudentData);
     this.authServ.updateStudent(editStudentData).subscribe((res:any) => {
-      console.log(res);
+      // console.log(res);
       if(res.success){        
         this.router.navigate([`students/editDetails/${this.stdId}`]);
       }else{
@@ -324,7 +334,8 @@ export class EditStudentComponent implements OnInit {
       classID: std.classID,
       sectionID: std.sectionID,
       feeQuota: std.feeQuota,
-      routeID: std.routeDetails.routeID
+      routeID: std.routeDetails.routeID,
+      studentProfPicEncoded: ''
     })
   }
 
@@ -339,7 +350,7 @@ export class EditStudentComponent implements OnInit {
     }
 
     this.authServ.getStudentDetailsForFilters(stdData).subscribe((res:any) => {
-      console.log(res.data[0]);
+      // console.log(res.data[0]);
       if(res.success){        
         this.stdDetailsData = res.data[0];
         this.url = res.data[0].studentProfPicPath;
@@ -502,10 +513,10 @@ export class EditStudentComponent implements OnInit {
     //   data: data
     // };
 
-    console.log('send data : ', editStudentDetailsData);
+    // console.log('send data : ', editStudentDetailsData);
 
   this.authServ.updateStudentProfileDetails(editStudentDetailsData).subscribe((res:any) => {
-      console.log('response data : ', res);
+      // console.log('response data : ', res);
       if(res){        
         // localStorage.setItem('regStd', JSON.stringify(res.studentList[0]));
         // this.router.navigate(['/students/list']);
@@ -530,12 +541,55 @@ export class EditStudentComponent implements OnInit {
 
     this.authServ.getStudentDetailsForFilters(stdData).subscribe((res:any) => {
       if(res.success){
-        console.log(res.data[0].profileDetails);
+        // console.log(res.data[0].profileDetails);
         this.stdProfileDetailsData = res.data[0].profileDetails;
       }else{
         // this.router.navigate(['/students/']);
       }
     });
+  }
+
+
+
+
+  insSelectDetails() {
+    let header = new HttpHeaders();
+    header.set("Content-Type", "application/json");
+    
+    let senddata = {
+      institutionID: this.cookie.get('insID')
+    };
+
+    this.http
+      .post(
+        "http://13.59.10.105:8080/campusquo_services/api/institution/getInsSpecificSelectDetails",
+        senddata
+      )
+      .map(res => res)
+      .subscribe((data:any) => {
+        // console.log(data);
+        this.streamData = data.streamList; 
+        this.classData = data.classList; 
+        this.routeData = data.routeList;
+        // this.sectionData = data.classList.sectionDetails;  
+        // this.classData.forEach(ele => {
+        //   this.sectionData.push(ele.sectionDetails);
+        // });    
+      });
+  }
+
+
+
+
+  getSection(e){
+    // console.log(e);
+    this.classData.forEach(ele => {
+      if(ele.classID == e.value){
+        this.sectionData = ele.sectionDetails;
+      }
+    });
+
+    // console.log(this.sectionData);
   }
 
 

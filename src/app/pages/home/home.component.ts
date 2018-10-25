@@ -239,7 +239,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
       if (!this.isChecked) {
         this.externalEvents.splice(externalIndex, 1);
       }
-      console.log(event);
+      // console.log(event);
+      
       this.events.push(event);
     }
     event.start = newStart;
@@ -548,12 +549,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   pageDetails() {
     let header = new HttpHeaders();
     header.set("Content-Type", "application/json");
+    
     let senddata = {
-      institutionID: 12
+      institutionID: this.cookie.get('insID')
     };
+
+    // console.log('send data ', senddata);
+
     this.http
       .post(
         "http://13.59.10.105:8080/campusquo_services/api/admin/getInsSpecDataForIns",
@@ -569,6 +575,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         this.feesList = data["feeDetails"]["collectedFees"];
       });
   }
+  
 
   loadScript() {
     let body = <HTMLDivElement>document.body;

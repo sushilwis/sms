@@ -225,11 +225,11 @@ export class AddStudentDetailsComponent implements OnInit {
       data: data
     };
 
-    console.log('request data : ',stdData);
+    // console.log('request data : ',stdData);
 
     this.authServ.addStudentDetails(stdData).subscribe((res:any) => {
       if(res.success){
-        console.log('response data : ', res);
+        // console.log('response data : ', res);
         // localStorage.setItem('regStd', JSON.stringify(res.studentList[0]));
         this.router.navigate(['/students/list']);
       }else{

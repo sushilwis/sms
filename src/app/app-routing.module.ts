@@ -20,6 +20,8 @@ import { ToastyModule } from "ng2-toasty";
 // import {MatDatepickerModule} from '@angular/material/datepicker';
 // import {MatNativeDateModule} from '@angular/material';
 // import {MatSelectModule} from '@angular/material/select';
+import { BrowserModule } from "@angular/platform-browser";
+import { CommonModule } from "@angular/common";
 
 
 
@@ -107,6 +109,8 @@ const routes: Routes = [
   ],
 
   imports: [
+    BrowserModule,
+    CommonModule,
     RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,

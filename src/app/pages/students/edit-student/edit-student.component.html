@@ -284,17 +284,15 @@
                 <div class="col-sm-3">
                   <mat-form-field>
                       <mat-select placeholder="Stream/Group" name="streamID" formControlName="streamID">
-                        <mat-option value="1">Stream 1</mat-option>
-                        <mat-option value="2">Stream 2</mat-option>
+                        <mat-option *ngFor="let stream of streamData" value="{{stream.id}}">{{stream.name}}</mat-option>
                       </mat-select>
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
                     <mat-form-field>
-                        <mat-select placeholder="Class" name="classID" formControlName="classID">
-                          <mat-option value="1"></mat-option>
-                          <mat-option value="2">Option 2</mat-option>
+                        <mat-select (change)="getSection($event)" placeholder="Class" name="classID" formControlName="classID">
+                          <mat-option *ngFor="let class of classData" value="{{class.classID}}">{{class.className}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
@@ -303,8 +301,7 @@
                 <div class="col-sm-3">
                   <mat-form-field>
                       <mat-select placeholder="Section" name="sectionID" formControlName="sectionID">
-                        <mat-option value="option 1">Option 1</mat-option>
-                        <mat-option value="option 2">Option 2</mat-option>
+                        <mat-option *ngFor="let section of sectionData" value="{{section.sectionID}}">{{section.sectionName}}</mat-option>
                       </mat-select>
                   </mat-form-field>
                 </div>
@@ -321,8 +318,7 @@
                 <div class="col-sm-3">
                   <mat-form-field>
                       <mat-select placeholder="Bus Route" name="routeID" formControlName="routeID">
-                        <mat-option value="option 1">Option 1</mat-option>
-                        <mat-option value="option 2">Option 2</mat-option>
+                        <mat-option *ngFor="let route of routeData" value="{{route.routeID}}">{{route.routeName}}</mat-option>
                       </mat-select>
                   </mat-form-field>
                 </div>
