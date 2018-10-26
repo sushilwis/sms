@@ -19,7 +19,7 @@ export class AuthService {
     header.set("Content-Type", "application/json");
     return this.http
       .post(
-        "http://13.59.10.105:8080/campusquo_services/api/users/userLogin",
+        "https://dyumath.in/campusquo_services/api/users/userLogin",
         userCredential,
         { headers: header }
       )

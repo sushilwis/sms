@@ -40,7 +40,7 @@ export class ViewStudentComponent implements OnInit {
 
     this.authServ.getStudentDetailsForFilters(stdData).subscribe((res:any) => {
       if(res.success){
-        console.log(res.data[0]);
+        // console.log(res.data[0]);
         this.stdDetailsData = res.data[0];
         this.url = res.data[0].studentProfPicPath;
       }else{
@@ -53,7 +53,7 @@ export class ViewStudentComponent implements OnInit {
 
 
   goToEditStd(stdId) {
-    console.log(stdId);
+    // console.log(stdId);
     this.router.navigate([`/students/edit/${stdId}`]);
   }
 
