@@ -195,7 +195,7 @@ export class StudentListComponent implements OnInit {
     req.responseType = "json";
     req.open(
       "POST",
-      `http://13.59.10.105:8080/campusquo_services/api/student_profile/getStudentDetailsForFilters`,
+      `https://dyumath.in/campusquo_services/api/student_profile/getStudentDetailsForFilters`,
       true
     );
 

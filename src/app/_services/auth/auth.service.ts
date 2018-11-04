@@ -11,9 +11,6 @@ export class AuthService {
 
   constructor(private http: HttpClient, private cookie: CookieService) {}
 
-
-
-
   loginUser(userCredential) {
     let header = new HttpHeaders();
     header.set("Content-Type", "application/json");
@@ -28,15 +25,12 @@ export class AuthService {
       });
   }
 
-
-
-
   addStudent(newStudentData) {
     let header = new HttpHeaders();
     header.set("Content-Type", "application/json");
     return this.http
       .post(
-        "http://13.59.10.105:8080/campusquo_services/api/admin/addStudent",
+        "https://dyumath.in/campusquo_services/api/admin/addStudent",
         newStudentData,
         { headers: header }
       )
@@ -45,15 +39,12 @@ export class AuthService {
       });
   }
 
-
-
-
   updateStudent(updateStudentData) {
     let header = new HttpHeaders();
     header.set("Content-Type", "application/json");
     return this.http
       .post(
-        "http://13.59.10.105:8080/campusquo_services/api/student_profile/updateStudentDetails",
+        "https://dyumath.in/campusquo_services/api/student_profile/updateStudentDetails",
         updateStudentData,
         { headers: header }
       )
@@ -62,16 +53,12 @@ export class AuthService {
       });
   }
 
-
-
-
-
   addStudentDetails(otherStudentDetails) {
     let header = new HttpHeaders();
     header.set("Content-Type", "application/json");
     return this.http
       .post(
-        "http://13.59.10.105:8080/campusquo_services/api/admin/addStudentProfileDetails",
+        "https://dyumath.in/campusquo_services/api/admin/addStudentProfileDetails",
         otherStudentDetails,
         { headers: header }
       )
@@ -81,15 +68,12 @@ export class AuthService {
   }
   // updateStudentProfileDetails
 
-
-
-
   updateStudentProfileDetails(studentProfileDetails) {
     let header = new HttpHeaders();
     header.set("Content-Type", "application/json");
     return this.http
       .post(
-        "http://13.59.10.105:8080/campusquo_services/api/student_profile/updateStudentProfileDetails",
+        "https://dyumath.in/campusquo_services/api/student_profile/updateStudentProfileDetails",
         studentProfileDetails,
         { headers: header }
       )
@@ -98,16 +82,12 @@ export class AuthService {
       });
   }
 
-
-
-
-
   getStudentDetailsForFilters(filterData) {
     let header = new HttpHeaders();
     header.set("Content-Type", "application/json");
     return this.http
       .post(
-        "http://13.59.10.105:8080/campusquo_services/api/student_profile/getStudentDetailsForFilters",
+        "https://dyumath.in/campusquo_services/api/student_profile/getStudentDetailsForFilters",
         filterData,
         { headers: header }
       )
@@ -116,16 +96,12 @@ export class AuthService {
       });
   }
 
-
-
-
-
-  deleteStudent (studentInfoForDelete) {
+  deleteStudent(studentInfoForDelete) {
     let header = new HttpHeaders();
     header.set("Content-Type", "application/json");
     return this.http
       .post(
-        "http://13.59.10.105:8080/campusquo_services/api/student_profile/updateStudentDetails",
+        "https://dyumath.in/campusquo_services/api/student_profile/updateStudentDetails",
         studentInfoForDelete,
         { headers: header }
       )
@@ -134,33 +110,21 @@ export class AuthService {
       });
   }
 
-
-
-
-
-  deleteStudentProfileDetails (studentProfileInfoForDelete) {
+  deleteStudentProfileDetails(studentProfileInfoForDelete) {
     let header = new HttpHeaders();
     header.set("Content-Type", "application/json");
     return this.http
       .post(
-        "http://13.59.10.105:8080/campusquo_services/api/student_profile/updateStudentProfileDetails",
+        "https://dyumath.in/campusquo_services/api/student_profile/updateStudentProfileDetails",
         studentProfileInfoForDelete,
         { headers: header }
       )
       .map(res => {
         return res;
-    });
+      });
   }
-
-
-
 
   isAuthenticated() {
     return this.cookie.get("sessionId");
   }
-
-
-
-
-
 }

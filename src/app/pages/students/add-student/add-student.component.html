@@ -53,72 +53,73 @@
               </div>
 
               <div class="col-sm-3">
-                <mat-form-field>
-                  <input matInput [matDatepicker]="dateOfBirth" placeholder="Date of Birth" name="date_of_birth" formControlName="date_of_birth">
+                <mat-form-field class="example-full-width">
+                  <input matInput [matDatepicker]="dateOfBirth" placeholder="Date of Birth" name="date_of_birth"
+                    formControlName="date_of_birth">
                   <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
                   <mat-datepicker #dateOfBirth></mat-datepicker>
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                <mat-form-field>
-                    <mat-select placeholder="Blood Group" name="bloodGroup" formControlName="bloodGroup">
-                      <mat-option value="b+">B+</mat-option>
-                      <mat-option value="o+">O+</mat-option>
-                    </mat-select>
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Blood Group" name="bloodGroup" formControlName="bloodGroup">
+                    <mat-option value="b+">B+</mat-option>
+                    <mat-option value="o+">O+</mat-option>
+                  </mat-select>
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                <mat-form-field>
-                    <mat-select placeholder="Gender" name="gender" formControlName="gender">
-                      <mat-option value="male">Male</mat-option>
-                      <mat-option value="female">Female</mat-option>
-                    </mat-select>
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Gender" name="gender" formControlName="gender">
+                    <mat-option value="male">Male</mat-option>
+                    <mat-option value="female">Female</mat-option>
+                  </mat-select>
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field>
-                      <mat-select placeholder="Contact Preference" name="preference" formControlName="preference">
-                        <mat-option value="father">Father</mat-option>
-                        <mat-option value="mother">Mother</mat-option>
-                        <mat-option value="guardian">Guardian</mat-option>
-                      </mat-select>
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Contact Preference" name="preference" formControlName="preference">
+                    <mat-option value="father">Father</mat-option>
+                    <mat-option value="mother">Mother</mat-option>
+                    <mat-option value="guardian">Guardian</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field>
-                      <mat-select placeholder="Religion" name="religion" formControlName="religion">
-                        <mat-option value="hindu">Hindu</mat-option>
-                        <mat-option value="muslim">Muslim</mat-option>
-                        <mat-option value="christian">Christian</mat-option>
-                        <mat-option value="sikh">Sikh</mat-option>
-                        <mat-option value="buddhist">Buddhist</mat-option>
-                        <mat-option value="jain">Jain</mat-option>
-                        <mat-option value="other religion">Other Religion</mat-option>
-                      </mat-select>
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Religion" name="religion" formControlName="religion">
+                    <mat-option value="hindu">Hindu</mat-option>
+                    <mat-option value="muslim">Muslim</mat-option>
+                    <mat-option value="christian">Christian</mat-option>
+                    <mat-option value="sikh">Sikh</mat-option>
+                    <mat-option value="buddhist">Buddhist</mat-option>
+                    <mat-option value="jain">Jain</mat-option>
+                    <mat-option value="other religion">Other Religion</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field>
-                      <mat-select placeholder="Caste" name="caste" formControlName="caste">
-                        <mat-option value="general">General</mat-option>
-                        <mat-option value="sc">SC</mat-option>
-                        <mat-option value="st">ST</mat-option>
-                        <mat-option value="obc">OBC</mat-option>
-                      </mat-select>
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Caste" name="caste" formControlName="caste">
+                    <mat-option value="general">General</mat-option>
+                    <mat-option value="sc">SC</mat-option>
+                    <mat-option value="st">ST</mat-option>
+                    <mat-option value="obc">OBC</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field>
-                      <mat-select placeholder="Indian" name="nationality" formControlName="nationality">
-                        <mat-option value="indian">Indian</mat-option>
-                      </mat-select>
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Indian" name="nationality" formControlName="nationality">
+                    <mat-option value="indian">Indian</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
 
               <!-- <div class="col-sm-3">
@@ -130,11 +131,11 @@
               </div> -->
 
               <div class="col-sm-12">
-                  <div class="custom-file">
-                      <input type="file" class="custom-file-input" name="studentProfPicEncoded" formControlName="studentProfPicEncoded"
-                      (change)="onSelectFile($event)" accept="image/*">
-                      <label class="custom-file-label" for="customFile">Choose Picture</label>
-                  </div>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" name="studentProfPicEncoded" formControlName="studentProfPicEncoded"
+                    (change)="onSelectFile($event)" accept="image/*">
+                  <label class="custom-file-label" for="customFile">Choose Picture</label>
+                </div>
               </div>
 
               <div class="col-sm-3">
@@ -161,93 +162,96 @@
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Father's First Name" type="text" name="fatherFName" formControlName="fatherFName">            
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Father's First Name" type="text" name="fatherFName" formControlName="fatherFName">
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Father's Middle Name" type="text" name="fatherMName" formControlName="fatherMName">            
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Father's Middle Name" type="text" name="fatherMName" formControlName="fatherMName">
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Father's Last Name" type="text" name="fatherLName" formControlName="fatherLName">            
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Father's Last Name" type="text" name="fatherLName" formControlName="fatherLName">
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Mother's First Name" type="text" name="motherFName" formControlName="motherFName">            
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Mother's First Name" type="text" name="motherFName" formControlName="motherFName">
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Mother's Middle Name" type="text" name="motherMName" formControlName="motherMName">            
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Mother's Middle Name" type="text" name="motherMName" formControlName="motherMName">
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Mother's Last Name" type="text" name="motherLName" formControlName="motherLName">            
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Mother's Last Name" type="text" name="motherLName" formControlName="motherLName">
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Guardian's First Name" type="text" name="guardianFName" formControlName="guardianFName">            
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Guardian's First Name" type="text" name="guardianFName" formControlName="guardianFName">
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Guardian's Middle Name" type="text" name="guardianMName" formControlName="guardianMName">            
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Guardian's Middle Name" type="text" name="guardianMName" formControlName="guardianMName">
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Guardian's Last Name" type="text" name="guardianLName" formControlName="guardianLName">            
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Guardian's Last Name" type="text" name="guardianLName" formControlName="guardianLName">
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Father's Mobile Number" type="number" name="fatherMobileNo" formControlName="fatherMobileNo">            
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Father's Mobile Number" type="number" name="fatherMobileNo"
+                    formControlName="fatherMobileNo">
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Mother's Mobile Number" type="number" name="motherMobileNo" formControlName="motherMobileNo">            
-                  </mat-form-field>
-              </div> 
-              
-              <div class="col-sm-3">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Guardian's Mobile Number" type="number" name="guardianMobileNo" formControlName="guardianMobileNo">            
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Mother's Mobile Number" type="number" name="motherMobileNo"
+                    formControlName="motherMobileNo">
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Father's Email Id" type="email" name="fatherEmailID" formControlName="fatherEmailID">            
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Guardian's Mobile Number" type="number" name="guardianMobileNo"
+                    formControlName="guardianMobileNo">
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Mother's Email Id" type="email" name="motherEmailID" formControlName="motherEmailID">            
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Father's Email Id" type="email" name="fatherEmailID" formControlName="fatherEmailID">
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Guardian's Email Id" type="email" name="guardianEmailID" formControlName="guardianEmailID">            
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Mother's Email Id" type="email" name="motherEmailID" formControlName="motherEmailID">
+                </mat-form-field>
+              </div>
+
+              <div class="col-sm-3">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Guardian's Email Id" type="email" name="guardianEmailID" formControlName="guardianEmailID">
+                </mat-form-field>
               </div>
             </div>
 
@@ -259,74 +263,75 @@
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field>
-                      <mat-select placeholder="Medium of Instruction" name="mediumOfInstruction" formControlName="mediumOfInstruction">
-                        <mat-option value="english">English</mat-option>
-                        <mat-option value="hindi">Hindi</mat-option>
-                        <mat-option value="bengali">Bengali</mat-option>
-                      </mat-select>
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Medium of Instruction" name="mediumOfInstruction" formControlName="mediumOfInstruction">
+                    <mat-option value="english">English</mat-option>
+                    <mat-option value="hindi">Hindi</mat-option>
+                    <mat-option value="bengali">Bengali</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Admission Number" type="text" name="admissionNo" formControlName="admissionNo">            
-                  </mat-form-field>
-              </div>
-
-
-              <div class="col-sm-3">
-                  <mat-form-field>
-                    <input matInput [matDatepicker]="admissionDate" placeholder="Admission Date" name="admissionDate" formControlName="admissionDate">
-                    <mat-datepicker-toggle matSuffix [for]="admissionDate"></mat-datepicker-toggle>
-                    <mat-datepicker #admissionDate></mat-datepicker>
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Admission Number" type="text" name="admissionNo" formControlName="admissionNo">
+                </mat-form-field>
               </div>
 
 
               <div class="col-sm-3">
-                  <mat-form-field>
-                      <mat-select placeholder="Stream/Group" name="streamID" formControlName="streamID">
-                        <!-- <ng-template ngFor="let stream of selectData.streamList"> -->
-                          <mat-option *ngFor="let stream of streamData" value="{{stream.id}}">{{stream.name}}</mat-option>
-                        <!-- </ng-template>                         -->
-                        <!-- <mat-option value="2">Arts</mat-option>
+                <mat-form-field class="example-full-width">
+                  <input matInput [matDatepicker]="admissionDate" placeholder="Admission Date" name="admissionDate"
+                    formControlName="admissionDate">
+                  <mat-datepicker-toggle matSuffix [for]="admissionDate"></mat-datepicker-toggle>
+                  <mat-datepicker #admissionDate></mat-datepicker>
+                </mat-form-field>
+              </div>
+
+
+              <div class="col-sm-3">
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Stream/Group" name="streamID" formControlName="streamID">
+                    <!-- <ng-template ngFor="let stream of selectData.streamList"> -->
+                    <mat-option *ngFor="let stream of streamData" value="{{stream.id}}">{{stream.name}}</mat-option>
+                    <!-- </ng-template>                         -->
+                    <!-- <mat-option value="2">Arts</mat-option>
                         <mat-option value="3">Commerce</mat-option> -->
-                      </mat-select>
-                  </mat-form-field>
+                  </mat-select>
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field>
-                      <mat-select (change)="getSection($event)" placeholder="Class" name="classID" formControlName="classID">
-                        <mat-option *ngFor="let class of classData" value="{{class.classID}}">{{class.className}}</mat-option>
-                      </mat-select>
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-select (change)="getSection($event)" placeholder="Class" name="classID" formControlName="classID">
+                    <mat-option *ngFor="let class of classData" value="{{class.classID}}">{{class.className}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field>
-                      <mat-select placeholder="Section" name="sectionID" formControlName="sectionID">
-                        <mat-option *ngFor="let section of sectionData" value="{{section.sectionID}}">{{section.sectionName}}</mat-option>
-                      </mat-select>
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Section" name="sectionID" formControlName="sectionID">
+                    <mat-option *ngFor="let section of sectionData" value="{{section.sectionID}}">{{section.sectionName}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field>
-                      <mat-select placeholder="Fee Quota" name="feeQuota" formControlName="feeQuota">
-                        <mat-option value="option 1">Option 1</mat-option>
-                        <mat-option value="option 2">Option 2</mat-option>
-                      </mat-select>
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Fee Quota" name="feeQuota" formControlName="feeQuota">
+                    <mat-option value="option 1">Option 1</mat-option>
+                    <mat-option value="option 2">Option 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
-                  <mat-form-field>
-                      <mat-select placeholder="Bus Route" name="routeID" formControlName="routeID">
-                        <mat-option *ngFor="let route of routeData" value="{{route.routeID}}">{{route.routeName}}</mat-option>
-                      </mat-select>
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Bus Route" name="routeID" formControlName="routeID">
+                    <mat-option *ngFor="let route of routeData" value="{{route.routeID}}">{{route.routeName}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
             </div>
 
@@ -335,7 +340,7 @@
               <div class="col-md-12 mt-4">
                 <div class="form-group">
                   <button class="btn btn-success btn-lg" type="submit">Register</button>
-                  <input type="button" class="btn btn-primary btn-lg" (click)="resetForm()" value="Reset"/>
+                  <input type="button" class="btn btn-primary btn-lg" (click)="resetForm()" value="Reset" />
                 </div>
               </div>
             </div>

@@ -38,7 +38,6 @@ import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
     ])
   ]
 })
-
 export class AddStudentComponent implements OnInit {
   // ./assets/img/pro-pic-placeholder.jpg
   position: any = "top-right";
@@ -93,7 +92,7 @@ export class AddStudentComponent implements OnInit {
     private router: Router,
     private cookie: CookieService,
     private toastyService: ToastyService,
-    private http: HttpClient,
+    private http: HttpClient
   ) {}
 
   ngOnInit() {
@@ -384,48 +383,40 @@ export class AddStudentComponent implements OnInit {
     }
   }
 
-
-
-
   resetForm() {
     this.addStudentForm.reset();
   }
 
-
-
   insSelectDetails() {
     let header = new HttpHeaders();
     header.set("Content-Type", "application/json");
-    
+
     let senddata = {
-      institutionID: this.cookie.get('insID')
+      institutionID: this.cookie.get("insID")
     };
 
     this.http
       .post(
-        "http://13.59.10.105:8080/campusquo_services/api/institution/getInsSpecificSelectDetails",
+        "https://dyumath.in/campusquo_services/api/institution/getInsSpecificSelectDetails",
         senddata
       )
       .map(res => res)
-      .subscribe((data:any) => {
+      .subscribe((data: any) => {
         // console.log(data);
-        this.streamData = data.streamList; 
-        this.classData = data.classList; 
+        this.streamData = data.streamList;
+        this.classData = data.classList;
         this.routeData = data.routeList;
-        // this.sectionData = data.classList.sectionDetails;  
+        // this.sectionData = data.classList.sectionDetails;
         // this.classData.forEach(ele => {
         //   this.sectionData.push(ele.sectionDetails);
-        // });    
+        // });
       });
   }
 
-
-
-
-  getSection(e){
+  getSection(e) {
     // console.log(e);
     this.classData.forEach(ele => {
-      if(ele.classID == e.value){
+      if (ele.classID == e.value) {
         this.sectionData = ele.sectionDetails;
       }
     });
