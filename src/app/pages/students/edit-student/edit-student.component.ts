@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from "../../../_services/auth/auth.service";
 import { CookieService } from "ngx-cookie-service";
 import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
+import { environment } from "../../../../environments/environment";
 
 @Component({
   selector: "app-edit-student",
@@ -16,6 +17,7 @@ import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
   styleUrls: ["./edit-student.component.css"]
 })
 export class EditStudentComponent implements OnInit {
+  position: any = "top-right";
   url = "";
   stdId: any;
   stdRoll: any;
@@ -532,7 +534,7 @@ export class EditStudentComponent implements OnInit {
 
     this.http
       .post(
-        "https://dyumath.in/campusquo_services/api/institution/getInsSpecificSelectDetails",
+        `${environment.apiUrl}institution/getInsSpecificSelectDetails`,
         senddata
       )
       .map(res => res)

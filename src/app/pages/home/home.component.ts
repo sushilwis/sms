@@ -1,6 +1,8 @@
+import { environment } from "./../../../environments/environment";
 import { ScriptLoaderService } from "../../_services/script-loader.service";
 import { Chart } from "chart.js";
 import { CookieService } from "ngx-cookie-service";
+import { AuthService } from "../../_services/auth/auth.service";
 
 import {
   ChangeDetectionStrategy,
@@ -34,23 +36,23 @@ const before = (one: NgbDateStruct, two: NgbDateStruct) =>
   !one || !two
     ? false
     : one.year === two.year
-      ? one.month === two.month
-        ? one.day === two.day
-          ? false
-          : one.day < two.day
-        : one.month < two.month
-      : one.year < two.year;
+    ? one.month === two.month
+      ? one.day === two.day
+        ? false
+        : one.day < two.day
+      : one.month < two.month
+    : one.year < two.year;
 
 const after = (one: NgbDateStruct, two: NgbDateStruct) =>
   !one || !two
     ? false
     : one.year === two.year
-      ? one.month === two.month
-        ? one.day === two.day
-          ? false
-          : one.day > two.day
-        : one.month > two.month
-      : one.year > two.year;
+    ? one.month === two.month
+      ? one.day === two.day
+        ? false
+        : one.day > two.day
+      : one.month > two.month
+    : one.year > two.year;
 
 const now = new Date();
 
@@ -332,7 +334,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     public calendar: NgbCalendar,
     public cpService: ColorPickerService,
     private http: HttpClient,
-    private cookie: CookieService
+    private cookie: CookieService,
+    private authServ: AuthService
   ) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), "d", 10);
@@ -359,6 +362,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.pageDetails();
     this.loadScript();
+    this.authServ.getLogedInUserData();
   }
 
   ngAfterViewInit() {
@@ -560,13 +564,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     // console.log('send data ', senddata);
 
     this.http
-      .post(
-        "https://dyumath.in/campusquo_services/api/admin/getInsSpecDataForIns",
-        senddata
-      )
+      .post(`${environment.apiUrl}admin/getInsSpecDataForIns`, senddata)
       .map(res => res)
       .subscribe(data => {
-        // console.log(data);
+        console.log(data);
         this.stdntbthdy = data["studentBdayList"].length;
         this.eventList = data["eventDetList"].length;
         this.leavCount = data["leaveDetList"].length;

@@ -69,7 +69,8 @@
 
                 <div class="col-sm-3">
                   <mat-form-field>
-                    <input matInput [matDatepicker]="dateOfBirth" placeholder="Date of Birth" name="studentDOB" formControlName="studentDOB">
+                    <input matInput [matDatepicker]="dateOfBirth" placeholder="Date of Birth" name="studentDOB"
+                      formControlName="studentDOB">
                     <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
                     <mat-datepicker #dateOfBirth></mat-datepicker>
                   </mat-form-field>
@@ -77,70 +78,70 @@
 
                 <div class="col-sm-3">
                   <mat-form-field>
-                      <mat-select placeholder="Blood Group" name="bloodGroup" formControlName="bloodGroup">
-                        <mat-option value="b+">B+</mat-option>
-                        <mat-option value="o+">O+</mat-option>
-                      </mat-select>
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3">
-                  <mat-form-field>
-                      <mat-select placeholder="Gender" name="gender" formControlName="gender">
-                        <mat-option value="male">Male</mat-option>
-                        <mat-option value="female">Female</mat-option>
-                      </mat-select>
+                    <mat-select placeholder="Blood Group" name="bloodGroup" formControlName="bloodGroup">
+                      <mat-option value="b+">B+</mat-option>
+                      <mat-option value="o+">O+</mat-option>
+                    </mat-select>
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
                   <mat-form-field>
-                      <mat-select placeholder="Contact Preference" name="preference" formControlName="preference">
-                        <mat-option value="father">Father</mat-option>
-                        <mat-option value="mother">Mother</mat-option>
-                        <mat-option value="guardian">Guardian</mat-option>
-                      </mat-select>
+                    <mat-select placeholder="Gender" name="gender" formControlName="gender">
+                      <mat-option value="male">Male</mat-option>
+                      <mat-option value="female">Female</mat-option>
+                    </mat-select>
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
                   <mat-form-field>
-                      <mat-select placeholder="Religion" name="religion" formControlName="religion">
-                        <mat-option value="hindu">Hindu</mat-option>
-                        <mat-option value="muslim">Muslim</mat-option>
-                        <mat-option value="christian">Christian</mat-option>
-                        <mat-option value="sikh">Sikh</mat-option>
-                        <mat-option value="buddhist">Buddhist</mat-option>
-                        <mat-option value="jain">Jain</mat-option>
-                        <mat-option value="other religion">Other Religion</mat-option>
-                      </mat-select>
+                    <mat-select placeholder="Contact Preference" name="preference" formControlName="preference">
+                      <mat-option value="father">Father</mat-option>
+                      <mat-option value="mother">Mother</mat-option>
+                      <mat-option value="guardian">Guardian</mat-option>
+                    </mat-select>
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
                   <mat-form-field>
-                      <mat-select placeholder="Caste" name="caste" formControlName="caste">
-                        <mat-option value="general">General</mat-option>
-                        <mat-option value="sc">SC</mat-option>
-                        <mat-option value="st">ST</mat-option>
-                        <mat-option value="obc">OBC</mat-option>
-                      </mat-select>
+                    <mat-select placeholder="Religion" name="religion" formControlName="religion">
+                      <mat-option value="hindu">Hindu</mat-option>
+                      <mat-option value="muslim">Muslim</mat-option>
+                      <mat-option value="christian">Christian</mat-option>
+                      <mat-option value="sikh">Sikh</mat-option>
+                      <mat-option value="buddhist">Buddhist</mat-option>
+                      <mat-option value="jain">Jain</mat-option>
+                      <mat-option value="other religion">Other Religion</mat-option>
+                    </mat-select>
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
                   <mat-form-field>
-                      <mat-select placeholder="Indian" name="nationality" formControlName="nationality">
-                        <mat-option value="indian">Indian</mat-option>
-                      </mat-select>
+                    <mat-select placeholder="Caste" name="caste" formControlName="caste">
+                      <mat-option value="general">General</mat-option>
+                      <mat-option value="sc">SC</mat-option>
+                      <mat-option value="st">ST</mat-option>
+                      <mat-option value="obc">OBC</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3">
+                  <mat-form-field>
+                    <mat-select placeholder="Indian" name="nationality" formControlName="nationality">
+                      <mat-option value="indian">Indian</mat-option>
+                    </mat-select>
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-12">
                   <div class="custom-file">
-                      <input type="file" class="custom-file-input" name="studentProfPicEncoded" formControlName="studentProfPicEncoded"
+                    <input type="file" class="custom-file-input" name="studentProfPicEncoded" formControlName="studentProfPicEncoded"
                       (change)="onSelectFile($event)" accept="image/*">
-                      <label class="custom-file-label" for="customFile">Choose Picture</label>
+                    <label class="custom-file-label" for="customFile">Choose Picture</label>
                   </div>
                 </div>
 
@@ -148,7 +149,7 @@
                   <div>
                     <img [src]="url" class="img-thumbnail w-75" alt="profile-picture" />
                   </div>
-                </div>          
+                </div>
               </div>
 
               <br />
@@ -160,94 +161,100 @@
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Father's First Name" type="text" name="fatherFName" formControlName="fatherFName">            
+                    <input matInput placeholder="Father's First Name" type="text" name="fatherFName" formControlName="fatherFName">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
-                    <mat-form-field class="example-full-width">
-                      <input matInput placeholder="Father's Middle Name" type="text" name="fatherMName" formControlName="fatherMName">            
-                    </mat-form-field>
-                </div>
-
-                <div class="col-sm-3">
-                    <mat-form-field class="example-full-width">
-                      <input matInput placeholder="Father's Last Name" type="text" name="fatherLName" formControlName="fatherLName">            
-                    </mat-form-field>
-                </div>
-
-                <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Mother's First Name" type="text" name="motherFName" formControlName="motherFName">            
+                    <input matInput placeholder="Father's Middle Name" type="text" name="fatherMName" formControlName="fatherMName">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
-                    <mat-form-field class="example-full-width">
-                      <input matInput placeholder="Mother's Middle Name" type="text" name="motherMName" formControlName="motherMName">            
-                    </mat-form-field>
-                </div>
-
-                <div class="col-sm-3">
-                    <mat-form-field class="example-full-width">
-                      <input matInput placeholder="Mother's Last Name" type="text" name="motherLName" formControlName="motherLName">            
-                    </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Father's Last Name" type="text" name="fatherLName" formControlName="fatherLName">
+                  </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Guardian's First Name" type="text" name="guardianFName" formControlName="guardianFName">            
+                    <input matInput placeholder="Mother's First Name" type="text" name="motherFName" formControlName="motherFName">
                   </mat-form-field>
-              </div>
+                </div>
 
-              <div class="col-sm-3">
+                <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Guardian's Middle Name" type="text" name="guardianMName" formControlName="guardianMName">            
+                    <input matInput placeholder="Mother's Middle Name" type="text" name="motherMName" formControlName="motherMName">
                   </mat-form-field>
-              </div>
+                </div>
 
-              <div class="col-sm-3">
+                <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Guardian's Last Name" type="text" name="guardianLName" formControlName="guardianLName">            
+                    <input matInput placeholder="Mother's Last Name" type="text" name="motherLName" formControlName="motherLName">
                   </mat-form-field>
-              </div>
-                
-              <div class="col-sm-3">
-                <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Father's Mobile Number" type="number" name="fatherMobileNo" formControlName="fatherMobileNo">            
-                </mat-form-field>
-              </div>
+                </div>
 
-              <div class="col-sm-3">
+                <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Mother's Mobile Number" type="number" name="motherMobileNo" formControlName="motherMobileNo">            
+                    <input matInput placeholder="Guardian's First Name" type="text" name="guardianFName"
+                      formControlName="guardianFName">
                   </mat-form-field>
-              </div> 
-              
-              <div class="col-sm-3">
+                </div>
+
+                <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Guardian's Mobile Number" type="number" name="guardianMobileNo" formControlName="guardianMobileNo">            
+                    <input matInput placeholder="Guardian's Middle Name" type="text" name="guardianMName"
+                      formControlName="guardianMName">
                   </mat-form-field>
-              </div>
+                </div>
 
-              <div class="col-sm-3">
-                <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Father's Email Id" type="email" name="fatherEmailID" formControlName="fatherEmailID">            
-                </mat-form-field>
-            </div>
+                <div class="col-sm-3">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Guardian's Last Name" type="text" name="guardianLName" formControlName="guardianLName">
+                  </mat-form-field>
+                </div>
 
-            <div class="col-sm-3">
-                <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Mother's Email Id" type="email" name="motherEmailID" formControlName="motherEmailID">            
-                </mat-form-field>
-            </div>
+                <div class="col-sm-3">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Father's Mobile Number" type="number" name="fatherMobileNo"
+                      formControlName="fatherMobileNo">
+                  </mat-form-field>
+                </div>
 
-            <div class="col-sm-3">
-                <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Guardian's Email Id" type="email" name="guardianEmailID" formControlName="guardianEmailID">            
-                </mat-form-field>
-            </div>              
-                
+                <div class="col-sm-3">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Mother's Mobile Number" type="number" name="motherMobileNo"
+                      formControlName="motherMobileNo">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Guardian's Mobile Number" type="number" name="guardianMobileNo"
+                      formControlName="guardianMobileNo">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Father's Email Id" type="email" name="fatherEmailID" formControlName="fatherEmailID">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Mother's Email Id" type="email" name="motherEmailID" formControlName="motherEmailID">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Guardian's Email Id" type="email" name="guardianEmailID"
+                      formControlName="guardianEmailID">
+                  </mat-form-field>
+                </div>
+
               </div>
 
               <br />
@@ -259,23 +266,24 @@
 
                 <div class="col-sm-3">
                   <mat-form-field>
-                      <mat-select placeholder="Medium of Instruction" name="mediumOfInstruction" formControlName="mediumOfInstruction">
-                        <mat-option value="english">English</mat-option>
-                        <mat-option value="hindi">Hindi</mat-option>
-                        <mat-option value="bengali">Bengali</mat-option>
-                      </mat-select>
+                    <mat-select placeholder="Medium of Instruction" name="mediumOfInstruction" formControlName="mediumOfInstruction">
+                      <mat-option value="english">English</mat-option>
+                      <mat-option value="hindi">Hindi</mat-option>
+                      <mat-option value="bengali">Bengali</mat-option>
+                    </mat-select>
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Admission Number" type="text" name="admissionNo" formControlName="admissionNo">            
+                    <input matInput placeholder="Admission Number" type="text" name="admissionNo" formControlName="admissionNo">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
                   <mat-form-field>
-                    <input matInput [matDatepicker]="admissionDate" placeholder="Admission Date" name="admissionDate" formControlName="admissionDate">
+                    <input matInput [matDatepicker]="admissionDate" placeholder="Admission Date" name="admissionDate"
+                      formControlName="admissionDate">
                     <mat-datepicker-toggle matSuffix [for]="admissionDate"></mat-datepicker-toggle>
                     <mat-datepicker #admissionDate></mat-datepicker>
                   </mat-form-field>
@@ -283,43 +291,43 @@
 
                 <div class="col-sm-3">
                   <mat-form-field>
-                      <mat-select placeholder="Stream/Group" name="streamID" formControlName="streamID">
-                        <mat-option *ngFor="let stream of streamData" value="{{stream.id}}">{{stream.name}}</mat-option>
-                      </mat-select>
+                    <mat-select placeholder="Stream/Group" name="streamID" formControlName="streamID">
+                      <mat-option *ngFor="let stream of streamData" value="{{stream.id}}">{{stream.name}}</mat-option>
+                    </mat-select>
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
-                    <mat-form-field>
-                        <mat-select (change)="getSection($event)" placeholder="Class" name="classID" formControlName="classID">
-                          <mat-option *ngFor="let class of classData" value="{{class.classID}}">{{class.className}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                  <mat-form-field>
+                    <mat-select (change)="getSection($event)" placeholder="Class" name="classID" formControlName="classID">
+                      <mat-option *ngFor="let class of classData" value="{{class.classID}}">{{class.className}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
 
 
                 <div class="col-sm-3">
                   <mat-form-field>
-                      <mat-select placeholder="Section" name="sectionID" formControlName="sectionID">
-                        <mat-option *ngFor="let section of sectionData" value="{{section.sectionID}}">{{section.sectionName}}</mat-option>
-                      </mat-select>
+                    <mat-select placeholder="Section" name="sectionID" formControlName="sectionID">
+                      <mat-option *ngFor="let section of sectionData" value="{{section.sectionID}}">{{section.sectionName}}</mat-option>
+                    </mat-select>
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
-                    <mat-form-field>
-                        <mat-select placeholder="Fee Quota" name="feeQuota" formControlName="feeQuota">
-                          <mat-option value="option 1">Option 1</mat-option>
-                          <mat-option value="option 2">Option 2</mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                  <mat-form-field>
+                    <mat-select placeholder="Fee Quota" name="feeQuota" formControlName="feeQuota">
+                      <mat-option value="option 1">Option 1</mat-option>
+                      <mat-option value="option 2">Option 2</mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
                   <mat-form-field>
-                      <mat-select placeholder="Bus Route" name="routeID" formControlName="routeID">
-                        <mat-option *ngFor="let route of routeData" value="{{route.routeID}}">{{route.routeName}}</mat-option>
-                      </mat-select>
+                    <mat-select placeholder="Bus Route" name="routeID" formControlName="routeID">
+                      <mat-option *ngFor="let route of routeData" value="{{route.routeID}}">{{route.routeName}}</mat-option>
+                    </mat-select>
                   </mat-form-field>
                 </div>
 
@@ -369,67 +377,78 @@
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Name" name="previousInsName" formControlName="previousInsName" value="{{stdProfileDetailsData?.previousInsName}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Type" name="previousInsType" formControlName="previousInsType" value="{{stdProfileDetailsData?.previousInsType}}">
+                    <input matInput type="text" placeholder="Name" name="previousInsName" formControlName="previousInsName"
+                      value="{{stdProfileDetailsData?.previousInsName}}">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Affiliation" name="previousInsAffiliation" formControlName="previousInsAffiliation" value="{{stdProfileDetailsData?.previousInsAffiliation}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Address" name="previousInsAddress" formControlName="previousInsAddress" value="{{stdProfileDetailsData?.previousInsAddress}}">
+                    <input matInput type="text" placeholder="Type" name="previousInsType" formControlName="previousInsType"
+                      value="{{stdProfileDetailsData?.previousInsType}}">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="City" name="previousInsCity" formControlName="previousInsCity" value="{{stdProfileDetailsData?.previousInsCity}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Taluk" name="previousInsTaluk" formControlName="previousInsTaluk" value="{{stdProfileDetailsData?.previousInsTaluk}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="District" name="previousInsDistrict" formControlName="previousInsDistrict" value="{{stdProfileDetailsData?.previousInsDistrict}}">
+                    <input matInput type="text" placeholder="Affiliation" name="previousInsAffiliation" formControlName="previousInsAffiliation"
+                      value="{{stdProfileDetailsData?.previousInsAffiliation}}">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="State" name="previousInsState" formControlName="previousInsState" value="{{stdProfileDetailsData?.previousInsState}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="number" placeholder="Pin" name="previousInsPin" formControlName="previousInsPin" value="{{stdProfileDetailsData?.previousInsPin}}">
+                    <input matInput type="text" placeholder="Address" name="previousInsAddress" formControlName="previousInsAddress"
+                      value="{{stdProfileDetailsData?.previousInsAddress}}">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="TC No." name="previousTCNo" formControlName="previousTCNo" value="{{stdProfileDetailsData?.previousTCNo}}">
+                    <input matInput type="text" placeholder="City" name="previousInsCity" formControlName="previousInsCity"
+                      value="{{stdProfileDetailsData?.previousInsCity}}">
                   </mat-form-field>
                 </div>
-  
+
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput [matDatepicker]="previousTCDate" placeholder="TC Date" name="previousTCDate" formControlName="previousTCDate" value="{{stdProfileDetailsData?.previousTCDate}}">
+                    <input matInput type="text" placeholder="Taluk" name="previousInsTaluk" formControlName="previousInsTaluk"
+                      value="{{stdProfileDetailsData?.previousInsTaluk}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="District" name="previousInsDistrict" formControlName="previousInsDistrict"
+                      value="{{stdProfileDetailsData?.previousInsDistrict}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="State" name="previousInsState" formControlName="previousInsState"
+                      value="{{stdProfileDetailsData?.previousInsState}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="number" placeholder="Pin" name="previousInsPin" formControlName="previousInsPin"
+                      value="{{stdProfileDetailsData?.previousInsPin}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="TC No." name="previousTCNo" formControlName="previousTCNo"
+                      value="{{stdProfileDetailsData?.previousTCNo}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [matDatepicker]="previousTCDate" placeholder="TC Date" name="previousTCDate"
+                      formControlName="previousTCDate" value="{{stdProfileDetailsData?.previousTCDate}}">
                     <mat-datepicker-toggle matSuffix [for]="previousTCDate"></mat-datepicker-toggle>
                     <mat-datepicker #previousTCDate></mat-datepicker>
                   </mat-form-field>
@@ -445,43 +464,50 @@
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Name" name="emergencyContactName" formControlName="emergencyContactName" value="{{stdProfileDetailsData?.emergencyContactName}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Mobile" name="emergencyContactMobile" formControlName="emergencyContactMobile" value="{{stdProfileDetailsData?.emergencyContactMobile}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Address" name="emergencyContactAddress" formControlName="emergencyContactAddress" value="{{stdProfileDetailsData?.emergencyContactAddress}}">
+                    <input matInput type="text" placeholder="Name" name="emergencyContactName" formControlName="emergencyContactName"
+                      value="{{stdProfileDetailsData?.emergencyContactName}}">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Father Occupation" name="fatherOccupation" formControlName="fatherOccupation" value="{{stdProfileDetailsData?.fatherOccupation}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Mother Occupation" name="motherOccupation" formControlName="motherOccupation" value="{{stdProfileDetailsData?.motherOccupation}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Guardian Occupation" name="guardianOccupation" formControlName="guardianOccupation" value="{{stdProfileDetailsData?.guardianOccupation}}">
+                    <input matInput type="text" placeholder="Mobile" name="emergencyContactMobile" formControlName="emergencyContactMobile"
+                      value="{{stdProfileDetailsData?.emergencyContactMobile}}">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Relationship" name="emergencyContactRelationship" formControlName="emergencyContactRelationship" value="{{stdProfileDetailsData?.emergencyContactRelationship}}">
+                    <input matInput type="text" placeholder="Address" name="emergencyContactAddress" formControlName="emergencyContactAddress"
+                      value="{{stdProfileDetailsData?.emergencyContactAddress}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Father Occupation" name="fatherOccupation" formControlName="fatherOccupation"
+                      value="{{stdProfileDetailsData?.fatherOccupation}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Mother Occupation" name="motherOccupation" formControlName="motherOccupation"
+                      value="{{stdProfileDetailsData?.motherOccupation}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Guardian Occupation" name="guardianOccupation"
+                      formControlName="guardianOccupation" value="{{stdProfileDetailsData?.guardianOccupation}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Relationship" name="emergencyContactRelationship"
+                      formControlName="emergencyContactRelationship" value="{{stdProfileDetailsData?.emergencyContactRelationship}}">
                   </mat-form-field>
                 </div>
               </div>
@@ -495,55 +521,64 @@
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Address 1" name="permanentAddress1" formControlName="permanentAddress1" value="{{stdProfileDetailsData?.permanentAddress1}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Address 2" name="permanentAddress2" formControlName="permanentAddress2" value="{{stdProfileDetailsData?.permanentAddress2}}">
+                    <input matInput type="text" placeholder="Address 1" name="permanentAddress1" formControlName="permanentAddress1"
+                      value="{{stdProfileDetailsData?.permanentAddress1}}">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="number" placeholder="Phone" name="permanentAddressPhNo" formControlName="permanentAddressPhNo" value="{{stdProfileDetailsData?.permanentAddressPhNo}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="City" name="permanentAddressCity" formControlName="permanentAddressCity" value="{{stdProfileDetailsData?.permanentAddressCity}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Taluk" name="permanentAddressTaluk" formControlName="permanentAddressTaluk" value="{{stdProfileDetailsData?.permanentAddressTaluk}}">
+                    <input matInput type="text" placeholder="Address 2" name="permanentAddress2" formControlName="permanentAddress2"
+                      value="{{stdProfileDetailsData?.permanentAddress2}}">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="District" name="permanentAddressDistrict" formControlName="permanentAddressDistrict" value="{{stdProfileDetailsData?.permanentAddressDistrict}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Country" name="permanentAddressCountry" formControlName="permanentAddressCountry" value="{{stdProfileDetailsData?.permanentAddressCountry}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="State" name="permanentAddressState" formControlName="permanentAddressState" value="{{stdProfileDetailsData?.permanentAddressState}}">
+                    <input matInput type="number" placeholder="Phone" name="permanentAddressPhNo" formControlName="permanentAddressPhNo"
+                      value="{{stdProfileDetailsData?.permanentAddressPhNo}}">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="number" placeholder="Pin" name="permanentAddressPin" formControlName="permanentAddressPin" value="{{stdProfileDetailsData?.permanentAddressPin}}">
+                    <input matInput type="text" placeholder="City" name="permanentAddressCity" formControlName="permanentAddressCity"
+                      value="{{stdProfileDetailsData?.permanentAddressCity}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Taluk" name="permanentAddressTaluk" formControlName="permanentAddressTaluk"
+                      value="{{stdProfileDetailsData?.permanentAddressTaluk}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="District" name="permanentAddressDistrict" formControlName="permanentAddressDistrict"
+                      value="{{stdProfileDetailsData?.permanentAddressDistrict}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Country" name="permanentAddressCountry" formControlName="permanentAddressCountry"
+                      value="{{stdProfileDetailsData?.permanentAddressCountry}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="State" name="permanentAddressState" formControlName="permanentAddressState"
+                      value="{{stdProfileDetailsData?.permanentAddressState}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="number" placeholder="Pin" name="permanentAddressPin" formControlName="permanentAddressPin"
+                      value="{{stdProfileDetailsData?.permanentAddressPin}}">
                   </mat-form-field>
                 </div>
               </div>
@@ -555,55 +590,64 @@
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Address 1" name="tempAddress1" formControlName="tempAddress1" value="{{stdProfileDetailsData?.tempAddress1}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Address 2" name="tempAddress2" formControlName="tempAddress2" value="{{stdProfileDetailsData?.tempAddress2}}">
+                    <input matInput type="text" placeholder="Address 1" name="tempAddress1" formControlName="tempAddress1"
+                      value="{{stdProfileDetailsData?.tempAddress1}}">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Phone" name="tempAddressPhNo" formControlName="tempAddressPhNo" value="{{stdProfileDetailsData?.tempAddressPhNo}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Taluk" name="tempAddressTaluk" formControlName="tempAddressTaluk" value="{{stdProfileDetailsData?.tempAddressTaluk}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="City" name="tempAddressCity" formControlName="tempAddressCity" value="{{stdProfileDetailsData?.tempAddressCity}}">
+                    <input matInput type="text" placeholder="Address 2" name="tempAddress2" formControlName="tempAddress2"
+                      value="{{stdProfileDetailsData?.tempAddress2}}">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="District" name="tempAddressDistrict" formControlName="tempAddressDistrict" value="{{stdProfileDetailsData?.tempAddressDistrict}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="State" name="tempAddressState" formControlName="tempAddressState" value="{{stdProfileDetailsData?.tempAddressState}}">
-                  </mat-form-field>
-                </div>
-  
-                <div class="col-sm-3 pr-4 pl-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Country" name="tempAddressCountry" formControlName="tempAddressCountry" value="{{stdProfileDetailsData?.tempAddressCountry}}">
+                    <input matInput type="text" placeholder="Phone" name="tempAddressPhNo" formControlName="tempAddressPhNo"
+                      value="{{stdProfileDetailsData?.tempAddressPhNo}}">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="number" placeholder="Pin" name="tempAddressPin" formControlName="tempAddressPin" value="{{stdProfileDetailsData?.tempAddressPin}}">
+                    <input matInput type="text" placeholder="Taluk" name="tempAddressTaluk" formControlName="tempAddressTaluk"
+                      value="{{stdProfileDetailsData?.tempAddressTaluk}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="City" name="tempAddressCity" formControlName="tempAddressCity"
+                      value="{{stdProfileDetailsData?.tempAddressCity}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="District" name="tempAddressDistrict" formControlName="tempAddressDistrict"
+                      value="{{stdProfileDetailsData?.tempAddressDistrict}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="State" name="tempAddressState" formControlName="tempAddressState"
+                      value="{{stdProfileDetailsData?.tempAddressState}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Country" name="tempAddressCountry" formControlName="tempAddressCountry"
+                      value="{{stdProfileDetailsData?.tempAddressCountry}}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-sm-3 pr-4 pl-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="number" placeholder="Pin" name="tempAddressPin" formControlName="tempAddressPin"
+                      value="{{stdProfileDetailsData?.tempAddressPin}}">
                   </mat-form-field>
                 </div>
               </div>
@@ -617,16 +661,18 @@
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="number" placeholder="Father Aadhar No." name="fatherAadharNo" formControlName="fatherAadharNo" value="{{stdProfileDetailsData?.fatherAadharNo}}">
+                    <input matInput type="number" placeholder="Father Aadhar No." name="fatherAadharNo" formControlName="fatherAadharNo"
+                      value="{{stdProfileDetailsData?.fatherAadharNo}}">
                   </mat-form-field>
                 </div>
-  
+
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="number" placeholder="Mother Aadhar No." name="motherAadharNo" formControlName="motherAadharNo" value="{{stdProfileDetailsData?.motherAadharNo}}">
+                    <input matInput type="number" placeholder="Mother Aadhar No." name="motherAadharNo" formControlName="motherAadharNo"
+                      value="{{stdProfileDetailsData?.motherAadharNo}}">
                   </mat-form-field>
                 </div>
-  
+
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
                     <mat-select placeholder="Father Caste" name="fatherCaste" formControlName="fatherCaste" value="{{stdProfileDetailsData?.fatherCaste}}">
@@ -648,7 +694,7 @@
                     </mat-select>
                   </mat-form-field>
                 </div>
-  
+
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
                     <mat-select placeholder="BPL Status" name="bplStatus" formControlName="bplStatus" value="{{stdProfileDetailsData?.bplStatus}}">
@@ -663,7 +709,7 @@
                     <input matInput type="number" placeholder="BPL Number" name="bplNo" formControlName="bplNo" value="{{stdProfileDetailsData?.bplNo}}">
                   </mat-form-field>
                 </div>
-  
+
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
                     <mat-select placeholder="Mother Tongue" name="motherTongue" formControlName="motherTongue" value="{{stdProfileDetailsData?.motherTongue}}">
@@ -684,19 +730,22 @@
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Bank Name" name="bankName" formControlName="bankName" value="{{stdProfileDetailsData?.bankName}}">
+                    <input matInput type="text" placeholder="Bank Name" name="bankName" formControlName="bankName"
+                      value="{{stdProfileDetailsData?.bankName}}">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Bank IFSC" name="bankIFSCCode" formControlName="bankIFSCCode" value="{{stdProfileDetailsData?.bankIFSCCode}}">
+                    <input matInput type="text" placeholder="Bank IFSC" name="bankIFSCCode" formControlName="bankIFSCCode"
+                      value="{{stdProfileDetailsData?.bankIFSCCode}}">
                   </mat-form-field>
                 </div>
-  
+
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Bank Account No" name="bankAccNo" formControlName="bankAccNo" value="{{stdProfileDetailsData?.bankAccNo}}">
+                    <input matInput type="text" placeholder="Bank Account No" name="bankAccNo" formControlName="bankAccNo"
+                      value="{{stdProfileDetailsData?.bankAccNo}}">
                   </mat-form-field>
                 </div>
               </div>
@@ -709,7 +758,8 @@
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <mat-select placeholder="Sponsorship Request" name="sponsorshipReq" formControlName="sponsorshipReq" value="{{stdProfileDetailsData?.sponsorshipReq}}">
+                    <mat-select placeholder="Sponsorship Request" name="sponsorshipReq" formControlName="sponsorshipReq"
+                      value="{{stdProfileDetailsData?.sponsorshipReq}}">
                       <mat-option value="yes">YES</mat-option>
                       <mat-option value="no">NO</mat-option>
                     </mat-select>
@@ -722,7 +772,7 @@
                       formControlName="identificationMark1" value="{{stdProfileDetailsData?.identificationMark1}}">
                   </mat-form-field>
                 </div>
-  
+
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
                     <input matInput type="text" placeholder="Identification Mark 2" name="identificationMark2"
@@ -738,10 +788,11 @@
                     </mat-select>
                   </mat-form-field>
                 </div>
-  
+
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Special Category" name="specialCategory" formControlName="specialCategory" value="{{stdProfileDetailsData?.specialCategory}}">
+                    <input matInput type="text" placeholder="Special Category" name="specialCategory" formControlName="specialCategory"
+                      value="{{stdProfileDetailsData?.specialCategory}}">
                   </mat-form-field>
                 </div>
               </div>
@@ -765,3 +816,6 @@
     </div>
   </div>
 </div>
+
+
+<ng2-toasty [position]="position"></ng2-toasty>

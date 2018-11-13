@@ -1,3 +1,4 @@
+import { environment } from "./../../../../environments/environment";
 import {
   Component,
   OnInit,
@@ -195,7 +196,7 @@ export class StudentListComponent implements OnInit {
     req.responseType = "json";
     req.open(
       "POST",
-      `https://dyumath.in/campusquo_services/api/student_profile/getStudentDetailsForFilters`,
+      `${environment.apiUrl}student_profile/getStudentDetailsForFilters`,
       true
     );
 

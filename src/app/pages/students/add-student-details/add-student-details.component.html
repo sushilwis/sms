@@ -14,7 +14,7 @@
         </div>
 
         <div class="ibox-body">
-          <form id="add-student-form" [formGroup]="addStudentDetailsForm" (ngSubmit)="onAddStudentDetailsSubmit()">
+          <form id="add-student-detail-form" [formGroup]="addStudentDetailsForm" (ngSubmit)="onAddStudentDetailsSubmit()">
             <div class="row student-info">
               <div class="col-md-12 mb-3">
                 <h6 class="h6 font-weight-bold sub-heading">Previous Institution Information</h6>
@@ -428,3 +428,6 @@
     </div>
   </div>
 </div>
+
+
+<ng2-toasty [position]="position"></ng2-toasty>

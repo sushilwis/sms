@@ -1,3 +1,4 @@
+import { environment } from "./../../../environments/environment";
 import { Injectable } from "@angular/core";
 import { HttpHeaders, HttpRequest } from "@angular/common/http";
 import { HttpClient } from "@angular/common/http";
@@ -15,11 +16,9 @@ export class AuthService {
     let header = new HttpHeaders();
     header.set("Content-Type", "application/json");
     return this.http
-      .post(
-        "https://dyumath.in/campusquo_services/api/users/userLogin",
-        userCredential,
-        { headers: header }
-      )
+      .post(`${environment.apiUrl}users/userLogin`, userCredential, {
+        headers: header
+      })
       .map(res => {
         return res;
       });
@@ -29,11 +28,9 @@ export class AuthService {
     let header = new HttpHeaders();
     header.set("Content-Type", "application/json");
     return this.http
-      .post(
-        "https://dyumath.in/campusquo_services/api/admin/addStudent",
-        newStudentData,
-        { headers: header }
-      )
+      .post(`${environment.apiUrl}admin/addStudent`, newStudentData, {
+        headers: header
+      })
       .map(res => {
         return res;
       });
@@ -44,7 +41,7 @@ export class AuthService {
     header.set("Content-Type", "application/json");
     return this.http
       .post(
-        "https://dyumath.in/campusquo_services/api/student_profile/updateStudentDetails",
+        `${environment.apiUrl}student_profile/updateStudentDetails`,
         updateStudentData,
         { headers: header }
       )
@@ -58,7 +55,7 @@ export class AuthService {
     header.set("Content-Type", "application/json");
     return this.http
       .post(
-        "https://dyumath.in/campusquo_services/api/admin/addStudentProfileDetails",
+        `${environment.apiUrl}admin/addStudentProfileDetails`,
         otherStudentDetails,
         { headers: header }
       )
@@ -73,7 +70,7 @@ export class AuthService {
     header.set("Content-Type", "application/json");
     return this.http
       .post(
-        "https://dyumath.in/campusquo_services/api/student_profile/updateStudentProfileDetails",
+        `${environment.apiUrl}student_profile/updateStudentProfileDetails`,
         studentProfileDetails,
         { headers: header }
       )
@@ -87,7 +84,7 @@ export class AuthService {
     header.set("Content-Type", "application/json");
     return this.http
       .post(
-        "https://dyumath.in/campusquo_services/api/student_profile/getStudentDetailsForFilters",
+        `${environment.apiUrl}student_profile/getStudentDetailsForFilters`,
         filterData,
         { headers: header }
       )
@@ -101,7 +98,7 @@ export class AuthService {
     header.set("Content-Type", "application/json");
     return this.http
       .post(
-        "https://dyumath.in/campusquo_services/api/student_profile/updateStudentDetails",
+        `${environment.apiUrl}student_profile/updateStudentDetails`,
         studentInfoForDelete,
         { headers: header }
       )
@@ -115,7 +112,7 @@ export class AuthService {
     header.set("Content-Type", "application/json");
     return this.http
       .post(
-        "https://dyumath.in/campusquo_services/api/student_profile/updateStudentProfileDetails",
+        `${environment.apiUrl}student_profile/updateStudentProfileDetails`,
         studentProfileInfoForDelete,
         { headers: header }
       )
@@ -126,5 +123,18 @@ export class AuthService {
 
   isAuthenticated() {
     return this.cookie.get("sessionId");
+  }
+
+  getLogedInUserData() {
+    let data = {
+      sessionId: this.cookie.get("sessionId"),
+      fName: this.cookie.get("fName"),
+      uID: this.cookie.get("uID"),
+      uName: this.cookie.get("uName"),
+      URole: this.cookie.get("uRole"),
+      insID: this.cookie.get("insID")
+    };
+
+    console.log(data);
   }
 }

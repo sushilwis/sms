@@ -1,5 +1,7 @@
+import { environment } from "./../../../../environments/environment";
 import { Component, OnInit, ViewEncapsulation, ViewChild } from "@angular/core";
 import { transition, trigger, style, animate } from "@angular/animations";
+
 import {
   FormGroup,
   FormControl,
@@ -101,6 +103,7 @@ export class AddStudentComponent implements OnInit {
     this.createFormGroup();
     // this.loadScript();
     this.insSelectDetails();
+    this.authServ.getLogedInUserData();
   }
 
   createFormControls() {
@@ -187,7 +190,7 @@ export class AddStudentComponent implements OnInit {
     // console.log("from add student.");
     var addStudentData = this.addStudentForm.value;
 
-    addStudentData.institutionID = "1";
+    addStudentData.institutionID = this.cookie.get("insID");
     addStudentData.subscriptionID = "1";
     addStudentData.studentProfPicEncoded = this.url;
 
@@ -199,7 +202,7 @@ export class AddStudentComponent implements OnInit {
       data: data
     };
 
-    // console.log(stdData);
+    console.log(stdData);
 
     this.authServ.addStudent(stdData).subscribe((res: any) => {
       // console.log(res);
@@ -397,7 +400,7 @@ export class AddStudentComponent implements OnInit {
 
     this.http
       .post(
-        "https://dyumath.in/campusquo_services/api/institution/getInsSpecificSelectDetails",
+        `${environment.apiUrl}institution/getInsSpecificSelectDetails`,
         senddata
       )
       .map(res => res)
