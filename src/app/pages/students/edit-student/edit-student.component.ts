@@ -10,6 +10,7 @@ import { AuthService } from "../../../_services/auth/auth.service";
 import { CookieService } from "ngx-cookie-service";
 import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
 import { environment } from "../../../../environments/environment";
+import { Ng2ImgMaxService } from 'ng2-img-max';
 
 @Component({
   selector: "app-edit-student",

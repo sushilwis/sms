@@ -140,7 +140,7 @@
 
               <div class="col-sm-3">
                 <div>
-                  <img [src]="url" class="img-thumbnail w-75" alt="profile-picture" />
+                  <img *ngIf="url" [src]="sanitizer.bypassSecurityTrustUrl(url)" class="img-thumbnail w-75" alt="profile-picture" />
                 </div>
               </div>
 

@@ -189,6 +189,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       actions: this.actions
     }
   ];
+
   leavCount: number;
   stdntbthdy: number;
   userBdayList: number;
@@ -567,7 +568,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       .post(`${environment.apiUrl}admin/getInsSpecDataForIns`, senddata)
       .map(res => res)
       .subscribe(data => {
-        console.log(data);
+        // console.log(data);
         this.stdntbthdy = data["studentBdayList"].length;
         this.eventList = data["eventDetList"].length;
         this.leavCount = data["leaveDetList"].length;

@@ -208,8 +208,8 @@ export class AddStudentDetailsComponent implements OnInit {
     var addStudentDetailsData = this.addStudentDetailsForm.value;
 
     let regStdDetails = JSON.parse(localStorage.getItem("regStd"));
-    // let regStdDetails = localStorage.getItem("regStd");
-    // console.log('student ID : ', regStdDetails.studentID);
+    console.log(regStdDetails);
+        
     addStudentDetailsData.studentID = regStdDetails.studentID;
     addStudentDetailsData.createdBy = "1";
     addStudentDetailsData.specialCategory = [];
