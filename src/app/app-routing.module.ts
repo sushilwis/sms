@@ -111,7 +111,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     CommonModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {useHash: true}),
     FormsModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
