@@ -208,10 +208,10 @@ export class AddStudentDetailsComponent implements OnInit {
     var addStudentDetailsData = this.addStudentDetailsForm.value;
 
     let regStdDetails = JSON.parse(localStorage.getItem("regStd"));
-    console.log(regStdDetails);
-        
+    // console.log(regStdDetails);
+
     addStudentDetailsData.studentID = regStdDetails.studentID;
-    addStudentDetailsData.createdBy = "1";
+    addStudentDetailsData.createdBy = regStdDetails.uID;
     addStudentDetailsData.specialCategory = [];
     addStudentDetailsData.disability = [];
     // addStudentData.subscriptionID = "1";
@@ -231,7 +231,7 @@ export class AddStudentDetailsComponent implements OnInit {
       if (res.success) {
         // console.log('response data : ', res);
         // localStorage.setItem('regStd', JSON.stringify(res.studentList[0]));
-        this.router.navigate(["/students/list"]);
+        this.router.navigate(["/students/add"]);
       } else {
         this.router.navigate(["/students/addDetails"]);
       }

@@ -41,9 +41,11 @@
       "../node_modules/amcharts3/amcharts/plugins/export/export.css",
       "../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.min.js"
     ],
+
     "scripts": [
       "../node_modules/jquery/dist/jquery.min.js",
       "../node_modules/popper.js/dist/umd/popper.min.js",
+      "../node_modules/hammerjs/hammer.min.js",
       "../node_modules/bootstrap/dist/js/bootstrap.min.js",
       "../node_modules/metismenu/dist/metisMenu.min.js",
       "../node_modules/jquery-slimscroll/jquery.slimscroll.min.js",
@@ -113,7 +115,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "component": {}
   }
 }

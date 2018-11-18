@@ -9,7 +9,7 @@ import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { ColorPickerModule } from "ngx-color-picker";
 import { BrowserXhr } from "@angular/http";
 import { SweetAlert2Module } from "@toverux/ngx-sweetalert2";
-import { Ng2ImgMaxModule } from 'ng2-img-max';
+import { Ng2ImgMaxModule } from "ng2-img-max";
 // import {ToastyModule} from 'ng2-toasty';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
@@ -21,6 +21,7 @@ import {
   MatDatepickerModule,
   MatNativeDateModule
 } from "@angular/material";
+// import { MDBBootstrapModule } from "angular-bootstrap-md";
 
 import { AppComponent } from ".//app.component";
 import { AppRoutingModule } from ".//app-routing.module";
@@ -73,6 +74,7 @@ import { EditStudentDetailsComponent } from "./pages/students/edit-student-detai
     MatDatepickerModule,
     MatNativeDateModule,
     Ng2ImgMaxModule
+    // MDBBootstrapModule.forRoot()
   ],
 
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],

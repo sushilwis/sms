@@ -1,8 +1,8 @@
 import { environment } from "./../../../../environments/environment";
 import { Component, OnInit, ViewEncapsulation, ViewChild } from "@angular/core";
 import { transition, trigger, style, animate } from "@angular/animations";
-import { Ng2ImgMaxService } from 'ng2-img-max';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Ng2ImgMaxService } from "ng2-img-max";
+import { DomSanitizer } from "@angular/platform-browser";
 
 import {
   FormGroup,
@@ -270,11 +270,10 @@ export class AddStudentComponent implements OnInit {
   // No subscriptions left for the institution
 
   onSelectFile(e) {
-    var image = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];    
+    var image = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     var pattern = /image-*/;
 
     if (!image.type.match(pattern)) {
-
       this.addToast({
         title: "FAIL!",
         msg: "Invalid Format.",
@@ -288,19 +287,19 @@ export class AddStudentComponent implements OnInit {
     } else {
       this.ng2ImgMax.resizeImage(image, 500, 10000).subscribe(
         resizeImage => {
-          // this.uploadedImage = new File([resizeImage], resizeImage.name); 
           // this.uploadedImage = new File([resizeImage], resizeImage.name);
-          this.ng2ImgMax.compressImage(resizeImage, 0.100).subscribe(
+          // this.uploadedImage = new File([resizeImage], resizeImage.name);
+          this.ng2ImgMax.compressImage(resizeImage, 0.1).subscribe(
             result => {
               this.uploadedImage = new File([result], result.name);
               this.getImagePreview(this.uploadedImage);
               this.addToast({
-                        title: "SUCCESS!",
-                        msg: "Image Uploaded Successfully.",
-                        timeout: 6000,
-                        theme: "default",
-                        position: "top-right",
-                        type: "success"
+                title: "SUCCESS!",
+                msg: "Image Uploaded Successfully.",
+                timeout: 6000,
+                theme: "default",
+                position: "top-right",
+                type: "success"
               });
 
               console.log(this.uploadedImage);
@@ -317,8 +316,8 @@ export class AddStudentComponent implements OnInit {
             }
           );
 
-          // this.getImagePreview(this.uploadedImage); 
-          // console.log(this.uploadedImage);                    
+          // this.getImagePreview(this.uploadedImage);
+          // console.log(this.uploadedImage);
         },
         error => {
           this.addToast({
@@ -337,7 +336,6 @@ export class AddStudentComponent implements OnInit {
     // reader.readAsDataURL(this.uploadedImage);
     // console.log(this.uploadedImage);
   }
-
 
   getImagePreview(file: File) {
     const reader: FileReader = new FileReader();
@@ -360,23 +358,23 @@ export class AddStudentComponent implements OnInit {
 
   //   img.onload = () => {
   //     console.log("before : ", img.width);
-      // var isUploaded = false;
-      
-      // this.ng2ImgMax.resizeImage(img, 600, 600).subscribe(
-      //   resizeImage => {
-      //     img = resizeImage;          
-      //   },
-      //   error => {
-      //     this.addToast({
-      //       title: "FAIL!",
-      //       msg: "Sorry, Something went wrong. Try again.",
-      //       timeout: 6000,
-      //       theme: "default",
-      //       position: "top-right",
-      //       type: "error"
-      //     });
-      //   }
-      // );
+  // var isUploaded = false;
+
+  // this.ng2ImgMax.resizeImage(img, 600, 600).subscribe(
+  //   resizeImage => {
+  //     img = resizeImage;
+  //   },
+  //   error => {
+  //     this.addToast({
+  //       title: "FAIL!",
+  //       msg: "Sorry, Something went wrong. Try again.",
+  //       timeout: 6000,
+  //       theme: "default",
+  //       position: "top-right",
+  //       type: "error"
+  //     });
+  //   }
+  // );
 
   //     if (img.width > 600 && img.height > 600) {
 
@@ -404,8 +402,6 @@ export class AddStudentComponent implements OnInit {
   //     }
   //   };
   // }
-
-
 
   addToast(options): any {
     if (options.closeOther) {
