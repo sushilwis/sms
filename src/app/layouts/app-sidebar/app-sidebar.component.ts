@@ -11,7 +11,9 @@ import {
   templateUrl: "./app-sidebar.component.html"
 })
 export class AppSidebar implements OnInit, AfterViewInit {
+  
   @ViewChild("enrollment", { read: ElementRef }) item: ElementRef;
+
   ngOnInit() {}
 
   ngAfterViewInit() {}

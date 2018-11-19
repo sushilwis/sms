@@ -72,6 +72,9 @@ export class StudentListComponent implements OnInit {
   ) {
     this.fetch(data => {
       this.allStd = data.data;
+
+      // console.log(this.allStd); 
+
       var shortStdArr = [];
       this.allStd.forEach(std => {
         let stdInfo = {
@@ -217,9 +220,11 @@ export class StudentListComponent implements OnInit {
     };
 
     let stdData = {
-      institutionID: this.cookie.get("insID")
+      institutionID: this.cookie.get("insID"),
     };
 
+
+    console.log(stdData);
     req.send(JSON.stringify(stdData));
   }
 
@@ -246,7 +251,7 @@ export class StudentListComponent implements OnInit {
 
 
 
-  
+
 
   // updateFilter(event) {
   //   const val = event.target.value.toLowerCase();
@@ -502,5 +507,7 @@ export class StudentListComponent implements OnInit {
 
 
 
-
+  exportAsXLSX():void {
+    this.authServ.exportAsExcelFile(this.allStd, 'student-list');
+  }
 }

@@ -33,7 +33,7 @@ export class AppHeader implements OnInit, AfterViewInit {
 
   userLogout() {
     let asd = this.cookie.delete("sessionId");
-    console.log(asd);
+    // console.log(asd);
 
     if (
       this.cookie.get("sessionId") == null ||

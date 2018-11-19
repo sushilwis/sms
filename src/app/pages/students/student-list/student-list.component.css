@@ -1,3 +1,11 @@
+.example-full-width {
+  width: 95%;
+}
+
+.cursor-point{
+  cursor: pointer;
+}
+
 .refresh-icon {
   font-size: 9.2px;
 }
