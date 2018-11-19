@@ -14,6 +14,7 @@ import { CookieService } from "ngx-cookie-service";
 import { transition, trigger, style, animate } from "@angular/animations";
 import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
 import swal from "sweetalert2";
+// import { CookieService } from "ngx-cookie-service";
 
 @Component({
   selector: "app-student-list",
@@ -39,6 +40,8 @@ import swal from "sweetalert2";
     ])
   ]
 })
+
+
 export class StudentListComponent implements OnInit {
   temp = [];
   rowsFilter = [];
@@ -64,7 +67,8 @@ export class StudentListComponent implements OnInit {
     private authServ: AuthService,
     private router: Router,
     private cookie: CookieService,
-    private toastyService: ToastyService
+    private toastyService: ToastyService,
+    // private cookie: CookieService
   ) {
     this.fetch(data => {
       this.allStd = data.data;
@@ -190,6 +194,12 @@ export class StudentListComponent implements OnInit {
   //   // console.log('Stored Cookie value : ',this.cookie.get( 'sessionId'));
   // }
 
+
+
+
+
+
+
   fetch(cb) {
     const req = new XMLHttpRequest();
 
@@ -207,21 +217,36 @@ export class StudentListComponent implements OnInit {
     };
 
     let stdData = {
-      institutionID: 1
+      institutionID: this.cookie.get("insID")
     };
 
     req.send(JSON.stringify(stdData));
   }
+
+
+
+
+
+
 
   goToStdView(stdId) {
     // console.log(stdId);
     this.router.navigate([`/students/viewDetail/${stdId}`]);
   }
 
+
+
+
+
+
   goToEditStd(stdId) {
     // console.log(stdId);
     this.router.navigate([`/students/edit/${stdId}`]);
   }
+
+
+
+  
 
   // updateFilter(event) {
   //   const val = event.target.value.toLowerCase();
@@ -236,6 +261,12 @@ export class StudentListComponent implements OnInit {
   //   // Whenever the filter changes, always go back to the first page
   //   this.table.offset = 0;
   // }
+
+
+
+
+
+
 
   updateRollFilter(event) {
     const val = event.target.value.toLowerCase();
@@ -285,6 +316,12 @@ export class StudentListComponent implements OnInit {
     }
   }
 
+
+
+
+
+
+
   updateSectionFilter(event) {
     const val = event.target.value.toLowerCase();
     // console.log("Typed value ", val);
@@ -330,6 +367,12 @@ export class StudentListComponent implements OnInit {
     }
   }
 
+
+
+
+
+
+
   openConfirmsSwal(studentID) {
     swal({
       title: "Are you sure want to delete?",
@@ -347,6 +390,11 @@ export class StudentListComponent implements OnInit {
       }
     });
   }
+
+
+
+
+
 
   deleteStudent(studentID) {
     // console.log("Enter to delete student. id : ", studentID);
@@ -427,6 +475,10 @@ export class StudentListComponent implements OnInit {
       });
   }
 
+
+
+
+
   addToast(options) {
     if (options.closeOther) {
       this.toastyService.clearAll();
@@ -446,4 +498,9 @@ export class StudentListComponent implements OnInit {
       }
     };
   }
+
+
+
+
+
 }
