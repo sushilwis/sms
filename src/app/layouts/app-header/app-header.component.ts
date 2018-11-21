@@ -104,15 +104,18 @@ export class AppHeader implements OnInit, AfterViewInit {
 
     // if(this.currentIdValue == id){
       var elem = <HTMLLIElement>document.getElementById(id);    
-      console.log(elem.classList.value);
-      console.log(typeof elem.classList);
+      // console.log(elem.classList.value.toString());
+      // console.log(JSON.stringify(elem.classList));
+      // console.log(typeof elem.classList);
   
       if(elem.getAttribute('data-hasSub') == "true"){
         console.log('match');
+        console.log(elem);
         // console.log(elem.parentElement.children);
 
         Array.from(elem.parentElement.children).forEach((el)=>{
-          if(el.classList.value != ""){
+          let list = el.classList;
+          if(list.value != ""){
             el.classList.remove('active');
             el.children[1].classList.remove('in');
           }          
@@ -127,7 +130,8 @@ export class AppHeader implements OnInit, AfterViewInit {
         // console.log(elem.parentElement.parentElement); 
         
         Array.from(elem.parentElement.parentElement.parentElement.children).forEach((el)=>{
-          if(el.classList.value != ""){
+          let list = (<HTMLElement>el).classList;
+          if(list.value != ""){
             el.classList.remove('active');
             el.children[1].classList.remove('in');
           }          
@@ -136,7 +140,7 @@ export class AppHeader implements OnInit, AfterViewInit {
         elem.parentElement.parentElement.classList.add('active');
         elem.parentElement.parentElement.children[1].classList.add('in');
         // console.log(elem.children[0]);        
-        elem.children[0].classList.add('text-warning');
+        elem.children[0].classList.add('text-warning font-weight-bold');
       }
     
     

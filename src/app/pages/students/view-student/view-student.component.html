@@ -25,11 +25,17 @@
                   <div class="col-md-9">                 
                      
                     <div class="row">
-                        <div class="col-md-10">
+                        <div class="col-md-8">
                             <h5 class="h5 mb-2">About Me</h5>
                         </div>
-                        <div class="col-md-2 text-secondary">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="goToEditStd(stdDetailsData.studentID)"></i>
+                        <div class="col-md-4 text-secondary">
+                            <span>
+                              <a [routerLink]="['/students/list']" class="text-secondary">
+                                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                                Go Back
+                              </a>                              
+                            </span>
+                            <i class="fa fa-pencil-square-o ml-3" aria-hidden="true" (click)="goToEditStd(stdDetailsData.studentID)"></i>
                             <i class="fa fa-print ml-2" aria-hidden="true"></i>
                             <i class="fa fa-download ml-2" aria-hidden="true"></i>  
                         </div>
