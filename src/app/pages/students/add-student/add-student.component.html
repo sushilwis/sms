@@ -152,9 +152,9 @@
                             <div class="btn btn-default image-preview-input">
                               <span class="glyphicon glyphicon-folder-open"></span>
                               <span class="image-preview-input-title">Browse</span>
-                              <input type="file" accept="image/png, image/jpeg, image/gif" class="custom-file-input"
+                              <input type="file" class="custom-file-input"
                                 name="studentProfPicEncoded" formControlName="studentProfPicEncoded" (change)="onSelectFile($event)"
-                                accept="image/*" />
+                                accept="image/*"/>
                               <!-- rename it -->
                             </div>
                           </span>
@@ -168,10 +168,11 @@
 
               <div class="col-sm-3">
                 <div class="mt-2">
-                  <img *ngIf="url" [src]="sanitizer.bypassSecurityTrustUrl(url)" class="img-thumbnail w-75" alt="profile-picture" />
+                  <img *ngIf="url" [src]="sanitizer.bypassSecurityTrustUrl(url)" class="img-thumbnail w-75" alt="profile-picture"/>
                 </div>
               </div>
 
+              <!-- sanitizer.bypassSecurityTrustUrl(url) -->
               <!-- <div class="col-sm-3 form-group">
                         <label>Select Academic *</label>
                         <select class="form-control" name="">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../_services/auth/auth.service';
+import { CookieService } from "ngx-cookie-service";
 
 @Component({
   selector: 'app-view-student',
@@ -12,21 +13,25 @@ export class ViewStudentComponent implements OnInit {
   url: string = '';
   stdId: any;
   stdDetailsData: any;
+  showMoreBtnText: any;
+  showDetailsPart: boolean;
   
   constructor(
     private actRoute: ActivatedRoute, 
     private router: Router,
+    private cookie: CookieService,
     private authServ: AuthService) { }
 
   ngOnInit() {
     this.url = './assets/img/pro-pic-placeholder.jpg';
 
     this.actRoute.params.subscribe(data => {
-      // console.log(data);
       this.stdId = data.id;
     });
 
     this.getStdDetails();
+    this.showMoreBtnText = "Show More";
+    this.showDetailsPart = false;
   }
 
 
@@ -34,15 +39,20 @@ export class ViewStudentComponent implements OnInit {
   getStdDetails ()
   {
     let stdData = {
-      "institutionID":1,
-      "studentID": this.stdId
+      institutionID: this.cookie.get("insID"),
+      studentID: this.stdId
     }
 
     this.authServ.getStudentDetailsForFilters(stdData).subscribe((res:any) => {
       if(res.success){
-        // console.log(res.data[0]);
+        console.log(res.data[0]);
         this.stdDetailsData = res.data[0];
-        this.url = res.data[0].studentProfPicPath;
+
+        if(res.data[0].studentProfPicPath){
+          this.url = res.data[0].studentProfPicPath;
+        }else{
+          this.url = './assets/img/pro-pic-placeholder.jpg';
+        }        
       }else{
         // this.router.navigate(['/students/add']);
       }
@@ -55,6 +65,20 @@ export class ViewStudentComponent implements OnInit {
   goToEditStd(stdId) {
     // console.log(stdId);
     this.router.navigate([`/students/edit/${stdId}`]);
+  }
+
+
+
+
+  onClickShowMore(e){
+    console.log(e.target.innerText);
+    if(e.target.innerText == "Show More"){
+      this.showMoreBtnText = "Show Less";
+      this.showDetailsPart = true;
+    }else{
+      this.showMoreBtnText = "Show More";
+      this.showDetailsPart = false;
+    }    
   }
 
 

@@ -137,11 +137,47 @@
                   </mat-form-field>
                 </div>
 
-                <div class="col-sm-12">
+                <!-- <div class="col-sm-12">
                   <div class="custom-file">
                     <input type="file" class="custom-file-input" name="studentProfPicEncoded" formControlName="studentProfPicEncoded"
                       (change)="onSelectFile($event)" accept="image/*">
                     <label class="custom-file-label" for="customFile">Choose Picture</label>
+                  </div>
+                </div> -->
+
+                <div class="col-sm-12">
+                  <div class="custom-file">
+                    <!-- <input type="file" class="custom-file-input" name="studentProfPicEncoded" formControlName="studentProfPicEncoded"
+                      (change)="onSelectFile($event)" accept="image/*">
+                    <label class="custom-file-label" for="customFile">Choose Picture</label> -->
+  
+                    <div class="container p-0">
+                      <div class="row no-gutters">
+                        <div class="col-sm-12">
+                          <!-- image-preview-filename input [CUT FROM HERE]-->
+                          <div class="input-group image-preview">
+                            <input type="text" class="form-control image-preview-filename" disabled="disabled">
+                            <!-- don't give a name === doesn't send on POST/GET -->
+                            <span class="input-group-btn">
+                              <!-- image-preview-clear button -->
+                              <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                <span class="glyphicon glyphicon-remove"></span> Clear
+                              </button>
+                              <!-- image-preview-input -->
+                              <div class="btn btn-default image-preview-input">
+                                <span class="glyphicon glyphicon-folder-open"></span>
+                                <span class="image-preview-input-title">Browse</span>
+                                <input type="file" class="custom-file-input"
+                                  name="studentProfPicEncoded" formControlName="studentProfPicEncoded" (change)="onSelectFile($event)"
+                                  accept="image/*"/>
+                                <!-- rename it -->
+                              </div>
+                            </span>
+                          </div><!-- /input-group image-preview [TO HERE]-->
+                        </div>
+                      </div>
+                    </div>
+  
                   </div>
                 </div>
 
@@ -337,7 +373,7 @@
               <div class="row">
                 <div class="col-md-12 mt-4">
                   <div class="form-group">
-                    <button class="btn btn-success" type="submit">Update</button>
+                    <button class="btn btn-success btn-lg" type="submit">Update</button>
                     <!-- <button class="btn btn-primary">Reset</button> -->
                   </div>
                 </div>

@@ -17,6 +17,8 @@ export class AppHeader implements OnInit, AfterViewInit {
   menuArr: any = [];
   matchItem: any;
   className: any;
+  currentIdValue: any;
+  previousValue: any;
 
   @ViewChild("enrollment", { read: ElementRef }) item: ElementRef;
 
@@ -61,7 +63,7 @@ export class AppHeader implements OnInit, AfterViewInit {
 
     this.menuArr = [
       "enrollment",
-      "etudent admission",
+      "student admission",
       "bulk upload",
       "registration",
       "enquery",
@@ -91,16 +93,52 @@ export class AppHeader implements OnInit, AfterViewInit {
       }
     }
 
-    // console.log(this.matchItem);
+    console.log(this.matchItem);
     this.selectMenuItemFromSideMenu(this.matchItem);
   }
 
   selectMenuItemFromSideMenu(id) {
-    var elem = document.getElementById(id);
-    // console.log(elem.childNodes[3].attributes[3].value);
-    // elem.childNodes[3].className = "nav-2-level collapse";
-    // elem.childNodes[3].attributes[3].value = "false";
-    console.log(this.item.nativeElement);
-    // this.item.nativeElement.childNodes[3].className = "nav-2-level collapse in";
+
+    this.currentIdValue = id;
+    // this.previousValue = this.currentIdValue;
+
+    // if(this.currentIdValue == id){
+      var elem = <HTMLLIElement>document.getElementById(id);    
+      console.log(elem.classList.value);
+      console.log(typeof elem.classList);
+  
+      if(elem.getAttribute('data-hasSub') == "true"){
+        console.log('match');
+        // console.log(elem.parentElement.children);
+
+        Array.from(elem.parentElement.children).forEach((el)=>{
+          if(el.classList.value != ""){
+            el.classList.remove('active');
+            el.children[1].classList.remove('in');
+          }          
+        });
+
+        elem.classList.add('active');
+        elem.children[1].classList.add('in');
+      }
+
+      if(elem.getAttribute('data-hasSub') == "sub"){
+        // console.log('match sub');
+        // console.log(elem.parentElement.parentElement); 
+        
+        Array.from(elem.parentElement.parentElement.parentElement.children).forEach((el)=>{
+          if(el.classList.value != ""){
+            el.classList.remove('active');
+            el.children[1].classList.remove('in');
+          }          
+        });
+
+        elem.parentElement.parentElement.classList.add('active');
+        elem.parentElement.parentElement.children[1].classList.add('in');
+        // console.log(elem.children[0]);        
+        elem.children[0].classList.add('text-warning');
+      }
+    
+    
   }
 }

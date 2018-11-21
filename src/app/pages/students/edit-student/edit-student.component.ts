@@ -18,6 +18,7 @@ import { Ng2ImgMaxService } from 'ng2-img-max';
   styleUrls: ["./edit-student.component.css"]
 })
 export class EditStudentComponent implements OnInit {
+
   position: any = "top-right";
   url = "";
   stdId: any;
@@ -257,7 +258,7 @@ export class EditStudentComponent implements OnInit {
     this.authServ.updateStudent(editStudentData).subscribe((res: any) => {
       // console.log(res);
       if (res.success) {
-        this.router.navigate([`students/editDetails/${this.stdId}`]);
+        this.router.navigate([`students/viewDetail/${this.stdId}`]);
       } else {
         this.router.navigate([`students/edit/${this.stdId}`]);
       }
@@ -280,6 +281,8 @@ export class EditStudentComponent implements OnInit {
     reader.onload = this._handleReaderLoaded.bind(this);
     reader.readAsDataURL(file);
   }
+
+  
 
   _handleReaderLoaded(e) {
     let reader = e.target;
@@ -325,22 +328,29 @@ export class EditStudentComponent implements OnInit {
       sectionID: std.sectionID,
       feeQuota: std.feeQuota,
       routeID: std.routeDetails.routeID,
-      studentProfPicEncoded: ""
+      studentProfPicEncoded: this.url
     });
   }
 
   // get Student details function
   getStdDetails() {
     let stdData = {
-      institutionID: 1,
+      institutionID: this.cookie.get("insID"),
       studentID: this.stdId
     };
 
     this.authServ.getStudentDetailsForFilters(stdData).subscribe((res: any) => {
       // console.log(res.data[0]);
       if (res.success) {
+
         this.stdDetailsData = res.data[0];
-        this.url = res.data[0].studentProfPicPath;
+
+        if(res.data[0].studentProfPicPath){
+          this.url = res.data[0].studentProfPicPath;
+        }else{
+          this.url = "./assets/img/pro-pic-placeholder.jpg";
+        }
+        
         this.stdRoll = res.data[0].rollNo;
 
         this.setFormValue(this.stdDetailsData);

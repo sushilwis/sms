@@ -17,7 +17,7 @@
   <div class="tab-content" id="nav-tabContent">
     <div id="menu1" class="tab-pane show active" role="tabpanel" aria-labelledby="menu1-tab"><br>
       <ul class="side-menu metismenu">
-        <li routerLinkActive="active" id="enrollment" #enrollment>
+        <li routerLinkActive="active" id="enrollment" data-hasSub='true' #enrollment>
           <a href="javascript:;">
             <i class="sidebar-item-icon ti-save"></i>
             <span class="nav-label">Enrollment</span>
@@ -25,7 +25,7 @@
           </a>
           <ul class="nav-2-level collapse" routerLinkActive="in">
 
-            <li id="student-admission" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li id="student-admission" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <a [routerLink]="['/students/add']">
                 <span class="submenu-arrow">
                   <i class="ti-angle-right"></i>
@@ -34,7 +34,7 @@
               </a>
             </li>
 
-            <li id="bulk-upload" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li id="bulk-upload" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <a class="text-secondary">
                 <span class="submenu-arrow">
                   <i class="ti-angle-right"></i>
@@ -43,13 +43,13 @@
               </a>
             </li>
 
-            <li id="registration" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li id="registration" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <a class="text-secondary"><span class="submenu-arrow">
                   <i class="ti-angle-right"></i></span>User
                 Registration</a>
             </li>
 
-            <li id="enquery" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li id="enquery" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <a class="text-secondary"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>Admission
                 Enquery</a>
             </li>
@@ -57,7 +57,7 @@
           </ul>
         </li>
 
-        <li routerLinkActive="active" id="fee-management">
+        <li routerLinkActive="active" id="fee-management" data-hasSub='true'>
           <a href="javascript:;"><i class="sidebar-item-icon fa fa-edit"></i>
             <span class="nav-label">Fee Management</span><i class="fa fa-angle-right arrow"></i>
           </a>
@@ -71,35 +71,35 @@
           </ul> -->
         </li>
 
-        <li routerLinkActive="active" id="student-management">
+        <li routerLinkActive="active" id="student-management" data-hasSub='true'>
           <a href="javascript:;"><i class="sidebar-item-icon fa fa-table"></i>
             <span class="nav-label">Student Management</span><i class="fa fa-angle-right arrow"></i></a>
           <ul class="nav-2-level" routerLinkActive="in">
 
-            <li id="update-student" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li id="update-student" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <a class="text-secondary"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>Update
                 Student</a>
             </li>
 
-            <li id="view-student" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li id="view-student" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <a [routerLink]="['/students/list']" class="text-secondary"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>
                 View
                 Student</a>
             </li>
 
-            <li id="roll-no-assign" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li id="roll-no-assign" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <a class="text-secondary"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>
                 Roll
                 No Assign</a>
             </li>
 
-            <li id="attandance-report" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li id="attandance-report" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <a class="text-secondary"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>
                 Attandance
                 Report</a>
             </li>
 
-            <li id="view-time-table" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li id="view-time-table" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <a class="text-secondary"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>
                 View
                 Time Table</a>
@@ -107,48 +107,48 @@
 
           </ul>
         </li>
-        <li routerLinkActive="active" id="teacher-activities">
+        <li routerLinkActive="active" id="teacher-activities" data-hasSub='false'>
           <a href="javascript:;"><i class="sidebar-item-icon fa fa-bar-chart"></i>
             <span class="nav-label">Teacher Activities</span><i class="fa fa-angle-right arrow"></i>
           </a>
         </li>
 
-        <li routerLinkActive="active" id="examination-management">
+        <li routerLinkActive="active" id="examination-management" data-hasSub='false'>
           <a href="javascript:;"><i class="sidebar-item-icon fa fa-map"></i>
             <span class="nav-label">Examination Management</span><i class="fa fa-angle-right arrow"></i></a>
         </li>
 
-        <li id="user-managements">
+        <li id="user-managements" data-hasSub='false'>
           <a routerLink="/ui/icons" routerLinkActive="active"><i class="sidebar-item-icon fa fa-smile-o"></i>
             <span class="nav-label">User Managements</span>
           </a>
         </li>
 
-        <li routerLinkActive="active" id="notifications-&-events">
+        <li routerLinkActive="active" id="notifications-&-events" data-hasSub='false'>
           <a href="javascript:;"><i class="sidebar-item-icon fa fa-envelope"></i>
             <span class="nav-label">Notifications & Events</span><i class="fa fa-angle-right arrow"></i>
           </a>
         </li>
 
-        <li id="transport-management">
+        <li id="transport-management" data-hasSub='false'>
           <a routerLink="/calendar" routerLinkActive="active"><i class="sidebar-item-icon fa fa-calendar"></i>
             <span class="nav-label">Transport Management</span>
           </a>
         </li>
 
-        <li routerLinkActive="active" id="finance-management">
+        <li routerLinkActive="active" id="finance-management" data-hasSub='false'>
           <a href="javascript:;"><i class="sidebar-item-icon fa fa-file-text"></i>
             <span class="nav-label">Finance Management</span><i class="fa fa-angle-right arrow"></i>
           </a>
         </li>
 
-        <li id="leave-management">
+        <li id="leave-management" data-hasSub='false'>
           <a href="javascript:;"><i class="sidebar-item-icon fa fa-sitemap"></i>
             <span class="nav-label">Leave Management</span><i class="fa fa-angle-right arrow"></i>
           </a>
         </li>
 
-        <li id="certificates-management">
+        <li id="certificates-management" data-hasSub='false'>
           <a href="javascript:;"><i class="sidebar-item-icon fa fa-sitemap"></i>
             <span class="nav-label">Certificates Management</span><i class="fa fa-angle-right arrow"></i>
           </a>
