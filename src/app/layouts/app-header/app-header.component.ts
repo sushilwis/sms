@@ -13,6 +13,7 @@ import { Router } from "@angular/router";
   templateUrl: "./app-header.component.html"
 })
 export class AppHeader implements OnInit, AfterViewInit {
+  
   userDetails;
   menuArr: any = [];
   matchItem: any;
@@ -58,91 +59,98 @@ export class AppHeader implements OnInit, AfterViewInit {
     // console.log(this.userDetails);
   }
 
-  searchMenu(e) {
-    // console.log("search function called. value ", e.target.value);
+  // searchMenu(e) {
+  //   // console.log("search function called. value ", e.target.value);
 
-    this.menuArr = [
-      "enrollment",
-      "student admission",
-      "bulk upload",
-      "registration",
-      "enquery",
-      "fee management",
-      "student management",
-      "update student",
-      "view student",
-      "roll no assign",
-      "attandance report",
-      "view time table",
-      "teacher activities",
-      "examination management",
-      "user managements",
-      "notifications & events",
-      "transport management",
-      "finance management",
-      "leave management",
-      "certificates management"
-    ];
+  //   this.menuArr = [
+  //     "enrollment",
+  //     "student admission",
+  //     "bulk upload",
+  //     "registration",
+  //     "enquery",
+  //     "fee management",
+  //     "student management",
+  //     "update student",
+  //     "view student",
+  //     "roll no assign",
+  //     "attandance report",
+  //     "view time table",
+  //     "teacher activities",
+  //     "examination management",
+  //     "user managements",
+  //     "notifications & events",
+  //     "transport management",
+  //     "finance management",
+  //     "leave management",
+  //     "certificates management"
+  //   ];
 
-    for (let index = 0; index < this.menuArr.length; index++) {
-      var matchFound = this.menuArr[index].match(e.target.value);
+  //   for (let index = 0; index < this.menuArr.length; index++) {
+  //     var matchFound = this.menuArr[index].match(e.target.value);
 
-      if (matchFound != null) {
-        this.matchItem = matchFound.input.replace(" ", "-");
-        break;
-      }
-    }
+  //     if (matchFound != null) {
+  //       this.matchItem = matchFound.input.replace(" ", "-");
+  //       break;
+  //     }
+  //   }
 
-    console.log(this.matchItem);
-    this.selectMenuItemFromSideMenu(this.matchItem);
-  }
+  //   console.log(this.matchItem);
+  //   this.selectMenuItemFromSideMenu(this.matchItem);
+  // }
 
-  selectMenuItemFromSideMenu(id) {
+  // selectMenuItemFromSideMenu(id) {
 
-    this.currentIdValue = id;
-    // this.previousValue = this.currentIdValue;
+  //   this.currentIdValue = id;
+  //   // this.previousValue = this.currentIdValue;
 
-    // if(this.currentIdValue == id){
-      var elem = <HTMLLIElement>document.getElementById(id);    
-      // console.log(elem.classList.value.toString());
-      // console.log(JSON.stringify(elem.classList));
-      // console.log(typeof elem.classList);
+  //   // if(this.currentIdValue == id){
+  //     var elem = <HTMLLIElement>document.getElementById(id);    
+  //     // console.log(elem.classList.value.toString());
+  //     // console.log(JSON.stringify(elem.classList));
+  //     // console.log(typeof elem.classList);
   
-      if(elem.getAttribute('data-hasSub') == "true"){
-        console.log('match');
-        console.log(elem);
-        // console.log(elem.parentElement.children);
+  //     if(elem.getAttribute('data-hasSub') == "true"){
+  //       console.log('match');
+  //       // console.log(elem);
+  //       // console.log(elem.parentElement.children);
 
-        Array.from(elem.parentElement.children).forEach((el)=>{
-          let list = el.classList;
-          if(list.value != ""){
-            el.classList.remove('active');
-            el.children[1].classList.remove('in');
-          }          
-        });
+  //       Array.from(elem.parentElement.children).forEach((el)=>{
+  //         let list = el as HTMLLIElement;
+  //         console.log(list.classList[0]); 
 
-        elem.classList.add('active');
-        elem.children[1].classList.add('in');
-      }
+  //         if(list.classList[0] != "" || list.classList[0] != undefined){
+  //           // console.log(list.classList);            
+  //           list.classList.remove('active');
+  //           console.log(list.children[1]);
+  //           let childUl = list.children[1] as HTMLUListElement;
+  //           console.log(childUl);
+  //           // childUl.setAttribute('style', 'height: 0px;');
+  //           // childUl.classList.remove('in');
+  //         }  
 
-      if(elem.getAttribute('data-hasSub') == "sub"){
-        // console.log('match sub');
-        // console.log(elem.parentElement.parentElement); 
+  //       });
+
+  //       elem.classList.add('active');
+  //       elem.children[1].classList.add('in');
+  //     }
+
+  //     if(elem.getAttribute('data-hasSub') == "sub"){
+  //       // console.log('match sub');
+  //       // console.log(elem.parentElement.parentElement); 
         
-        Array.from(elem.parentElement.parentElement.parentElement.children).forEach((el)=>{
-          let list = (<HTMLElement>el).classList;
-          if(list.value != ""){
-            el.classList.remove('active');
-            el.children[1].classList.remove('in');
-          }          
-        });
+  //       // Array.from(elem.parentElement.parentElement.parentElement.children).forEach((el)=>{
+  //       //   let list = el as HTMLElement;
+  //       //   console.log(list.classList[0]);
+  //       //   if(list.classList[0] != "" || list.classList[0] != undefined){
+  //       //     el.classList.remove('active');
+  //       //     el.children[1].classList.remove('in');
+  //       //   }          
+  //       // });
 
-        elem.parentElement.parentElement.classList.add('active');
-        elem.parentElement.parentElement.children[1].classList.add('in');
-        // console.log(elem.children[0]);        
-        elem.children[0].classList.add('text-warning font-weight-bold');
-      }
+  //       elem.parentElement.parentElement.classList.add('active');
+  //       elem.parentElement.parentElement.children[1].classList.add('in');        
+  //       elem.children[0].classList.add('text-warning font-weight-bold');
+  //     }
     
-    
-  }
+  // }
 }

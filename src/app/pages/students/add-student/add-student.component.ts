@@ -54,6 +54,7 @@ export class AddStudentComponent implements OnInit {
   routeData: any;
   sectionData: any;
   uploadedImage: File;
+  uploadedImageName: any;
 
   addStudentForm: FormGroup;
   firstName: FormControl;
@@ -274,6 +275,12 @@ export class AddStudentComponent implements OnInit {
 
     var image = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     var pattern = /image-*/;
+    // console.log(image);    
+    let imgNameInput = document.getElementsByClassName("image-preview-filename");
+    let inputEle = Array.from(imgNameInput)[0];
+    let htmlInp = <HTMLInputElement>inputEle;
+    console.log(htmlInp.value); 
+    htmlInp.value = image.name;   
 
     if (!image.type.match(pattern)) {
 
