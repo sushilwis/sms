@@ -528,7 +528,7 @@ export class EditStudentComponent implements OnInit {
     //   data: data
     // };
 
-    // console.log('send data : ', editStudentDetailsData);
+    console.log('send data : ', editStudentDetailsData);
 
     this.authServ
       .updateStudentProfileDetails(editStudentDetailsData)
