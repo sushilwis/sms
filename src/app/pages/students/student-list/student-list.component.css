@@ -73,7 +73,7 @@
 
 #searchRoll,
 #searchSection {
-  width: 120px;
+  width: 150px;
   box-sizing: border-box;
   border-radius: 60px;
   padding-left: 9px;
@@ -91,6 +91,10 @@
 
 .ngx-datatable.material {
   box-shadow: none !important;
+}
+
+.mat-select-trigger{
+  padding: 2.6px !important;
 }
 
 /* .ngx-datatable *,

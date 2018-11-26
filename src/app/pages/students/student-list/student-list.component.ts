@@ -15,6 +15,8 @@ import { transition, trigger, style, animate } from "@angular/animations";
 import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
 import swal from "sweetalert2";
 // import { CookieService } from "ngx-cookie-service";
+import {Helpers} from "../../../helpers";
+import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
 
 @Component({
   selector: "app-student-list",
@@ -26,7 +28,7 @@ import swal from "sweetalert2";
     "../../../../../node_modules/ng2-toasty/style-default.css",
     "../../../../../node_modules/ng2-toasty/style-material.css"
   ],
-  // encapsulation: ViewEncapsulation.None,
+  
   animations: [
     trigger("fadeInOutTranslate", [
       transition(":enter", [
@@ -52,6 +54,13 @@ export class StudentListComponent implements OnInit {
   public sortOrder = "desc";
   allStd: any;
   position: any;
+  stdDetailsData: any;
+  url: string = '';
+  stdId: any;
+  showMoreBtnText: any;
+  showDetailsPart: boolean;
+  showStudentDetailsSection: boolean;
+  classData: any = [];
   // public data: any;
   // public sortOrder = 'desc';
   rows = [
@@ -68,8 +77,10 @@ export class StudentListComponent implements OnInit {
     private router: Router,
     private cookie: CookieService,
     private toastyService: ToastyService,
+    private http: HttpClient,
     // private cookie: CookieService
   ) {
+
     this.fetch(data => {
       this.allStd = data.data;
 
@@ -78,7 +89,7 @@ export class StudentListComponent implements OnInit {
       var shortStdArr = [];
       this.allStd.forEach(std => {
         let stdInfo = {
-          roll: std.rollNo,
+          admissionNo: std.admissionNo,
           photo: std.studentProfPicPath,
           name: std.firstName,
           gender: std.gender,
@@ -101,11 +112,21 @@ export class StudentListComponent implements OnInit {
   }
 
   ngOnInit() {
+    Helpers.setLoading(true);
+    this.url = './assets/img/pro-pic-placeholder.jpg';
+    this.showMoreBtnText = "Show More";
+    this.showDetailsPart = false;
+    this.showStudentDetailsSection = false;
+    this.insSelectDetails();
+    // Helpers.setLoading(true);
     // let regStdDetail = localStorage.getItem('regStd');
     // this.getStudentDetailsForFilters();
   }
 
   ngAfterViewInit() {
+    setTimeout(()=>{
+      Helpers.setLoading(false);
+    }, 3000);    
     // let regStdDetail = localStorage.getItem('regStd');
     // this.getStudentDetailsForFilters();
     // $("#example-table").DataTable({
@@ -224,7 +245,7 @@ export class StudentListComponent implements OnInit {
     };
 
 
-    console.log(stdData);
+    // console.log(stdData);
     req.send(JSON.stringify(stdData));
   }
 
@@ -236,7 +257,40 @@ export class StudentListComponent implements OnInit {
 
   goToStdView(stdId) {
     // console.log(stdId);
-    this.router.navigate([`/students/viewDetail/${stdId}`]);
+    Helpers.setLoading(true);
+    this.showStudentDetailsSection = true;
+    this.stdId = stdId;
+    // this.router.navigate([`/students/viewDetail/${stdId}`]);
+    this.getStdDetails(this.stdId);
+  }
+
+
+
+
+  getStdDetails (id)
+  {
+    let stdData = {
+      institutionID: this.cookie.get("insID"),
+      studentID: id
+    }
+
+    this.authServ.getStudentDetailsForFilters(stdData).subscribe((res:any) => {
+      if(res.success){
+        console.log(res.data[0]);
+        this.stdDetailsData = res.data[0];
+
+        if(res.data[0].studentProfPicPath){
+          this.url = res.data[0].studentProfPicPath;
+        }else{
+          this.url = './assets/img/pro-pic-placeholder.jpg';
+        } 
+        
+        Helpers.setLoading(false);
+      }else{
+        Helpers.setLoading(false);
+        // this.router.navigate(['/students/add']);
+      }
+    });
   }
 
 
@@ -247,6 +301,32 @@ export class StudentListComponent implements OnInit {
   goToEditStd(stdId) {
     // console.log(stdId);
     this.router.navigate([`/students/edit/${stdId}`]);
+  }
+
+
+
+
+
+
+  goBackToList(){
+    this.showStudentDetailsSection = false;
+  }
+
+
+
+
+
+
+
+  onClickShowMore(e){
+    // console.log(e.target.innerText);
+    if(e.target.innerText == "Show More"){
+      this.showMoreBtnText = "Show Less";
+      this.showDetailsPart = true;
+    }else{
+      this.showMoreBtnText = "Show More";
+      this.showDetailsPart = false;
+    }    
   }
 
 
@@ -273,7 +353,7 @@ export class StudentListComponent implements OnInit {
 
 
 
-  updateRollFilter(event) {
+  updateAdmissionNoFilter(event) {
     const val = event.target.value.toLowerCase();
     // console.log("Typed value ", val);
 
@@ -285,7 +365,7 @@ export class StudentListComponent implements OnInit {
         var shortStdArr = [];
         this.allStd.forEach(std => {
           let stdInfo = {
-            roll: std.rollNo,
+            admissionNo: std.admissionNo,
             photo: std.studentProfPicPath,
             name: std.firstName,
             gender: std.gender,
@@ -308,9 +388,8 @@ export class StudentListComponent implements OnInit {
     } else {
       // filter our data
       const temp = this.rows.filter(function(d) {
-        // console.log(d.roll);
-        if (d.roll != null) {
-          return d.roll.toLowerCase().indexOf(val) !== -1 || !val;
+        if (d.admissionNo != null) {
+          return d.admissionNo.toLowerCase().indexOf(val) !== -1 || !val;
         }
       });
 
@@ -327,19 +406,19 @@ export class StudentListComponent implements OnInit {
 
 
 
-  updateSectionFilter(event) {
-    const val = event.target.value.toLowerCase();
-    // console.log("Typed value ", val);
+  updateClassFilter(event) {
+    var val = event.value.toLowerCase();
+    console.log("Typed value ", val);
 
-    if (val == "") {
-      // console.log("sECTION value is blank");
-
+    if (val == "All") {
+      console.log('if called');
+      
       this.fetch(data => {
         this.allStd = data.data;
         var shortStdArr = [];
         this.allStd.forEach(std => {
           let stdInfo = {
-            roll: std.rollNo,
+            admissionNo: std.admissionNo,
             photo: std.studentProfPicPath,
             name: std.firstName,
             gender: std.gender,
@@ -359,10 +438,46 @@ export class StudentListComponent implements OnInit {
         this.rows = shortStdArr;
         // console.log(this.rows);
       });
-    } else {
-      // filter our data
+
       const temp = this.rows.filter(function(d) {
-        return d.section.toLowerCase().indexOf(val) !== -1 || !val;
+        return d.class.toLowerCase().indexOf(val) !== -1 || !val;
+      });
+
+      // update the rows
+      this.rows = temp;
+
+    } else {
+
+      console.log('else called');
+
+      this.fetch(data => {
+        this.allStd = data.data;
+        var shortStdArr = [];
+        this.allStd.forEach(std => {
+          let stdInfo = {
+            admissionNo: std.admissionNo,
+            photo: std.studentProfPicPath,
+            name: std.firstName,
+            gender: std.gender,
+            parentsName: std.fatherFName,
+            class: std.className,
+            section: std.sectionName,
+            address: std.profileDetails.permanentAddress1,
+            dateOfBirth: std.date_of_birth,
+            mobileNo: std.mobileNo,
+            email: std.fatherEmailID,
+            Id: std.studentID
+          };
+
+          shortStdArr.push(stdInfo);
+        });
+
+        this.rows = shortStdArr;
+        // console.log(this.rows);
+      });
+      
+      const temp = this.rows.filter(function(d) {
+        return d.class.toLowerCase().indexOf(val) !== -1 || !val;
       });
 
       // update the rows
@@ -509,5 +624,34 @@ export class StudentListComponent implements OnInit {
 
   exportAsXLSX():void {
     this.authServ.exportAsExcelFile(this.allStd, 'student-list');
+  }
+
+
+
+
+  insSelectDetails() {
+    let header = new HttpHeaders();
+    header.set("Content-Type", "application/json");
+
+    let senddata = {
+      institutionID: this.cookie.get("insID")
+    };
+
+    this.http
+      .post(
+        `${environment.apiUrl}institution/getInsSpecificSelectDetails`,
+        senddata
+      )
+      .map(res => res)
+      .subscribe((data: any) => {
+        // console.log(data);
+        // this.streamData = data.streamList;
+        this.classData = data.classList;
+        // this.routeData = data.routeList;
+        // this.sectionData = data.classList.sectionDetails;
+        // this.classData.forEach(ele => {
+        //   this.sectionData.push(ele.sectionDetails);
+        // });
+      });
   }
 }

@@ -1,4 +1,4 @@
-<div class="page-content fade-in-up">
+<div class="page-content fade-in-up" *ngIf="!showStudentDetailsSection">
   <div class="row">
     <div class="col-md-12">
 
@@ -45,9 +45,17 @@
           <div class="ibox-title">All Students</div>
           <div class="ibox-tools">
 
-            <input type='text' id="searchRoll" placeholder='Type Roll' (keyup)='updateRollFilter($event)' class="ml-3" />
-            <input type='text' id="searchSection" placeholder='Type Section' (keyup)='updateSectionFilter($event)'
-              class="ml-3" />
+            <input type='text' id="searchRoll" placeholder='Type admission No' (keyup)='updateAdmissionNoFilter($event)' class="ml-3" />
+            <!-- <input type='text' id="searchSection" placeholder='Type Class' (keyup)='updateClassFilter($event)'
+              class="ml-3" /> -->
+
+            <!-- <div> -->
+                <mat-form-field class="ml-3 mr-3" style="width: 120px;">
+                  <mat-select placeholder="Select Class" (change)="updateClassFilter($event)">
+                    <mat-option *ngFor="let class of classData" value="{{class.className}}">{{class.className}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+            <!-- </div>   -->
 
             <a class="ibox-collapse">
               <i class="fa fa-refresh mr-1 text-success refresh-icon" aria-hidden="true"></i>
@@ -60,11 +68,11 @@
 
         <div class="ibox-body" style="font-size: 10px;">
 
-          <ngx-datatable class="material striped" [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50"
+          <ngx-datatable class="material striped" [columnMode]="'force'" [scrollbarH]="false" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="50" [scrollbarV]="false" [rows]="rows" [limit]="12">
 
 
-            <ngx-datatable-column [width]="20" [sortable]="false">
+            <!-- <ngx-datatable-column [width]="20" [sortable]="false">
 
               <ng-template class="datatable-checkbox" ngx-datatable-header-template let-value="value"
                 let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
@@ -89,10 +97,10 @@
                   </div>
                 </div>
               </ng-template>
-            </ngx-datatable-column>
+            </ngx-datatable-column> -->
 
 
-            <ngx-datatable-column name="Roll" [width]="70" [sortable]="true"></ngx-datatable-column>
+            <ngx-datatable-column name="Admission No" prop="admissionNo" [width]="100" [sortable]="true"></ngx-datatable-column>
 
             <ngx-datatable-column name="Photo" [width]="90">
               <ng-template let-row="row" ngx-datatable-cell-template>
@@ -113,16 +121,16 @@
 
             <ngx-datatable-column name="Section" [width]="110" [sortable]="true"></ngx-datatable-column>
 
-            <ngx-datatable-column name="Address" prop="address" [canAutoResize]="true" [sortable]="true">
-            </ngx-datatable-column>
+            <!-- <ngx-datatable-column name="Address" prop="address" [canAutoResize]="true" [sortable]="true">
+            </ngx-datatable-column> -->
 
-            <ngx-datatable-column name="Date of Birth" prop="dateOfBirth" [canAutoResize]="true" [sortable]="true">
-            </ngx-datatable-column>
+            <!-- <ngx-datatable-column name="Date of Birth" prop="dateOfBirth" [canAutoResize]="true" [sortable]="true">
+            </ngx-datatable-column> -->
 
             <ngx-datatable-column name="Mobile No" prop="mobileNo" [canAutoResize]="true" [sortable]="true">
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="Email" [canAutoResize]="true" [sortable]="true"></ngx-datatable-column>
+            <!-- <ngx-datatable-column name="Email" [canAutoResize]="true" [sortable]="true"></ngx-datatable-column> -->
 
             <ngx-datatable-column name="Actions" [canAutoResize]="true">
               <ng-template let-row="row" ngx-datatable-cell-template>
@@ -163,3 +171,217 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="page-content fade-in-up" *ngIf="showStudentDetailsSection">
+  <div class="row">
+    <div class="col-md-12">
+
+        <div class="ibox">        
+            <div class="ibox-head">
+              <div class="ibox-title">
+                {{stdDetailsData?.firstName | uppercase}} 
+                {{stdDetailsData?.lastName | uppercase}} DETAILS
+              </div>
+              <div class="ibox-tools">
+                <a class="ibox-collapse">
+                  <i class="fa fa-refresh mr-1 text-success refresh-icon" aria-hidden="true"></i>
+                  <i class="fa fa-times text-danger close-icon" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+  
+            <div class="ibox-body">
+              <div class="row">
+                <div class="col-md-3">                    
+                    <img [src]="url" class="img-thumbnail"
+                      alt="profile-picture"/>                    
+                </div>
+                <div class="col-md-9">                 
+                   
+                  <div class="row">
+                      <div class="col-md-8">
+                          <h5 class="h5 mb-2">About Me</h5>
+                      </div>
+                      <div class="col-md-4 text-secondary">
+                          <span>
+                            <a class="text-secondary" (click)="goBackToList()">
+                              <i class="fa fa-list-alt" aria-hidden="true"></i>
+                              Go Back
+                            </a>                              
+                          </span>
+                          <i class="fa fa-pencil-square-o ml-3" aria-hidden="true" (click)="goToEditStd(stdDetailsData.studentID)"></i>
+                          <i class="fa fa-print ml-2" aria-hidden="true"></i>
+                          <i class="fa fa-download ml-2" aria-hidden="true"></i>  
+                      </div>
+                    <div class="col-md-3 text-muted">
+                        <p class="ts-1 mt-4 mb-1">Student ID : </p>
+                        <p class="ts-1 mt-1 mb-1">Name : </p>
+                        <p class="ts-1 mt-1 mb-1">Gender : </p>
+                        <p class="ts-1 mt-1 mb-1">Father Name : </p>
+                        <p class="ts-1 mt-1 mb-1">Mother Name : </p>
+                        <p class="ts-1 mt-1 mb-1">Date of Birth : </p>
+                        <p class="ts-1 mt-1 mb-1">Religion : </p>
+                        <p class="ts-1 mt-1 mb-1">Father Occupation : </p>
+                        <p class="ts-1 mt-1 mb-1">Email : </p>                          
+                        <p class="ts-1 mt-1 mb-1">Admission Date : </p>
+                        <p class="ts-1 mt-1 mb-1">Class : </p>
+                        <p class="ts-1 mt-1 mb-1">Section : </p>
+                        <p class="ts-1 mt-1 mb-1">Roll : </p>
+                        <p class="ts-1 mt-1 mb-1">Address : </p>
+                        <p class="ts-1 mt-1">Phone : </p>
+                    </div>
+                    <div class="col-md-9">
+                        <p class="ts-1 mt-4 mb-1">{{stdDetailsData?.studentID}}.</p>
+                        <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.firstName}} {{stdDetailsData?.middleName}} {{stdDetailsData?.lastName}}.</p>
+                        <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.gender}}.</p>
+                        <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.fatherFName}} {{stdDetailsData?.fatherMName}} {{stdDetailsData?.fatherLName}}.</p>
+                        <p class="ts-1 mt-1 mb-1">
+                            {{stdDetailsData?.motherFName}} {{stdDetailsData?.motherMName}} {{stdDetailsData?.motherLName}}.
+                        </p>
+                        <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.date_of_birth}}.</p>
+                        <p class="ts-1 mt-1 mb-1">
+                            {{stdDetailsData?.religion}}.
+                        </p>
+                        <p class="ts-1 mt-1 mb-1" *ngIf="stdDetailsData?.profileDetails.fatherOccupation; else elseBlockOccupation">{{stdDetailsData?.profileDetails.fatherOccupation}}.</p>
+
+                        <ng-template #elseBlockOccupation>
+                            <p class="ts-1 mt-1 mb-1">Null</p>
+                        </ng-template>                         
+
+                        <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.fatherEmailID}}.</p>
+                        <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.admissionDate}}.</p>
+                        <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.className}}.</p>
+                        <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.sectionName}}.</p>
+                        <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.rollNo}}.</p>
+
+                        <p class="ts-1 mt-1 mb-1" *ngIf="stdDetailsData?.profileDetails.permanentAddressCity; else elseBlockAddCity">{{stdDetailsData?.profileDetails.permanentAddressCity}}.</p>
+
+                        <ng-template #elseBlockAddCity>
+                            <p class="ts-1 mt-1 mb-1">Null</p>
+                        </ng-template>
+                        
+                        <p class="ts-1 mt-1">{{stdDetailsData?.mobileNo}}.</p>
+                    </div>
+
+                    <div class="col-md-3 text-muted" *ngIf="showDetailsPart">
+                      <p class="ts-1 mt-1 mb-1"> Aadhar No: </p>
+                      <p class="ts-1 mt-1 mb-1"> Blood Group: </p>
+                      <p class="ts-1 mt-1 mb-1"> Contact Preference: </p>
+                      <p class="ts-1 mt-1 mb-1"> Caste: </p>
+                      <p class="ts-1 mt-1 mb-1"> Nationality: </p>
+                      <p class="ts-1 mt-1 mb-1"> Guardian Name: </p>
+                      <p class="ts-1 mt-1 mb-1"> Mother Mobile: </p>
+                      <p class="ts-1 mt-1 mb-1"> Guardian Mobile: </p>
+                      <p class="ts-1 mt-1 mb-1"> Father Email: </p>
+                      <p class="ts-1 mt-1 mb-1"> Mother Email: </p>
+                      <p class="ts-1 mt-1 mb-1"> Guardian Email: </p>
+                      <p class="ts-1 mt-1 mb-1"> Medium of Instruction: </p>
+                      <p class="ts-1 mt-1 mb-1"> Admission No: </p>
+                      <p class="ts-1 mt-1 mb-1"> Stream: </p>
+                      <p class="ts-1 mt-1 mb-1"> Route: </p>
+                      <p class="ts-1 mt-1 mb-1"> Bank Account No: </p>
+                      <p class="ts-1 mt-1 mb-1"> Bank IFSC: </p>
+                      <p class="ts-1 mt-1 mb-1"> Bank Name: </p>
+                      <p class="ts-1 mt-1 mb-1"> BPL Status: </p>
+                      <p class="ts-1 mt-1 mb-1"> BPL No: </p>
+                      <p class="ts-1 mt-1 mb-1"> Disability: </p>
+                      <p class="ts-1 mt-1 mb-1"> Father Aadhar: </p>
+                      <p class="ts-1 mt-1 mb-1"> Father Caste: </p>
+                      <p class="ts-1 mt-1 mb-1"> Father Occupation: </p>
+                      <p class="ts-1 mt-1 mb-1"> Mother Aadhar: </p>
+                      <p class="ts-1 mt-1 mb-1"> Mother Caste: </p>
+                      <p class="ts-1 mt-1 mb-1"> Mother Occupation: </p>
+                      <p class="ts-1 mt-1 mb-1"> Guardian Occupation: </p>
+                      <p class="ts-1 mt-1 mb-1"> Region: </p>
+                      <p class="ts-1 mt-1 mb-1"> Special Category: </p>
+                      <p class="ts-1 mt-1 mb-1"> Sponsorship: </p>
+                      <p class="ts-1 mt-1 mb-1"> Previous Inst Name: </p>
+                      <p class="ts-1 mt-1 mb-1"> Previous Inst Affiliation: </p>
+                      <p class="ts-1 mt-1 mb-1"> Previous Inst TC No: </p>
+                      <p class="ts-1 mt-1 mb-1"> Previous Inst TC Date: </p>
+                      <p class="ts-1 mt-1 mb-1"> Previous Inst Address: </p>
+                      <p class="ts-1 mt-1 mb-1"> Permanent Address: </p>
+                      <p class="ts-1 mt-1 mb-1"> Temporary Address: </p>
+                    </div>
+
+                    <div class="col-md-9" *ngIf="showDetailsPart">
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.aadharNo}}.</p>
+
+                      <p class="ts-1 mt-1 mb-1" *ngIf="stdDetailsData?.bloodGroup; else elseBlockForBloodGroup">{{stdDetailsData?.bloodGroup}}.</p>
+                      <ng-template #elseBlockForBloodGroup>
+                              <p class="ts-1 mt-1 mb-1">Null</p>
+                      </ng-template>
+
+                      <p class="ts-1 mt-1 mb-1" *ngIf="stdDetailsData?.preference; else preference">{{stdDetailsData?.preference}}</p>
+                      <ng-template #preference>
+                              <p class="ts-1 mt-1 mb-1">Null</p>
+                      </ng-template>
+
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.caste}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.nationality}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.guardianFName}} {{stdDetailsData?.guardianMName}} {{stdDetailsData?.guardianLName}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.motherMobileNo}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.guardianMobileNo}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.fatherEmailID}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.motherEmailID}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.guardianEmailID}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.mediumOfInstruction}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.admissionNo}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.streamName}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.routeDetails.routeName}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.bankAccNo}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.bankIFSCCode}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.bankName}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.bplStatus}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.bplNo}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.disability}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.fatherAadharNo}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.fatherCaste}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.fatherOccupation}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.motherAadharNo}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.motherCaste}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.motherOccupation}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.guardianOccupation}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.region}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.specialCategory}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.sponsorshipReq}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.previousInsName}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.previousInsAffiliation}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.previousTCNo}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.previousTCDate}}.</p>
+
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.previousInsAddress}}, {{stdDetailsData?.profileDetails.previousInsTaluk}}, {{stdDetailsData?.profileDetails.previousInsDistrict}}, {{stdDetailsData?.profileDetails.previousInsCity}}, {{stdDetailsData?.profileDetails.previousInsState}}, {{stdDetailsData?.profileDetails.previousInsPin}}.</p>
+
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.permanentAddress1}}, {{stdDetailsData?.profileDetails.permanentAddress2}}, {{stdDetailsData?.profileDetails.permanentAddressCity}}, {{stdDetailsData?.profileDetails.permanentAddressTaluk}}, {{stdDetailsData?.profileDetails.permanentAddressDistrict}}, {{stdDetailsData?.profileDetails.permanentAddressState}}, {{stdDetailsData?.profileDetails.permanentAddressPin}}.</p>
+                      <p class="ts-1 mt-1 mb-1">{{stdDetailsData?.profileDetails.tempAddress1}}, {{stdDetailsData?.profileDetails.tempAddress2}}, {{stdDetailsData?.profileDetails.tempAddressCity}}, {{stdDetailsData?.profileDetails.tempAddressTaluk}}, {{stdDetailsData?.profileDetails.tempAddressDistrict}}, {{stdDetailsData?.profileDetails.tempAddressState}}, {{stdDetailsData?.profileDetails.tempAddressPin}}.</p>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="form-group mt-4">
+                          <button class="btn btn-success btn-sm" type="submit" (click)="onClickShowMore($event)">{{showMoreBtnText}}</button>
+                      </div>
+                    </div>
+                  </div>                                   
+                </div>
+              </div>
+            </div>
+        </div>
+
+    </div>
+  </div>
+</div>  
+
+
+<ng2-toasty [position]="position"></ng2-toasty>

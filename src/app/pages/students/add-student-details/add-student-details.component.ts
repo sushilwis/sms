@@ -8,6 +8,8 @@ import {
 import { Router } from "@angular/router";
 import { AuthService } from "../../../_services/auth/auth.service";
 import { CookieService } from "ngx-cookie-service";
+import {Helpers} from "../../../helpers";
+import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
 
 @Component({
   selector: "app-add-student-details",
@@ -77,7 +79,8 @@ export class AddStudentDetailsComponent implements OnInit {
   constructor(
     private authServ: AuthService,
     private router: Router,
-    private cookie: CookieService
+    private cookie: CookieService,
+    private toastyService: ToastyService,
   ) {}
 
   ngOnInit() {
@@ -204,7 +207,11 @@ export class AddStudentDetailsComponent implements OnInit {
     });
   }
 
+
+  
+
   onAddStudentDetailsSubmit() {
+    Helpers.setLoading(true);
     var addStudentDetailsData = this.addStudentDetailsForm.value;
 
     let regStdDetails = JSON.parse(localStorage.getItem("regStd"));
@@ -229,18 +236,97 @@ export class AddStudentDetailsComponent implements OnInit {
 
     this.authServ.addStudentDetails(stdData).subscribe((res: any) => {
       if (res.success) {
+
+        Helpers.setLoading(false);
         // console.log('response data : ', res);
         // localStorage.setItem('regStd', JSON.stringify(res.studentList[0]));
-        this.router.navigate(["/students/add"]);
+        this.addToast({
+          title: "SUCCESS!",
+          msg: `Student Details Added Successfully.`,
+          timeout: 6000,
+          theme: "default",
+          position: "top-right",
+          type: "success"
+        });
+        
+        setTimeout(()=>{
+          this.router.navigate(["/students/add"]);
+        }, 6000);
       } else {
-        this.router.navigate(["/students/addDetails"]);
+
+        Helpers.setLoading(false);
+
+        this.addToast({
+          title: "FAIL!",
+          msg: `Something Wrong. Please Try Again.`,
+          timeout: 6000,
+          theme: "default",
+          position: "top-right",
+          type: "error"
+        });
+
+        setTimeout(()=>{
+          this.router.navigate(["/students/addDetails"]);
+        }, 6000);
       }
     });
     // console.log('Stored Cookie value : ',this.cookie.get( 'sessionId'));
     this.addStudentDetailsForm.reset();
   }
 
+
+
+
   resetForm() {
     this.addStudentDetailsForm.reset();
+  }
+
+
+
+
+  addToast(options): any {
+
+    if (options.closeOther) {
+      this.toastyService.clearAll();
+    }
+
+    this.position = options.position ? options.position : this.position;
+
+    const toastOptions: ToastOptions = {
+      title: options.title,
+      msg: options.msg,
+      showClose: options.showClose,
+      timeout: options.timeout,
+      theme: options.theme,
+      onAdd: (toast: ToastData) => {
+        /* added */
+      },
+      onRemove: (toast: ToastData) => {
+        /* removed */
+      }
+    };
+
+    // this.toastyService.success(toastOptions);
+
+    switch (options.type) {
+      case "default":
+        this.toastyService.default(toastOptions);
+        break;
+      case "info":
+        this.toastyService.info(toastOptions);
+        break;
+      case "success":
+        this.toastyService.success(toastOptions);
+        break;
+      case "wait":
+        this.toastyService.wait(toastOptions);
+        break;
+      case "error":
+        this.toastyService.error(toastOptions);
+        break;
+      case "warning":
+        this.toastyService.warning(toastOptions);
+        break;
+    }
   }
 }

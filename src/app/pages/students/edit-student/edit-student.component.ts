@@ -11,6 +11,7 @@ import { CookieService } from "ngx-cookie-service";
 import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
 import { environment } from "../../../../environments/environment";
 import { Ng2ImgMaxService } from 'ng2-img-max';
+import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
 
 @Component({
   selector: "app-edit-student",
@@ -26,10 +27,10 @@ export class EditStudentComponent implements OnInit {
   stdDetailsData: any;
   base64textString: string = "";
   stdProfileDetailsData: any;
-  streamData: any;
-  classData: any;
-  routeData: any;
-  sectionData: any;
+  streamData: any = [];
+  classData: any = [];
+  routeData: any = [];
+  sectionData: any = [];
 
   //for student edit
   editStudentForm: FormGroup;
@@ -132,7 +133,8 @@ export class EditStudentComponent implements OnInit {
     private router: Router,
     private cookie: CookieService,
     private actRoute: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    private toastyService: ToastyService,
   ) {}
 
   ngOnInit() {
@@ -258,9 +260,32 @@ export class EditStudentComponent implements OnInit {
     this.authServ.updateStudent(editStudentData).subscribe((res: any) => {
       // console.log(res);
       if (res.success) {
-        this.router.navigate([`students/viewDetail/${this.stdId}`]);
+          console.log('submit success');
+
+          this.addToast({
+            title: "SUCCESS!",
+            msg: `Student Updated Successfully.`,
+            timeout: 6000,
+            theme: "default",
+            position: "top-right",
+            type: "success"
+          });
+
+        // this.router.navigate([`students/viewDetail/${this.stdId}`]);
       } else {
-        this.router.navigate([`students/edit/${this.stdId}`]);
+
+        console.log('submit fail');
+
+        this.addToast({
+          title: "FAIL!",
+          msg: `Something Wrong. Please Try Again.`,
+          timeout: 6000,
+          theme: "default",
+          position: "top-right",
+          type: "error"
+        });
+
+        // this.router.navigate([`students/edit/${this.stdId}`]);
       }
     });
     // console.log('Stored Cookie value : ',this.cookie.get( 'sessionId'));
@@ -300,8 +325,8 @@ export class EditStudentComponent implements OnInit {
       mobileNo: std.mobileNo,
       studentDOB: std.studentDOB,
       bloodGroup: std.bloodGroup,
-      gender: std.gender,
-      preference: std.preference,
+      gender: std.gender.toLowerCase(),
+      preference: std.preference.toLowerCase(),
       religion: std.religion,
       caste: std.caste,
       nationality: std.nationality,
@@ -334,6 +359,7 @@ export class EditStudentComponent implements OnInit {
 
   // get Student details function
   getStdDetails() {
+
     let stdData = {
       institutionID: this.cookie.get("insID"),
       studentID: this.stdId
@@ -342,8 +368,8 @@ export class EditStudentComponent implements OnInit {
     this.authServ.getStudentDetailsForFilters(stdData).subscribe((res: any) => {
       // console.log(res.data[0]);
       if (res.success) {
-
         this.stdDetailsData = res.data[0];
+        console.log(this.stdDetailsData);
 
         if(res.data[0].studentProfPicPath){
           this.url = res.data[0].studentProfPicPath;
@@ -352,8 +378,9 @@ export class EditStudentComponent implements OnInit {
         }
         
         this.stdRoll = res.data[0].rollNo;
-
-        this.setFormValue(this.stdDetailsData);
+        // this.getSection(this.stdDetailsData.classID);
+        this.setFormValue(this.stdDetailsData); 
+        this.getSectionFromClassID(this.stdDetailsData.classID);               
       } else {
         // this.router.navigate(['/students/add']);
       }
@@ -487,9 +514,9 @@ export class EditStudentComponent implements OnInit {
     editStudentDetailsData.id = this.stdId;
     editStudentDetailsData.delete = false;
     editStudentDetailsData.specialCategory = null;
-    // editStudentDetailsData.updatedBy = "1";
+    editStudentDetailsData.updatedBy = null;
     // editStudentDetailsData.specialCategory = [];
-    // editStudentDetailsData.disability = [];
+    editStudentDetailsData.disability = [this.editStudentDetailsForm.value.disability];
     // addStudentData.subscriptionID = "1";
     // addStudentData.studentProfPicEncoded = this.url;
 
@@ -507,19 +534,42 @@ export class EditStudentComponent implements OnInit {
       .updateStudentProfileDetails(editStudentDetailsData)
       .subscribe((res: any) => {
         // console.log('response data : ', res);
-        if (res) {
+        if (res.success) {
+          console.log('success submit details');
+          
+          this.addToast({
+            title: "SUCCESS!",
+            msg: `Student Details Updated Successfully.`,
+            timeout: 6000,
+            theme: "default",
+            position: "top-right",
+            type: "success"
+          });
+
           // localStorage.setItem('regStd', JSON.stringify(res.studentList[0]));
           // this.router.navigate(['/students/list']);
         } else {
-          this.router.navigate(["/students/addDetails"]);
+          console.log('success submit details');
+
+          this.addToast({
+            title: "FAIL!",
+            msg: `Something Wrong. Please Try Again.`,
+            timeout: 6000,
+            theme: "default",
+            position: "top-right",
+            type: "error"
+          });
+
+          // this.router.navigate(["/students/addDetails"]);
         }
       });
     // console.log('Stored Cookie value : ',this.cookie.get( 'sessionId'));
-    this.editStudentDetailsForm.reset();
+    // this.editStudentDetailsForm.reset();
   }
 
   // get student profile details
   getStdDetails2() {
+
     let stdData = {
       institutionID: 1,
       studentID: this.stdId
@@ -527,13 +577,17 @@ export class EditStudentComponent implements OnInit {
 
     this.authServ.getStudentDetailsForFilters(stdData).subscribe((res: any) => {
       if (res.success) {
-        // console.log(res.data[0].profileDetails);
+        console.log(res.data[0].profileDetails);
         this.stdProfileDetailsData = res.data[0].profileDetails;
       } else {
         // this.router.navigate(['/students/']);
       }
     });
   }
+
+
+
+
 
   insSelectDetails() {
     let header = new HttpHeaders();
@@ -561,6 +615,9 @@ export class EditStudentComponent implements OnInit {
       });
   }
 
+
+
+
   getSection(e) {
     // console.log(e);
     this.classData.forEach(ele => {
@@ -571,4 +628,85 @@ export class EditStudentComponent implements OnInit {
 
     // console.log(this.sectionData);
   }
+
+
+
+  getSectionFromClassID(e) {
+    // console.log(e);
+    this.classData.forEach(ele => {
+      if (ele.classID == e) {
+        this.sectionData = ele.sectionDetails;
+      }
+    });
+
+    console.log(this.sectionData);
+  }
+
+
+
+  addToast(options): any {
+
+    if (options.closeOther) {
+      this.toastyService.clearAll();
+    }
+
+    this.position = options.position ? options.position : this.position;
+
+    const toastOptions: ToastOptions = {
+      title: options.title,
+      msg: options.msg,
+      showClose: options.showClose,
+      timeout: options.timeout,
+      theme: options.theme,
+      onAdd: (toast: ToastData) => {
+        /* added */
+      },
+      onRemove: (toast: ToastData) => {
+        /* removed */
+      }
+    };
+
+    // this.toastyService.success(toastOptions);
+
+    switch (options.type) {
+      case "default":
+        this.toastyService.default(toastOptions);
+        break;
+      case "info":
+        this.toastyService.info(toastOptions);
+        break;
+      case "success":
+        this.toastyService.success(toastOptions);
+        break;
+      case "wait":
+        this.toastyService.wait(toastOptions);
+        break;
+      case "error":
+        this.toastyService.error(toastOptions);
+        break;
+      case "warning":
+        this.toastyService.warning(toastOptions);
+        break;
+    }
+  }
 }
+
+
+
+
+
+// var today = new Date();
+// var dd = today.getDate();
+// var mm = today.getMonth()+1; //January is 0!
+// var yyyy = today.getFullYear();
+
+// if(dd<10) {
+//     dd = '0'+dd
+// } 
+
+// if(mm<10) {
+//     mm = '0'+mm
+// } 
+
+// today = mm + '/' + dd + '/' + yyyy;
+// document.write(today);

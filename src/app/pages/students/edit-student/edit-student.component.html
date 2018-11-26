@@ -1,7 +1,12 @@
 <div class="page-content fade-in-up">
   <div class="row">
     <div class="col-md-12">
-
+      <div class="text-uppercase text-right">
+        <h6 [routerLink]="['/students/list']" class="text-right cursor">
+          <i class="fa fa-list-alt" aria-hidden="true"></i> 
+          Back to List
+        </h6>
+      </div>
       <ul class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" data-toggle="tab" aria-controls="studentDetails" href="#studentDetails" id="studentDetails-tab"
@@ -274,20 +279,19 @@
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Father's Email Id" type="email" name="fatherEmailID" formControlName="fatherEmailID">
+                    <input matInput placeholder="Father's Email Id" type="text" name="fatherEmailID" formControlName="fatherEmailID">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Mother's Email Id" type="email" name="motherEmailID" formControlName="motherEmailID">
+                    <input matInput placeholder="Mother's Email Id" type="text" name="motherEmailID" formControlName="motherEmailID">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Guardian's Email Id" type="email" name="guardianEmailID"
-                      formControlName="guardianEmailID">
+                    <input matInput placeholder="Guardian's Email Id" type="text" name="guardianEmailID" formControlName="guardianEmailID">
                   </mat-form-field>
                 </div>
 
@@ -405,8 +409,8 @@
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
                     <mat-select placeholder="Region" name="region" formControlName="region" value="{{stdProfileDetailsData?.region}}">
-                      <mat-option value="urban">Urban</mat-option>
-                      <mat-option value="rural">Rural</mat-option>
+                      <mat-option value="URBAN">Urban</mat-option>
+                      <mat-option value="RURAL">Rural</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
@@ -571,7 +575,7 @@
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="number" placeholder="Phone" name="permanentAddressPhNo" formControlName="permanentAddressPhNo"
+                    <input matInput type="text" placeholder="Phone" name="permanentAddressPhNo" formControlName="permanentAddressPhNo"
                       value="{{stdProfileDetailsData?.permanentAddressPhNo}}">
                   </mat-form-field>
                 </div>
@@ -613,7 +617,7 @@
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="number" placeholder="Pin" name="permanentAddressPin" formControlName="permanentAddressPin"
+                    <input matInput type="text" placeholder="Pin" name="permanentAddressPin" formControlName="permanentAddressPin"
                       value="{{stdProfileDetailsData?.permanentAddressPin}}">
                   </mat-form-field>
                 </div>
@@ -697,14 +701,14 @@
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="number" placeholder="Father Aadhar No." name="fatherAadharNo" formControlName="fatherAadharNo"
+                    <input matInput type="text" placeholder="Father Aadhar No." name="fatherAadharNo" formControlName="fatherAadharNo"
                       value="{{stdProfileDetailsData?.fatherAadharNo}}">
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="number" placeholder="Mother Aadhar No." name="motherAadharNo" formControlName="motherAadharNo"
+                    <input matInput type="text" placeholder="Mother Aadhar No." name="motherAadharNo" formControlName="motherAadharNo"
                       value="{{stdProfileDetailsData?.motherAadharNo}}">
                   </mat-form-field>
                 </div>
@@ -712,10 +716,10 @@
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
                     <mat-select placeholder="Father Caste" name="fatherCaste" formControlName="fatherCaste" value="{{stdProfileDetailsData?.fatherCaste}}">
-                      <mat-option value="general">General</mat-option>
-                      <mat-option value="sc">SC</mat-option>
-                      <mat-option value="st">ST</mat-option>
-                      <mat-option value="obc">OBC</mat-option>
+                      <mat-option value="GENERAL">General</mat-option>
+                      <mat-option value="SC">SC</mat-option>
+                      <mat-option value="ST">ST</mat-option>
+                      <mat-option value="OBC ">OBC</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
@@ -723,10 +727,10 @@
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
                     <mat-select placeholder="Mother Caste" name="motherCaste" formControlName="motherCaste" value="{{stdProfileDetailsData?.motherCaste}}">
-                      <mat-option value="general">General</mat-option>
-                      <mat-option value="sc">SC</mat-option>
-                      <mat-option value="st">ST</mat-option>
-                      <mat-option value="obc">OBC</mat-option>
+                      <mat-option value="GENERAL">General</mat-option>
+                      <mat-option value="SC">SC</mat-option>
+                      <mat-option value="ST">ST</mat-option>
+                      <mat-option value="OBC ">OBC</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
@@ -734,15 +738,15 @@
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
                     <mat-select placeholder="BPL Status" name="bplStatus" formControlName="bplStatus" value="{{stdProfileDetailsData?.bplStatus}}">
-                      <mat-option value="yes">YES</mat-option>
-                      <mat-option value="no">NO</mat-option>
+                      <mat-option value="YES">YES</mat-option>
+                      <mat-option value="NO">NO</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="number" placeholder="BPL Number" name="bplNo" formControlName="bplNo" value="{{stdProfileDetailsData?.bplNo}}">
+                    <input matInput type="text" placeholder="BPL Number" name="bplNo" formControlName="bplNo" value="{{stdProfileDetailsData?.bplNo}}">
                   </mat-form-field>
                 </div>
 
@@ -796,8 +800,8 @@
                   <mat-form-field class="example-full-width">
                     <mat-select placeholder="Sponsorship Request" name="sponsorshipReq" formControlName="sponsorshipReq"
                       value="{{stdProfileDetailsData?.sponsorshipReq}}">
-                      <mat-option value="yes">YES</mat-option>
-                      <mat-option value="no">NO</mat-option>
+                      <mat-option value="YES">YES</mat-option>
+                      <mat-option value="NO">NO</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
@@ -818,10 +822,13 @@
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <mat-select placeholder="Disability" name="disability" formControlName="disability" value="{{stdProfileDetailsData?.disability}}">
+                    <!-- <mat-select placeholder="Disability" name="disability" formControlName="disability" value="{{stdProfileDetailsData?.disability}}">
                       <mat-option value="yes">YES</mat-option>
                       <mat-option value="no">NO</mat-option>
-                    </mat-select>
+                    </mat-select> -->
+
+                    <input matInput type="text" placeholder="Disability" name="disability"
+                      formControlName="disability" value="{{stdProfileDetailsData?.disability}}">
                   </mat-form-field>
                 </div>
 
@@ -854,4 +861,5 @@
 </div>
 
 
+<!-- <ng2-toasty [position]="position"></ng2-toasty> -->
 <ng2-toasty [position]="position"></ng2-toasty>

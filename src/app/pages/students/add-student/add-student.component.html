@@ -81,7 +81,7 @@
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <mat-select placeholder="Contact Preference" name="preference" formControlName="preference">
+                  <mat-select placeholder="Contact Preference" name="preference" formControlName="preference" [(ngModel)]="prefer" (change)="onChangePreference($event)">
                     <mat-option value="father">Father</mat-option>
                     <mat-option value="mother">Mother</mat-option>
                     <mat-option value="guardian">Guardian</mat-option>
@@ -267,19 +267,19 @@
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Father's Email Id" type="email" name="fatherEmailID" formControlName="fatherEmailID">
+                  <input matInput placeholder="Father's Email Id" type="email" name="fatherEmailID" formControlName="fatherEmailID" [(ngModel)]="fatherEmail" (keyup)="onChangePreference()">
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Mother's Email Id" type="email" name="motherEmailID" formControlName="motherEmailID">
+                  <input matInput placeholder="Mother's Email Id" type="email" name="motherEmailID" formControlName="motherEmailID" [(ngModel)]="motherEmail" (keyup)="onChangePreference()">
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Guardian's Email Id" type="email" name="guardianEmailID" formControlName="guardianEmailID">
+                  <input matInput placeholder="Guardian's Email Id" type="email" name="guardianEmailID" formControlName="guardianEmailID" [(ngModel)]="guardianEmail" (keyup)="onChangePreference()">
                 </mat-form-field>
               </div>
             </div>
@@ -368,7 +368,7 @@
             <div class="row">
               <div class="col-md-12 mt-4">
                 <div class="form-group">
-                  <button class="btn btn-success btn-lg" type="submit">Register</button>
+                  <button class="btn btn-success btn-lg" type="submit" [disabled]="disableRegisterBtn">Register</button>
                   <input type="button" class="btn btn-primary btn-lg" (click)="resetForm()" value="Reset" />
                 </div>
               </div>

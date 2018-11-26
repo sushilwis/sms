@@ -29,11 +29,11 @@ export class AppComponent implements OnInit, AfterViewInit {
 				Helpers.initPage();
 			}
 
-			Helpers.setLoading(true);
+			// Helpers.setLoading(true);
 
-			setTimeout(()=> {
-				Helpers.setLoading(false);
-			}, 2000);
+			// setTimeout(()=> {
+			// 	Helpers.setLoading(false);
+			// }, 2000);
 
 		});
   }

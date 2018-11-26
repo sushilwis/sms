@@ -3,6 +3,7 @@ import { Component, OnInit, ViewEncapsulation, ViewChild } from "@angular/core";
 import { transition, trigger, style, animate } from "@angular/animations";
 import { Ng2ImgMaxService } from "ng2-img-max";
 import { DomSanitizer } from "@angular/platform-browser";
+import {Helpers} from "../../../helpers";
 
 import {
   FormGroup,
@@ -55,6 +56,11 @@ export class AddStudentComponent implements OnInit {
   sectionData: any;
   uploadedImage: File;
   uploadedImageName: any;
+  prefer: any;
+  disableRegisterBtn: boolean;
+  fatherEmail: any;
+  motherEmail: any;
+  guardianEmail: any;
 
   addStudentForm: FormGroup;
   firstName: FormControl;
@@ -111,6 +117,11 @@ export class AddStudentComponent implements OnInit {
     // this.loadScript();
     this.insSelectDetails();
     this.authServ.getLogedInUserData();
+    this.prefer = null;
+    this.disableRegisterBtn = true;
+    this.fatherEmail = null;
+    this.motherEmail = null;
+    this.guardianEmail = null;
   }
 
   createFormControls() {
@@ -193,8 +204,45 @@ export class AddStudentComponent implements OnInit {
     });
   }
 
+
+  onChangePreference(){
+    // console.log(this.prefer);     
+    if(this.prefer == "father"){
+      // console.log("father email required");  
+
+      if(this.fatherEmail != "" && this.fatherEmail != null){
+        // console.log('father email not null', this.fatherEmail);        
+        this.disableRegisterBtn = false;
+      }else{
+        // console.log('father email is null', this.fatherEmail);
+        this.disableRegisterBtn = true;
+      }
+    }
+
+    if(this.prefer == "mother"){
+      // console.log("mother email required");
+      if(this.motherEmail != "" && this.motherEmail != null){
+        this.disableRegisterBtn = false;
+      }else{
+        this.disableRegisterBtn = true;
+      }
+    }
+
+    if(this.prefer == "guardian"){
+      // console.log("guardian email required");
+      if(this.guardianEmail != "" && this.guardianEmail != null){
+        this.disableRegisterBtn = false;
+      }else{
+        this.disableRegisterBtn = true;
+      }
+    }
+  }
+
+
+
   onAddStudentSubmit() {
     // console.log("from add student.");
+    Helpers.setLoading(true);
     var addStudentData = this.addStudentForm.value;
 
     addStudentData.institutionID = this.cookie.get("insID");
@@ -214,28 +262,38 @@ export class AddStudentComponent implements OnInit {
     this.authServ.addStudent(stdData).subscribe((res: any) => {
       // console.log(res);
       if (res.success) {
-        console.log(res);
+        // console.log(res);
+
         localStorage.setItem("regStd", JSON.stringify(res.studentList[0]));
+        console.log(res.studentList[0]);
+        let name = res.studentList[0].studentName;
+        name = name.toUpperCase();
+        Helpers.setLoading(false);
 
         this.addToast({
           title: "SUCCESS!",
-          msg: "Student Added Successfully.",
+          msg: `Student Added Successfully. Student ID : ${res.studentList[0].studentID}. Student Name : ${name}`,
           timeout: 6000,
           theme: "default",
           position: "top-right",
           type: "success"
         });
 
-        this.router.navigate(["/students/addDetails"]);
+        setTimeout(()=>{
+          this.router.navigate(["/students/addDetails"]);
+        }, 6000);
+        
       } else {
         // console.log(res);
+        Helpers.setLoading(false);
+
         this.addToast({
           title: "FAIL!",
           msg: res.response,
           timeout: 6000,
           theme: "default",
           position: "top-right",
-          type: "success"
+          type: "error"
         });
 
         this.router.navigate(["/students/add"]);
@@ -500,4 +558,7 @@ export class AddStudentComponent implements OnInit {
     });
     // console.log(this.sectionData);
   }
+
+
+
 }
