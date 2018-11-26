@@ -3,7 +3,7 @@ import { Component, OnInit, ViewEncapsulation, ViewChild } from "@angular/core";
 import { transition, trigger, style, animate } from "@angular/animations";
 import { Ng2ImgMaxService } from "ng2-img-max";
 import { DomSanitizer } from "@angular/platform-browser";
-import {Helpers} from "../../../helpers";
+import { Helpers } from "../../../helpers";
 
 import {
   FormGroup,
@@ -204,41 +204,38 @@ export class AddStudentComponent implements OnInit {
     });
   }
 
+  onChangePreference() {
+    // console.log(this.prefer);
+    if (this.prefer == "father") {
+      // console.log("father email required");
 
-  onChangePreference(){
-    // console.log(this.prefer);     
-    if(this.prefer == "father"){
-      // console.log("father email required");  
-
-      if(this.fatherEmail != "" && this.fatherEmail != null){
-        // console.log('father email not null', this.fatherEmail);        
+      if (this.fatherEmail != "" && this.fatherEmail != null) {
+        // console.log('father email not null', this.fatherEmail);
         this.disableRegisterBtn = false;
-      }else{
+      } else {
         // console.log('father email is null', this.fatherEmail);
         this.disableRegisterBtn = true;
       }
     }
 
-    if(this.prefer == "mother"){
+    if (this.prefer == "mother") {
       // console.log("mother email required");
-      if(this.motherEmail != "" && this.motherEmail != null){
+      if (this.motherEmail != "" && this.motherEmail != null) {
         this.disableRegisterBtn = false;
-      }else{
+      } else {
         this.disableRegisterBtn = true;
       }
     }
 
-    if(this.prefer == "guardian"){
+    if (this.prefer == "guardian") {
       // console.log("guardian email required");
-      if(this.guardianEmail != "" && this.guardianEmail != null){
+      if (this.guardianEmail != "" && this.guardianEmail != null) {
         this.disableRegisterBtn = false;
-      }else{
+      } else {
         this.disableRegisterBtn = true;
       }
     }
   }
-
-
 
   onAddStudentSubmit() {
     // console.log("from add student.");
@@ -272,17 +269,18 @@ export class AddStudentComponent implements OnInit {
 
         this.addToast({
           title: "SUCCESS!",
-          msg: `Student Added Successfully. Student ID : ${res.studentList[0].studentID}. Student Name : ${name}`,
+          msg: `Student Added Successfully. Student ID : ${
+            res.studentList[0].studentID
+          }. Student Name : ${name}`,
           timeout: 6000,
           theme: "default",
           position: "top-right",
           type: "success"
         });
 
-        setTimeout(()=>{
+        setTimeout(() => {
           this.router.navigate(["/students/addDetails"]);
         }, 6000);
-        
       } else {
         // console.log(res);
         Helpers.setLoading(false);
@@ -330,18 +328,18 @@ export class AddStudentComponent implements OnInit {
   // No subscriptions left for the institution
 
   onSelectFile(e) {
-
     var image = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     var pattern = /image-*/;
-    // console.log(image);    
-    let imgNameInput = document.getElementsByClassName("image-preview-filename");
-    let inputEle = Array.from(imgNameInput)[0];
-    let htmlInp = <HTMLInputElement>inputEle;
-    console.log(htmlInp.value); 
-    htmlInp.value = image.name;   
+    // console.log(image);
+    // let imgNameInput = document.getElementsByClassName(
+    //   "image-preview-filename"
+    // );
+    // let inputEle = Array.from(imgNameInput)[0];
+    // let htmlInp = <HTMLInputElement>inputEle;
+    // console.log(htmlInp.value);
+    // htmlInp.value = image.name;
 
     if (!image.type.match(pattern)) {
-
       this.addToast({
         title: "FAIL!",
         msg: "Invalid Format.",
@@ -353,49 +351,41 @@ export class AddStudentComponent implements OnInit {
 
       // this.uploadedImage = null;
     } else {
+      this.ng2ImgMax.resizeImage(image, 500, 10000).subscribe(resizeImage => {
+        // this.uploadedImage = new File([resizeImage], resizeImage.name);
+        // this.uploadedImage = new File([resizeImage], resizeImage.name);
+        this.ng2ImgMax.compressImage(resizeImage, 0.5).subscribe(result => {
+          // this.uploadedImage = new Image(result, result.name);
+          this.uploadedImage = result;
+          // console.log(result);
 
-      this.ng2ImgMax.resizeImage(image, 500, 10000).subscribe(
-        resizeImage => {
-          // this.uploadedImage = new File([resizeImage], resizeImage.name);
-          // this.uploadedImage = new File([resizeImage], resizeImage.name);
-          this.ng2ImgMax.compressImage(resizeImage, 0.500).subscribe(
-            result => {
+          this.getImagePreview(this.uploadedImage);
 
-              this.uploadedImage = new File([result], result.name);
-              this.getImagePreview(this.uploadedImage);
+          this.addToast({
+            title: "SUCCESS!",
+            msg: "Image Uploaded Successfully.",
+            timeout: 6000,
+            theme: "default",
+            position: "top-right",
+            type: "success"
+          });
 
-              this.addToast({
-                title: "SUCCESS!",
-                msg: "Image Uploaded Successfully.",
-                timeout: 6000,
-                theme: "default",
-                position: "top-right",
-                type: "success"
-              });
+          // console.log(this.uploadedImage);
+        });
+      });
 
-              // console.log(this.uploadedImage);
-            })
-    })
-
-    // reader.onload = this.onLoadFile.bind(this);
-    // reader.readAsDataURL(this.uploadedImage);
-    // console.log(this.uploadedImage);
+      // reader.onload = this.onLoadFile.bind(this);
+      // reader.readAsDataURL(this.uploadedImage);
+      // console.log(this.uploadedImage);
+    }
   }
-}
 
-
-
-
-
-  getImagePreview(file: File) {
+  getImagePreview(file: File): void {
     let reader = new FileReader();
-    reader.onload = this.onLoadFile.bind(this);
+    reader.onload = () => {
+      this.url = reader.result;
+    };
     reader.readAsDataURL(file);
-
-    // reader.onload = () => {
-    //   this.url = reader.result;
-    //   // console.log("URL : ", this.url);      
-    // };
   }
 
   // _handleReaderLoaded(e) {
@@ -403,66 +393,60 @@ export class AddStudentComponent implements OnInit {
   //   this.url = reader.result;
   // }
 
-  onLoadFile(event) {
-    var img = new Image();
-    img.src = event.target.result;
-    // var isUploadPic = null;
+  // onLoadFile(event) {
+  //   var img = new Image();
+  //   img.src = event.target.result;
+  // var isUploadPic = null;
 
-    img.onload = () => {
-      // console.log("before : ", img.width);
-      // var isUploaded = false;
-      this.url = event.target.result;
+  // img.onload = () => {
+  // console.log("before : ", img.width);
+  // var isUploaded = false;
+  // this.url = event.target.result;
 
-      // this.ng2ImgMax.resizeImage(img, 600, 600).subscribe(
-      //   resizeImage => {
-      //     img = resizeImage;
-      //   },
-      //   error => {
-      //     this.addToast({
-      //       title: "FAIL!",
-      //       msg: "Sorry, Something went wrong. Try again.",
-      //       timeout: 6000,
-      //       theme: "default",
-      //       position: "top-right",
-      //       type: "error"
-      //     });
-      //   }
-      // );
+  // this.ng2ImgMax.resizeImage(img, 600, 600).subscribe(
+  //   resizeImage => {
+  //     img = resizeImage;
+  //   },
+  //   error => {
+  //     this.addToast({
+  //       title: "FAIL!",
+  //       msg: "Sorry, Something went wrong. Try again.",
+  //       timeout: 6000,
+  //       theme: "default",
+  //       position: "top-right",
+  //       type: "error"
+  //     });
+  //   }
+  // );
 
-      // if (img.width > 600 && img.height > 600) {
+  // if (img.width > 600 && img.height > 600) {
 
-      //   this.addToast({
-      //     title: "FAIL!",
-      //     msg: "Diamension Should Be 600x600.",
-      //     timeout: 6000,
-      //     theme: "default",
-      //     position: "top-right",
-      //     type: "error"
-      //   });
+  //   this.addToast({
+  //     title: "FAIL!",
+  //     msg: "Diamension Should Be 600x600.",
+  //     timeout: 6000,
+  //     theme: "default",
+  //     position: "top-right",
+  //     type: "error"
+  //   });
 
-      // } else {
+  // } else {
 
-      //   this.addToast({
-      //     title: "SUCCESS!",
-      //     msg: "Image Uploaded Successfully.",
-      //     timeout: 6000,
-      //     theme: "default",
-      //     position: "top-right",
-      //     type: "success"
-      //   });
+  //   this.addToast({
+  //     title: "SUCCESS!",
+  //     msg: "Image Uploaded Successfully.",
+  //     timeout: 6000,
+  //     theme: "default",
+  //     position: "top-right",
+  //     type: "success"
+  //   });
 
-      //   this.url = event.target.result;
-      // }
-    };
-  }
-
-
-
-
-
+  //   this.url = event.target.result;
+  // }
+  //   };
+  // }
 
   addToast(options): any {
-
     if (options.closeOther) {
       this.toastyService.clearAll();
     }
@@ -507,17 +491,9 @@ export class AddStudentComponent implements OnInit {
     }
   }
 
-
-
-
-
   resetForm() {
     this.addStudentForm.reset();
   }
-
-
-
-
 
   insSelectDetails() {
     let header = new HttpHeaders();
@@ -545,10 +521,6 @@ export class AddStudentComponent implements OnInit {
       });
   }
 
-
-
-
-
   getSection(e) {
     // console.log(e);
     this.classData.forEach(ele => {
@@ -558,7 +530,4 @@ export class AddStudentComponent implements OnInit {
     });
     // console.log(this.sectionData);
   }
-
-
-
 }
