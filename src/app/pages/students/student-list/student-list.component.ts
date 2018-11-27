@@ -46,6 +46,7 @@ import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
 
 
 export class StudentListComponent implements OnInit {
+  position: any = "top-right";
   temp = [];
   rowsFilter = [];
   public data: any;
@@ -54,7 +55,7 @@ export class StudentListComponent implements OnInit {
   public sortBy = "";
   public sortOrder = "desc";
   allStd: any;
-  position: any;
+  // position: any;
   stdDetailsData: any;
   url: string = '';
   stdId: any;

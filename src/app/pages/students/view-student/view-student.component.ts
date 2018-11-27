@@ -24,7 +24,8 @@ import { transition, trigger, style, animate } from "@angular/animations";
 })
 
 export class ViewStudentComponent implements OnInit {
-
+  
+  position: any = "top-right";
   url: string = '';
   stdId: any;
   stdDetailsData: any;

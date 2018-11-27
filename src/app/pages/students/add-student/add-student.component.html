@@ -81,7 +81,7 @@
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <mat-select placeholder="Contact Preference" name="preference" formControlName="preference" [(ngModel)]="prefer" (change)="onChangePreference($event)">
+                  <mat-select placeholder="Contact Preference" name="preference" formControlName="preference" [(ngModel)]="prefer" (change)="onChangePreference()">
                     <mat-option value="father">Father</mat-option>
                     <mat-option value="mother">Mother</mat-option>
                     <mat-option value="guardian">Guardian</mat-option>
