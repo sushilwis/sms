@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { transition, trigger, style, animate } from "@angular/animations";
 import {
   FormGroup,
   FormControl,
@@ -16,6 +17,18 @@ import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
   templateUrl: "./add-student-details.component.html",
   styleUrls: ["./add-student-details.component.css"],
   encapsulation: ViewEncapsulation.None,
+  animations: [
+    trigger("fadeInOutTranslate", [
+      transition(":enter", [
+        style({ opacity: 0 }),
+        animate("400ms ease-in-out", style({ opacity: 1 }))
+      ]),
+      transition(":leave", [
+        style({ transform: "translate(0)" }),
+        animate("400ms ease-in-out", style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 // encapsulation: ViewEncapsulation.None,
 export class AddStudentDetailsComponent implements OnInit {
@@ -220,8 +233,8 @@ export class AddStudentDetailsComponent implements OnInit {
 
     addStudentDetailsData.studentID = regStdDetails.studentID;
     addStudentDetailsData.createdBy = regStdDetails.uID;
-    addStudentDetailsData.specialCategory = [];
-    addStudentDetailsData.disability = [];
+    addStudentDetailsData.specialCategory = [this.addStudentDetailsForm.value.specialCategory];
+    addStudentDetailsData.disability = [this.addStudentDetailsForm.value.disability];
     // addStudentData.subscriptionID = "1";
     // addStudentData.studentProfPicEncoded = this.url;
 

@@ -2,12 +2,25 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../_services/auth/auth.service';
 import { CookieService } from "ngx-cookie-service";
+import { transition, trigger, style, animate } from "@angular/animations";
 
 @Component({
   selector: 'app-view-student',
   templateUrl: './view-student.component.html',
   styleUrls: ['./view-student.component.css'],
   encapsulation: ViewEncapsulation.None,
+  animations: [
+    trigger("fadeInOutTranslate", [
+      transition(":enter", [
+        style({ opacity: 0 }),
+        animate("400ms ease-in-out", style({ opacity: 1 }))
+      ]),
+      transition(":leave", [
+        style({ transform: "translate(0)" }),
+        animate("400ms ease-in-out", style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 
 export class ViewStudentComponent implements OnInit {

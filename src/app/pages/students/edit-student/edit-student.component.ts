@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { transition, trigger, style, animate } from "@angular/animations";
 import {
   FormGroup,
   FormControl,
@@ -19,6 +20,18 @@ import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
   templateUrl: "./edit-student.component.html",
   styleUrls: ["./edit-student.component.css"],
   encapsulation: ViewEncapsulation.None,
+  animations: [
+    trigger("fadeInOutTranslate", [
+      transition(":enter", [
+        style({ opacity: 0 }),
+        animate("400ms ease-in-out", style({ opacity: 1 }))
+      ]),
+      transition(":leave", [
+        style({ transform: "translate(0)" }),
+        animate("400ms ease-in-out", style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 
 export class EditStudentComponent implements OnInit {
@@ -35,6 +48,7 @@ export class EditStudentComponent implements OnInit {
   routeData: any = [];
   sectionData: any = [];
   uploadedImage: File;
+  classId: any;
 
   //for student edit
   editStudentForm: FormGroup;
@@ -160,6 +174,7 @@ export class EditStudentComponent implements OnInit {
     this.createFormGroup2();
 
     this.url = "./assets/img/pro-pic-placeholder.jpg";
+    // this.getSectionFromClassID(this.stdDetailsData.classID);
   }
 
   // For student details edit
@@ -265,7 +280,7 @@ export class EditStudentComponent implements OnInit {
     this.authServ.updateStudent(editStudentData).subscribe((res: any) => {
       // console.log(res);
       if (res.success) {
-          console.log('submit success');
+          // console.log('submit success');
 
           this.addToast({
             title: "SUCCESS!",
@@ -279,7 +294,7 @@ export class EditStudentComponent implements OnInit {
         // this.router.navigate([`students/viewDetail/${this.stdId}`]);
       } else {
 
-        console.log('submit fail');
+        // console.log('submit fail');
 
         this.addToast({
           title: "FAIL!",
@@ -396,7 +411,7 @@ export class EditStudentComponent implements OnInit {
       lastName: std.lastName,
       aadharNo: std.aadharNo,
       mobileNo: std.mobileNo,
-      studentDOB: std.studentDOB,
+      studentDOB: std.date_of_birth,
       bloodGroup: std.bloodGroup,
       gender: std.gender.toLowerCase(),
       preference: std.preference.toLowerCase(),
@@ -425,24 +440,26 @@ export class EditStudentComponent implements OnInit {
       classID: std.classID,
       sectionID: std.sectionID,
       feeQuota: std.feeQuota,
-      routeID: std.routeDetails.routeID,
-      studentProfPicEncoded: this.url
+      routeID: std.routeDetails.routeID.toString(),
+      studentProfPicEncoded: null
     });
   }
 
   // get Student details function
-  getStdDetails() {
+  async getStdDetails() {
 
     let stdData = {
       institutionID: this.cookie.get("insID"),
       studentID: this.stdId
     };
 
-    this.authServ.getStudentDetailsForFilters(stdData).subscribe((res: any) => {
+    this.authServ.getStudentDetailsForFilters(stdData).subscribe(async (res: any) => {
       // console.log(res.data[0]);
       if (res.success) {
-        this.stdDetailsData = res.data[0];
-        console.log(this.stdDetailsData);
+        this.stdDetailsData = await res.data[0];
+        this.classId = await res.data[0].classID;        
+
+        // console.log("student data : ", this.stdDetailsData);
 
         if(res.data[0].studentProfPicPath){
           this.url = res.data[0].studentProfPicPath;
@@ -453,7 +470,7 @@ export class EditStudentComponent implements OnInit {
         this.stdRoll = res.data[0].rollNo;
         // this.getSection(this.stdDetailsData.classID);
         this.setFormValue(this.stdDetailsData); 
-        this.getSectionFromClassID(this.stdDetailsData.classID);               
+                             
       } else {
         // this.router.navigate(['/students/add']);
       }
@@ -586,10 +603,9 @@ export class EditStudentComponent implements OnInit {
     // console.log('student ID : ', regStdDetails.studentID);
     editStudentDetailsData.id = this.stdId;
     editStudentDetailsData.delete = false;
-    editStudentDetailsData.specialCategory = null;
-    editStudentDetailsData.updatedBy = null;
-    // editStudentDetailsData.specialCategory = [];
+    editStudentDetailsData.specialCategory = [this.editStudentDetailsForm.value.specialCategory];
     editStudentDetailsData.disability = [this.editStudentDetailsForm.value.disability];
+    editStudentDetailsData.updatedBy = "1";
     // addStudentData.subscriptionID = "1";
     // addStudentData.studentProfPicEncoded = this.url;
 
@@ -608,7 +624,7 @@ export class EditStudentComponent implements OnInit {
       .subscribe((res: any) => {
         // console.log('response data : ', res);
         if (res.success) {
-          console.log('success submit details');
+          // console.log('success submit details');
           
           this.addToast({
             title: "SUCCESS!",
@@ -622,7 +638,7 @@ export class EditStudentComponent implements OnInit {
           // localStorage.setItem('regStd', JSON.stringify(res.studentList[0]));
           // this.router.navigate(['/students/list']);
         } else {
-          console.log('success submit details');
+          // console.log('success submit details');
 
           this.addToast({
             title: "FAIL!",
@@ -650,12 +666,16 @@ export class EditStudentComponent implements OnInit {
 
     this.authServ.getStudentDetailsForFilters(stdData).subscribe((res: any) => {
       if (res.success) {
-        console.log(res.data[0].profileDetails);
+        console.log('details data : ', res.data[0].profileDetails);
         this.stdProfileDetailsData = res.data[0].profileDetails;
       } else {
         // this.router.navigate(['/students/']);
       }
     });
+
+    // if(this.stdDetailsData.classID){
+    //   this.getSectionFromClassID(this.stdDetailsData.classID); 
+    // }
   }
 
 
@@ -676,11 +696,17 @@ export class EditStudentComponent implements OnInit {
         senddata
       )
       .map(res => res)
-      .subscribe((data: any) => {
+      .subscribe(async (data: any) => {
         // console.log(data);
-        this.streamData = data.streamList;
-        this.classData = data.classList;
-        this.routeData = data.routeList;
+        this.streamData = await data.streamList;
+        this.classData = await data.classList;
+        this.routeData = await data.routeList;
+
+        if(this.classData){
+          this.getSectionFromClassID(this.classId);
+        }
+
+        // console.log("route data : ", this.routeData);
         // this.sectionData = data.classList.sectionDetails;
         // this.classData.forEach(ele => {
         //   this.sectionData.push(ele.sectionDetails);
@@ -704,15 +730,15 @@ export class EditStudentComponent implements OnInit {
 
 
 
-  getSectionFromClassID(e) {
-    // console.log(e);
+  getSectionFromClassID(id) {
+    // console.log(e);s
     this.classData.forEach(ele => {
-      if (ele.classID == e) {
+      if (ele.classID == id) {
         this.sectionData = ele.sectionDetails;
       }
     });
-
-    console.log(this.sectionData);
+    console.log('id : ', id);
+    console.log('section list for first time : ',this.sectionData);
   }
 
 

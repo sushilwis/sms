@@ -77,10 +77,10 @@
 
                 <div class="col-sm-3">
                   <mat-form-field>
-                    <input matInput [matDatepicker]="dateOfBirth" placeholder="Date of Birth" name="studentDOB"
+                    <input matInput [matDatepicker]="studentDOB" placeholder="Date of Birth" name="studentDOB"
                       formControlName="studentDOB">
-                    <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
-                    <mat-datepicker #dateOfBirth></mat-datepicker>
+                    <mat-datepicker-toggle matSuffix [for]="studentDOB"></mat-datepicker-toggle>
+                    <mat-datepicker #studentDOB></mat-datepicker>
                   </mat-form-field>
                 </div>
 
@@ -168,9 +168,9 @@
                             <!-- don't give a name === doesn't send on POST/GET -->
                             <span class="input-group-btn">
                               <!-- image-preview-clear button -->
-                              <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                              <!-- <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
                                 <span class="glyphicon glyphicon-remove"></span> Clear
-                              </button>
+                              </button> -->
                               <!-- image-preview-input -->
                               <div class="btn btn-default image-preview-input">
                                 <span class="glyphicon glyphicon-folder-open"></span>
@@ -864,4 +864,4 @@
 </div>
 
 
-<ng2-toasty [position]="position"></ng2-toasty>
+<!-- <ng2-toasty [position]="position"></ng2-toasty> -->
