@@ -28,7 +28,7 @@ import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
     "../../../../../node_modules/ng2-toasty/style-default.css",
     "../../../../../node_modules/ng2-toasty/style-material.css"
   ],
-  
+  encapsulation: ViewEncapsulation.None,
   animations: [
     trigger("fadeInOutTranslate", [
       transition(":enter", [
@@ -546,7 +546,7 @@ export class StudentListComponent implements OnInit {
                   var shortStdArr = [];
                   this.allStd.forEach(std => {
                     let stdInfo = {
-                      roll: std.rollNo,
+                      admissionNo: std.admissionNo,
                       photo: std.studentProfPicPath,
                       name: std.firstName,
                       gender: std.gender,

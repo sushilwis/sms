@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../_services/auth/auth.service';
 import { CookieService } from "ngx-cookie-service";
@@ -6,8 +6,10 @@ import { CookieService } from "ngx-cookie-service";
 @Component({
   selector: 'app-view-student',
   templateUrl: './view-student.component.html',
-  styleUrls: ['./view-student.component.css']
+  styleUrls: ['./view-student.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
+
 export class ViewStudentComponent implements OnInit {
 
   url: string = '';

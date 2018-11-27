@@ -28,9 +28,7 @@ import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
     "../../../../../node_modules/ng2-toasty/style-default.css",
     "../../../../../node_modules/ng2-toasty/style-material.css"
   ],
-
   encapsulation: ViewEncapsulation.None,
-
   animations: [
     trigger("fadeInOutTranslate", [
       transition(":enter", [

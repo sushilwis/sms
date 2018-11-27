@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import {
   FormGroup,
   FormControl,
@@ -14,13 +14,14 @@ import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
 @Component({
   selector: "app-add-student-details",
   templateUrl: "./add-student-details.component.html",
-  styleUrls: ["./add-student-details.component.css"]
+  styleUrls: ["./add-student-details.component.css"],
+  encapsulation: ViewEncapsulation.None,
 })
+// encapsulation: ViewEncapsulation.None,
 export class AddStudentDetailsComponent implements OnInit {
   position: any = "top-right";
 
   addStudentDetailsForm: FormGroup;
-
   region: FormControl;
   previousInsState: FormControl;
   previousInsCity: FormControl;

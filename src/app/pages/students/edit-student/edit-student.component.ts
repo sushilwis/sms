@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import {
   FormGroup,
   FormControl,
@@ -12,16 +12,19 @@ import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
 import { environment } from "../../../../environments/environment";
 import { Ng2ImgMaxService } from 'ng2-img-max';
 import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
+// import { Ng2ImgMaxService } from "ng2-img-max";
 
 @Component({
   selector: "app-edit-student",
   templateUrl: "./edit-student.component.html",
-  styleUrls: ["./edit-student.component.css"]
+  styleUrls: ["./edit-student.component.css"],
+  encapsulation: ViewEncapsulation.None,
 })
+
 export class EditStudentComponent implements OnInit {
 
   position: any = "top-right";
-  url = "";
+  url: any = "";
   stdId: any;
   stdRoll: any;
   stdDetailsData: any;
@@ -31,6 +34,7 @@ export class EditStudentComponent implements OnInit {
   classData: any = [];
   routeData: any = [];
   sectionData: any = [];
+  uploadedImage: File;
 
   //for student edit
   editStudentForm: FormGroup;
@@ -135,6 +139,7 @@ export class EditStudentComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private http: HttpClient,
     private toastyService: ToastyService,
+    private ng2ImgMax: Ng2ImgMaxService,
   ) {}
 
   ngOnInit() {
@@ -293,27 +298,95 @@ export class EditStudentComponent implements OnInit {
   }
 
   // Student picture upload and preview
-  onSelectFile(e) {
-    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-    var pattern = /image-*/;
-    var reader = new FileReader();
+  // onSelectFile(e) {
+  //   var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+  //   var pattern = /image-*/;
+  //   var reader = new FileReader();
 
-    if (!file.type.match(pattern)) {
-      alert("invalid format");
-      return;
-    }
+  //   if (!file.type.match(pattern)) {
+  //     alert("invalid format");
+  //     return;
+  //   }
 
-    reader.onload = this._handleReaderLoaded.bind(this);
-    reader.readAsDataURL(file);
-  }
+  //   reader.onload = this._handleReaderLoaded.bind(this);
+  //   reader.readAsDataURL(file);
+  // }
 
   
 
-  _handleReaderLoaded(e) {
-    let reader = e.target;
-    this.url = reader.result;
-    // console.log(this.url);
+  // _handleReaderLoaded(e) {
+  //   let reader = e.target;
+  //   this.url = reader.result;
+  //   // console.log(this.url);
+  // }
+
+
+
+  onSelectFile(e) {
+    var image = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    var pattern = /image-*/;
+    // console.log(image);
+    // let imgNameInput = document.getElementsByClassName(
+    //   "image-preview-filename"
+    // );
+    // let inputEle = Array.from(imgNameInput)[0];
+    // let htmlInp = <HTMLInputElement>inputEle;
+    // console.log(htmlInp.value);
+    // htmlInp.value = image.name;
+
+    if (!image.type.match(pattern)) {
+      this.addToast({
+        title: "FAIL!",
+        msg: "Invalid Format.",
+        timeout: 6000,
+        theme: "default",
+        position: "top-right",
+        type: "error"
+      });
+
+      // this.uploadedImage = null;
+    } else {
+      this.ng2ImgMax.resizeImage(image, 500, 10000).subscribe(resizeImage => {
+        // this.uploadedImage = new File([resizeImage], resizeImage.name);
+        // this.uploadedImage = new File([resizeImage], resizeImage.name);
+        this.ng2ImgMax.compressImage(resizeImage, 0.5).subscribe(result => {
+          // this.uploadedImage = new Image(result, result.name);
+          this.uploadedImage = result;
+          // console.log(result);
+
+          this.getImagePreview(this.uploadedImage);
+
+          this.addToast({
+            title: "SUCCESS!",
+            msg: "Image Uploaded Successfully.",
+            timeout: 6000,
+            theme: "default",
+            position: "top-right",
+            type: "success"
+          });
+
+          // console.log(this.uploadedImage);
+        });
+      });
+
+      // reader.onload = this.onLoadFile.bind(this);
+      // reader.readAsDataURL(this.uploadedImage);
+      // console.log(this.uploadedImage);
+    }
   }
+
+
+
+
+  getImagePreview(file: File): void {
+    let reader = new FileReader();
+    reader.onload = () => {
+      this.url = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+
 
   // Student details value set
   setFormValue(std) {
