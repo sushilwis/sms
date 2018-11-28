@@ -5,10 +5,10 @@
   <div class="row">
     <div class="col-md-12">
       <div class="text-uppercase text-right">
-        <h6 [routerLink]="['/students/list']" class="text-right cursor">
-          <i class="fa fa-list-alt" aria-hidden="true"></i> 
+        <a [routerLink]="['/students/list']" class="btn btn-success text-right cursor">
+          <i class="fa fa-list-alt" aria-hidden="true"></i>
           Back to List
-        </h6>
+        </a>
       </div>
       <ul class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
         <li class="nav-item">
@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="col-sm-3">
-                  <mat-form-field>
+                  <mat-form-field class="example-full-width">
                     <input matInput [matDatepicker]="studentDOB" placeholder="Date of Birth" name="studentDOB"
                       formControlName="studentDOB">
                     <mat-datepicker-toggle matSuffix [for]="studentDOB"></mat-datepicker-toggle>
@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="col-sm-3">
-                  <mat-form-field>
+                  <mat-form-field class="example-full-width">
                     <mat-select placeholder="Blood Group" name="bloodGroup" formControlName="bloodGroup">
                       <mat-option value="b+">B+</mat-option>
                       <mat-option value="o+">O+</mat-option>
@@ -94,7 +94,7 @@
                 </div>
 
                 <div class="col-sm-3">
-                  <mat-form-field>
+                  <mat-form-field class="example-full-width">
                     <mat-select placeholder="Gender" name="gender" formControlName="gender">
                       <mat-option value="male">Male</mat-option>
                       <mat-option value="female">Female</mat-option>
@@ -103,7 +103,7 @@
                 </div>
 
                 <div class="col-sm-3">
-                  <mat-form-field>
+                  <mat-form-field class="example-full-width">
                     <mat-select placeholder="Contact Preference" name="preference" formControlName="preference">
                       <mat-option value="father">Father</mat-option>
                       <mat-option value="mother">Mother</mat-option>
@@ -113,7 +113,7 @@
                 </div>
 
                 <div class="col-sm-3">
-                  <mat-form-field>
+                  <mat-form-field class="example-full-width">
                     <mat-select placeholder="Religion" name="religion" formControlName="religion">
                       <mat-option value="hindu">Hindu</mat-option>
                       <mat-option value="muslim">Muslim</mat-option>
@@ -127,7 +127,7 @@
                 </div>
 
                 <div class="col-sm-3">
-                  <mat-form-field>
+                  <mat-form-field class="example-full-width">
                     <mat-select placeholder="Caste" name="caste" formControlName="caste">
                       <mat-option value="general">General</mat-option>
                       <mat-option value="sc">SC</mat-option>
@@ -138,7 +138,7 @@
                 </div>
 
                 <div class="col-sm-3">
-                  <mat-form-field>
+                  <mat-form-field class="example-full-width">
                     <mat-select placeholder="Indian" name="nationality" formControlName="nationality">
                       <mat-option value="indian">Indian</mat-option>
                     </mat-select>
@@ -158,13 +158,13 @@
                     <!-- <input type="file" class="custom-file-input" name="studentProfPicEncoded" formControlName="studentProfPicEncoded"
                       (change)="onSelectFile($event)" accept="image/*">
                     <label class="custom-file-label" for="customFile">Choose Picture</label> -->
-  
+
                     <div class="container p-0">
                       <div class="row no-gutters">
                         <div class="col-sm-12">
                           <!-- image-preview-filename input [CUT FROM HERE]-->
                           <div class="input-group image-preview">
-                            <input type="text" class="form-control image-preview-filename" disabled="disabled">
+                            <input type="text" class="form-control image-preview-filename" disabled="disabled" style="width: 215px;">
                             <!-- don't give a name === doesn't send on POST/GET -->
                             <span class="input-group-btn">
                               <!-- image-preview-clear button -->
@@ -175,9 +175,8 @@
                               <div class="btn btn-default image-preview-input">
                                 <span class="glyphicon glyphicon-folder-open"></span>
                                 <span class="image-preview-input-title">Browse</span>
-                                <input type="file" class="custom-file-input"
-                                  name="studentProfPicEncoded" formControlName="studentProfPicEncoded" (change)="onSelectFile($event)"
-                                  accept="image/*"/>
+                                <input type="file" class="custom-file-input" name="studentProfPicEncoded"
+                                  formControlName="studentProfPicEncoded" (change)="onSelectFile($event)" accept="image/*" />
                                 <!-- rename it -->
                               </div>
                             </span>
@@ -185,7 +184,7 @@
                         </div>
                       </div>
                     </div>
-  
+
                   </div>
                 </div>
 
@@ -294,7 +293,8 @@
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Guardian's Email Id" type="text" name="guardianEmailID" formControlName="guardianEmailID">
+                    <input matInput placeholder="Guardian's Email Id" type="text" name="guardianEmailID"
+                      formControlName="guardianEmailID">
                   </mat-form-field>
                 </div>
 
@@ -308,7 +308,7 @@
                 </div>
 
                 <div class="col-sm-3">
-                  <mat-form-field>
+                  <mat-form-field class="example-full-width">
                     <mat-select placeholder="Medium of Instruction" name="mediumOfInstruction" formControlName="mediumOfInstruction">
                       <mat-option value="english">English</mat-option>
                       <mat-option value="hindi">Hindi</mat-option>
@@ -324,7 +324,7 @@
                 </div>
 
                 <div class="col-sm-3">
-                  <mat-form-field>
+                  <mat-form-field class="example-full-width">
                     <input matInput [matDatepicker]="admissionDate" placeholder="Admission Date" name="admissionDate"
                       formControlName="admissionDate">
                     <mat-datepicker-toggle matSuffix [for]="admissionDate"></mat-datepicker-toggle>
@@ -333,7 +333,7 @@
                 </div>
 
                 <div class="col-sm-3">
-                  <mat-form-field>
+                  <mat-form-field class="example-full-width">
                     <mat-select placeholder="Stream/Group" name="streamID" formControlName="streamID">
                       <mat-option *ngFor="let stream of streamData" value="{{stream.id}}">{{stream.name}}</mat-option>
                     </mat-select>
@@ -341,7 +341,7 @@
                 </div>
 
                 <div class="col-sm-3">
-                  <mat-form-field>
+                  <mat-form-field class="example-full-width">
                     <mat-select (change)="getSection($event)" placeholder="Class" name="classID" formControlName="classID">
                       <mat-option *ngFor="let class of classData" value="{{class.classID}}">{{class.className}}</mat-option>
                     </mat-select>
@@ -350,7 +350,7 @@
 
 
                 <div class="col-sm-3">
-                  <mat-form-field>
+                  <mat-form-field class="example-full-width">
                     <mat-select placeholder="Section" name="sectionID" formControlName="sectionID">
                       <mat-option *ngFor="let section of sectionData" value="{{section.sectionID}}">{{section.sectionName}}</mat-option>
                     </mat-select>
@@ -358,7 +358,7 @@
                 </div>
 
                 <div class="col-sm-3">
-                  <mat-form-field>
+                  <mat-form-field class="example-full-width">
                     <mat-select placeholder="Fee Quota" name="feeQuota" formControlName="feeQuota">
                       <mat-option value="option 1">Option 1</mat-option>
                       <mat-option value="option 2">Option 2</mat-option>
@@ -367,7 +367,7 @@
                 </div>
 
                 <div class="col-sm-3">
-                  <mat-form-field>
+                  <mat-form-field class="example-full-width">
                     <mat-select placeholder="Bus Route" name="routeID" formControlName="routeID">
                       <mat-option *ngFor="let route of routeData" value="{{route.routeID}}">{{route.routeName}}</mat-option>
                     </mat-select>
@@ -413,7 +413,7 @@
                   <mat-form-field class="example-full-width">
                     <mat-select placeholder="Region" name="region" formControlName="region" value="{{stdProfileDetailsData?.region}}">
                       <mat-option value="URBAN">Urban</mat-option>
-                      <mat-option value="RURAL">Rural</mat-option> 
+                      <mat-option value="RURAL">Rural</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
@@ -830,8 +830,8 @@
                       <mat-option value="no">NO</mat-option>
                     </mat-select> -->
 
-                    <input matInput type="text" placeholder="Disability" name="disability"
-                      formControlName="disability" value="{{stdProfileDetailsData?.disability}}">
+                    <input matInput type="text" placeholder="Disability" name="disability" formControlName="disability"
+                      value="{{stdProfileDetailsData?.disability}}">
                   </mat-form-field>
                 </div>
 

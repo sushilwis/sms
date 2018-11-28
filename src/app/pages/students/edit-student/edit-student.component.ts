@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { transition, trigger, style, animate } from "@angular/animations";
+import { Helpers } from "../../../helpers";
 import {
   FormGroup,
   FormControl,
@@ -11,7 +12,7 @@ import { AuthService } from "../../../_services/auth/auth.service";
 import { CookieService } from "ngx-cookie-service";
 import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
 import { environment } from "../../../../environments/environment";
-import { Ng2ImgMaxService } from 'ng2-img-max';
+import { Ng2ImgMaxService } from "ng2-img-max";
 import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
 // import { Ng2ImgMaxService } from "ng2-img-max";
 
@@ -33,9 +34,7 @@ import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
     ])
   ]
 })
-
 export class EditStudentComponent implements OnInit {
-
   position: any = "top-right";
   url: any = "";
   stdId: any;
@@ -153,10 +152,11 @@ export class EditStudentComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private http: HttpClient,
     private toastyService: ToastyService,
-    private ng2ImgMax: Ng2ImgMaxService,
+    private ng2ImgMax: Ng2ImgMaxService
   ) {}
 
   ngOnInit() {
+    Helpers.setLoading(true);
     this.insSelectDetails();
 
     this.actRoute.params.subscribe(data => {
@@ -169,7 +169,7 @@ export class EditStudentComponent implements OnInit {
     this.createFormGroup();
 
     //for student profile details edit
-    this.getStdDetails2();
+    // this.getStdDetails2();
     this.createFormControls2();
     this.createFormGroup2();
 
@@ -261,6 +261,7 @@ export class EditStudentComponent implements OnInit {
 
   // student details edit form submit
   onEditStudentSubmit() {
+    Helpers.setLoading(true);
     var editStudentData = this.editStudentForm.value;
 
     editStudentData.id = this.stdId;
@@ -280,22 +281,21 @@ export class EditStudentComponent implements OnInit {
     this.authServ.updateStudent(editStudentData).subscribe((res: any) => {
       // console.log(res);
       if (res.success) {
-          // console.log('submit success');
-
-          this.addToast({
-            title: "SUCCESS!",
-            msg: `Student Updated Successfully.`,
-            timeout: 6000,
-            theme: "default",
-            position: "top-right",
-            type: "success"
-          });
+        // console.log('submit success');
+        Helpers.setLoading(false);
+        this.addToast({
+          title: "SUCCESS!",
+          msg: `Student Updated Successfully.`,
+          timeout: 6000,
+          theme: "default",
+          position: "top-right",
+          type: "success"
+        });
 
         // this.router.navigate([`students/viewDetail/${this.stdId}`]);
       } else {
-
         // console.log('submit fail');
-
+        Helpers.setLoading(false);
         this.addToast({
           title: "FAIL!",
           msg: `Something Wrong. Please Try Again.`,
@@ -327,27 +327,23 @@ export class EditStudentComponent implements OnInit {
   //   reader.readAsDataURL(file);
   // }
 
-  
-
   // _handleReaderLoaded(e) {
   //   let reader = e.target;
   //   this.url = reader.result;
   //   // console.log(this.url);
   // }
 
-
-
   onSelectFile(e) {
     var image = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     var pattern = /image-*/;
     // console.log(image);
-    // let imgNameInput = document.getElementsByClassName(
-    //   "image-preview-filename"
-    // );
-    // let inputEle = Array.from(imgNameInput)[0];
-    // let htmlInp = <HTMLInputElement>inputEle;
-    // console.log(htmlInp.value);
-    // htmlInp.value = image.name;
+
+    let imgNameInput = document.getElementsByClassName(
+      "image-preview-filename"
+    );
+    let inputEle = Array.from(imgNameInput)[0];
+    let htmlInp = <HTMLInputElement>inputEle;
+    htmlInp.value = image.name;
 
     if (!image.type.match(pattern)) {
       this.addToast({
@@ -390,9 +386,6 @@ export class EditStudentComponent implements OnInit {
     }
   }
 
-
-
-
   getImagePreview(file: File): void {
     let reader = new FileReader();
     reader.onload = () => {
@@ -400,8 +393,6 @@ export class EditStudentComponent implements OnInit {
     };
     reader.readAsDataURL(file);
   }
-
-
 
   // Student details value set
   setFormValue(std) {
@@ -447,34 +438,40 @@ export class EditStudentComponent implements OnInit {
 
   // get Student details function
   async getStdDetails() {
-
     let stdData = {
       institutionID: this.cookie.get("insID"),
       studentID: this.stdId
     };
 
-    this.authServ.getStudentDetailsForFilters(stdData).subscribe(async (res: any) => {
-      // console.log(res.data[0]);
-      if (res.success) {
-        this.stdDetailsData = await res.data[0];
-        this.classId = await res.data[0].classID;        
+    console.log("data sending on edit : ", stdData);
 
-        // console.log("student data : ", this.stdDetailsData);
+    this.authServ
+      .getStudentDetailsForFilters(stdData)
+      .subscribe(async (res: any) => {
+        // console.log(res.data[0]);
+        if (res.success) {
+          this.stdDetailsData = await res.data[0];
+          this.stdProfileDetailsData = await res.data[0].profileDetails;
+          this.classId = await res.data[0].classID;
 
-        if(res.data[0].studentProfPicPath){
-          this.url = res.data[0].studentProfPicPath;
-        }else{
-          this.url = "./assets/img/pro-pic-placeholder.jpg";
+          Helpers.setLoading(false);
+
+          // console.log("student data : ", this.stdDetailsData);
+
+          if (res.data[0].studentProfPicPath) {
+            this.url = res.data[0].studentProfPicPath;
+          } else {
+            this.url = "./assets/img/pro-pic-placeholder.jpg";
+          }
+
+          this.stdRoll = res.data[0].rollNo;
+          // this.getSection(this.stdDetailsData.classID);
+          this.setFormValue(this.stdDetailsData);
+        } else {
+          // this.router.navigate(['/students/add']);
+          Helpers.setLoading(false);
         }
-        
-        this.stdRoll = res.data[0].rollNo;
-        // this.getSection(this.stdDetailsData.classID);
-        this.setFormValue(this.stdDetailsData); 
-                             
-      } else {
-        // this.router.navigate(['/students/add']);
-      }
-    });
+      });
   }
 
   // for student profile details
@@ -597,14 +594,19 @@ export class EditStudentComponent implements OnInit {
 
   // Edit student profile details submit
   onEditStudentDetailsSubmit() {
+    Helpers.setLoading(true);
     var editStudentDetailsData = this.editStudentDetailsForm.value;
 
     // let regStdDetails = JSON.parse(localStorage.getItem('regStd'));
     // console.log('student ID : ', regStdDetails.studentID);
     editStudentDetailsData.id = this.stdId;
     editStudentDetailsData.delete = false;
-    editStudentDetailsData.specialCategory = [this.editStudentDetailsForm.value.specialCategory];
-    editStudentDetailsData.disability = [this.editStudentDetailsForm.value.disability];
+    editStudentDetailsData.specialCategory = [
+      this.editStudentDetailsForm.value.specialCategory
+    ];
+    editStudentDetailsData.disability = [
+      this.editStudentDetailsForm.value.disability
+    ];
     editStudentDetailsData.updatedBy = "1";
     // addStudentData.subscriptionID = "1";
     // addStudentData.studentProfPicEncoded = this.url;
@@ -617,7 +619,7 @@ export class EditStudentComponent implements OnInit {
     //   data: data
     // };
 
-    console.log('send data : ', editStudentDetailsData);
+    // console.log("send data : ", editStudentDetailsData);
 
     this.authServ
       .updateStudentProfileDetails(editStudentDetailsData)
@@ -625,7 +627,7 @@ export class EditStudentComponent implements OnInit {
         // console.log('response data : ', res);
         if (res.success) {
           // console.log('success submit details');
-          
+          Helpers.setLoading(false);
           this.addToast({
             title: "SUCCESS!",
             msg: `Student Details Updated Successfully.`,
@@ -639,7 +641,7 @@ export class EditStudentComponent implements OnInit {
           // this.router.navigate(['/students/list']);
         } else {
           // console.log('success submit details');
-
+          Helpers.setLoading(false);
           this.addToast({
             title: "FAIL!",
             msg: `Something Wrong. Please Try Again.`,
@@ -657,30 +659,25 @@ export class EditStudentComponent implements OnInit {
   }
 
   // get student profile details
-  getStdDetails2() {
+  // getStdDetails2() {
+  //   let stdData = {
+  //     institutionID: this.cookie.get("insID"),
+  //     studentID: this.stdId
+  //   };
 
-    let stdData = {
-      institutionID: 1,
-      studentID: this.stdId
-    };
+  //   this.authServ.getStudentDetailsForFilters(stdData).subscribe((res: any) => {
+  //     if (res.success) {
+  //       console.log("details data : ", res.data[0].profileDetails);
+  //       this.stdProfileDetailsData = res.data[0].profileDetails;
+  //     } else {
+  //       // this.router.navigate(['/students/']);
+  //     }
+  //   });
 
-    this.authServ.getStudentDetailsForFilters(stdData).subscribe((res: any) => {
-      if (res.success) {
-        console.log('details data : ', res.data[0].profileDetails);
-        this.stdProfileDetailsData = res.data[0].profileDetails;
-      } else {
-        // this.router.navigate(['/students/']);
-      }
-    });
-
-    // if(this.stdDetailsData.classID){
-    //   this.getSectionFromClassID(this.stdDetailsData.classID); 
-    // }
-  }
-
-
-
-
+  //   // if(this.stdDetailsData.classID){
+  //   //   this.getSectionFromClassID(this.stdDetailsData.classID);
+  //   // }
+  // }
 
   insSelectDetails() {
     let header = new HttpHeaders();
@@ -702,7 +699,7 @@ export class EditStudentComponent implements OnInit {
         this.classData = await data.classList;
         this.routeData = await data.routeList;
 
-        if(this.classData){
+        if (this.classData) {
           this.getSectionFromClassID(this.classId);
         }
 
@@ -713,9 +710,6 @@ export class EditStudentComponent implements OnInit {
         // });
       });
   }
-
-
-
 
   getSection(e) {
     // console.log(e);
@@ -728,8 +722,6 @@ export class EditStudentComponent implements OnInit {
     // console.log(this.sectionData);
   }
 
-
-
   getSectionFromClassID(id) {
     // console.log(e);s
     this.classData.forEach(ele => {
@@ -737,14 +729,11 @@ export class EditStudentComponent implements OnInit {
         this.sectionData = ele.sectionDetails;
       }
     });
-    console.log('id : ', id);
-    console.log('section list for first time : ',this.sectionData);
+    // console.log("id : ", id);
+    // console.log("section list for first time : ", this.sectionData);
   }
 
-
-
   addToast(options): any {
-
     if (options.closeOther) {
       this.toastyService.clearAll();
     }
@@ -790,10 +779,6 @@ export class EditStudentComponent implements OnInit {
   }
 }
 
-
-
-
-
 // var today = new Date();
 // var dd = today.getDate();
 // var mm = today.getMonth()+1; //January is 0!
@@ -801,11 +786,11 @@ export class EditStudentComponent implements OnInit {
 
 // if(dd<10) {
 //     dd = '0'+dd
-// } 
+// }
 
 // if(mm<10) {
 //     mm = '0'+mm
-// } 
+// }
 
 // today = mm + '/' + dd + '/' + yyyy;
 // document.write(today);

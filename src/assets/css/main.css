@@ -2080,7 +2080,7 @@ fieldset[disabled] .btn-yahoo.focus {
 }
 
 .ibox .ibox-body {
-  padding: 15px 20px 20px 20px;
+  padding: 20px 20px 20px 20px !important;
 }
 
 .ibox .ibox-footer {
@@ -5361,4 +5361,8 @@ table.dataTable {
   width: 40px;
   height: 3px;
   background: #042954;
+}
+
+.example-full-width {
+  width: 90% !important;
 }

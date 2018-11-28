@@ -9,7 +9,7 @@ import {
 import { Router } from "@angular/router";
 import { AuthService } from "../../../_services/auth/auth.service";
 import { CookieService } from "ngx-cookie-service";
-import {Helpers} from "../../../helpers";
+import { Helpers } from "../../../helpers";
 import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
 
 @Component({
@@ -94,7 +94,7 @@ export class AddStudentDetailsComponent implements OnInit {
     private authServ: AuthService,
     private router: Router,
     private cookie: CookieService,
-    private toastyService: ToastyService,
+    private toastyService: ToastyService
   ) {}
 
   ngOnInit() {
@@ -221,20 +221,21 @@ export class AddStudentDetailsComponent implements OnInit {
     });
   }
 
-
-  
-
   onAddStudentDetailsSubmit() {
     Helpers.setLoading(true);
     var addStudentDetailsData = this.addStudentDetailsForm.value;
 
     let regStdDetails = JSON.parse(localStorage.getItem("regStd"));
-    // console.log(regStdDetails);
+    console.log(regStdDetails);
 
     addStudentDetailsData.studentID = regStdDetails.studentID;
     addStudentDetailsData.createdBy = regStdDetails.uID;
-    addStudentDetailsData.specialCategory = [this.addStudentDetailsForm.value.specialCategory];
-    addStudentDetailsData.disability = [this.addStudentDetailsForm.value.disability];
+    addStudentDetailsData.specialCategory = [
+      this.addStudentDetailsForm.value.specialCategory
+    ];
+    addStudentDetailsData.disability = [
+      this.addStudentDetailsForm.value.disability
+    ];
     // addStudentData.subscriptionID = "1";
     // addStudentData.studentProfPicEncoded = this.url;
 
@@ -250,7 +251,6 @@ export class AddStudentDetailsComponent implements OnInit {
 
     this.authServ.addStudentDetails(stdData).subscribe((res: any) => {
       if (res.success) {
-
         Helpers.setLoading(false);
         // console.log('response data : ', res);
         // localStorage.setItem('regStd', JSON.stringify(res.studentList[0]));
@@ -262,12 +262,11 @@ export class AddStudentDetailsComponent implements OnInit {
           position: "top-right",
           type: "success"
         });
-        
-        setTimeout(()=>{
-          this.router.navigate(["/students/add"]);
-        }, 6000);
-      } else {
 
+        setTimeout(() => {
+          this.router.navigate(["/students/add"]);
+        }, 3000);
+      } else {
         Helpers.setLoading(false);
 
         this.addToast({
@@ -279,7 +278,7 @@ export class AddStudentDetailsComponent implements OnInit {
           type: "error"
         });
 
-        setTimeout(()=>{
+        setTimeout(() => {
           this.router.navigate(["/students/addDetails"]);
         }, 6000);
       }
@@ -288,18 +287,11 @@ export class AddStudentDetailsComponent implements OnInit {
     this.addStudentDetailsForm.reset();
   }
 
-
-
-
   resetForm() {
     this.addStudentDetailsForm.reset();
   }
 
-
-
-
   addToast(options): any {
-
     if (options.closeOther) {
       this.toastyService.clearAll();
     }

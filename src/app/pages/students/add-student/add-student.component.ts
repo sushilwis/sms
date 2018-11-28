@@ -252,7 +252,7 @@ export class AddStudentComponent implements OnInit {
       data: data
     };
 
-    console.log(stdData);
+    // console.log(stdData);
 
     this.authServ.addStudent(stdData).subscribe((res: any) => {
       // console.log(res);
@@ -278,7 +278,7 @@ export class AddStudentComponent implements OnInit {
 
         setTimeout(() => {
           this.router.navigate(["/students/addDetails"]);
-        }, 6000);
+        }, 4000);
       } else {
         // console.log(res);
         Helpers.setLoading(false);
@@ -329,13 +329,14 @@ export class AddStudentComponent implements OnInit {
     var image = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     var pattern = /image-*/;
     // console.log(image);
-    // let imgNameInput = document.getElementsByClassName(
-    //   "image-preview-filename"
-    // );
-    // let inputEle = Array.from(imgNameInput)[0];
-    // let htmlInp = <HTMLInputElement>inputEle;
+
+    let imgNameInput = document.getElementsByClassName(
+      "image-preview-filename"
+    );
+    let inputEle = Array.from(imgNameInput)[0];
+    let htmlInp = <HTMLInputElement>inputEle;
     // console.log(htmlInp.value);
-    // htmlInp.value = image.name;
+    htmlInp.value = image.name;
 
     if (!image.type.match(pattern)) {
       this.addToast({

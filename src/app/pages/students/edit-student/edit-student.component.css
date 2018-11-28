@@ -88,6 +88,8 @@
 }
 
 
-.cursor{
+.cursor {
   cursor: pointer;
+  outline: none;
+  text-size-adjust: 9px;
 }

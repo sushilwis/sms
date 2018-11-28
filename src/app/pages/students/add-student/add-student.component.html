@@ -81,7 +81,8 @@
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <mat-select placeholder="Contact Preference" name="preference" formControlName="preference" [(ngModel)]="prefer" (change)="onChangePreference()">
+                  <mat-select placeholder="Contact Preference" name="preference" formControlName="preference"
+                    [(ngModel)]="prefer" (change)="onChangePreference()">
                     <mat-option value="father">Father</mat-option>
                     <mat-option value="mother">Mother</mat-option>
                     <mat-option value="guardian">Guardian</mat-option>
@@ -141,7 +142,7 @@
                       <div class="col-sm-12">
                         <!-- image-preview-filename input [CUT FROM HERE]-->
                         <div class="input-group image-preview">
-                          <input type="text" class="form-control image-preview-filename" disabled="disabled">
+                          <input type="text" class="form-control image-preview-filename" disabled="disabled" style="width: 215px;">
                           <!-- don't give a name === doesn't send on POST/GET -->
                           <span class="input-group-btn">
                             <!-- image-preview-clear button -->
@@ -152,9 +153,8 @@
                             <div class="btn btn-default image-preview-input">
                               <span class="glyphicon glyphicon-folder-open"></span>
                               <span class="image-preview-input-title">Browse</span>
-                              <input type="file" class="custom-file-input"
-                                name="studentProfPicEncoded" formControlName="studentProfPicEncoded" (change)="onSelectFile($event)"
-                                accept="image/*"/>
+                              <input type="file" class="custom-file-input" name="studentProfPicEncoded" formControlName="studentProfPicEncoded"
+                                (change)="onSelectFile($event)" accept="image/*" />
                               <!-- rename it -->
                             </div>
                           </span>
@@ -168,7 +168,7 @@
 
               <div class="col-sm-3">
                 <div class="mt-2">
-                  <img *ngIf="url" [src]="sanitizer.bypassSecurityTrustUrl(url)" class="img-thumbnail w-75" alt="profile-picture"/>
+                  <img *ngIf="url" [src]="sanitizer.bypassSecurityTrustUrl(url)" class="img-thumbnail w-75" alt="profile-picture" />
                 </div>
               </div>
 
@@ -267,19 +267,22 @@
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Father's Email Id" type="email" name="fatherEmailID" formControlName="fatherEmailID" [(ngModel)]="fatherEmail" (keyup)="onChangePreference()">
+                  <input matInput placeholder="Father's Email Id" type="email" name="fatherEmailID" formControlName="fatherEmailID"
+                    [(ngModel)]="fatherEmail" (keyup)="onChangePreference()">
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Mother's Email Id" type="email" name="motherEmailID" formControlName="motherEmailID" [(ngModel)]="motherEmail" (keyup)="onChangePreference()">
+                  <input matInput placeholder="Mother's Email Id" type="email" name="motherEmailID" formControlName="motherEmailID"
+                    [(ngModel)]="motherEmail" (keyup)="onChangePreference()">
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Guardian's Email Id" type="email" name="guardianEmailID" formControlName="guardianEmailID" [(ngModel)]="guardianEmail" (keyup)="onChangePreference()">
+                  <input matInput placeholder="Guardian's Email Id" type="email" name="guardianEmailID" formControlName="guardianEmailID"
+                    [(ngModel)]="guardianEmail" (keyup)="onChangePreference()">
                 </mat-form-field>
               </div>
             </div>
