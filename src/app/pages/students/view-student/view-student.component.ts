@@ -61,9 +61,9 @@ export class ViewStudentComponent implements OnInit {
 
     this.authServ.getStudentDetailsForFilters(stdData).subscribe((res:any) => {
       if(res.success){
-        console.log(res.data[0]);
+        // console.log(res.data[0]);
         this.stdDetailsData = res.data[0];
-
+        // console.log('Stu', this.stdDetailsData);
         if(res.data[0].studentProfPicPath){
           this.url = res.data[0].studentProfPicPath;
         }else{
@@ -87,7 +87,7 @@ export class ViewStudentComponent implements OnInit {
 
 
   onClickShowMore(e){
-    console.log(e.target.innerText);
+    // console.log(e.target.innerText);
     if(e.target.innerText == "Show More"){
       this.showMoreBtnText = "Show Less";
       this.showDetailsPart = true;

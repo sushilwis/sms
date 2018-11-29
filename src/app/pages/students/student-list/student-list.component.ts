@@ -85,8 +85,12 @@ export class StudentListComponent implements OnInit {
 
     this.fetch(data => {
       this.allStd = data.data;
-
-      // console.log(this.allStd); 
+      // console.log(this.allStd);
+      if(this.allStd){
+        setTimeout(()=>{
+          Helpers.setLoading(false);
+        }, 1000);
+      } 
 
       var shortStdArr = [];
       this.allStd.forEach(std => {
@@ -126,9 +130,7 @@ export class StudentListComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    setTimeout(()=>{
-      Helpers.setLoading(false);
-    }, 3000);    
+        
     // let regStdDetail = localStorage.getItem('regStd');
     // this.getStudentDetailsForFilters();
     // $("#example-table").DataTable({
@@ -227,6 +229,7 @@ export class StudentListComponent implements OnInit {
 
 
   fetch(cb) {
+    
     const req = new XMLHttpRequest();
 
     req.responseType = "json";
@@ -278,9 +281,9 @@ export class StudentListComponent implements OnInit {
 
     this.authServ.getStudentDetailsForFilters(stdData).subscribe((res:any) => {
       if(res.success){
-        console.log(res.data[0]);
+        // console.log(res.data[0]);
         this.stdDetailsData = res.data[0];
-
+        // console.log('student details : ', this.stdDetailsData);        
         if(res.data[0].studentProfPicPath){
           this.url = res.data[0].studentProfPicPath;
         }else{

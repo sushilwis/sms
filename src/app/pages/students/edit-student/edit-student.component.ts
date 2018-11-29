@@ -386,6 +386,10 @@ export class EditStudentComponent implements OnInit {
     }
   }
 
+
+
+
+
   getImagePreview(file: File): void {
     let reader = new FileReader();
     reader.onload = () => {
@@ -393,6 +397,11 @@ export class EditStudentComponent implements OnInit {
     };
     reader.readAsDataURL(file);
   }
+
+
+
+
+
 
   // Student details value set
   setFormValue(std) {
@@ -443,7 +452,7 @@ export class EditStudentComponent implements OnInit {
       studentID: this.stdId
     };
 
-    console.log("data sending on edit : ", stdData);
+    // console.log("data sending on edit : ", stdData);
 
     this.authServ
       .getStudentDetailsForFilters(stdData)
@@ -452,6 +461,7 @@ export class EditStudentComponent implements OnInit {
         if (res.success) {
           this.stdDetailsData = await res.data[0];
           this.stdProfileDetailsData = await res.data[0].profileDetails;
+          console.log('profile details : ', this.stdProfileDetailsData);          
           this.classId = await res.data[0].classID;
 
           Helpers.setLoading(false);
@@ -599,11 +609,9 @@ export class EditStudentComponent implements OnInit {
 
     // let regStdDetails = JSON.parse(localStorage.getItem('regStd'));
     // console.log('student ID : ', regStdDetails.studentID);
-    editStudentDetailsData.id = this.stdId;
+    editStudentDetailsData.id = this.stdProfileDetailsData.profileDetailsID;
     editStudentDetailsData.delete = false;
-    editStudentDetailsData.specialCategory = [
-      this.editStudentDetailsForm.value.specialCategory
-    ];
+    editStudentDetailsData.specialCategory = [this.editStudentDetailsForm.value.specialCategory];
     editStudentDetailsData.disability = [
       this.editStudentDetailsForm.value.disability
     ];
