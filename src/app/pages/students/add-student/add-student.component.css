@@ -80,6 +80,15 @@
   filter: alpha(opacity=0);
 }
 
-.image-preview-filename{
+.image-preview-filename {
   font-size: 11px;
+}
+
+.requiredField>label {
+  color: red !important;
+}
+
+.requiredText {
+  color: red !important;
+  font-size: 9px;
 }

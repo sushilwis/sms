@@ -221,6 +221,11 @@ export class AddStudentDetailsComponent implements OnInit {
     });
   }
 
+
+
+
+
+
   onAddStudentDetailsSubmit() {
     Helpers.setLoading(true);
     var addStudentDetailsData = this.addStudentDetailsForm.value;
@@ -265,8 +270,9 @@ export class AddStudentDetailsComponent implements OnInit {
         });
 
         setTimeout(() => {
-          this.router.navigate(["/students/add"]);
-        }, 3000);
+          this.addStudentDetailsForm.reset();
+          this.router.navigate(["/students/add"]);          
+        }, 1000);
       } else {
         Helpers.setLoading(false);
 
@@ -279,18 +285,27 @@ export class AddStudentDetailsComponent implements OnInit {
           type: "error"
         });
 
-        setTimeout(() => {
-          this.router.navigate(["/students/addDetails"]);
-        }, 6000);
+        // setTimeout(() => {
+        //   this.router.navigate(["/students/addDetails"]);
+        // }, 2000);
       }
     });
-    // console.log('Stored Cookie value : ',this.cookie.get( 'sessionId'));
-    this.addStudentDetailsForm.reset();
+    // console.log('Stored Cookie value : ',this.cookie.get( 'sessionId'));    
   }
+
+
+
+
+
 
   resetForm() {
     this.addStudentDetailsForm.reset();
   }
+
+
+
+
+
 
   addToast(options): any {
     if (options.closeOther) {

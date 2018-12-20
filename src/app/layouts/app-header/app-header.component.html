@@ -23,29 +23,36 @@
                 <i class="ti-menu"></i>
             </a> -->
     </li>
-    <li>
-      <h5 class="h5 pt-2 ml-4">
+    <li id="siteHead">
+      <h5 class="h5 pt-2 ml-4" id="siteHeading">
         <i class="fa fa-graduation-cap h3" aria-hidden="true"></i>
-        School Management System</h5>
+        School Management System
+      </h5>
     </li>
+    <li id="siteHeadSecondary">
+        <h5 class="h5 pt-2 ml-4" id="siteHeading">
+          <i class="fa fa-graduation-cap h3" aria-hidden="true"></i>
+          SMS
+        </h5>
+      </li>
   </ul>
   <!-- END TOP-LEFT TOOLBAR-->
   <!-- START TOP-RIGHT TOOLBAR-->
   <ul class="nav navbar-toolbar">
-    <li>
+    <li class="searchBar">
       <form class="navbar-search" action="javascript:;">
         <div class="rel">
           <span class="search-icon"><i class="ti-search"></i></span>
           <!-- <input type="text" id="searchMenu" class="form-control" placeholder="Search here..." 
           (onkeyup)="searchMenu($event)"> -->
-          <input type="text" id="searchMenu" class="form-control" placeholder="Search here...">
+          <input type="text" id="searchMenu" class="form-control" placeholder="Search here..."/>
         </div>
       </form>
     </li>
     <li>
 
     </li>
-    <li class="dropdown dropdown-inbox">
+    <li class="dropdown dropdown-inbox notifications">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown">
         <i class="fa fa-envelope-o"></i>
         <span class="badge badge-primary envelope-badge">9</span>
@@ -107,7 +114,7 @@
         </li>
       </ul>
     </li>
-    <li class="dropdown dropdown-notification">
+    <li class="dropdown dropdown-notification notifications">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o rel"><span class="notify-signal"></span></i></a>
       <ul class="dropdown-menu dropdown-menu-right dropdown-menu-media">
         <li class="dropdown-menu-header">

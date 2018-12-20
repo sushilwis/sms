@@ -17,13 +17,26 @@ export class GuardGuard implements CanActivate {
   // }
 
 
-
+  // ##################################################################################
+  //     ---------------- can activate method for authentication -----------------
+  // ##################################################################################
   canActivate(): boolean {
-    if (!this.authServ.isAuthenticated()) {
+    // if (!this.authServ.isAuthenticated()) {
+    //   this.router.navigate(['login']);
+    //   return false;
+    // }    
+    // return true;
+    
+    if (this.authServ.isAuthenticated()) {
+      console.log('Auth value on can active : ', this.authServ.isAuthenticated());      
+      return true;
+    } else {
+      console.log('Auth value on can active : ', this.authServ.isAuthenticated());
       this.router.navigate(['login']);
       return false;
-    }
-    return true;
+    }    
   }
+
+
   
 }

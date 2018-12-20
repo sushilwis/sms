@@ -50,3 +50,12 @@ div.ngb-dp-day.ng-star-inserted {
 div.amcharts-chart-div>a {
   display: none !important;
 }
+
+
+
+
+@media screen and (min-width: 480px) {
+  body {
+    background-color: lightgreen;
+  }
+}

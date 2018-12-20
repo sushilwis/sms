@@ -298,11 +298,12 @@ var chart = AmCharts.makeChart("collection_chart", {
 
 
 
-$('#searchMenu').on('keyup', function(){
+$('#searchMenu').on('keyup', function() {
 
   console.log('search value : ', this.value);
 
-  if(this.value == "" || this.value == null){
+  if(this.value == "" || this.value == null) {
+
     let allLi = $('#allMenuItems').children();
     let liElem = Array.from(allLi);
 
@@ -357,7 +358,7 @@ $('#searchMenu').on('keyup', function(){
 function selectMenuItemFromSideMenu(id) {
     console.log('calling function : ', id);      
 
-    if($(`#${id}`).attr('data-hasSub') == "true"){
+    if($(`#${id}`).attr('data-hasSub') == "true") {
       console.log('match');
       // console.log($(`#${id}`).parent().children());
       let elemArr = Array.from($(`#${id}`).parent().children());
@@ -365,11 +366,13 @@ function selectMenuItemFromSideMenu(id) {
       
       elemArr.forEach((el)=>{
         // console.log($(el).hasClass('active')); 
-        if($(el).hasClass('active')){            
+        if($(el).hasClass('active')) { 
+          $(el).children('ul').children('li').children('a').removeClass('text-warning font-weight-bold');           
           $(el).removeClass('active');
           $(el).children('ul').removeClass('in');
           $(el).children('a').children('span').removeClass('text-warning font-weight-bold');
         } 
+        $(el).children('ul').children('li').children('a').removeClass('text-warning font-weight-bold');
       });
 
 
@@ -389,16 +392,19 @@ function selectMenuItemFromSideMenu(id) {
       let elemArr = Array.from($(`#${id}`).parent().parent().parent().children());
 
       elemArr.forEach((el)=>{
-        if($(el).hasClass('active')){
+        if($(el).hasClass('active')) {
+          $(el).children('ul').children('li').children('a').removeClass('text-warning font-weight-bold'); 
           $(el).removeClass('active');
           $(el).children('ul').removeClass('in');
-          // $(`#${id} a span`).removeClass('text-warning font-weight-bold');
-          $(el).children('a').children('span').removeClass('text-warning font-weight-bold');
+          // $(el).children('a').children('span').removeClass('text-warning font-weight-bold');          
+          $(el).children('a').removeClass('text-warning font-weight-bold');
 
-          $(`#${id}`).parent().parent().removeClass('active');
-          $(`#${id}`).parent().parent().children('ul').removeClass('in');        
-          $(`#${id}`).children('a').removeClass('text-warning font-weight-bold');
-        }          
+          // $(`#${id}`).parent().parent().removeClass('active');
+          // $(`#${id}`).parent().parent().children('ul').removeClass('in');        
+          // $(`#${id}`).children('a').removeClass('text-warning font-weight-bold');
+          // $(`#${id}`).children('a').children('span').removeClass('text-warning font-weight-bold');
+        } 
+        $(el).children('ul').children('li').children('a').removeClass('text-warning font-weight-bold');         
       });
 
       $(`#${id}`).parent().parent().addClass('active');

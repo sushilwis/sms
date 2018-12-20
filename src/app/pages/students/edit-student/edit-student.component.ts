@@ -34,6 +34,9 @@ import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
     ])
   ]
 })
+
+
+
 export class EditStudentComponent implements OnInit {
   position: any = "top-right";
   url: any = "";
@@ -179,15 +182,15 @@ export class EditStudentComponent implements OnInit {
 
   // For student details edit
   createFormControls() {
-    this.firstName = new FormControl("", []);
+    this.firstName = new FormControl("", [Validators.required]);
     this.middleName = new FormControl("", []);
-    this.lastName = new FormControl("", []);
-    this.aadharNo = new FormControl("", []);
+    this.lastName = new FormControl("", [Validators.required]);
+    this.aadharNo = new FormControl("", [Validators.required]);
     this.mobileNo = new FormControl("", []);
-    this.studentDOB = new FormControl("", []);
+    this.studentDOB = new FormControl("", [Validators.required]);
     this.bloodGroup = new FormControl("", []);
-    this.gender = new FormControl("", []);
-    this.preference = new FormControl("", []);
+    this.gender = new FormControl("", [Validators.required]);
+    this.preference = new FormControl("", [Validators.required]);
     this.religion = new FormControl("", []);
     this.caste = new FormControl("", []);
     this.nationality = new FormControl("", []);
@@ -207,13 +210,13 @@ export class EditStudentComponent implements OnInit {
     this.motherEmailID = new FormControl("", []);
     this.guardianEmailID = new FormControl("", []);
     this.mediumOfInstruction = new FormControl("", []);
-    this.admissionNo = new FormControl("", []);
+    this.admissionNo = new FormControl("", [Validators.required]);
     this.admissionDate = new FormControl("", []);
-    this.streamID = new FormControl("", []);
-    this.classID = new FormControl("", []);
-    this.sectionID = new FormControl("", []);
+    this.streamID = new FormControl("", [Validators.required]);
+    this.classID = new FormControl("", [Validators.required]);
+    this.sectionID = new FormControl("", [Validators.required]);
     this.feeQuota = new FormControl("", []);
-    this.routeID = new FormControl("", []);
+    this.routeID = new FormControl("", [Validators.required]);
     this.studentProfPicEncoded = new FormControl("", []);
   }
 
@@ -460,8 +463,9 @@ export class EditStudentComponent implements OnInit {
         // console.log(res.data[0]);
         if (res.success) {
           this.stdDetailsData = await res.data[0];
+          // console.log('profile : ', this.stdDetailsData);
           this.stdProfileDetailsData = await res.data[0].profileDetails;
-          console.log('profile details : ', this.stdProfileDetailsData);          
+          // console.log('profile details : ', this.stdProfileDetailsData);          
           this.classId = await res.data[0].classID;
 
           Helpers.setLoading(false);
@@ -602,6 +606,12 @@ export class EditStudentComponent implements OnInit {
     });
   }
 
+
+
+
+
+
+
   // Edit student profile details submit
   onEditStudentDetailsSubmit() {
     Helpers.setLoading(true);
@@ -636,6 +646,7 @@ export class EditStudentComponent implements OnInit {
         if (res.success) {
           // console.log('success submit details');
           Helpers.setLoading(false);
+
           this.addToast({
             title: "SUCCESS!",
             msg: `Student Details Updated Successfully.`,
@@ -650,6 +661,7 @@ export class EditStudentComponent implements OnInit {
         } else {
           // console.log('success submit details');
           Helpers.setLoading(false);
+
           this.addToast({
             title: "FAIL!",
             msg: `Something Wrong. Please Try Again.`,
@@ -719,6 +731,12 @@ export class EditStudentComponent implements OnInit {
       });
   }
 
+
+
+
+
+
+
   getSection(e) {
     // console.log(e);
     this.classData.forEach(ele => {
@@ -730,6 +748,11 @@ export class EditStudentComponent implements OnInit {
     // console.log(this.sectionData);
   }
 
+
+
+
+
+
   getSectionFromClassID(id) {
     // console.log(e);s
     this.classData.forEach(ele => {
@@ -740,6 +763,11 @@ export class EditStudentComponent implements OnInit {
     // console.log("id : ", id);
     // console.log("section list for first time : ", this.sectionData);
   }
+
+
+
+
+
 
   addToast(options): any {
     if (options.closeOther) {

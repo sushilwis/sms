@@ -34,19 +34,47 @@ export class AppHeader implements OnInit, AfterViewInit {
     // this.selectMenuItemFromSideMenu("enrollment");
   }
 
-  userLogout() {
-    let asd = this.cookie.delete("sessionId");
+
+  // ##################################################################################
+  //     ---------------- User logout function -----------------
+  // ##################################################################################
+
+  async userLogout() {
+    // let asd = await this.cookie.delete("sessionId");
     // console.log(asd);
 
-    if (
-      this.cookie.get("sessionId") == null ||
-      this.cookie.get("sessionId") == undefined
-    ) {
+    // if (
+    //   this.cookie.get("sessionId") == null ||
+    //   this.cookie.get("sessionId") == undefined
+    // ) {
+    //   console.log('if called.');
+    //   console.log(this.cookie.get("sessionId"));
+    //   this.router.navigate(["/login"]);
+    // } else {
+    //   console.log('else called.');
+    //   console.log('cookie value : ', this.cookie.get("sessionId"));
+    //   this.cookie.delete("sessionId");
+    // }
+    let is_deleted = await this.deleteUserSessionData();
+
+    if(is_deleted){
+      console.log('if block.');
+      this.cookie.delete("sessionId");      
       this.router.navigate(["/login"]);
-    } else {
+    }else{
+      console.log('else block.');
       this.cookie.delete("sessionId");
+      this.router.navigate(["/login"]);
     }
   }
+
+
+
+
+
+  // ##################################################################################
+  //     ---------------- getting user details -----------------
+  // ##################################################################################
 
   getLoggedUserDetail() {
     this.userDetails = {
@@ -55,8 +83,30 @@ export class AppHeader implements OnInit, AfterViewInit {
       uName: this.cookie.get("uName"),
       uRole: this.cookie.get("uRole")
     };
-
     // console.log(this.userDetails);
+  }
+
+
+
+
+  // ##################################################################################
+  //     ---------------- delete user session -----------------
+  // ##################################################################################
+
+  async deleteUserSessionData() {
+    await this.cookie.delete("sessionId");
+    await this.cookie.deleteAll();
+
+    console.log('session delete value : ', this.cookie.delete("sessionId"));    
+    console.log("cookie check status : ", this.cookie.check('sessionId'));    
+
+    if (this.cookie.check('sessionId')) {
+      console.log('if block...');
+      return true;     
+    }else{
+      console.log('else block...');
+      return false;
+    }
   }
 
   // searchMenu(e) {

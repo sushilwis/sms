@@ -5366,3 +5366,41 @@ table.dataTable {
 .example-full-width {
   width: 90% !important;
 }
+
+#siteHeadSecondary{
+  display: none;
+}
+
+
+
+
+
+@media screen and (max-width: 833px) {
+  .searchBar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 572px) {
+  #siteHeading {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 503px) {
+  #siteHead {
+    display: none;
+  }
+  #siteHeadSecondary {
+    display: inline;
+  }
+  #siteHeading {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .notifications{
+    display: none;
+  }
+}

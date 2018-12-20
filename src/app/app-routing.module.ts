@@ -60,23 +60,28 @@ const routes: Routes = [
       },
       {
         path: "students/edit/:id",
-        component: EditStudentComponent
+        component: EditStudentComponent,
+        canActivate: [GuardGuard]
       },
       {
         path: "students/list",
-        component: StudentListComponent
+        component: StudentListComponent,
+        canActivate: [GuardGuard]
       },
       {
         path: "students/viewDetail/:id",
-        component: ViewStudentComponent
+        component: ViewStudentComponent,
+        canActivate: [GuardGuard]
       },
       {
         path: "students/addDetails",
-        component: AddStudentDetailsComponent
+        component: AddStudentDetailsComponent,
+        canActivate: [GuardGuard]
       },
       {
         path: "students/editDetails/:id",
-        component: EditStudentDetailsComponent
+        component: EditStudentDetailsComponent,
+        canActivate: [GuardGuard]
       }
     ]
   },

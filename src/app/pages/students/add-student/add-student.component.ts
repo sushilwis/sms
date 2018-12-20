@@ -123,15 +123,15 @@ export class AddStudentComponent implements OnInit {
   }
 
   createFormControls() {
-    this.firstName = new FormControl("", []);
+    this.firstName = new FormControl("", [Validators.required]);
     this.middleName = new FormControl("", []);
-    this.lastName = new FormControl("", []);
-    this.aadharNo = new FormControl("", []);
+    this.lastName = new FormControl("", [Validators.required]);
+    this.aadharNo = new FormControl("", [Validators.required]);
     this.mobileNo = new FormControl("", []);
-    this.date_of_birth = new FormControl("", []);
+    this.date_of_birth = new FormControl("", [Validators.required]);
     this.bloodGroup = new FormControl("", []);
-    this.gender = new FormControl("", []);
-    this.preference = new FormControl("", []);
+    this.gender = new FormControl("", [Validators.required]);
+    this.preference = new FormControl("", [Validators.required]);
     this.religion = new FormControl("", []);
     this.caste = new FormControl("", []);
     this.nationality = new FormControl("", []);
@@ -151,13 +151,13 @@ export class AddStudentComponent implements OnInit {
     this.motherEmailID = new FormControl("", []);
     this.guardianEmailID = new FormControl("", []);
     this.mediumOfInstruction = new FormControl("", []);
-    this.admissionNo = new FormControl("", []);
+    this.admissionNo = new FormControl("", [Validators.required]);
     this.admissionDate = new FormControl("", []);
-    this.streamID = new FormControl("", []);
-    this.classID = new FormControl("", []);
-    this.sectionID = new FormControl("", []);
+    this.streamID = new FormControl("", [Validators.required]);
+    this.classID = new FormControl("", [Validators.required]);
+    this.sectionID = new FormControl("", [Validators.required]);
     this.feeQuota = new FormControl("", []);
-    this.routeID = new FormControl("", []);
+    this.routeID = new FormControl("", [Validators.required]);
     this.studentProfPicEncoded = new FormControl("", []);
   }
 
@@ -202,23 +202,23 @@ export class AddStudentComponent implements OnInit {
     });
   }
 
+
+
+
+
+
   onChangePreference() {
     // console.log(this.prefer);
     if (this.prefer == "father") {
-      // console.log("father email required");
-
-      if (this.fatherEmail != "" && this.fatherEmail != null) {
-        // console.log('father email not null', this.fatherEmail);
+      if (this.fatherEmail != "" && this.fatherEmail != null && this.addStudentForm.valid) {
         this.disableRegisterBtn = false;
       } else {
-        // console.log('father email is null', this.fatherEmail);
         this.disableRegisterBtn = true;
       }
     }
 
     if (this.prefer == "mother") {
-      // console.log("mother email required");
-      if (this.motherEmail != "" && this.motherEmail != null) {
+      if (this.motherEmail != "" && this.motherEmail != null && this.addStudentForm.valid) {
         this.disableRegisterBtn = false;
       } else {
         this.disableRegisterBtn = true;
@@ -226,14 +226,19 @@ export class AddStudentComponent implements OnInit {
     }
 
     if (this.prefer == "guardian") {
-      // console.log("guardian email required");
-      if (this.guardianEmail != "" && this.guardianEmail != null) {
+      if (this.guardianEmail != "" && this.guardianEmail != null && this.addStudentForm.valid) {
         this.disableRegisterBtn = false;
       } else {
         this.disableRegisterBtn = true;
       }
     }
   }
+
+
+  
+
+
+
 
   onAddStudentSubmit() {
     // console.log("from add student.");
@@ -258,7 +263,6 @@ export class AddStudentComponent implements OnInit {
       // console.log(res);
       if (res.success) {
         // console.log(res);
-
         localStorage.setItem("regStd", JSON.stringify(res.studentList[0]));
         console.log(res.studentList[0]);
         let name = res.studentList[0].studentName;
@@ -270,15 +274,17 @@ export class AddStudentComponent implements OnInit {
           msg: `Student Added Successfully. Student ID : ${
             res.studentList[0].studentID
           }. Student Name : ${name}`,
-          timeout: 6000,
+          timeout: 5000,
           theme: "default",
           position: "top-right",
           type: "success"
         });
 
         setTimeout(() => {
+          this.addStudentForm.reset();
           this.router.navigate(["/students/addDetails"]);
-        }, 4000);
+        }, 1000);
+
       } else {
         // console.log(res);
         Helpers.setLoading(false);
@@ -286,17 +292,14 @@ export class AddStudentComponent implements OnInit {
         this.addToast({
           title: "FAIL!",
           msg: res.response,
-          timeout: 6000,
+          timeout: 5000,
           theme: "default",
           position: "top-right",
           type: "error"
         });
-
-        this.router.navigate(["/students/add"]);
       }
     });
-    // console.log('Stored Cookie value : ',this.cookie.get( 'sessionId'));
-    this.addStudentForm.reset();
+    // console.log('Stored Cookie value : ', this.cookie.get('sessionId'));    
   }
 
   // No subscriptions left for the institution
@@ -339,6 +342,7 @@ export class AddStudentComponent implements OnInit {
     htmlInp.value = image.name;
 
     if (!image.type.match(pattern)) {
+
       this.addToast({
         title: "FAIL!",
         msg: "Invalid Format.",
@@ -378,6 +382,11 @@ export class AddStudentComponent implements OnInit {
       // console.log(this.uploadedImage);
     }
   }
+
+
+
+
+
 
   getImagePreview(file: File): void {
     let reader = new FileReader();
@@ -446,6 +455,7 @@ export class AddStudentComponent implements OnInit {
   // }
 
   addToast(options): any {
+    
     if (options.closeOther) {
       this.toastyService.clearAll();
     }
@@ -490,9 +500,17 @@ export class AddStudentComponent implements OnInit {
     }
   }
 
+
+
+
+
   resetForm() {
     this.addStudentForm.reset();
   }
+
+
+
+
 
   insSelectDetails() {
     let header = new HttpHeaders();
@@ -519,6 +537,11 @@ export class AddStudentComponent implements OnInit {
         // });
       });
   }
+
+
+
+
+
 
   getSection(e) {
     // console.log(e);

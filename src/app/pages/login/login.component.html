@@ -1,9 +1,12 @@
+<ng2-toasty [position]="position"></ng2-toasty>
+
+
 <div class="content cover-image">
-    <div class="brand">
-    </div>
+
+    <div class="brand"></div>
 
     <form id="login-form" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
-            <!-- (ngSubmit)="onLoginSubmit()" -->
+
         <h2 class="login-title">Log in</h2>
 
         <div class="form-group">
@@ -37,3 +40,6 @@
         </div>
     </form>
 </div>
+
+
+<ng2-toasty [position]="position"></ng2-toasty>

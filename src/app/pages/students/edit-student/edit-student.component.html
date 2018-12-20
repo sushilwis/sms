@@ -47,7 +47,10 @@
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="First Name" type="text" name="firstName" formControlName="firstName">
+                    <input matInput placeholder="First Name *" type="text" name="firstName" formControlName="firstName">
+                    <mat-error *ngIf="firstName.hasError('required')">
+                      Field is required.
+                    </mat-error>
                   </mat-form-field>
                 </div>
 
@@ -59,13 +62,19 @@
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Last Name" type="text" name="lastName" formControlName="lastName">
+                    <input matInput placeholder="Last Name *" type="text" name="lastName" formControlName="lastName">
+                    <mat-error *ngIf="lastName.hasError('required')">
+                      Field is required.
+                    </mat-error>
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Aadhar Number" type="number" name="aadharNo" formControlName="aadharNo">
+                    <input matInput placeholder="Aadhar Number *" type="number" name="aadharNo" formControlName="aadharNo">
+                    <mat-error *ngIf="aadharNo.hasError('required')">
+                      Field is required.
+                    </mat-error>
                   </mat-form-field>
                 </div>
 
@@ -77,10 +86,12 @@
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput [matDatepicker]="studentDOB" placeholder="Date of Birth" name="studentDOB"
-                      formControlName="studentDOB">
-                    <mat-datepicker-toggle matSuffix [for]="studentDOB"></mat-datepicker-toggle>
-                    <mat-datepicker #studentDOB></mat-datepicker>
+                    <input matInput [matDatepicker]="studentDOB1" placeholder="Date of Birth *" name="studentDOB" formControlName="studentDOB">
+                    <mat-error *ngIf="studentDOB.hasError('required')">
+                      Field is required.
+                    </mat-error>
+                    <mat-datepicker-toggle matSuffix [for]="studentDOB1"></mat-datepicker-toggle>
+                    <mat-datepicker #studentDOB1></mat-datepicker>
                   </mat-form-field>
                 </div>
 
@@ -95,20 +106,26 @@
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <mat-select placeholder="Gender" name="gender" formControlName="gender">
+                    <mat-select placeholder="Gender *" name="gender" formControlName="gender">
                       <mat-option value="male">Male</mat-option>
                       <mat-option value="female">Female</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="gender.hasError('required')">
+                      Field is required.
+                    </mat-error>
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <mat-select placeholder="Contact Preference" name="preference" formControlName="preference">
+                    <mat-select placeholder="Contact Preference *" name="preference" formControlName="preference">
                       <mat-option value="father">Father</mat-option>
                       <mat-option value="mother">Mother</mat-option>
                       <mat-option value="guardian">Guardian</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="preference.hasError('required')">
+                      Field is required.
+                    </mat-error>
                   </mat-form-field>
                 </div>
 
@@ -319,7 +336,10 @@
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Admission Number" type="text" name="admissionNo" formControlName="admissionNo">
+                    <input matInput placeholder="Admission Number *" type="text" name="admissionNo" formControlName="admissionNo">
+                    <mat-error *ngIf="admissionNo.hasError('required')">
+                      Field is required.
+                    </mat-error>
                   </mat-form-field>
                 </div>
 
@@ -334,26 +354,35 @@
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <mat-select placeholder="Stream/Group" name="streamID" formControlName="streamID">
+                    <mat-select placeholder="Stream/Group *" name="streamID" formControlName="streamID">
                       <mat-option *ngFor="let stream of streamData" value="{{stream.id}}">{{stream.name}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="streamID.hasError('required')">
+                      Field is required.
+                    </mat-error>
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <mat-select (change)="getSection($event)" placeholder="Class" name="classID" formControlName="classID">
+                    <mat-select (change)="getSection($event)" placeholder="Class *" name="classID" formControlName="classID">
                       <mat-option *ngFor="let class of classData" value="{{class.classID}}">{{class.className}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="classID.hasError('required')">
+                      Field is required.
+                    </mat-error>
                   </mat-form-field>
                 </div>
 
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <mat-select placeholder="Section" name="sectionID" formControlName="sectionID">
+                    <mat-select placeholder="Section *" name="sectionID" formControlName="sectionID">
                       <mat-option *ngFor="let section of sectionData" value="{{section.sectionID}}">{{section.sectionName}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="sectionID.hasError('required')">
+                      Field is required.
+                    </mat-error>
                   </mat-form-field>
                 </div>
 
@@ -368,9 +397,12 @@
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <mat-select placeholder="Bus Route" name="routeID" formControlName="routeID">
+                    <mat-select placeholder="Bus Route *" name="routeID" formControlName="routeID">
                       <mat-option *ngFor="let route of routeData" value="{{route.routeID}}">{{route.routeName}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="routeID.hasError('required')">
+                      Field is required.
+                    </mat-error>
                   </mat-form-field>
                 </div>
 
@@ -378,6 +410,7 @@
 
 
               <div class="row">
+                <div class="col-md-12 mt-4">* fields are required.</div>
                 <div class="col-md-12 mt-4">
                   <div class="form-group">
                     <button class="btn btn-success btn-lg" type="submit">Update</button>
@@ -409,14 +442,14 @@
                   <h6 class="h6 font-weight-bold sub-heading">Previous Institution Information</h6>
                 </div>
 
-                <div class="col-sm-3 pr-4 pl-4">
+                <!-- <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
                     <mat-select placeholder="Region" name="region" formControlName="region" value="{{stdProfileDetailsData?.region}}">
                       <mat-option value="URBAN">Urban</mat-option>
                       <mat-option value="RURAL">Rural</mat-option>
                     </mat-select>
                   </mat-form-field>
-                </div>
+                </div> -->
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
