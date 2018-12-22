@@ -597,8 +597,9 @@
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Address 1" name="permanentAddress1" formControlName="permanentAddress1"
+                    <input matInput type="text" placeholder="Address 1 *" name="permanentAddress1" formControlName="permanentAddress1"
                       value="{{stdProfileDetailsData?.permanentAddress1}}">
+                    <mat-error *ngIf="permanentAddress1.hasError('required')">Field is required.</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -611,15 +612,17 @@
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Phone" name="permanentAddressPhNo" formControlName="permanentAddressPhNo"
+                    <input matInput type="text" placeholder="Phone *" name="permanentAddressPhNo" formControlName="permanentAddressPhNo"
                       value="{{stdProfileDetailsData?.permanentAddressPhNo}}">
+                      <mat-error *ngIf="permanentAddressPhNo.hasError('required')">Field is required.</mat-error>
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="City" name="permanentAddressCity" formControlName="permanentAddressCity"
+                    <input matInput type="text" placeholder="City *" name="permanentAddressCity" formControlName="permanentAddressCity"
                       value="{{stdProfileDetailsData?.permanentAddressCity}}">
+                      <mat-error *ngIf="permanentAddressCity.hasError('required')">Field is required.</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -632,29 +635,33 @@
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="District" name="permanentAddressDistrict" formControlName="permanentAddressDistrict"
+                    <input matInput type="text" placeholder="District *" name="permanentAddressDistrict" formControlName="permanentAddressDistrict"
                       value="{{stdProfileDetailsData?.permanentAddressDistrict}}">
+                      <mat-error *ngIf="permanentAddressDistrict.hasError('required')">Field is required.</mat-error>
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Country" name="permanentAddressCountry" formControlName="permanentAddressCountry"
+                    <input matInput type="text" placeholder="Country *" name="permanentAddressCountry" formControlName="permanentAddressCountry"
                       value="{{stdProfileDetailsData?.permanentAddressCountry}}">
+                      <mat-error *ngIf="permanentAddressCountry.hasError('required')">Field is required.</mat-error>
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="State" name="permanentAddressState" formControlName="permanentAddressState"
+                    <input matInput type="text" placeholder="State *" name="permanentAddressState" formControlName="permanentAddressState"
                       value="{{stdProfileDetailsData?.permanentAddressState}}">
+                      <mat-error *ngIf="permanentAddressState.hasError('required')">Field is required.</mat-error>
                   </mat-form-field>
                 </div>
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Pin" name="permanentAddressPin" formControlName="permanentAddressPin"
+                    <input matInput type="text" placeholder="Pin *" name="permanentAddressPin" formControlName="permanentAddressPin"
                       value="{{stdProfileDetailsData?.permanentAddressPin}}">
+                      <mat-error *ngIf="permanentAddressPin.hasError('required')">Field is required.</mat-error>
                   </mat-form-field>
                 </div>
               </div>
@@ -878,10 +885,10 @@
 
 
               <div class="row">
+                <div class="col-md-12 mt-4">* fields are required.</div>
                 <div class="col-md-12 mt-4">
                   <div class="form-group">
                     <button class="btn btn-success btn-lg" type="submit">Update</button>
-                    <!-- <button class="btn btn-primary btn-lg">Reset</button> -->
                   </div>
                 </div>
               </div>

@@ -35,7 +35,7 @@ export class AddStudentDetailsComponent implements OnInit {
   position: any = "top-right";
 
   addStudentDetailsForm: FormGroup;
-  region: FormControl;
+  // region: FormControl;
   previousInsState: FormControl;
   previousInsCity: FormControl;
   previousInsAddress: FormControl;
@@ -106,7 +106,7 @@ export class AddStudentDetailsComponent implements OnInit {
   }
 
   createFormControls() {
-    this.region = new FormControl("", []);
+    // this.region = new FormControl("", []);
     this.previousInsState = new FormControl("", []);
     this.previousInsCity = new FormControl("", []);
     this.previousInsAddress = new FormControl("", []);
@@ -121,21 +121,21 @@ export class AddStudentDetailsComponent implements OnInit {
     this.previousInsAffiliation = new FormControl("", []);
     this.guardianOccupation = new FormControl("", []);
     this.motherOccupation = new FormControl("", []);
-    this.permanentAddress1 = new FormControl("", []);
+    this.permanentAddress1 = new FormControl("", [Validators.required]);
     this.permanentAddress2 = new FormControl("", []);
     this.fatherOccupation = new FormControl("", []);
-    this.permanentAddressDistrict = new FormControl("", []);
-    this.permanentAddressCity = new FormControl("", []);
+    this.permanentAddressDistrict = new FormControl("", [Validators.required]);
+    this.permanentAddressCity = new FormControl("", [Validators.required]);
     this.tempAddressDistrict = new FormControl("", []);
-    this.permanentAddressCountry = new FormControl("", []);
+    this.permanentAddressCountry = new FormControl("", [Validators.required]);
     this.permanentAddressTaluk = new FormControl("", []);
-    this.permanentAddressState = new FormControl("", []);
+    this.permanentAddressState = new FormControl("", [Validators.required]);
     this.tempAddressCity = new FormControl("", []);
     this.tempAddressPin = new FormControl("", []);
-    this.permanentAddressPhNo = new FormControl("", []);
+    this.permanentAddressPhNo = new FormControl("", [Validators.required]);
     this.tempAddressState = new FormControl("", []);
     this.tempAddressTaluk = new FormControl("", []);
-    this.permanentAddressPin = new FormControl("", []);
+    this.permanentAddressPin = new FormControl("", [Validators.required]);
     this.tempAddress1 = new FormControl("", []);
     this.tempAddress2 = new FormControl("", []);
     this.studentID = new FormControl("", []);
@@ -164,7 +164,7 @@ export class AddStudentDetailsComponent implements OnInit {
 
   createFormGroup() {
     this.addStudentDetailsForm = new FormGroup({
-      region: this.region,
+      // region: this.region,
       previousInsState: this.previousInsState,
       previousInsCity: this.previousInsCity,
       previousInsAddress: this.previousInsAddress,
@@ -235,13 +235,23 @@ export class AddStudentDetailsComponent implements OnInit {
 
     addStudentDetailsData.studentID = regStdDetails.studentID;
     addStudentDetailsData.createdBy = regStdDetails.uID;
-    addStudentDetailsData.specialCategory = [
-      this.addStudentDetailsForm.value.specialCategory
-    ];
 
-    addStudentDetailsData.disability = [
-      this.addStudentDetailsForm.value.disability
-    ];
+    if(this.addStudentDetailsForm.value.specialCategory != ""){
+      addStudentDetailsData.specialCategory = [
+        this.addStudentDetailsForm.value.specialCategory
+      ];
+    }else{
+      addStudentDetailsData.specialCategory = ["NA"];
+    }
+    
+    if(this.addStudentDetailsForm.value.disability != ""){
+      addStudentDetailsData.disability = [
+        this.addStudentDetailsForm.value.disability
+      ];
+    }else{
+      addStudentDetailsData.disability = ["NA"];
+    }
+    
     // addStudentData.subscriptionID = "1";
     // addStudentData.studentProfPicEncoded = this.url;
 
@@ -253,12 +263,12 @@ export class AddStudentDetailsComponent implements OnInit {
       data: data
     };
 
-    // console.log('request data : ',stdData);
+    console.log(stdData);
 
     this.authServ.addStudentDetails(stdData).subscribe((res: any) => {
       if (res.success) {
         Helpers.setLoading(false);
-        // console.log('response data : ', res);
+        console.log(res);
         // localStorage.setItem('regStd', JSON.stringify(res.studentList[0]));
         this.addToast({
           title: "SUCCESS!",
@@ -300,6 +310,19 @@ export class AddStudentDetailsComponent implements OnInit {
 
   resetForm() {
     this.addStudentDetailsForm.reset();
+  }
+
+
+
+
+
+
+  submitBtnEnable() {
+      if (this.addStudentDetailsForm.valid) {
+        return false;
+      } else {
+        return true;
+      }
   }
 
 

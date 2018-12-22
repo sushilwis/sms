@@ -18,6 +18,7 @@ import swal from "sweetalert2";
 // import { CookieService } from "ngx-cookie-service";
 import {Helpers} from "../../../helpers";
 import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
+// import { Helpers } from "../../../helpers";
 
 @Component({
   selector: "app-student-list",
@@ -529,10 +530,12 @@ export class StudentListComponent implements OnInit {
       delete: true
     };
 
+    console.log('delete data : ', deleteStudentProfileInfoData);
+
     this.authServ
       .deleteStudentProfileDetails(deleteStudentProfileInfoData)
       .subscribe((res: any) => {
-        // console.log("after student profile delete :", res);
+        console.log("after student profile delete :", res);
 
         if (res.success) {
           let deleteStudentInfoData = {

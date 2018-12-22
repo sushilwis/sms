@@ -455,12 +455,13 @@ export class EditStudentComponent implements OnInit {
       studentID: this.stdId
     };
 
-    // console.log("data sending on edit : ", stdData);
+    console.log(stdData);
 
     this.authServ
       .getStudentDetailsForFilters(stdData)
       .subscribe(async (res: any) => {
-        // console.log(res.data[0]);
+        console.log(res);
+        
         if (res.success) {
           this.stdDetailsData = await res.data[0];
           // console.log('profile : ', this.stdDetailsData);
@@ -505,21 +506,21 @@ export class EditStudentComponent implements OnInit {
     this.previousInsAffiliation = new FormControl("", []);
     this.guardianOccupation = new FormControl("", []);
     this.motherOccupation = new FormControl("", []);
-    this.permanentAddress1 = new FormControl("", []);
+    this.permanentAddress1 = new FormControl("", [Validators.required]);
     this.permanentAddress2 = new FormControl("", []);
     this.fatherOccupation = new FormControl("", []);
-    this.permanentAddressDistrict = new FormControl("", []);
-    this.permanentAddressCity = new FormControl("", []);
+    this.permanentAddressDistrict = new FormControl("", [Validators.required]);
+    this.permanentAddressCity = new FormControl("", [Validators.required]);
     this.tempAddressDistrict = new FormControl("", []);
-    this.permanentAddressCountry = new FormControl("", []);
+    this.permanentAddressCountry = new FormControl("", [Validators.required]);
     this.permanentAddressTaluk = new FormControl("", []);
-    this.permanentAddressState = new FormControl("", []);
+    this.permanentAddressState = new FormControl("", [Validators.required]);
     this.tempAddressCity = new FormControl("", []);
     this.tempAddressPin = new FormControl("", []);
-    this.permanentAddressPhNo = new FormControl("", []);
+    this.permanentAddressPhNo = new FormControl("", [Validators.required]);
     this.tempAddressState = new FormControl("", []);
     this.tempAddressTaluk = new FormControl("", []);
-    this.permanentAddressPin = new FormControl("", []);
+    this.permanentAddressPin = new FormControl("", [Validators.required]);
     this.tempAddress1 = new FormControl("", []);
     this.tempAddress2 = new FormControl("", []);
     // this.studentID = new FormControl('', []);
@@ -621,10 +622,27 @@ export class EditStudentComponent implements OnInit {
     // console.log('student ID : ', regStdDetails.studentID);
     editStudentDetailsData.id = this.stdProfileDetailsData.profileDetailsID;
     editStudentDetailsData.delete = false;
-    editStudentDetailsData.specialCategory = [this.editStudentDetailsForm.value.specialCategory];
-    editStudentDetailsData.disability = [
-      this.editStudentDetailsForm.value.disability
-    ];
+
+    if(this.editStudentDetailsForm.value.specialCategory != ""){
+      editStudentDetailsData.specialCategory = [
+        this.editStudentDetailsForm.value.specialCategory
+      ];
+    }else{
+      editStudentDetailsData.specialCategory = ["NA"];
+    }
+    
+    if(this.editStudentDetailsForm.value.disability != ""){
+      editStudentDetailsData.disability = [
+        this.editStudentDetailsForm.value.disability
+      ];
+    }else{
+      editStudentDetailsData.disability = ["NA"];
+    }
+
+    // editStudentDetailsData.specialCategory = [this.editStudentDetailsForm.value.specialCategory];
+    // editStudentDetailsData.disability = [
+    //   this.editStudentDetailsForm.value.disability
+    // ];
     editStudentDetailsData.updatedBy = "1";
     // addStudentData.subscriptionID = "1";
     // addStudentData.studentProfPicEncoded = this.url;
@@ -744,7 +762,6 @@ export class EditStudentComponent implements OnInit {
         this.sectionData = ele.sectionDetails;
       }
     });
-
     // console.log(this.sectionData);
   }
 

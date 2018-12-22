@@ -193,11 +193,10 @@ export class AuthService {
 
   async isAuthenticated() {
 
-    let is_cookie_set = await this.cookie.check('sessionId');
-    return is_cookie_set;
-    // if(is_cookie_set){
-    //   return is_cookie_set;
-    // }
+    let is_cookie_set = await this.cookie.check('sessionId');    
+    if(is_cookie_set){
+       return is_cookie_set; 
+    }
   }
 
 

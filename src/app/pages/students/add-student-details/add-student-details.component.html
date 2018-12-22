@@ -160,7 +160,8 @@
 
               <div class="col-sm-3 pr-4 pl-4">
                 <mat-form-field class="example-full-width">
-                  <input matInput type="text" placeholder="Address 1" name="permanentAddress1" formControlName="permanentAddress1">
+                  <input matInput type="text" placeholder="Address 1 *" name="permanentAddress1" formControlName="permanentAddress1">
+                  <mat-error *ngIf="permanentAddress1.hasError('required')">Field is required.</mat-error>
                 </mat-form-field>
               </div>
 
@@ -172,13 +173,15 @@
 
               <div class="col-sm-3 pr-4 pl-4">
                 <mat-form-field class="example-full-width">
-                  <input matInput type="number" placeholder="Phone" name="permanentAddressPhNo" formControlName="permanentAddressPhNo">
+                  <input matInput type="number" placeholder="Phone *" name="permanentAddressPhNo" formControlName="permanentAddressPhNo">
+                  <mat-error *ngIf="permanentAddressPhNo.hasError('required')">Field is required.</mat-error>
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3 pr-4 pl-4">
                 <mat-form-field class="example-full-width">
-                  <input matInput type="text" placeholder="City" name="permanentAddressCity" formControlName="permanentAddressCity">
+                  <input matInput type="text" placeholder="City *" name="permanentAddressCity" formControlName="permanentAddressCity">
+                  <mat-error *ngIf="permanentAddressCity.hasError('required')">Field is required.</mat-error>
                 </mat-form-field>
               </div>
 
@@ -190,25 +193,29 @@
 
               <div class="col-sm-3 pr-4 pl-4">
                 <mat-form-field class="example-full-width">
-                  <input matInput type="text" placeholder="District" name="permanentAddressDistrict" formControlName="permanentAddressDistrict">
+                  <input matInput type="text" placeholder="District *" name="permanentAddressDistrict" formControlName="permanentAddressDistrict">
+                  <mat-error *ngIf="permanentAddressDistrict.hasError('required')">Field is required.</mat-error>
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3 pr-4 pl-4">
                 <mat-form-field class="example-full-width">
-                  <input matInput type="text" placeholder="Country" name="permanentAddressCountry" formControlName="permanentAddressCountry">
+                  <input matInput type="text" placeholder="Country *" name="permanentAddressCountry" formControlName="permanentAddressCountry">
+                  <mat-error *ngIf="permanentAddressCountry.hasError('required')">Field is required.</mat-error>
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3 pr-4 pl-4">
                 <mat-form-field class="example-full-width">
-                  <input matInput type="text" placeholder="State" name="permanentAddressState" formControlName="permanentAddressState">
+                  <input matInput type="text" placeholder="State *" name="permanentAddressState" formControlName="permanentAddressState">
+                  <mat-error *ngIf="permanentAddressState.hasError('required')">Field is required.</mat-error>
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3 pr-4 pl-4">
                 <mat-form-field class="example-full-width">
-                  <input matInput type="number" placeholder="Pin" name="permanentAddressPin" formControlName="permanentAddressPin">
+                  <input matInput type="number" placeholder="Pin *" name="permanentAddressPin" formControlName="permanentAddressPin">
+                  <mat-error *ngIf="permanentAddressPin.hasError('required')">Field is required.</mat-error>
                 </mat-form-field>
               </div>
             </div>
@@ -415,9 +422,10 @@
             </div>
 
             <div class="row">
+              <div class="col-md-12 mt-4">* fields are required.</div>
               <div class="col-md-12 mt-4">
                 <div class="form-group">
-                  <button class="btn btn-success btn-lg" type="submit">Submit</button>
+                  <button class="btn btn-success btn-lg" type="submit" [disabled]="submitBtnEnable()">Submit</button>
                   <button class="btn btn-primary btn-lg" (click)="resetForm()">Reset</button>
                 </div>
               </div>

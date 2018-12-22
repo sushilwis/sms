@@ -257,12 +257,12 @@ export class AddStudentComponent implements OnInit {
       data: data
     };
 
-    // console.log(stdData);
+    console.log(stdData);
 
     this.authServ.addStudent(stdData).subscribe((res: any) => {
       // console.log(res);
       if (res.success) {
-        // console.log(res);
+        console.log(res);
         localStorage.setItem("regStd", JSON.stringify(res.studentList[0]));
         console.log(res.studentList[0]);
         let name = res.studentList[0].studentName;

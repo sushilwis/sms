@@ -57,13 +57,15 @@ export class AppHeader implements OnInit, AfterViewInit {
     // }
     let is_deleted = await this.deleteUserSessionData();
 
+    console.log('delete value : ', is_deleted);    
+
     if(is_deleted){
       console.log('if block.');
-      this.cookie.delete("sessionId");      
+      this.cookie.deleteAll();      
       this.router.navigate(["/login"]);
     }else{
       console.log('else block.');
-      this.cookie.delete("sessionId");
+      this.cookie.deleteAll();
       this.router.navigate(["/login"]);
     }
   }
@@ -94,11 +96,8 @@ export class AppHeader implements OnInit, AfterViewInit {
   // ##################################################################################
 
   async deleteUserSessionData() {
-    await this.cookie.delete("sessionId");
-    await this.cookie.deleteAll();
-
-    console.log('session delete value : ', this.cookie.delete("sessionId"));    
-    console.log("cookie check status : ", this.cookie.check('sessionId'));    
+    // await this.cookie.delete("sessionId");
+    await this.cookie.deleteAll();   
 
     if (this.cookie.check('sessionId')) {
       console.log('if block...');

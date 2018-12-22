@@ -97,7 +97,8 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
     this.authServ.loginUser(loginData).subscribe((res:any) => {
 
       if(res.success){
-
+        console.log('login if called : ', res);
+        Helpers.setLoading(false);
         this.cookie.set( 'sessionId', res.data.sessionID );
         this.cookie.set( 'fName', res.data.firstName );
         this.cookie.set( 'uID', res.data.userID );

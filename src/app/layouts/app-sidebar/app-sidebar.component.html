@@ -37,7 +37,7 @@
             </li>
 
             <li id="bulk-upload" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-              <a class="text-secondary">
+              <a class="" [routerLink]="['#']">
                 <span class="submenu-arrow">
                   <i class="ti-angle-right"></i>
                 </span>
@@ -46,13 +46,13 @@
             </li>
 
             <li id="registration" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-              <a class="text-secondary"><span class="submenu-arrow">
+              <a [routerLink]="['#']"><span class="submenu-arrow">
                   <i class="ti-angle-right"></i></span>User
                 Registration</a>
             </li>
 
             <li id="enquery" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-              <a class="text-secondary"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>Admission
+              <a [routerLink]="['#']"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>Admission
                 Enquery</a>
             </li>
 
@@ -79,32 +79,33 @@
           <ul class="nav-2-level" routerLinkActive="in">
 
             <li id="update-student" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-              <a class="text-secondary"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>Update
+              <a [routerLink]="['#']"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>Update
                 Student</a>
             </li>
 
             <li id="view-student" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-              <a [routerLink]="['/students/list']" class="text-secondary"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>
+              <a [routerLink]="['/students/list']"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>
                 View
                 Student</a>
             </li>
 
             <li id="roll-no-assign" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-              <a class="text-secondary"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>
+              <a [routerLink]="['#']"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>
                 Roll
                 No Assign</a>
             </li>
 
             <li id="attandance-report" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-              <a class="text-secondary"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>
+              <a [routerLink]="['#']"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>
                 Attandance
                 Report</a>
             </li>
 
             <li id="view-time-table" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-              <a class="text-secondary"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>
+              <a [routerLink]="['#']"><span class="submenu-arrow"><i class="ti-angle-right"></i></span>
                 View
-                Time Table</a>
+                Time Table
+              </a>
             </li>
 
           </ul>
