@@ -5,7 +5,12 @@
       <div class="form-group text-right">
         <button class="btn btn-success btn-sm cursor-point" (click)="exportAsXLSX()" type="submit"><i class="fa fa-download"
             aria-hidden="true"></i>
-          Export To Excel</button>
+          Export To Excel
+        </button>
+        <!-- <button class="btn btn-success btn-sm cursor-point" (click)="goToPage()" type="button"><i class="fa fa-download"
+          aria-hidden="true"></i>
+        goto page
+      </button> -->
       </div>
 
       <!-- <div class="row">
@@ -70,8 +75,9 @@
 
         <div class="ibox-body" style="font-size: 10px;">
 
-          <ngx-datatable class="material striped" [columnMode]="'force'" [scrollbarH]="false" [headerHeight]="50"
-            [footerHeight]="50" [rowHeight]="50" [scrollbarV]="false" [rows]="rows" [limit]="12">
+          <ngx-datatable #table class="material striped" [columnMode]="'force'" [scrollbarH]="false" [headerHeight]="50"
+            [footerHeight]="50" [rowHeight]="50" [scrollbarV]="false" [rows]="rows" [limit]="12" [offset]="offset"
+            (page)="onPaginated($event)">
 
 
             <!-- <ngx-datatable-column [width]="20" [sortable]="false">

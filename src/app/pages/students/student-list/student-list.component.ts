@@ -16,8 +16,9 @@ import { transition, trigger, style, animate } from "@angular/animations";
 import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
 import swal from "sweetalert2";
 // import { CookieService } from "ngx-cookie-service";
-import {Helpers} from "../../../helpers";
+import { Helpers } from "../../../helpers";
 import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
+import { DatatableComponent } from "@swimlane/ngx-datatable";
 // import { Helpers } from "../../../helpers";
 
 @Component({
@@ -45,8 +46,10 @@ import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
   ]
 })
 
-
+// @ViewChild(DatatableComponent) table: DatatableComponent;
 export class StudentListComponent implements OnInit {
+  @ViewChild("table") mytable: DatatableComponent;
+
   position: any = "top-right";
   temp = [];
   rowsFilter = [];
@@ -58,12 +61,13 @@ export class StudentListComponent implements OnInit {
   allStd: any;
   // position: any;
   stdDetailsData: any;
-  url: string = '';
+  url: string = "";
   stdId: any;
   showMoreBtnText: any;
   showDetailsPart: boolean;
   showStudentDetailsSection: boolean;
   classData: any = [];
+  offset: any = 0;
   // public data: any;
   // public sortOrder = 'desc';
   rows = [
@@ -80,18 +84,16 @@ export class StudentListComponent implements OnInit {
     private router: Router,
     private cookie: CookieService,
     private toastyService: ToastyService,
-    private http: HttpClient,
-    // private cookie: CookieService
+    private http: HttpClient // private cookie: CookieService
   ) {
-
     this.fetch(data => {
       this.allStd = data.data;
       // console.log(this.allStd);
-      if(this.allStd){
-        setTimeout(()=>{
+      if (this.allStd) {
+        setTimeout(() => {
           Helpers.setLoading(false);
         }, 1000);
-      } 
+      }
 
       var shortStdArr = [];
       this.allStd.forEach(std => {
@@ -120,18 +122,22 @@ export class StudentListComponent implements OnInit {
 
   ngOnInit() {
     Helpers.setLoading(true);
-    this.url = './assets/img/pro-pic-placeholder.jpg';
+    this.url = "./assets/img/pro-pic-placeholder.jpg";
     this.showMoreBtnText = "Show More";
     this.showDetailsPart = false;
     this.showStudentDetailsSection = false;
     this.insSelectDetails();
+    this.loadOnPrevPageNo();
+
+    // let page = Array.from(this.mytable);
+    // console.log("page info : ", page);
+
     // Helpers.setLoading(true);
     // let regStdDetail = localStorage.getItem('regStd');
     // this.getStudentDetailsForFilters();
   }
 
   ngAfterViewInit() {
-        
     // let regStdDetail = localStorage.getItem('regStd');
     // this.getStudentDetailsForFilters();
     // $("#example-table").DataTable({
@@ -223,14 +229,7 @@ export class StudentListComponent implements OnInit {
   //   // console.log('Stored Cookie value : ',this.cookie.get( 'sessionId'));
   // }
 
-
-
-
-
-
-
   fetch(cb) {
-    
     const req = new XMLHttpRequest();
 
     req.responseType = "json";
@@ -247,19 +246,12 @@ export class StudentListComponent implements OnInit {
     };
 
     let stdData = {
-      institutionID: this.cookie.get("insID"),
+      institutionID: this.cookie.get("insID")
     };
-
 
     // console.log(stdData);
     req.send(JSON.stringify(stdData));
   }
-
-
-
-
-
-
 
   goToStdView(stdId) {
     // console.log(stdId);
@@ -270,74 +262,50 @@ export class StudentListComponent implements OnInit {
     this.getStdDetails(this.stdId);
   }
 
-
-
-
-  getStdDetails (id)
-  {
+  getStdDetails(id) {
     let stdData = {
       institutionID: this.cookie.get("insID"),
       studentID: id
-    }
+    };
 
-    this.authServ.getStudentDetailsForFilters(stdData).subscribe((res:any) => {
-      if(res.success){
+    this.authServ.getStudentDetailsForFilters(stdData).subscribe((res: any) => {
+      if (res.success) {
         // console.log(res.data[0]);
         this.stdDetailsData = res.data[0];
-        // console.log('student details : ', this.stdDetailsData);        
-        if(res.data[0].studentProfPicPath){
+        // console.log('student details : ', this.stdDetailsData);
+        if (res.data[0].studentProfPicPath) {
           this.url = res.data[0].studentProfPicPath;
-        }else{
-          this.url = './assets/img/pro-pic-placeholder.jpg';
-        } 
-        
+        } else {
+          this.url = "./assets/img/pro-pic-placeholder.jpg";
+        }
+
         Helpers.setLoading(false);
-      }else{
+      } else {
         Helpers.setLoading(false);
         // this.router.navigate(['/students/add']);
       }
     });
   }
 
-
-
-
-
-
   goToEditStd(stdId) {
     // console.log(stdId);
     this.router.navigate([`/students/edit/${stdId}`]);
   }
 
-
-
-
-
-
-  goBackToList(){
+  goBackToList() {
     this.showStudentDetailsSection = false;
   }
 
-
-
-
-
-
-
-  onClickShowMore(e){
+  onClickShowMore(e) {
     // console.log(e.target.innerText);
-    if(e.target.innerText == "Show More"){
+    if (e.target.innerText == "Show More") {
       this.showMoreBtnText = "Show Less";
       this.showDetailsPart = true;
-    }else{
+    } else {
       this.showMoreBtnText = "Show More";
       this.showDetailsPart = false;
-    }    
+    }
   }
-
-
-
-
 
   // updateFilter(event) {
   //   const val = event.target.value.toLowerCase();
@@ -352,12 +320,6 @@ export class StudentListComponent implements OnInit {
   //   // Whenever the filter changes, always go back to the first page
   //   this.table.offset = 0;
   // }
-
-
-
-
-
-
 
   updateAdmissionNoFilter(event) {
     const val = event.target.value.toLowerCase();
@@ -406,19 +368,13 @@ export class StudentListComponent implements OnInit {
     }
   }
 
-
-
-
-
-
-
   updateClassFilter(event) {
     var val = event.value.toLowerCase();
     console.log("Typed value ", val);
 
     if (val == "All") {
-      console.log('if called');
-      
+      console.log("if called");
+
       this.fetch(data => {
         this.allStd = data.data;
         var shortStdArr = [];
@@ -451,10 +407,8 @@ export class StudentListComponent implements OnInit {
 
       // update the rows
       this.rows = temp;
-
     } else {
-
-      console.log('else called');
+      console.log("else called");
 
       this.fetch(data => {
         this.allStd = data.data;
@@ -481,7 +435,7 @@ export class StudentListComponent implements OnInit {
         this.rows = shortStdArr;
         // console.log(this.rows);
       });
-      
+
       const temp = this.rows.filter(function(d) {
         return d.class.toLowerCase().indexOf(val) !== -1 || !val;
       });
@@ -492,12 +446,6 @@ export class StudentListComponent implements OnInit {
       // this.table.offset = 0;
     }
   }
-
-
-
-
-
-
 
   openConfirmsSwal(studentID) {
     swal({
@@ -517,11 +465,6 @@ export class StudentListComponent implements OnInit {
     });
   }
 
-
-
-
-
-
   deleteStudent(studentID) {
     // console.log("Enter to delete student. id : ", studentID);
 
@@ -530,7 +473,7 @@ export class StudentListComponent implements OnInit {
       delete: true
     };
 
-    console.log('delete data : ', deleteStudentProfileInfoData);
+    console.log("delete data : ", deleteStudentProfileInfoData);
 
     this.authServ
       .deleteStudentProfileDetails(deleteStudentProfileInfoData)
@@ -603,10 +546,6 @@ export class StudentListComponent implements OnInit {
       });
   }
 
-
-
-
-
   addToast(options) {
     if (options.closeOther) {
       this.toastyService.clearAll();
@@ -627,15 +566,9 @@ export class StudentListComponent implements OnInit {
     };
   }
 
-
-
-
-  exportAsXLSX():void {
-    this.authServ.exportAsExcelFile(this.allStd, 'student-list');
+  exportAsXLSX(): void {
+    this.authServ.exportAsExcelFile(this.allStd, "student-list");
   }
-
-
-
 
   insSelectDetails() {
     let header = new HttpHeaders();
@@ -661,5 +594,28 @@ export class StudentListComponent implements OnInit {
         //   this.sectionData.push(ele.sectionDetails);
         // });
       });
+  }
+
+  // goToPage() {
+  //   console.log("goto called...");
+  //   this.mytable.offset = 5;
+  // }
+
+  onPaginated(e) {
+    // console.log("current page info : ", e);
+    // console.log("current page : ", e.offset + 1);
+    let curPage = e.offset;
+    console.log("current page : ", curPage);
+    localStorage.setItem("curPage", JSON.stringify(curPage));
+    this.offset = e.offset;
+  }
+
+  loadOnPrevPageNo() {
+    let curP = JSON.parse(localStorage.getItem("curPage"));
+    if (curP) {
+      this.offset = curP;
+    } else {
+      this.offset = 0;
+    }
   }
 }

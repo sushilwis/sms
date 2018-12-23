@@ -39,7 +39,7 @@
 
           <div class="ibox-body">
             <form id="edit-student-form" [formGroup]="editStudentForm" (ngSubmit)="onEditStudentSubmit()">
-              <div class="row student-info">
+              <div class="row student-info pl-3">
 
                 <div class="col-md-12 mb-3">
                   <h6 class="h6 font-weight-bold sub-heading">Student Information</h6>
@@ -86,7 +86,8 @@
 
                 <div class="col-sm-3">
                   <mat-form-field class="example-full-width">
-                    <input matInput [matDatepicker]="studentDOB1" placeholder="Date of Birth *" name="studentDOB" formControlName="studentDOB">
+                    <input matInput [matDatepicker]="studentDOB1" placeholder="Date of Birth *" name="studentDOB"
+                      formControlName="studentDOB">
                     <mat-error *ngIf="studentDOB.hasError('required')">
                       Field is required.
                     </mat-error>
@@ -214,7 +215,7 @@
 
               <br />
 
-              <div class="row">
+              <div class="row pl-3">
                 <div class="col-md-12 mb-3 mt-2">
                   <h5 class="h6 font-weight-bold sub-heading">Parent Information</h5>
                 </div>
@@ -319,7 +320,7 @@
 
               <br />
 
-              <div class="row">
+              <div class="row pl-3">
                 <div class="col-md-12 mb-3 mt-2">
                   <h5 class="h6 font-weight-bold sub-heading">Admission Information</h5>
                 </div>
@@ -409,7 +410,7 @@
               </div>
 
 
-              <div class="row">
+              <div class="row pl-3">
                 <div class="col-md-12 mt-4">* fields are required.</div>
                 <div class="col-md-12 mt-4">
                   <div class="form-group">
@@ -437,7 +438,7 @@
 
           <div class="ibox-body">
             <form id="edit-student-profile-details-form" [formGroup]="editStudentDetailsForm" (ngSubmit)="onEditStudentDetailsSubmit()">
-              <div class="row student-info">
+              <div class="row student-info pl-3">
                 <div class="col-md-12 mb-3">
                   <h6 class="h6 font-weight-bold sub-heading">Previous Institution Information</h6>
                 </div>
@@ -533,7 +534,7 @@
 
               <br />
 
-              <div class="row">
+              <div class="row pl-3">
                 <div class="col-md-12 mb-3 mt-2">
                   <h5 class="h6 font-weight-bold sub-heading">Emergency Contact Information</h5>
                 </div>
@@ -590,7 +591,7 @@
 
               <br />
 
-              <div class="row">
+              <div class="row pl-3">
                 <div class="col-md-12 mb-3 mt-2">
                   <h5 class="h6 font-weight-bold sub-heading">Permanent Address Information</h5>
                 </div>
@@ -614,7 +615,7 @@
                   <mat-form-field class="example-full-width">
                     <input matInput type="text" placeholder="Phone *" name="permanentAddressPhNo" formControlName="permanentAddressPhNo"
                       value="{{stdProfileDetailsData?.permanentAddressPhNo}}">
-                      <mat-error *ngIf="permanentAddressPhNo.hasError('required')">Field is required.</mat-error>
+                    <mat-error *ngIf="permanentAddressPhNo.hasError('required')">Field is required.</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -622,7 +623,7 @@
                   <mat-form-field class="example-full-width">
                     <input matInput type="text" placeholder="City *" name="permanentAddressCity" formControlName="permanentAddressCity"
                       value="{{stdProfileDetailsData?.permanentAddressCity}}">
-                      <mat-error *ngIf="permanentAddressCity.hasError('required')">Field is required.</mat-error>
+                    <mat-error *ngIf="permanentAddressCity.hasError('required')">Field is required.</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -635,9 +636,9 @@
 
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="District *" name="permanentAddressDistrict" formControlName="permanentAddressDistrict"
-                      value="{{stdProfileDetailsData?.permanentAddressDistrict}}">
-                      <mat-error *ngIf="permanentAddressDistrict.hasError('required')">Field is required.</mat-error>
+                    <input matInput type="text" placeholder="District *" name="permanentAddressDistrict"
+                      formControlName="permanentAddressDistrict" value="{{stdProfileDetailsData?.permanentAddressDistrict}}">
+                    <mat-error *ngIf="permanentAddressDistrict.hasError('required')">Field is required.</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -645,7 +646,7 @@
                   <mat-form-field class="example-full-width">
                     <input matInput type="text" placeholder="Country *" name="permanentAddressCountry" formControlName="permanentAddressCountry"
                       value="{{stdProfileDetailsData?.permanentAddressCountry}}">
-                      <mat-error *ngIf="permanentAddressCountry.hasError('required')">Field is required.</mat-error>
+                    <mat-error *ngIf="permanentAddressCountry.hasError('required')">Field is required.</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -653,7 +654,7 @@
                   <mat-form-field class="example-full-width">
                     <input matInput type="text" placeholder="State *" name="permanentAddressState" formControlName="permanentAddressState"
                       value="{{stdProfileDetailsData?.permanentAddressState}}">
-                      <mat-error *ngIf="permanentAddressState.hasError('required')">Field is required.</mat-error>
+                    <mat-error *ngIf="permanentAddressState.hasError('required')">Field is required.</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -661,12 +662,12 @@
                   <mat-form-field class="example-full-width">
                     <input matInput type="text" placeholder="Pin *" name="permanentAddressPin" formControlName="permanentAddressPin"
                       value="{{stdProfileDetailsData?.permanentAddressPin}}">
-                      <mat-error *ngIf="permanentAddressPin.hasError('required')">Field is required.</mat-error>
+                    <mat-error *ngIf="permanentAddressPin.hasError('required')">Field is required.</mat-error>
                   </mat-form-field>
                 </div>
               </div>
 
-              <div class="row">
+              <div class="row pl-3">
                 <div class="col-md-12 mb-3 mt-2">
                   <h5 class="h6 font-weight-bold sub-heading">Temporary Address Information</h5>
                 </div>
@@ -737,7 +738,7 @@
 
 
 
-              <div class="row">
+              <div class="row pl-3">
                 <div class="col-md-12 mb-3 mt-2">
                   <h5 class="h6 font-weight-bold sub-heading">Family Information</h5>
                 </div>
@@ -806,7 +807,7 @@
 
 
 
-              <div class="row">
+              <div class="row pl-3">
                 <div class="col-md-12 mb-3 mt-2">
                   <h5 class="h6 font-weight-bold sub-heading">Bank Information</h5>
                 </div>
@@ -834,7 +835,7 @@
               </div>
 
 
-              <div class="row">
+              <div class="row pl-3">
                 <div class="col-md-12 mb-3 mt-2">
                   <h5 class="h6 font-weight-bold sub-heading">Others Information</h5>
                 </div>
@@ -884,7 +885,7 @@
               </div>
 
 
-              <div class="row">
+              <div class="row pl-3">
                 <div class="col-md-12 mt-4">* fields are required.</div>
                 <div class="col-md-12 mt-4">
                   <div class="form-group">

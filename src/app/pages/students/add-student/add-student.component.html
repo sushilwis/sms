@@ -16,7 +16,7 @@
 
         <div class="ibox-body">
           <form id="add-student-form" [formGroup]="addStudentForm" (ngSubmit)="onAddStudentSubmit()">
-            <div class="row student-info">
+            <div class="row student-info pl-3">
               <div class="col-md-12 mb-4">
                 <h6 class="h6 font-weight-bold sub-heading">Student Information</h6>
               </div>
@@ -24,7 +24,8 @@
 
               <div class="col-sm-3 requiredField">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="First Name *" type="text" name="firstName" formControlName="firstName" (change)="onChangePreference()">
+                  <input matInput placeholder="First Name *" type="text" name="firstName" formControlName="firstName"
+                    (change)="onChangePreference()">
                   <!-- <mat-hint class="requiredText">Field is required!</mat-hint> -->
                   <mat-error *ngIf="firstName.hasError('required')">
                     Field is required.
@@ -34,22 +35,25 @@
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Middle Name" type="text" name="middleName" formControlName="middleName" (change)="onChangePreference()">
+                  <input matInput placeholder="Middle Name" type="text" name="middleName" formControlName="middleName"
+                    (change)="onChangePreference()">
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Last Name *" type="text" name="lastName" formControlName="lastName" (change)="onChangePreference()">
+                  <input matInput placeholder="Last Name *" type="text" name="lastName" formControlName="lastName"
+                    (change)="onChangePreference()">
                   <mat-error *ngIf="lastName.hasError('required')">
                     Field is required.
                   </mat-error>
-                </mat-form-field>                
+                </mat-form-field>
               </div>
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Aadhar Number *" type="number" name="aadharNo" formControlName="aadharNo" (change)="onChangePreference()">
+                  <input matInput placeholder="Aadhar Number *" type="number" name="aadharNo" formControlName="aadharNo"
+                    (change)="onChangePreference()">
                   <mat-error *ngIf="aadharNo.hasError('required')">
                     Field is required.
                   </mat-error>
@@ -58,13 +62,15 @@
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Contact Number" type="number" name="mobileNo" formControlName="mobileNo" (change)="onChangePreference()">
+                  <input matInput placeholder="Contact Number" type="number" name="mobileNo" formControlName="mobileNo"
+                    (change)="onChangePreference()">
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput [matDatepicker]="dateOfBirth" placeholder="Date of Birth *" name="date_of_birth" formControlName="date_of_birth" (change)="onChangePreference()">
+                  <input matInput [matDatepicker]="dateOfBirth" placeholder="Date of Birth *" name="date_of_birth"
+                    formControlName="date_of_birth" (change)="onChangePreference()">
                   <mat-error *ngIf="date_of_birth.hasError('required')">Field is required.</mat-error>
                   <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
                   <mat-datepicker #dateOfBirth></mat-datepicker>
@@ -92,7 +98,8 @@
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <mat-select placeholder="Contact Preference *" name="preference" formControlName="preference" [(ngModel)]="prefer" (change)="onChangePreference()">
+                  <mat-select placeholder="Contact Preference *" name="preference" formControlName="preference"
+                    [(ngModel)]="prefer" (change)="onChangePreference()">
                     <mat-option value="father">Father</mat-option>
                     <mat-option value="mother">Mother</mat-option>
                     <mat-option value="guardian">Guardian</mat-option>
@@ -196,62 +203,71 @@
 
             <br />
 
-            <div class="row">
+            <div class="row pl-3">
               <div class="col-md-12 mb-3 mt-2">
                 <h5 class="h6 font-weight-bold sub-heading">Parent Information</h5>
               </div>
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Father's First Name" type="text" name="fatherFName" formControlName="fatherFName" (change)="onChangePreference()">
+                  <input matInput placeholder="Father's First Name" type="text" name="fatherFName" formControlName="fatherFName"
+                    (change)="onChangePreference()">
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Father's Middle Name" type="text" name="fatherMName" formControlName="fatherMName" (change)="onChangePreference()">
+                  <input matInput placeholder="Father's Middle Name" type="text" name="fatherMName" formControlName="fatherMName"
+                    (change)="onChangePreference()">
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Father's Last Name" type="text" name="fatherLName" formControlName="fatherLName" (change)="onChangePreference()">
+                  <input matInput placeholder="Father's Last Name" type="text" name="fatherLName" formControlName="fatherLName"
+                    (change)="onChangePreference()">
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Mother's First Name" type="text" name="motherFName" formControlName="motherFName" (change)="onChangePreference()">
+                  <input matInput placeholder="Mother's First Name" type="text" name="motherFName" formControlName="motherFName"
+                    (change)="onChangePreference()">
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Mother's Middle Name" type="text" name="motherMName" formControlName="motherMName" (change)="onChangePreference()">
+                  <input matInput placeholder="Mother's Middle Name" type="text" name="motherMName" formControlName="motherMName"
+                    (change)="onChangePreference()">
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Mother's Last Name" type="text" name="motherLName" formControlName="motherLName" (change)="onChangePreference()">
+                  <input matInput placeholder="Mother's Last Name" type="text" name="motherLName" formControlName="motherLName"
+                    (change)="onChangePreference()">
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Guardian's First Name" type="text" name="guardianFName" formControlName="guardianFName" (change)="onChangePreference()">
+                  <input matInput placeholder="Guardian's First Name" type="text" name="guardianFName" formControlName="guardianFName"
+                    (change)="onChangePreference()">
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Guardian's Middle Name" type="text" name="guardianMName" formControlName="guardianMName" (change)="onChangePreference()">
+                  <input matInput placeholder="Guardian's Middle Name" type="text" name="guardianMName" formControlName="guardianMName"
+                    (change)="onChangePreference()">
                 </mat-form-field>
               </div>
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Guardian's Last Name" type="text" name="guardianLName" formControlName="guardianLName" (change)="onChangePreference()">
+                  <input matInput placeholder="Guardian's Last Name" type="text" name="guardianLName" formControlName="guardianLName"
+                    (change)="onChangePreference()">
                 </mat-form-field>
               </div>
 
@@ -300,14 +316,15 @@
 
             <br />
 
-            <div class="row">
+            <div class="row pl-3">
               <div class="col-md-12 mb-3 mt-2">
                 <h5 class="h6 font-weight-bold sub-heading">Admission Information</h5>
               </div>
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <mat-select placeholder="Medium of Instruction" name="mediumOfInstruction" formControlName="mediumOfInstruction" (change)="onChangePreference()">
+                  <mat-select placeholder="Medium of Instruction" name="mediumOfInstruction" formControlName="mediumOfInstruction"
+                    (change)="onChangePreference()">
                     <mat-option value="english">English</mat-option>
                     <mat-option value="hindi">Hindi</mat-option>
                     <mat-option value="bengali">Bengali</mat-option>
@@ -317,7 +334,8 @@
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Admission Number *" type="text" name="admissionNo" formControlName="admissionNo" (change)="onChangePreference()">
+                  <input matInput placeholder="Admission Number *" type="text" name="admissionNo" formControlName="admissionNo"
+                    (change)="onChangePreference()">
                   <mat-error *ngIf="admissionNo.hasError('required')">Field is required.</mat-error>
                 </mat-form-field>
               </div>
@@ -348,7 +366,8 @@
 
               <div class="col-sm-3">
                 <mat-form-field class="example-full-width">
-                  <mat-select (change)="getSection($event)" placeholder="Class *" name="classID" formControlName="classID" (change)="onChangePreference()">
+                  <mat-select (change)="getSection($event)" placeholder="Class *" name="classID" formControlName="classID"
+                    (change)="onChangePreference()">
                     <mat-option *ngFor="let class of classData" value="{{class.classID}}">{{class.className}}</mat-option>
                   </mat-select>
                   <mat-error *ngIf="classID.hasError('required')">Field is required.</mat-error>
@@ -389,7 +408,7 @@
               <div class="col-md-12 mt-4">
                 <div class="form-group">
                   <button class="btn btn-success btn-lg" type="submit" [disabled]="disableRegisterBtn">Register</button>
-                  <input type="button" class="btn btn-primary btn-lg" (click)="resetForm()" value="Reset"/>
+                  <input type="button" class="btn btn-primary btn-lg" (click)="resetForm()" value="Reset" />
                 </div>
               </div>
             </div>
