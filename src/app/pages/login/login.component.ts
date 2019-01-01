@@ -5,6 +5,21 @@ import { AuthService } from '../../_services/auth/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
 import { Helpers } from "../../helpers";
+import { NotificationService } from '../../_services/notification.service';
+
+// this.notification.showNotification(
+//   "top",
+//   "right",
+//   "success",
+//   "Success, One Student Found."
+// );
+
+// this.notification.showNotification(
+//   "top",
+//   "right",
+//   "warning",
+//   "Sorry, Did't Not Found Any Student."
+// );
 
 
 declare var $:any;
@@ -31,6 +46,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
     private router: Router,
     private cookie: CookieService,
     private toastyService: ToastyService,
+    public notification: NotificationService,
   ) { }
 
 
@@ -112,14 +128,21 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
         console.log('login else called : ', res);
         Helpers.setLoading(false);
 
-        this.addToast({
-          title: "FAIL!",
-          msg: res.response,
-          timeout: 6000,
-          theme: "default",
-          position: "top-right",
-          type: "error"
-        });
+        this.notification.showNotification(
+          "top",
+          "right",
+          "warning",
+          res.response
+        );
+
+        // this.addToast({
+        //   title: "FAIL!",
+        //   msg: res.response,
+        //   timeout: 6000,
+        //   theme: "default",
+        //   position: "top-right",
+        //   type: "error"
+        // });
         // this.router.navigate(['/login']);
       }
     });

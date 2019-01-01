@@ -39,7 +39,7 @@ import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
 
 export class EditStudentComponent implements OnInit {
   position: any = "top-right";
-  url: any = "";
+  url: any;
   stdId: any;
   stdRoll: any;
   stdDetailsData: any;
@@ -158,6 +158,7 @@ export class EditStudentComponent implements OnInit {
     private ng2ImgMax: Ng2ImgMaxService
   ) {}
 
+
   ngOnInit() {
     Helpers.setLoading(true);
     this.insSelectDetails();
@@ -179,6 +180,8 @@ export class EditStudentComponent implements OnInit {
     this.url = "./assets/img/pro-pic-placeholder.jpg";
     // this.getSectionFromClassID(this.stdDetailsData.classID);
   }
+
+
 
   // For student details edit
   createFormControls() {
@@ -262,6 +265,7 @@ export class EditStudentComponent implements OnInit {
     });
   }
 
+
   // student details edit form submit
   onEditStudentSubmit() {
     Helpers.setLoading(true);
@@ -270,7 +274,8 @@ export class EditStudentComponent implements OnInit {
     editStudentData.id = this.stdId;
     editStudentData.rollNo = this.stdRoll;
     editStudentData.delete = false;
-    editStudentData.studentProfPicEncoded = this.url;
+    editStudentData.studentProfPicEncoded = '';
+    editStudentData.encodedProfPic = this.url;
 
     // let data = [];
 
@@ -280,7 +285,8 @@ export class EditStudentComponent implements OnInit {
     //   data: data
     // };
 
-    // console.log(editStudentData);
+    // console.log('update data : ', editStudentData);
+
     this.authServ.updateStudent(editStudentData).subscribe((res: any) => {
       // console.log(res);
       if (res.success) {
@@ -337,6 +343,8 @@ export class EditStudentComponent implements OnInit {
   // }
 
   onSelectFile(e) {
+    // console.log('image select func called...');
+    // console.log('image : ', e.target.files[0]);    
     var image = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     var pattern = /image-*/;
     // console.log(image);
@@ -369,6 +377,7 @@ export class EditStudentComponent implements OnInit {
           // console.log(result);
 
           this.getImagePreview(this.uploadedImage);
+          // console.log('url : ', this.url);
 
           this.addToast({
             title: "SUCCESS!",
@@ -382,11 +391,7 @@ export class EditStudentComponent implements OnInit {
           // console.log(this.uploadedImage);
         });
       });
-
-      // reader.onload = this.onLoadFile.bind(this);
-      // reader.readAsDataURL(this.uploadedImage);
-      // console.log(this.uploadedImage);
-    }
+    }        
   }
 
 
@@ -394,6 +399,7 @@ export class EditStudentComponent implements OnInit {
 
 
   getImagePreview(file: File): void {
+    // console.log('image preview func called...');
     let reader = new FileReader();
     reader.onload = () => {
       this.url = reader.result;
@@ -444,7 +450,7 @@ export class EditStudentComponent implements OnInit {
       sectionID: std.sectionID,
       feeQuota: std.feeQuota,
       routeID: std.routeDetails.routeID.toString(),
-      studentProfPicEncoded: null
+      studentProfPicEncoded: null,
     });
   }
 

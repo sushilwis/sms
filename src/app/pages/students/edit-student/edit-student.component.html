@@ -194,7 +194,7 @@
                                 <span class="glyphicon glyphicon-folder-open"></span>
                                 <span class="image-preview-input-title">Browse</span>
                                 <input type="file" class="custom-file-input" name="studentProfPicEncoded"
-                                  formControlName="studentProfPicEncoded" (change)="onSelectFile($event)" accept="image/*" />
+                                  formControlName="studentProfPicEncoded" (change)="onSelectFile($event)" accept="image/*"/>
                                 <!-- rename it -->
                               </div>
                             </span>
@@ -208,7 +208,7 @@
 
                 <div class="col-sm-3">
                   <div>
-                    <img [src]="url" class="img-thumbnail w-75" alt="profile-picture" />
+                    <img [src]="url" class="img-thumbnail w-75" alt="profile-picture"/>
                   </div>
                 </div>
               </div>
@@ -760,10 +760,10 @@
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
                     <mat-select placeholder="Father Caste" name="fatherCaste" formControlName="fatherCaste" value="{{stdProfileDetailsData?.fatherCaste}}">
-                      <mat-option value="GENERAL">General</mat-option>
-                      <mat-option value="SC">SC</mat-option>
-                      <mat-option value="ST">ST</mat-option>
-                      <mat-option value="OBC ">OBC</mat-option>
+                      <mat-option value="general">General</mat-option>
+                      <mat-option value="sc">SC</mat-option>
+                      <mat-option value="st">ST</mat-option>
+                      <mat-option value="obc ">OBC</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
@@ -771,10 +771,10 @@
                 <div class="col-sm-3 pr-4 pl-4">
                   <mat-form-field class="example-full-width">
                     <mat-select placeholder="Mother Caste" name="motherCaste" formControlName="motherCaste" value="{{stdProfileDetailsData?.motherCaste}}">
-                      <mat-option value="GENERAL">General</mat-option>
-                      <mat-option value="SC">SC</mat-option>
-                      <mat-option value="ST">ST</mat-option>
-                      <mat-option value="OBC ">OBC</mat-option>
+                      <mat-option value="general">General</mat-option>
+                      <mat-option value="sc">SC</mat-option>
+                      <mat-option value="st">ST</mat-option>
+                      <mat-option value="obc ">OBC</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>

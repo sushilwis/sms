@@ -32,6 +32,7 @@ import { CalendarModule } from "angular-calendar";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AuthService } from "./_services/auth/auth.service";
+import { NotificationService } from "./_services/notification.service";
 import { SharedModule } from "./shared/shared.module";
 import { CookieService } from "ngx-cookie-service";
 import { GuardGuard } from "./_services/guard/guard.guard";
@@ -84,6 +85,7 @@ import { EditStudentDetailsComponent } from "./pages/students/edit-student-detai
     ScriptLoaderService,
     AuthService,
     GuardGuard,
+    NotificationService,
     CookieService,
     { provide: BrowserXhr, useClass: CustExtBrowserXhr }
     // {provide: LocationStrategy, useClass: HashLocationStrategy}
