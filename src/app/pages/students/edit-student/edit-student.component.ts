@@ -89,7 +89,7 @@ export class EditStudentComponent implements OnInit {
   sectionID: FormControl;
   feeQuota: FormControl;
   routeID: FormControl;
-  studentProfPicEncoded: FormControl;
+  encodedProfPic: FormControl;
 
   //for student profile details edit
   editStudentDetailsForm: FormGroup;
@@ -220,7 +220,7 @@ export class EditStudentComponent implements OnInit {
     this.sectionID = new FormControl("", [Validators.required]);
     this.feeQuota = new FormControl("", []);
     this.routeID = new FormControl("", [Validators.required]);
-    this.studentProfPicEncoded = new FormControl("", []);
+    this.encodedProfPic = new FormControl("", []);
   }
 
   // For student details edit
@@ -261,7 +261,7 @@ export class EditStudentComponent implements OnInit {
       sectionID: this.sectionID,
       feeQuota: this.feeQuota,
       routeID: this.routeID,
-      studentProfPicEncoded: this.studentProfPicEncoded
+      encodedProfPic: this.encodedProfPic,
     });
   }
 
@@ -274,7 +274,6 @@ export class EditStudentComponent implements OnInit {
     editStudentData.id = this.stdId;
     editStudentData.rollNo = this.stdRoll;
     editStudentData.delete = false;
-    editStudentData.studentProfPicEncoded = '';
     editStudentData.encodedProfPic = this.url;
 
     // let data = [];
@@ -288,9 +287,9 @@ export class EditStudentComponent implements OnInit {
     // console.log('update data : ', editStudentData);
 
     this.authServ.updateStudent(editStudentData).subscribe((res: any) => {
-      // console.log(res);
+
       if (res.success) {
-        // console.log('submit success');
+
         Helpers.setLoading(false);
         this.addToast({
           title: "SUCCESS!",
@@ -301,9 +300,8 @@ export class EditStudentComponent implements OnInit {
           type: "success"
         });
 
-        // this.router.navigate([`students/viewDetail/${this.stdId}`]);
       } else {
-        // console.log('submit fail');
+
         Helpers.setLoading(false);
         this.addToast({
           title: "FAIL!",
@@ -314,40 +312,17 @@ export class EditStudentComponent implements OnInit {
           type: "error"
         });
 
-        // this.router.navigate([`students/edit/${this.stdId}`]);
       }
     });
-    // console.log('Stored Cookie value : ',this.cookie.get( 'sessionId'));
-    // this.editStudentForm.reset();
   }
 
-  // Student picture upload and preview
-  // onSelectFile(e) {
-  //   var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-  //   var pattern = /image-*/;
-  //   var reader = new FileReader();
 
-  //   if (!file.type.match(pattern)) {
-  //     alert("invalid format");
-  //     return;
-  //   }
 
-  //   reader.onload = this._handleReaderLoaded.bind(this);
-  //   reader.readAsDataURL(file);
-  // }
-
-  // _handleReaderLoaded(e) {
-  //   let reader = e.target;
-  //   this.url = reader.result;
-  //   // console.log(this.url);
-  // }
 
   onSelectFile(e) {
-    // console.log('image select func called...');
-    // console.log('image : ', e.target.files[0]);    
+        
     var image = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     var pattern = /image-*/;
-    // console.log(image);
 
     let imgNameInput = document.getElementsByClassName(
       "image-preview-filename"

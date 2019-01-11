@@ -113,6 +113,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
     this.authServ.loginUser(loginData).subscribe((res:any) => {
 
       if(res.success){
+
         console.log('login if called : ', res);
         Helpers.setLoading(false);
         this.cookie.set( 'sessionId', res.data.sessionID );
@@ -127,26 +128,8 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
 
         console.log('login else called : ', res);
         Helpers.setLoading(false);
-
-        this.notification.showNotification(
-          "top",
-          "right",
-          "warning",
-          res.response
-        );
-
-        // this.addToast({
-        //   title: "FAIL!",
-        //   msg: res.response,
-        //   timeout: 6000,
-        //   theme: "default",
-        //   position: "top-right",
-        //   type: "error"
-        // });
-        // this.router.navigate(['/login']);
       }
     });
-    // console.log('Stored Cookie value : ',this.cookie.get( 'sessionId'));
   }
 
 

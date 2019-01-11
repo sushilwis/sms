@@ -173,28 +173,21 @@
 
                 <div class="col-sm-12">
                   <div class="custom-file">
-                    <!-- <input type="file" class="custom-file-input" name="studentProfPicEncoded" formControlName="studentProfPicEncoded"
-                      (change)="onSelectFile($event)" accept="image/*">
-                    <label class="custom-file-label" for="customFile">Choose Picture</label> -->
+                    
 
                     <div class="container p-0">
                       <div class="row no-gutters">
                         <div class="col-sm-12">
-                          <!-- image-preview-filename input [CUT FROM HERE]-->
+                          
                           <div class="input-group image-preview">
                             <input type="text" class="form-control image-preview-filename" disabled="disabled" style="width: 215px;">
-                            <!-- don't give a name === doesn't send on POST/GET -->
+                            
                             <span class="input-group-btn">
-                              <!-- image-preview-clear button -->
-                              <!-- <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                                <span class="glyphicon glyphicon-remove"></span> Clear
-                              </button> -->
-                              <!-- image-preview-input -->
                               <div class="btn btn-default image-preview-input">
                                 <span class="glyphicon glyphicon-folder-open"></span>
                                 <span class="image-preview-input-title">Browse</span>
-                                <input type="file" class="custom-file-input" name="studentProfPicEncoded"
-                                  formControlName="studentProfPicEncoded" (change)="onSelectFile($event)" accept="image/*"/>
+                                <input type="file" class="custom-file-input" name="encodedProfPic"
+                                  formControlName="encodedProfPic" (change)="onSelectFile($event)" accept="image/*"/>
                                 <!-- rename it -->
                               </div>
                             </span>
