@@ -5371,7 +5371,47 @@ table.dataTable {
   display: none;
 }
 
+/*02-01-2019 Ritam*/
 
+
+
+
+@media screen and (max-width: 767px) {
+  .ibox .ibox-head{
+    flex-wrap: wrap;
+    height: auto;
+    }
+    #searchRoll, #searchSection{
+      width: 100% !important;
+      margin: 5px 0;
+    }
+    .ibox-tools .ml-3{
+      margin-left: 0px !important;
+    }
+    .ngx-datatable{
+      overflow-x: scroll !important;
+    }
+    .ngx-datatable .datatable-body-cell{
+      width: 130px !important;
+      padding: .9rem 0.3rem !important;
+    }
+    .ngx-datatable .datatable-footer{
+      white-space: nowrap;
+      text-align: right;
+    }
+    .ngx-datatable .datatable-header{
+      overflow: unset !important;
+    }
+    .content form{
+      width: 90% !important;
+    }
+}
+/* @media screen and (max-width: 768px){
+.content form{
+  width: 60% !important;
+}
+} */
+/*02-01-2019*/
 
 
 
