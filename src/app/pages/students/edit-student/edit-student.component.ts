@@ -19,7 +19,13 @@ import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
 @Component({
   selector: "app-edit-student",
   templateUrl: "./edit-student.component.html",
-  styleUrls: ["./edit-student.component.css"],
+  styleUrls: [
+    "./edit-student.component.css",
+    "../../../../../node_modules/sweetalert2/src/sweetalert2.scss",
+    "../../../../../node_modules/ng2-toasty/style-bootstrap.css",
+    "../../../../../node_modules/ng2-toasty/style-default.css",
+    "../../../../../node_modules/ng2-toasty/style-material.css"
+  ],
   encapsulation: ViewEncapsulation.None,
   animations: [
     trigger("fadeInOutTranslate", [
@@ -34,9 +40,6 @@ import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
     ])
   ]
 })
-
-
-
 export class EditStudentComponent implements OnInit {
   position: any = "top-right";
   url: any;
@@ -158,7 +161,6 @@ export class EditStudentComponent implements OnInit {
     private ng2ImgMax: Ng2ImgMaxService
   ) {}
 
-
   ngOnInit() {
     Helpers.setLoading(true);
     this.insSelectDetails();
@@ -180,8 +182,6 @@ export class EditStudentComponent implements OnInit {
     this.url = "./assets/img/pro-pic-placeholder.jpg";
     // this.getSectionFromClassID(this.stdDetailsData.classID);
   }
-
-
 
   // For student details edit
   createFormControls() {
@@ -220,7 +220,7 @@ export class EditStudentComponent implements OnInit {
     this.sectionID = new FormControl("", [Validators.required]);
     this.feeQuota = new FormControl("", []);
     this.routeID = new FormControl("", [Validators.required]);
-    this.encodedProfPic = new FormControl("", []);
+    this.encodedProfPic = new FormControl(null, []);
   }
 
   // For student details edit
@@ -261,10 +261,9 @@ export class EditStudentComponent implements OnInit {
       sectionID: this.sectionID,
       feeQuota: this.feeQuota,
       routeID: this.routeID,
-      encodedProfPic: this.encodedProfPic,
+      encodedProfPic: this.encodedProfPic
     });
   }
-
 
   // student details edit form submit
   onEditStudentSubmit() {
@@ -287,9 +286,7 @@ export class EditStudentComponent implements OnInit {
     // console.log('update data : ', editStudentData);
 
     this.authServ.updateStudent(editStudentData).subscribe((res: any) => {
-
       if (res.success) {
-
         Helpers.setLoading(false);
         this.addToast({
           title: "SUCCESS!",
@@ -299,9 +296,7 @@ export class EditStudentComponent implements OnInit {
           position: "top-right",
           type: "success"
         });
-
       } else {
-
         Helpers.setLoading(false);
         this.addToast({
           title: "FAIL!",
@@ -311,16 +306,11 @@ export class EditStudentComponent implements OnInit {
           position: "top-right",
           type: "error"
         });
-
       }
     });
   }
 
-
-
-
   onSelectFile(e) {
-        
     var image = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     var pattern = /image-*/;
 
@@ -366,12 +356,8 @@ export class EditStudentComponent implements OnInit {
           // console.log(this.uploadedImage);
         });
       });
-    }        
+    }
   }
-
-
-
-
 
   getImagePreview(file: File): void {
     // console.log('image preview func called...');
@@ -381,11 +367,6 @@ export class EditStudentComponent implements OnInit {
     };
     reader.readAsDataURL(file);
   }
-
-
-
-
-
 
   // Student details value set
   setFormValue(std) {
@@ -425,7 +406,8 @@ export class EditStudentComponent implements OnInit {
       sectionID: std.sectionID,
       feeQuota: std.feeQuota,
       routeID: std.routeDetails.routeID.toString(),
-      studentProfPicEncoded: null,
+      // studentProfPicEncoded: null
+      encodedProfPic: null
     });
   }
 
@@ -442,12 +424,12 @@ export class EditStudentComponent implements OnInit {
       .getStudentDetailsForFilters(stdData)
       .subscribe(async (res: any) => {
         console.log(res);
-        
+
         if (res.success) {
           this.stdDetailsData = await res.data[0];
           // console.log('profile : ', this.stdDetailsData);
           this.stdProfileDetailsData = await res.data[0].profileDetails;
-          // console.log('profile details : ', this.stdProfileDetailsData);          
+          // console.log('profile details : ', this.stdProfileDetailsData);
           this.classId = await res.data[0].classID;
 
           Helpers.setLoading(false);
@@ -588,12 +570,6 @@ export class EditStudentComponent implements OnInit {
     });
   }
 
-
-
-
-
-
-
   // Edit student profile details submit
   onEditStudentDetailsSubmit() {
     Helpers.setLoading(true);
@@ -604,19 +580,19 @@ export class EditStudentComponent implements OnInit {
     editStudentDetailsData.id = this.stdProfileDetailsData.profileDetailsID;
     editStudentDetailsData.delete = false;
 
-    if(this.editStudentDetailsForm.value.specialCategory != ""){
+    if (this.editStudentDetailsForm.value.specialCategory != "") {
       editStudentDetailsData.specialCategory = [
         this.editStudentDetailsForm.value.specialCategory
       ];
-    }else{
+    } else {
       editStudentDetailsData.specialCategory = ["NA"];
     }
-    
-    if(this.editStudentDetailsForm.value.disability != ""){
+
+    if (this.editStudentDetailsForm.value.disability != "") {
       editStudentDetailsData.disability = [
         this.editStudentDetailsForm.value.disability
       ];
-    }else{
+    } else {
       editStudentDetailsData.disability = ["NA"];
     }
 
@@ -730,12 +706,6 @@ export class EditStudentComponent implements OnInit {
       });
   }
 
-
-
-
-
-
-
   getSection(e) {
     // console.log(e);
     this.classData.forEach(ele => {
@@ -745,11 +715,6 @@ export class EditStudentComponent implements OnInit {
     });
     // console.log(this.sectionData);
   }
-
-
-
-
-
 
   getSectionFromClassID(id) {
     // console.log(e);s
@@ -761,11 +726,6 @@ export class EditStudentComponent implements OnInit {
     // console.log("id : ", id);
     // console.log("section list for first time : ", this.sectionData);
   }
-
-
-
-
-
 
   addToast(options): any {
     if (options.closeOther) {

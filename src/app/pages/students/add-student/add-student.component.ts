@@ -202,15 +202,14 @@ export class AddStudentComponent implements OnInit {
     });
   }
 
-
-
-
-
-
   onChangePreference() {
     // console.log(this.prefer);
     if (this.prefer == "father") {
-      if (this.fatherEmail != "" && this.fatherEmail != null && this.addStudentForm.valid) {
+      if (
+        this.fatherEmail != "" &&
+        this.fatherEmail != null &&
+        this.addStudentForm.valid
+      ) {
         this.disableRegisterBtn = false;
       } else {
         this.disableRegisterBtn = true;
@@ -218,7 +217,11 @@ export class AddStudentComponent implements OnInit {
     }
 
     if (this.prefer == "mother") {
-      if (this.motherEmail != "" && this.motherEmail != null && this.addStudentForm.valid) {
+      if (
+        this.motherEmail != "" &&
+        this.motherEmail != null &&
+        this.addStudentForm.valid
+      ) {
         this.disableRegisterBtn = false;
       } else {
         this.disableRegisterBtn = true;
@@ -226,19 +229,17 @@ export class AddStudentComponent implements OnInit {
     }
 
     if (this.prefer == "guardian") {
-      if (this.guardianEmail != "" && this.guardianEmail != null && this.addStudentForm.valid) {
+      if (
+        this.guardianEmail != "" &&
+        this.guardianEmail != null &&
+        this.addStudentForm.valid
+      ) {
         this.disableRegisterBtn = false;
       } else {
         this.disableRegisterBtn = true;
       }
     }
   }
-
-
-  
-
-
-
 
   onAddStudentSubmit() {
     // console.log("from add student.");
@@ -284,7 +285,6 @@ export class AddStudentComponent implements OnInit {
           this.addStudentForm.reset();
           this.router.navigate(["/students/addDetails"]);
         }, 1000);
-
       } else {
         // console.log(res);
         Helpers.setLoading(false);
@@ -299,7 +299,7 @@ export class AddStudentComponent implements OnInit {
         });
       }
     });
-    // console.log('Stored Cookie value : ', this.cookie.get('sessionId'));    
+    // console.log('Stored Cookie value : ', this.cookie.get('sessionId'));
   }
 
   // No subscriptions left for the institution
@@ -342,7 +342,6 @@ export class AddStudentComponent implements OnInit {
     htmlInp.value = image.name;
 
     if (!image.type.match(pattern)) {
-
       this.addToast({
         title: "FAIL!",
         msg: "Invalid Format.",
@@ -382,11 +381,6 @@ export class AddStudentComponent implements OnInit {
       // console.log(this.uploadedImage);
     }
   }
-
-
-
-
-
 
   getImagePreview(file: File): void {
     let reader = new FileReader();
@@ -455,7 +449,6 @@ export class AddStudentComponent implements OnInit {
   // }
 
   addToast(options): any {
-    
     if (options.closeOther) {
       this.toastyService.clearAll();
     }
@@ -500,17 +493,9 @@ export class AddStudentComponent implements OnInit {
     }
   }
 
-
-
-
-
   resetForm() {
     this.addStudentForm.reset();
   }
-
-
-
-
 
   insSelectDetails() {
     let header = new HttpHeaders();
@@ -537,11 +522,6 @@ export class AddStudentComponent implements OnInit {
         // });
       });
   }
-
-
-
-
-
 
   getSection(e) {
     // console.log(e);

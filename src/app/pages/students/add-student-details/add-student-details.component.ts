@@ -15,7 +15,13 @@ import { ToastData, ToastOptions, ToastyService } from "ng2-toasty";
 @Component({
   selector: "app-add-student-details",
   templateUrl: "./add-student-details.component.html",
-  styleUrls: ["./add-student-details.component.css"],
+  styleUrls: [
+    "./add-student-details.component.css",
+    "../../../../../node_modules/sweetalert2/src/sweetalert2.scss",
+    "../../../../../node_modules/ng2-toasty/style-bootstrap.css",
+    "../../../../../node_modules/ng2-toasty/style-default.css",
+    "../../../../../node_modules/ng2-toasty/style-material.css"
+  ],
   encapsulation: ViewEncapsulation.None,
   animations: [
     trigger("fadeInOutTranslate", [
@@ -221,11 +227,6 @@ export class AddStudentDetailsComponent implements OnInit {
     });
   }
 
-
-
-
-
-
   onAddStudentDetailsSubmit() {
     Helpers.setLoading(true);
     var addStudentDetailsData = this.addStudentDetailsForm.value;
@@ -236,22 +237,22 @@ export class AddStudentDetailsComponent implements OnInit {
     addStudentDetailsData.studentID = regStdDetails.studentID;
     addStudentDetailsData.createdBy = regStdDetails.uID;
 
-    if(this.addStudentDetailsForm.value.specialCategory != ""){
+    if (this.addStudentDetailsForm.value.specialCategory != "") {
       addStudentDetailsData.specialCategory = [
         this.addStudentDetailsForm.value.specialCategory
       ];
-    }else{
+    } else {
       addStudentDetailsData.specialCategory = ["NA"];
     }
-    
-    if(this.addStudentDetailsForm.value.disability != ""){
+
+    if (this.addStudentDetailsForm.value.disability != "") {
       addStudentDetailsData.disability = [
         this.addStudentDetailsForm.value.disability
       ];
-    }else{
+    } else {
       addStudentDetailsData.disability = ["NA"];
     }
-    
+
     // addStudentData.subscriptionID = "1";
     // addStudentData.studentProfPicEncoded = this.url;
 
@@ -281,7 +282,7 @@ export class AddStudentDetailsComponent implements OnInit {
 
         setTimeout(() => {
           this.addStudentDetailsForm.reset();
-          this.router.navigate(["/students/add"]);          
+          this.router.navigate(["/students/add"]);
         }, 1000);
       } else {
         Helpers.setLoading(false);
@@ -300,35 +301,20 @@ export class AddStudentDetailsComponent implements OnInit {
         // }, 2000);
       }
     });
-    // console.log('Stored Cookie value : ',this.cookie.get( 'sessionId'));    
+    // console.log('Stored Cookie value : ',this.cookie.get( 'sessionId'));
   }
-
-
-
-
-
 
   resetForm() {
     this.addStudentDetailsForm.reset();
   }
 
-
-
-
-
-
   submitBtnEnable() {
-      if (this.addStudentDetailsForm.valid) {
-        return false;
-      } else {
-        return true;
-      }
+    if (this.addStudentDetailsForm.valid) {
+      return false;
+    } else {
+      return true;
+    }
   }
-
-
-
-
-
 
   addToast(options): any {
     if (options.closeOther) {
