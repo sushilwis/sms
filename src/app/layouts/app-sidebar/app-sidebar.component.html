@@ -163,58 +163,24 @@
 
     <div id="menu2" class="tab-pane" role="tabpanel" aria-labelledby="menu2-tab"><br>
       <ul class="side-menu metismenu">
-        <!-- <li>
-                    <a routerLinkActive="active" routerLink="/index"><i class="sidebar-item-icon fa fa-th-large"></i>
-                        <span class="nav-label">Dashboard</span>
-                    </a>
-                </li> -->
+        <li routerLinkActive="active" id="module-configuration" data-hasSub='true'>
+          <a href="javascript:;">
+            <i class="sidebar-item-icon ti-save"></i>
+            <span class="nav-label">Module Configuration</span>
+            <i class="fa fa-angle-right arrow"></i>
+          </a>
+          <ul class="nav-2-level collapse" routerLinkActive="in">
 
-        <!-- <li class="heading">FEATURES</li> -->
-
-        <!-- <li routerLinkActive="active">
-          <a href="javascript:;"><i class="sidebar-item-icon fa fa-edit"></i>
-            <span class="nav-label">Fee Management</span><i class="fa fa-angle-right arrow"></i>
-          </a>
+            <li id="module-configuration" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a [routerLink]="['/user/access']">
+                <span class="submenu-arrow">
+                  <i class="ti-angle-right"></i>
+                </span>
+                User Access Control
+              </a>
+            </li>
+          </ul>
         </li>
-        <li routerLinkActive="active">
-          <a href="javascript:;"><i class="sidebar-item-icon fa fa-bar-chart"></i>
-            <span class="nav-label">Teacher Activities</span><i class="fa fa-angle-right arrow"></i>
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a href="javascript:;"><i class="sidebar-item-icon fa fa-map"></i>
-            <span class="nav-label">Examination Management</span><i class="fa fa-angle-right arrow"></i></a>
-        </li>
-        <li>
-          <a routerLink="/ui/icons" routerLinkActive="active"><i class="sidebar-item-icon fa fa-smile-o"></i>
-            <span class="nav-label">User Managements</span>
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a href="javascript:;"><i class="sidebar-item-icon fa fa-envelope"></i>
-            <span class="nav-label">Notifications & Events</span><i class="fa fa-angle-right arrow"></i>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/calendar" routerLinkActive="active"><i class="sidebar-item-icon fa fa-calendar"></i>
-            <span class="nav-label">Transport Management</span>
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a href="javascript:;"><i class="sidebar-item-icon fa fa-file-text"></i>
-            <span class="nav-label">Finance Management</span><i class="fa fa-angle-right arrow"></i>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;"><i class="sidebar-item-icon fa fa-sitemap"></i>
-            <span class="nav-label">Leave Management</span><i class="fa fa-angle-right arrow"></i>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;"><i class="sidebar-item-icon fa fa-sitemap"></i>
-            <span class="nav-label">Certificates Management</span><i class="fa fa-angle-right arrow"></i>
-          </a>
-        </li> -->
       </ul>
     </div>
   </div>

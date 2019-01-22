@@ -1,0 +1,208 @@
+<ng2-toasty [position]="position"></ng2-toasty>
+
+
+<div class="page-content fade-in-up">
+  <div class="row">
+    <div class="col-md-12">
+
+        <ul class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" aria-controls="studentDetails" href="#studentDetails" id="studentDetails-tab"
+                aria-selected="true">
+                Create Time Table
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" aria-controls="studentProfileDetails" href="#studentProfileDetails" id="studentProfileDetails-tab"
+                aria-selected="false">
+                Search Time Table For Class
+              </a>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="nav-tabContent">
+              <div class="ibox tab-pane show active" id="studentDetails" role="tabpanel" aria-labelledby="studentDetails-tab">
+                <div class="ibox-head">
+                  <!-- <div class="ibox-title">Edit Student Form</div> -->
+                  <!-- <div class="ibox-tools">
+                          <a class="ibox-collapse">
+                          <i class="fa fa-refresh mr-1 text-success refresh-icon" aria-hidden="true"></i>
+                          <i class="fa fa-times text-danger close-icon" aria-hidden="true"></i>
+                          </a>
+                      </div> -->
+                </div>
+
+                <div class="ibox-body">
+                    <form id="edit-student-form" [formGroup]="editStudentForm" (ngSubmit)="onEditStudentSubmit()">
+                      <div class="row student-info pl-3">
+
+                          <!-- <div class="col-sm-3">
+                              <mat-form-field class="example-full-width">
+                                <mat-select placeholder="Select Academic *" name="gender" formControlName="gender">
+                                  <mat-option value="male">Annual 2018-19</mat-option>
+                                  <mat-option value="female">Annual 2019-20</mat-option>
+                                  
+                                </mat-select>
+                                <mat-error *ngIf="gender.hasError('required')">
+                                  Field is required.
+                                </mat-error>
+                              </mat-form-field>
+                            </div> -->
+
+                            <div class="col-sm-3">
+                                <mat-form-field class="example-full-width">
+                                  <mat-select placeholder="Blood Group" name="bloodGroup" formControlName="bloodGroup">
+                                    <mat-option value="b+">B+</mat-option>
+                                    <mat-option value="o+">O+</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                              </div>
+
+                            <div class="col-sm-3">
+                                <mat-form-field class="example-full-width">
+                                  <mat-select placeholder="Select Class *" name="gender" formControlName="gender">
+                                      <mat-option value="male">IX</mat-option>
+                                      <mat-option value="female">X</mat-option>
+                                      <mat-option value="male">XI</mat-option>
+                                      <mat-option value="female">XII</mat-option>
+                                  </mat-select>
+                                  <mat-error *ngIf="gender.hasError('required')">
+                                    Field is required.
+                                  </mat-error>
+                                </mat-form-field>
+                              </div>
+
+                              <div class="col-sm-3">
+                                  <mat-form-field class="example-full-width">
+                                    <mat-select placeholder="Select Section *" name="gender" formControlName="gender">
+                                      <mat-option value="male">A</mat-option>
+                                      <mat-option value="female">B</mat-option>
+                                      <mat-option value="male">C</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="gender.hasError('required')">
+                                      Field is required.
+                                    </mat-error>
+                                  </mat-form-field>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    
+                                  </div>
+
+                                  <!-- <div class="col-sm-3">
+                                      <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Enter school Time Starts *" type="text" name="lastName" formControlName="lastName">
+                                        <mat-error *ngIf="lastName.hasError('required')">
+                                          Field is required.
+                                        </mat-error>
+                                      </mat-form-field>
+                                    </div> -->
+                                    <div class="col-sm-3">
+                                        <mat-form-field class="example-full-width">
+                                          <input matInput [matDatepicker]="studentDOB1" placeholder="Enter school Time Starts *" name="studentDOB"
+                                            formControlName="studentDOB">
+                                          <mat-error *ngIf="studentDOB.hasError('required')">
+                                            Field is required.
+                                          </mat-error>
+                                          <mat-datepicker-toggle matSuffix [for]="studentDOB1"></mat-datepicker-toggle>
+                                          <mat-datepicker #studentDOB1></mat-datepicker>
+                                        </mat-form-field>
+                                      </div>
+
+                                    <div class="col-sm-3">
+                                        <mat-form-field class="example-full-width">
+                                          <input matInput placeholder="Slot Time For Period in minutes *" type="text" name="lastName" formControlName="lastName">
+                                          <mat-error *ngIf="lastName.hasError('required')">
+                                            Field is required.
+                                          </mat-error>
+                                        </mat-form-field>
+                                      </div>
+
+                                      <div class="col-sm-3">
+                                          <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Enter No of Days *" type="text" name="lastName" formControlName="lastName">
+                                            <mat-error *ngIf="lastName.hasError('required')">
+                                              Field is required.
+                                            </mat-error>
+                                          </mat-form-field>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            
+                                          </div>
+
+                                          <div class="col-sm-3">
+                                              <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Select of Periods *" type="text" name="lastName" formControlName="lastName">
+                                                <mat-error *ngIf="lastName.hasError('required')">
+                                                  Field is required.
+                                                </mat-error>
+                                              </mat-form-field>
+                                            </div>
+
+                                            <div class="row pl-3">
+                                                <div class="col-md-12 mt-4">* fields are required.</div>
+                                                <div class="col-md-12 mt-4">
+                                                  <div class="form-group">
+                                                    <button class="btn btn-success btn-lg" type="submit">Update</button>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                      </div>
+                    </form>
+                </div>
+              </div>
+
+                <div class="ibox tab-pane" id="studentProfileDetails" role="tabpanel" aria-labelledby="studentProfileDetails-tab">
+                    <div class="ibox-head">
+                      
+                    </div>
+
+                    <div class="ibox-body">
+                        <form id="edit-student-profile-details-form" [formGroup]="editStudentDetailsForm" (ngSubmit)="onEditStudentDetailsSubmit()">
+                          <div class="row student-info pl-3">
+                            <!-- <div class="col-md-12 mb-3">
+                              <h6 class="h6 font-weight-bold sub-heading">Previous Institution Information</h6>
+                            </div> -->
+
+                            <div class="col-sm-3 pr-4 pl-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput type="text" placeholder="Name" name="previousInsName" formControlName="previousInsName"
+                                    value="{{stdProfileDetailsData?.previousInsName}}">
+                                </mat-form-field>
+                              </div>
+
+                              <div class="col-sm-3 pr-4 pl-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput type="text" placeholder="Name" name="previousInsName" formControlName="previousInsName"
+                                      value="{{stdProfileDetailsData?.previousInsName}}">
+                                  </mat-form-field>
+                                </div>
+
+                                <div class="col-sm-3 pr-4 pl-4">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput type="text" placeholder="Name" name="previousInsName" formControlName="previousInsName"
+                                        value="{{stdProfileDetailsData?.previousInsName}}">
+                                    </mat-form-field>
+                                  </div>
+
+                                  <div class="col-sm-3 pr-4 pl-4">
+                                      <mat-form-field class="example-full-width">
+                                        <input matInput type="text" placeholder="Name" name="previousInsName" formControlName="previousInsName"
+                                          value="{{stdProfileDetailsData?.previousInsName}}">
+                                      </mat-form-field>
+                                    </div>
+
+
+                          </div>
+                        </form>
+                      </div>
+                  </div>
+
+              </div>
+            
+    </div>
+  </div>
+  </div>
+<!-- <ng2-toasty [position]="position"></ng2-toasty> -->

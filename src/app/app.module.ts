@@ -40,6 +40,8 @@ import { AddStudentDetailsComponent } from "./pages/students/add-student-details
 import { CustExtBrowserXhr } from "./cust-ext-browser-xhr";
 import { EditStudentComponent } from "./pages/students/edit-student/edit-student.component";
 import { EditStudentDetailsComponent } from "./pages/students/edit-student-details/edit-student-details.component";
+import { UserAccessControlComponent } from './pages/user-access-control/user-access-control.component';
+import { TimeTableConfigurationComponent } from './pages/time-table-configuration/time-table-configuration.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { EditStudentDetailsComponent } from "./pages/students/edit-student-detai
     ViewStudentComponent,
     AddStudentDetailsComponent,
     EditStudentComponent,
-    EditStudentDetailsComponent
+    EditStudentDetailsComponent,
+    UserAccessControlComponent,
+    TimeTableConfigurationComponent
   ],
 
   imports: [
