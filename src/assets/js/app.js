@@ -413,3 +413,12 @@ function selectMenuItemFromSideMenu(id) {
     }
   
 }
+
+
+
+
+            // $(function () {
+                $('#datetimepicker3').datetimepicker({
+                    format: 'LT'
+                });
+            // });

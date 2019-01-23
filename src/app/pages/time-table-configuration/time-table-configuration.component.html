@@ -1,4 +1,4 @@
-<ng2-toasty [position]="position"></ng2-toasty>
+
 
 
 <div class="page-content fade-in-up">
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="ibox-body">
-                    <form id="edit-student-form" [formGroup]="editStudentForm" (ngSubmit)="onEditStudentSubmit()">
+                    <form id="edit-student-form" >
                       <div class="row student-info pl-3">
 
                           <!-- <div class="col-sm-3">
@@ -51,37 +51,37 @@
 
                             <div class="col-sm-3">
                                 <mat-form-field class="example-full-width">
-                                  <mat-select placeholder="Blood Group" name="bloodGroup" formControlName="bloodGroup">
-                                    <mat-option value="b+">B+</mat-option>
-                                    <mat-option value="o+">O+</mat-option>
+                                  <mat-select placeholder="Select Academic *" name="bloodGroup">
+                                    <mat-option value="b+">Annual 2018-19</mat-option>
+                                    <mat-option value="o+">Annual 2019-20</mat-option>
                                   </mat-select>
                                 </mat-form-field>
                               </div>
 
                             <div class="col-sm-3">
                                 <mat-form-field class="example-full-width">
-                                  <mat-select placeholder="Select Class *" name="gender" formControlName="gender">
+                                  <mat-select placeholder="Select Class *" name="gender" >
                                       <mat-option value="male">IX</mat-option>
                                       <mat-option value="female">X</mat-option>
                                       <mat-option value="male">XI</mat-option>
                                       <mat-option value="female">XII</mat-option>
                                   </mat-select>
-                                  <mat-error *ngIf="gender.hasError('required')">
+                                  <!-- <mat-error *ngIf="gender.hasError('required')">
                                     Field is required.
-                                  </mat-error>
+                                  </mat-error> -->
                                 </mat-form-field>
                               </div>
 
                               <div class="col-sm-3">
                                   <mat-form-field class="example-full-width">
-                                    <mat-select placeholder="Select Section *" name="gender" formControlName="gender">
+                                    <mat-select placeholder="Select Section *" name="gender">
                                       <mat-option value="male">A</mat-option>
                                       <mat-option value="female">B</mat-option>
                                       <mat-option value="male">C</mat-option>
                                     </mat-select>
-                                    <mat-error *ngIf="gender.hasError('required')">
+                                    <!-- <mat-error *ngIf="gender.hasError('required')">
                                       Field is required.
-                                    </mat-error>
+                                    </mat-error> -->
                                   </mat-form-field>
                                 </div>
 
@@ -98,32 +98,31 @@
                                       </mat-form-field>
                                     </div> -->
                                     <div class="col-sm-3">
-                                        <mat-form-field class="example-full-width">
-                                          <input matInput [matDatepicker]="studentDOB1" placeholder="Enter school Time Starts *" name="studentDOB"
-                                            formControlName="studentDOB">
-                                          <mat-error *ngIf="studentDOB.hasError('required')">
-                                            Field is required.
-                                          </mat-error>
-                                          <mat-datepicker-toggle matSuffix [for]="studentDOB1"></mat-datepicker-toggle>
-                                          <mat-datepicker #studentDOB1></mat-datepicker>
-                                        </mat-form-field>
+                                        <div class="form-group">
+                                            <div class='input-group date' id='datetimepicker3'>
+                                                <input type='text' class="form-control" placeholder="Enter school Time Starts"/>
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-time"></span>
+                                                </span>
+                                            </div>
+                                        </div>
                                       </div>
 
                                     <div class="col-sm-3">
                                         <mat-form-field class="example-full-width">
-                                          <input matInput placeholder="Slot Time For Period in minutes *" type="text" name="lastName" formControlName="lastName">
-                                          <mat-error *ngIf="lastName.hasError('required')">
+                                          <input matInput placeholder="Slot Time For Period in minutes *" type="text" name="lastName" >
+                                          <!-- <mat-error *ngIf="lastName.hasError('required')">
                                             Field is required.
-                                          </mat-error>
+                                          </mat-error> -->
                                         </mat-form-field>
                                       </div>
 
                                       <div class="col-sm-3">
                                           <mat-form-field class="example-full-width">
-                                            <input matInput placeholder="Enter No of Days *" type="text" name="lastName" formControlName="lastName">
-                                            <mat-error *ngIf="lastName.hasError('required')">
+                                            <input matInput placeholder="Enter No of Days *" type="text" name="lastName" >
+                                            <!-- <mat-error *ngIf="lastName.hasError('required')">
                                               Field is required.
-                                            </mat-error>
+                                            </mat-error> -->
                                           </mat-form-field>
                                         </div>
 
@@ -133,24 +132,781 @@
 
                                           <div class="col-sm-3">
                                               <mat-form-field class="example-full-width">
-                                                <input matInput placeholder="Select of Periods *" type="text" name="lastName" formControlName="lastName">
-                                                <mat-error *ngIf="lastName.hasError('required')">
+                                                <input matInput placeholder="Select of Periods *" type="text" name="lastName" >
+                                                <!-- <mat-error *ngIf="lastName.hasError('required')">
                                                   Field is required.
-                                                </mat-error>
+                                                </mat-error> -->
                                               </mat-form-field>
                                             </div>
 
                                             <div class="row pl-3">
-                                                <div class="col-md-12 mt-4">* fields are required.</div>
+                                               
                                                 <div class="col-md-12 mt-4">
                                                   <div class="form-group">
-                                                    <button class="btn btn-success btn-lg" type="submit">Update</button>
+                                                    <button class="btn btn-success btn-lg" type="submit">Prepare Time Table</button>
                                                   </div>
                                                 </div>
                                               </div>
 
                       </div>
                     </form>
+
+
+                    <div class="row student-info pl-3">
+                      <div class="col-sm-12">
+
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <td></td>
+                              <th>
+                                <p>Period 1</p>
+                                  <div class="form-group">
+                                      <div class='input-group date' id='datetimepicker3'>
+                                          <input type='text' class="form-control" placeholder="From:"/>
+                                          <span class="input-group-addon">
+                                              <span class="glyphicon glyphicon-time"></span>
+                                          </span>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class='input-group date' id='datetimepicker3'>
+                                          <input type='text' class="form-control" placeholder="To"/>
+                                          <span class="input-group-addon">
+                                              <span class="glyphicon glyphicon-time"></span>
+                                          </span>
+                                      </div>
+                                  </div>
+                              </th>
+                              <th>
+                                  <p>Period 2</p>
+                                    <div class="form-group">
+                                        <div class='input-group date' id='datetimepicker3'>
+                                            <input type='text' class="form-control" placeholder="From:"/>
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-time"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class='input-group date' id='datetimepicker3'>
+                                            <input type='text' class="form-control" placeholder="To"/>
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-time"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </th>
+                                <th>
+                                    <p>Period 3</p>
+                                      <div class="form-group">
+                                          <div class='input-group date' id='datetimepicker3'>
+                                              <input type='text' class="form-control" placeholder="From:"/>
+                                              <span class="input-group-addon">
+                                                  <span class="glyphicon glyphicon-time"></span>
+                                              </span>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <div class='input-group date' id='datetimepicker3'>
+                                              <input type='text' class="form-control" placeholder="To"/>
+                                              <span class="input-group-addon">
+                                                  <span class="glyphicon glyphicon-time"></span>
+                                              </span>
+                                          </div>
+                                      </div>
+                                  </th>
+                                  <th>
+                                      <p>Period 4</p>
+                                        <div class="form-group">
+                                            <div class='input-group date' id='datetimepicker3'>
+                                                <input type='text' class="form-control" placeholder="From:"/>
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-time"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class='input-group date' id='datetimepicker3'>
+                                                <input type='text' class="form-control" placeholder="To"/>
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-time"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <p>Period 5</p>
+                                          <div class="form-group">
+                                              <div class='input-group date' id='datetimepicker3'>
+                                                  <input type='text' class="form-control" placeholder="From:"/>
+                                                  <span class="input-group-addon">
+                                                      <span class="glyphicon glyphicon-time"></span>
+                                                  </span>
+                                              </div>
+                                          </div>
+                                          <div class="form-group">
+                                              <div class='input-group date' id='datetimepicker3'>
+                                                  <input type='text' class="form-control" placeholder="To"/>
+                                                  <span class="input-group-addon">
+                                                      <span class="glyphicon glyphicon-time"></span>
+                                                  </span>
+                                              </div>
+                                          </div>
+                                      </th>
+                                      <th>
+                                          <p>Period 6</p>
+                                            <div class="form-group">
+                                                <div class='input-group date' id='datetimepicker3'>
+                                                    <input type='text' class="form-control" placeholder="From:"/>
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-time"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class='input-group date' id='datetimepicker3'>
+                                                    <input type='text' class="form-control" placeholder="To"/>
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-time"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <p>Period 7</p>
+                                              <div class="form-group">
+                                                  <div class='input-group date' id='datetimepicker3'>
+                                                      <input type='text' class="form-control" placeholder="From:"/>
+                                                      <span class="input-group-addon">
+                                                          <span class="glyphicon glyphicon-time"></span>
+                                                      </span>
+                                                  </div>
+                                              </div>
+                                              <div class="form-group">
+                                                  <div class='input-group date' id='datetimepicker3'>
+                                                      <input type='text' class="form-control" placeholder="To"/>
+                                                      <span class="input-group-addon">
+                                                          <span class="glyphicon glyphicon-time"></span>
+                                                      </span>
+                                                  </div>
+                                              </div>
+                                          </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="days-name">Monday</td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="days-name">Tuesday</td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td class="days-name"> Wednesday </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td> <mat-form-field class="example-full-width new-width">
+                                  <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                    <mat-option value="b+">English</mat-option>
+                                    <mat-option value="o+">Bengali</mat-option>
+                                    <mat-option value="o+">Math</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                      <mat-option value="b+">Teacher1</mat-option>
+                                      <mat-option value="o+">Teacher2</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                            </tr>
+                            <tr>
+                                <td class="days-name"> Thursday </td>
+                                <td> <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                      <mat-option value="b+">English</mat-option>
+                                      <mat-option value="o+">Bengali</mat-option>
+                                      <mat-option value="o+">Math</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                  <mat-form-field class="example-full-width new-width">
+                                      <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                        <mat-option value="b+">Teacher1</mat-option>
+                                        <mat-option value="o+">Teacher2</mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                </td>
+                                <td> <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                      <mat-option value="b+">English</mat-option>
+                                      <mat-option value="o+">Bengali</mat-option>
+                                      <mat-option value="o+">Math</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                  <mat-form-field class="example-full-width new-width">
+                                      <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                        <mat-option value="b+">Teacher1</mat-option>
+                                        <mat-option value="o+">Teacher2</mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                </td>
+                                <td> <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                      <mat-option value="b+">English</mat-option>
+                                      <mat-option value="o+">Bengali</mat-option>
+                                      <mat-option value="o+">Math</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                  <mat-form-field class="example-full-width new-width">
+                                      <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                        <mat-option value="b+">Teacher1</mat-option>
+                                        <mat-option value="o+">Teacher2</mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                </td>
+                                <td> <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                      <mat-option value="b+">English</mat-option>
+                                      <mat-option value="o+">Bengali</mat-option>
+                                      <mat-option value="o+">Math</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                  <mat-form-field class="example-full-width new-width">
+                                      <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                        <mat-option value="b+">Teacher1</mat-option>
+                                        <mat-option value="o+">Teacher2</mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                </td>
+                                <td> <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                      <mat-option value="b+">English</mat-option>
+                                      <mat-option value="o+">Bengali</mat-option>
+                                      <mat-option value="o+">Math</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                  <mat-form-field class="example-full-width new-width">
+                                      <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                        <mat-option value="b+">Teacher1</mat-option>
+                                        <mat-option value="o+">Teacher2</mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                </td>
+                                <td> <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                      <mat-option value="b+">English</mat-option>
+                                      <mat-option value="o+">Bengali</mat-option>
+                                      <mat-option value="o+">Math</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                  <mat-form-field class="example-full-width new-width">
+                                      <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                        <mat-option value="b+">Teacher1</mat-option>
+                                        <mat-option value="o+">Teacher2</mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                </td>
+                                <td> <mat-form-field class="example-full-width new-width">
+                                    <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                      <mat-option value="b+">English</mat-option>
+                                      <mat-option value="o+">Bengali</mat-option>
+                                      <mat-option value="o+">Math</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                  <mat-form-field class="example-full-width new-width">
+                                      <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                        <mat-option value="b+">Teacher1</mat-option>
+                                        <mat-option value="o+">Teacher2</mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                </td>
+                              </tr>
+                              <tr>
+                                  <td class="days-name">Friday</td>
+                                  <td> <mat-form-field class="example-full-width new-width">
+                                      <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                        <mat-option value="b+">English</mat-option>
+                                        <mat-option value="o+">Bengali</mat-option>
+                                        <mat-option value="o+">Math</mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width new-width">
+                                        <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                          <mat-option value="b+">Teacher1</mat-option>
+                                          <mat-option value="o+">Teacher2</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                  </td>
+                                  <td> <mat-form-field class="example-full-width new-width">
+                                      <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                        <mat-option value="b+">English</mat-option>
+                                        <mat-option value="o+">Bengali</mat-option>
+                                        <mat-option value="o+">Math</mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width new-width">
+                                        <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                          <mat-option value="b+">Teacher1</mat-option>
+                                          <mat-option value="o+">Teacher2</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                  </td>
+                                  <td> <mat-form-field class="example-full-width new-width">
+                                      <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                        <mat-option value="b+">English</mat-option>
+                                        <mat-option value="o+">Bengali</mat-option>
+                                        <mat-option value="o+">Math</mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width new-width">
+                                        <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                          <mat-option value="b+">Teacher1</mat-option>
+                                          <mat-option value="o+">Teacher2</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                  </td>
+                                  <td> <mat-form-field class="example-full-width new-width">
+                                      <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                        <mat-option value="b+">English</mat-option>
+                                        <mat-option value="o+">Bengali</mat-option>
+                                        <mat-option value="o+">Math</mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width new-width">
+                                        <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                          <mat-option value="b+">Teacher1</mat-option>
+                                          <mat-option value="o+">Teacher2</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                  </td>
+                                  <td> <mat-form-field class="example-full-width new-width">
+                                      <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                        <mat-option value="b+">English</mat-option>
+                                        <mat-option value="o+">Bengali</mat-option>
+                                        <mat-option value="o+">Math</mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width new-width">
+                                        <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                          <mat-option value="b+">Teacher1</mat-option>
+                                          <mat-option value="o+">Teacher2</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                  </td>
+                                  <td> <mat-form-field class="example-full-width new-width">
+                                      <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                        <mat-option value="b+">English</mat-option>
+                                        <mat-option value="o+">Bengali</mat-option>
+                                        <mat-option value="o+">Math</mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width new-width">
+                                        <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                          <mat-option value="b+">Teacher1</mat-option>
+                                          <mat-option value="o+">Teacher2</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                  </td>
+                                  <td> <mat-form-field class="example-full-width new-width">
+                                      <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                        <mat-option value="b+">English</mat-option>
+                                        <mat-option value="o+">Bengali</mat-option>
+                                        <mat-option value="o+">Math</mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width new-width">
+                                        <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                          <mat-option value="b+">Teacher1</mat-option>
+                                          <mat-option value="o+">Teacher2</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                  </td>
+                                </tr>
+                                <tr>
+                                    <td class="days-name">Saturday</td>
+                                    <td> <mat-form-field class="example-full-width new-width">
+                                        <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                          <mat-option value="b+">English</mat-option>
+                                          <mat-option value="o+">Bengali</mat-option>
+                                          <mat-option value="o+">Math</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                      <mat-form-field class="example-full-width new-width">
+                                          <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                            <mat-option value="b+">Teacher1</mat-option>
+                                            <mat-option value="o+">Teacher2</mat-option>
+                                          </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td> <mat-form-field class="example-full-width new-width">
+                                        <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                          <mat-option value="b+">English</mat-option>
+                                          <mat-option value="o+">Bengali</mat-option>
+                                          <mat-option value="o+">Math</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                      <mat-form-field class="example-full-width new-width">
+                                          <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                            <mat-option value="b+">Teacher1</mat-option>
+                                            <mat-option value="o+">Teacher2</mat-option>
+                                          </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td> <mat-form-field class="example-full-width new-width">
+                                        <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                          <mat-option value="b+">English</mat-option>
+                                          <mat-option value="o+">Bengali</mat-option>
+                                          <mat-option value="o+">Math</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                      <mat-form-field class="example-full-width new-width">
+                                          <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                            <mat-option value="b+">Teacher1</mat-option>
+                                            <mat-option value="o+">Teacher2</mat-option>
+                                          </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td> <mat-form-field class="example-full-width new-width">
+                                        <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                          <mat-option value="b+">English</mat-option>
+                                          <mat-option value="o+">Bengali</mat-option>
+                                          <mat-option value="o+">Math</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                      <mat-form-field class="example-full-width new-width">
+                                          <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                            <mat-option value="b+">Teacher1</mat-option>
+                                            <mat-option value="o+">Teacher2</mat-option>
+                                          </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td> <mat-form-field class="example-full-width new-width">
+                                        <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                          <mat-option value="b+">English</mat-option>
+                                          <mat-option value="o+">Bengali</mat-option>
+                                          <mat-option value="o+">Math</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                      <mat-form-field class="example-full-width new-width">
+                                          <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                            <mat-option value="b+">Teacher1</mat-option>
+                                            <mat-option value="o+">Teacher2</mat-option>
+                                          </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td> <mat-form-field class="example-full-width new-width">
+                                        <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                          <mat-option value="b+">English</mat-option>
+                                          <mat-option value="o+">Bengali</mat-option>
+                                          <mat-option value="o+">Math</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                      <mat-form-field class="example-full-width new-width">
+                                          <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                            <mat-option value="b+">Teacher1</mat-option>
+                                            <mat-option value="o+">Teacher2</mat-option>
+                                          </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td> <mat-form-field class="example-full-width new-width">
+                                        <mat-select placeholder="Select Subject *" name="bloodGroup">
+                                          <mat-option value="b+">English</mat-option>
+                                          <mat-option value="o+">Bengali</mat-option>
+                                          <mat-option value="o+">Math</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                      <mat-form-field class="example-full-width new-width">
+                                          <mat-select placeholder="Select Teacher *" name="bloodGroup">
+                                            <mat-option value="b+">Teacher1</mat-option>
+                                            <mat-option value="o+">Teacher2</mat-option>
+                                          </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                  </tr>
+                          </tbody>
+                        </table>
+
+                      </div>
+                    </div>
                 </div>
               </div>
 
@@ -160,43 +916,296 @@
                     </div>
 
                     <div class="ibox-body">
-                        <form id="edit-student-profile-details-form" [formGroup]="editStudentDetailsForm" (ngSubmit)="onEditStudentDetailsSubmit()">
+                        <form id="edit-student-profile-details-form"  >
                           <div class="row student-info pl-3">
                             <!-- <div class="col-md-12 mb-3">
                               <h6 class="h6 font-weight-bold sub-heading">Previous Institution Information</h6>
                             </div> -->
 
                             <div class="col-sm-3 pr-4 pl-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput type="text" placeholder="Name" name="previousInsName" formControlName="previousInsName"
-                                    value="{{stdProfileDetailsData?.previousInsName}}">
-                                </mat-form-field>
+                                <mat-form-field class="example-full-width ">
+                                    <mat-select placeholder="Select Academic *" name="bloodGroup">
+                                      <mat-option value="b+">Annual 2018-19</mat-option>
+                                      <mat-option value="o+">Annual 2019-20</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
                               </div>
 
                               <div class="col-sm-3 pr-4 pl-4">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput type="text" placeholder="Name" name="previousInsName" formControlName="previousInsName"
-                                      value="{{stdProfileDetailsData?.previousInsName}}">
-                                  </mat-form-field>
+                                      <mat-select placeholder="Select Class *" name="bloodGroup">
+                                        <mat-option value="b+">IX</mat-option>
+                                        <mat-option value="o+">X</mat-option>
+                                        <mat-option value="b+">XI</mat-option>
+                                        <mat-option value="o+">XII</mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
                                 </div>
 
                                 <div class="col-sm-3 pr-4 pl-4">
-                                    <mat-form-field class="example-full-width">
-                                      <input matInput type="text" placeholder="Name" name="previousInsName" formControlName="previousInsName"
-                                        value="{{stdProfileDetailsData?.previousInsName}}">
-                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width ">
+                                        <mat-select placeholder="Select section *" name="bloodGroup">
+                                          <mat-option value="b+">A</mat-option>
+                                          <mat-option value="o+">B</mat-option>
+                                          <mat-option value="o+">C</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
                                   </div>
 
                                   <div class="col-sm-3 pr-4 pl-4">
-                                      <mat-form-field class="example-full-width">
-                                        <input matInput type="text" placeholder="Name" name="previousInsName" formControlName="previousInsName"
-                                          value="{{stdProfileDetailsData?.previousInsName}}">
-                                      </mat-form-field>
+                                      <div class="col-md-12 mt-4">
+                                          <div class="form-group">
+                                            <button class="btn btn-success btn-lg" type="submit">Prepare Time Table</button>
+                                          </div>
+                                        </div>
                                     </div>
 
+                                   
 
                           </div>
                         </form>
+
+
+                        
+                    <div class="row student-info pl-3">
+                        <div class="col-sm-12">
+
+                            <table class="table table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th>
+                                      Day/Period
+                                      
+                                    </th>
+                                    <th>
+                                      <p>Period 1</p>
+                                      <p>From: 9:00 AM<br>
+                                      To: 10:0 AM</p>
+                                    </th>
+                                    <th>
+                                      <p>Period 2</p>
+                                      <p>From: 10:00 AM<br>
+                                      To: 11:0 AM</p>
+                                    </th>
+                                    <th>
+                                      <p>Period 3</p>
+                                      <p>From: 11:00 AM<br>
+                                      To: 12:0 AM</p>
+                                    </th>
+                                    <th>
+                                      <p>Period 4</p>
+                                      <p>From: 12:00 AM<br>
+                                      To: 1:0 AM</p>
+                                    </th>
+                                    <th>
+                                      <p>Period 5</p>
+                                      <p>From: 1:00 AM<br>
+                                      To: 2:0 AM</p>
+                                    </th>
+                                    <th>
+                                      <p>Period 6</p>
+                                      <p>From: 2:00 AM<br>
+                                      To: 3:0 AM</p>
+                                    </th>
+                                    <th>
+                                      <p>Period 7</p>
+                                      <p>From: 3:00 AM<br>
+                                      To: 4:0 AM</p>
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td class="days-name">Monday</td>
+                                    <td>
+                                      <p>Subject: Kannada</p>
+                                      <p>Teacher: Nagaraj R</p>
+                                    </td>
+                                    <td>
+                                      <p>Subject: English</p>
+                                      <p>Teacher: Sharmila P</p>
+                                      </td>
+                                    <td>
+                                      <p>Subject: Hindi</p>
+                                      <p>Teacher: Chethan K</p>
+                                    </td>
+                                    <td>
+                                      <p>Subject: Science</p>
+                                      <p>Teacher: Shrusti M</p>
+                                    </td>
+                                    <td>
+                                      <p>Subject: Mathematics</p>
+                                       <p>Teacher: Vishveshwar M</p>
+                                    </td>
+                                    <td>
+                                      <p>Subject: Social Science</p>
+                                      <p>Teacher: shashank S</p>
+                                    </td>
+                                    <td>
+                                      <p>Subject: English</p>
+                                      <p>Teacher: Sharmila P</p>
+                                    </td>
+                                    
+                                  </tr>
+                                  <tr>
+                                    <td class="days-name">Tuesday</td>
+                                    <td>
+                                        <p>Subject: Kannada</p>
+                                        <p>Teacher: Nagaraj R</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: English</p>
+                                        <p>Teacher: Sharmila P</p>
+                                        </td>
+                                      <td>
+                                        <p>Subject: Hindi</p>
+                                        <p>Teacher: Chethan K</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: Science</p>
+                                        <p>Teacher: Shrusti M</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: Mathematics</p>
+                                         <p>Teacher: Vishveshwar M</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: Social Science</p>
+                                        <p>Teacher: shashank S</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: English</p>
+                                        <p>Teacher: Sharmila P</p>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="days-name">Wednesday</td>
+                                    <td>
+                                        <p>Subject: Kannada</p>
+                                        <p>Teacher: Nagaraj R</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: English</p>
+                                        <p>Teacher: Sharmila P</p>
+                                        </td>
+                                      <td>
+                                        <p>Subject: Hindi</p>
+                                        <p>Teacher: Chethan K</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: Science</p>
+                                        <p>Teacher: Shrusti M</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: Mathematics</p>
+                                         <p>Teacher: Vishveshwar M</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: Social Science</p>
+                                        <p>Teacher: shashank S</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: English</p>
+                                        <p>Teacher: Sharmila P</p>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                  <td class="days-name">Thursday</td>
+                                  <td>
+                                      <p>Subject: Kannada</p>
+                                      <p>Teacher: Nagaraj R</p>
+                                    </td>
+                                    <td>
+                                      <p>Subject: English</p>
+                                      <p>Teacher: Sharmila P</p>
+                                      </td>
+                                    <td>
+                                      <p>Subject: Hindi</p>
+                                      <p>Teacher: Chethan K</p>
+                                    </td>
+                                    <td>
+                                      <p>Subject: Science</p>
+                                      <p>Teacher: Shrusti M</p>
+                                    </td>
+                                    <td>
+                                      <p>Subject: Mathematics</p>
+                                       <p>Teacher: Vishveshwar M</p>
+                                    </td>
+                                    <td>
+                                      <p>Subject: Social Science</p>
+                                      <p>Teacher: shashank S</p>
+                                    </td>
+                                    <td>
+                                      <p>Subject: English</p>
+                                      <p>Teacher: Sharmila P</p>
+                                    </td>
+                                    </tr>
+                                  <tr>
+                                    <td class="days-name">Friday</td>
+                                    <td>
+                                        <p>Subject: Kannada</p>
+                                        <p>Teacher: Nagaraj R</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: English</p>
+                                        <p>Teacher: Sharmila P</p>
+                                        </td>
+                                      <td>
+                                        <p>Subject: Hindi</p>
+                                        <p>Teacher: Chethan K</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: Science</p>
+                                        <p>Teacher: Shrusti M</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: Mathematics</p>
+                                         <p>Teacher: Vishveshwar M</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: Social Science</p>
+                                        <p>Teacher: shashank S</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: English</p>
+                                        <p>Teacher: Sharmila P</p>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="days-name">Saturday</td>
+                                    <td>
+                                        <p>Subject: Kannada</p>
+                                        <p>Teacher: Nagaraj R</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: English</p>
+                                        <p>Teacher: Sharmila P</p>
+                                        </td>
+                                      <td>
+                                        <p>Subject: Hindi</p>
+                                        <p>Teacher: Chethan K</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: Science</p>
+                                        <p>Teacher: Shrusti M</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: Mathematics</p>
+                                         <p>Teacher: Vishveshwar M</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: Social Science</p>
+                                        <p>Teacher: shashank S</p>
+                                      </td>
+                                      <td>
+                                        <p>Subject: English</p>
+                                        <p>Teacher: Sharmila P</p>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                              </table>
+                        </div>
+                    </div>
                       </div>
                   </div>
 
@@ -205,4 +1214,3 @@
     </div>
   </div>
   </div>
-<!-- <ng2-toasty [position]="position"></ng2-toasty> -->
