@@ -48,6 +48,9 @@ $(document).ready(function(){
     // Timepicker
     $('.timepicker').timepicker();
 
+    
+  
+
     // Jquery minicolors
     $('.minicolors').each(function(){
         $(this).minicolors({

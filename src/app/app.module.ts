@@ -42,6 +42,8 @@ import { EditStudentComponent } from "./pages/students/edit-student/edit-student
 import { EditStudentDetailsComponent } from "./pages/students/edit-student-details/edit-student-details.component";
 import { UserAccessControlComponent } from './pages/user-access-control/user-access-control.component';
 import { TimeTableConfigurationComponent } from './pages/time-table-configuration/time-table-configuration.component';
+import { IssuseNewCertificateComponent } from './pages/issuse-new-certificate/issuse-new-certificate.component';
+import { ViewTimeComponent } from './pages/view-time/view-time.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { TimeTableConfigurationComponent } from './pages/time-table-configuratio
     EditStudentComponent,
     EditStudentDetailsComponent,
     UserAccessControlComponent,
-    TimeTableConfigurationComponent
+    TimeTableConfigurationComponent,
+    IssuseNewCertificateComponent,
+    ViewTimeComponent
   ],
 
   imports: [

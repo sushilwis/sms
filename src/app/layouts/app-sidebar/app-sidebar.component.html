@@ -4,13 +4,13 @@
 
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" aria-controls="menu1" href="#menu1" id="menu1-tab">
-        <i class="fa fa-bookmark"></i> Tab One
+        <i class="fa fa-bookmark"></i> Management
       </a>
     </li>
 
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" aria-controls="menu2" href="#menu2" id="menu2-tab">
-        <i class="fa fa-bookmark"></i> Tab Two
+        <i class="fa fa-bookmark"></i> Configuration
       </a>
     </li>
 
@@ -110,10 +110,22 @@
 
           </ul>
         </li>
-        <li routerLinkActive="active" id="teacher-activities" data-hasSub='false'>
-          <a href="javascript:;"><i class="sidebar-item-icon fa fa-bar-chart"></i>
-            <span class="nav-label">Teacher Activities</span><i class="fa fa-angle-right arrow"></i>
+        <li routerLinkActive="active" id="teacher-activities" data-hasSub='true'>
+          <a href="javascript:;">
+            <i class="sidebar-item-icon fa fa-bar-chart"></i>
+            <span class="nav-label">Teacher Activities</span>
+            <i class="fa fa-angle-right arrow"></i>
           </a>
+          <ul class="nav-2-level collapse" routerLinkActive="in">
+              <li id="view-time-table" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a [routerLink]="['/teacher-activity/view-time-table']">
+                  <span class="submenu-arrow">
+                    <i class="ti-angle-right"></i>
+                  </span>
+                  View Time Table
+                </a>
+              </li>
+            </ul>
         </li>
 
         <li routerLinkActive="active" id="examination-management" data-hasSub='false'>
@@ -151,11 +163,24 @@
           </a>
         </li>
 
-        <li id="certificates-management" data-hasSub='false'>
-          <a href="javascript:;"><i class="sidebar-item-icon fa fa-sitemap"></i>
-            <span class="nav-label">Certificates Management</span><i class="fa fa-angle-right arrow"></i>
+        <li routerLinkActive="active" id="certificates-management" data-hasSub='true'>
+          <a href="javascript:;">
+            <i class="sidebar-item-icon fa fa-sitemap"></i>
+            <span class="nav-label">Certificates Management</span>
+            <i class="fa fa-angle-right arrow"></i>
           </a>
+          <ul class="nav-2-level collapse" routerLinkActive="in">
+              <li id="issuse-New-Certificate" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a [routerLink]="['/certificate-management/issuse-new-certificate']">
+                  <span class="submenu-arrow">
+                    <i class="ti-angle-right"></i>
+                  </span>
+                  Issuse New Certificate
+                </a>
+              </li>
+            </ul>
         </li>
+
       </ul>
     </div>
 
@@ -163,6 +188,7 @@
 
     <div id="menu2" class="tab-pane" role="tabpanel" aria-labelledby="menu2-tab"><br>
       <ul class="side-menu metismenu">
+
         <li routerLinkActive="active" id="module-configuration" data-hasSub='true'>
           <a href="javascript:;">
             <i class="sidebar-item-icon ti-save"></i>
@@ -171,8 +197,8 @@
           </a>
           <ul class="nav-2-level collapse" routerLinkActive="in">
 
-            <li id="module-configuration" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-              <a [routerLink]="['/user/access']">
+            <li id="user-access-control" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a [routerLink]="['/user/user-access-control']">
                 <span class="submenu-arrow">
                   <i class="ti-angle-right"></i>
                 </span>
@@ -181,8 +207,29 @@
             </li>
           </ul>
         </li>
+
+        <li routerLinkActive="active" id="user-configuration" data-hasSub='true'>
+            <a href="javascript:;">
+              <i class="sidebar-item-icon ti-save"></i>
+              <span class="nav-label">User Configuration</span>
+              <i class="fa fa-angle-right arrow"></i>
+            </a>
+            <ul class="nav-2-level collapse" routerLinkActive="in">
+  
+              <li id="module-configuration" data-hasSub='sub' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a [routerLink]="['/user-config/timetable']">
+                  <span class="submenu-arrow">
+                    <i class="ti-angle-right"></i>
+                  </span>
+                  Time Table
+                </a>
+              </li>
+            </ul>
+          </li>
+
       </ul>
     </div>
+    
   </div>
 
 

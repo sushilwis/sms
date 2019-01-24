@@ -1,0 +1,36 @@
+.certificate-head {
+  
+    background:#f3efef;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
+    width: 80%;
+    border: 2px solid #989494;
+    margin: 0 auto;
+}
+
+.certificate-head h2,h3,h5{
+    text-align: center!important;
+}
+
+.certificate-head h3{
+    text-decoration: underline;
+}
+
+.certificate-head p{
+    padding-left: 30px;
+}
+
+.text-cen{
+    text-align: center!important;
+}
+
+@media only screen and (max-width: 600px){
+    .issue-data{
+        width: 50%;
+    }
+    .issue-data p{
+        font-size: 9px;
+    }
+
+    
+}
