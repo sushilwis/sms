@@ -21,7 +21,7 @@
                   <div class="row student-info pl-3">
                     <div class="col-md-4 mb-4">
                         <mat-form-field class="example-full-width">
-                            <mat-select placeholder="Select User" name="religion" formControlName="religion" (change)="onChangePreference()">
+                            <mat-select placeholder="Select User" name="religion" >
                               <mat-option value="hindu">User1</mat-option>
                               <mat-option value="muslim">User2</mat-option>
                               <mat-option value="christian">User3</mat-option>
@@ -38,27 +38,46 @@
                   </div>
 
 
+
                   <div class="row student-info pl-3">
+
+                  
                       <div class="col-md-4 mb-4 new-users">
-                        <h5>Academic Manage </h5>
-                        <p></p>
-                          <p class=""><mat-checkbox>Create Exam</mat-checkbox></p>
-                          <p><mat-checkbox>Add Marks</mat-checkbox></p>
-                          <p><mat-checkbox>Hall Ticket</mat-checkbox></p>
 
-                          <h5>Employee Config </h5>
+                          <div class="panel-bar"><mat-checkbox></mat-checkbox> <a hrlf="#" data-toggle="collapse" data-target="#demo">Academic Manage <i class="fa fa-angle-down arrow" aria-hidden="true"></i></a></div>
+                          <div id="demo" class="collapse panel-text">
+                              <p class=""><mat-checkbox>Create Exam</mat-checkbox></p>
+                              <p><mat-checkbox>Add Marks</mat-checkbox></p>
+                              <p><mat-checkbox>Hall Ticket</mat-checkbox></p>
+                          </div>
                           <p></p>
-                          <p><mat-checkbox>Manage Time Table</mat-checkbox></p>
-                          <p><mat-checkbox>Employee Leave Type</mat-checkbox></p>
+                          <p></p>
+                          <div class="panel-bar"><mat-checkbox></mat-checkbox> <a hrlf="#" data-toggle="collapse" data-target="#demo2">Employee Config <i class="fa fa-angle-down arrow" aria-hidden="true"></i></a></div>
+                          <div id="demo2" class="collapse panel-text">
+                              <p class=""><mat-checkbox>Manage Time Table</mat-checkbox></p>
+                              <p><mat-checkbox>Employee Leave Type</mat-checkbox></p>
+                              
+                          </div>
+                          <p></p>
+                          <p></p>
 
-                          <h5>Finance Manage </h5>
-                          <p></p>
-                          <p><mat-checkbox>Add Fee Type</mat-checkbox></p>
-                          <p><mat-checkbox>Employee Fee Type</mat-checkbox></p>
-                          
+                          <div class="panel-bar"><mat-checkbox></mat-checkbox> <a hrlf="#" data-toggle="collapse" data-target="#demo3">Finance Manage <i class="fa fa-angle-down arrow" aria-hidden="true"></i></a></div>
+                          <div id="demo3" class="collapse panel-text">
+                              <p class=""><mat-checkbox>Add Fee Type</mat-checkbox></p>
+                              <p><mat-checkbox>Add Marks</mat-checkbox></p>
+                              <p><mat-checkbox>Employee Fee Type</mat-checkbox></p>
+                          </div>
+
+                        
                       </div>
                   </div>
                </form>
+
+               <div class="col-md-12 mt-4">
+                  <div class="form-group">
+                    <button class="btn btn-success btn-lg" type="submit">Submit</button>
+                  </div>
+                </div>
             </div>
           </div>
 
