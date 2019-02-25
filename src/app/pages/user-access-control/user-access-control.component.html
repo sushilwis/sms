@@ -21,15 +21,12 @@
                   <div class="row student-info pl-3">
                     <div class="col-md-4 mb-4">
                         <mat-form-field class="example-full-width">
-                            <mat-select placeholder="Select User" name="religion" >
-                              <mat-option value="hindu">User1</mat-option>
-                              <mat-option value="muslim">User2</mat-option>
-                              <mat-option value="christian">User3</mat-option>
-                              <mat-option value="sikh">User4</mat-option>
-                              <mat-option value="buddhist">User5</mat-option>
-                              
+                            <mat-select placeholder="Select User" name="userId" [(ngModel)]="userId">
+                              <mat-option *ngFor="let user of usersList" [value]="user.id">
+                                {{user.firstName}} {{user.lastName}}                                
+                              </mat-option>                            
                             </mat-select>
-                          </mat-form-field>
+                        </mat-form-field>
                     </div>
 
                     <div class="col-md-4 mb-4"></div>
@@ -44,15 +41,25 @@
                   
                       <div class="col-md-4 mb-4 new-users">
 
-                          <div class="panel-bar"><mat-checkbox></mat-checkbox> <a hrlf="#" data-toggle="collapse" data-target="#demo">Academic Manage <i class="fa fa-angle-down arrow" aria-hidden="true"></i></a></div>
-                          <div id="demo" class="collapse panel-text">
-                              <p class=""><mat-checkbox>Create Exam</mat-checkbox></p>
-                              <p><mat-checkbox>Add Marks</mat-checkbox></p>
-                              <p><mat-checkbox>Hall Ticket</mat-checkbox></p>
+                        <div *ngFor="let feature of featureList; let i = index">
+                          <div class="panel-bar">
+                            <mat-checkbox (change)="selectFeatureHeader($event, 'parent', feature.featureHeader)"></mat-checkbox> 
+                            <a hrlf="#" data-toggle="collapse" [attr.data-target]="'#' + feature.featureHeader">
+                              {{feature.featureHeader}} 
+                              <i class="fa fa-angle-down arrow" aria-hidden="true"></i>
+                            </a>
                           </div>
-                          <p></p>
-                          <p></p>
-                          <div class="panel-bar"><mat-checkbox></mat-checkbox> <a hrlf="#" data-toggle="collapse" data-target="#demo2">Employee Config <i class="fa fa-angle-down arrow" aria-hidden="true"></i></a></div>
+                          <div id="{{feature.featureHeader}}" class="collapse panel-text">
+                              <p *ngFor="let subFeature of feature.subFeatures" class="">
+                                <mat-checkbox [checked]=subFeature.is_checked value="{{subFeature.id}}">{{subFeature.featureName}}</mat-checkbox>
+                              </p>
+                              <!-- <p><mat-checkbox>Add Marks</mat-checkbox></p>
+                              <p><mat-checkbox>Hall Ticket</mat-checkbox></p> -->
+                          </div>
+                        </div>  
+                          <!-- <p></p>
+                          <p></p> -->
+                          <!-- <div class="panel-bar"><mat-checkbox></mat-checkbox> <a hrlf="#" data-toggle="collapse" data-target="#demo2">Employee Config <i class="fa fa-angle-down arrow" aria-hidden="true"></i></a></div>
                           <div id="demo2" class="collapse panel-text">
                               <p class=""><mat-checkbox>Manage Time Table</mat-checkbox></p>
                               <p><mat-checkbox>Employee Leave Type</mat-checkbox></p>
@@ -66,8 +73,7 @@
                               <p class=""><mat-checkbox>Add Fee Type</mat-checkbox></p>
                               <p><mat-checkbox>Add Marks</mat-checkbox></p>
                               <p><mat-checkbox>Employee Fee Type</mat-checkbox></p>
-                          </div>
-
+                          </div> -->
                         
                       </div>
                   </div>
@@ -84,3 +90,8 @@
     </div>
   </div>
   </div>
+
+
+
+<ng2-toasty [position]="position"></ng2-toasty>
+<div toastContainer></div>

@@ -263,6 +263,11 @@ export class StudentListComponent implements OnInit {
     this.getStdDetails(this.stdId);
   }
 
+
+
+
+
+
   getStdDetails(id) {
     let stdData = {
       institutionID: this.cookie.get("insID"),
@@ -287,6 +292,11 @@ export class StudentListComponent implements OnInit {
       }
     });
   }
+
+
+
+
+  
 
   goToEditStd(stdId) {
     // console.log(stdId);
@@ -448,6 +458,10 @@ export class StudentListComponent implements OnInit {
     }
   }
 
+
+
+
+
   openConfirmsSwal(studentID) {
     swal({
       title: "Are you sure want to delete?",
@@ -465,6 +479,11 @@ export class StudentListComponent implements OnInit {
       }
     });
   }
+
+
+
+
+
 
   deleteStudent(studentID) {
     // console.log("Enter to delete student. id : ", studentID);
@@ -547,6 +566,12 @@ export class StudentListComponent implements OnInit {
       });
   }
 
+
+
+
+
+
+
   addToast(options) {
     if (options.closeOther) {
       this.toastyService.clearAll();
@@ -567,9 +592,17 @@ export class StudentListComponent implements OnInit {
     };
   }
 
+
+
+
+
   exportAsXLSX(): void {
     this.authServ.exportAsExcelFile(this.allStd, "student-list");
   }
+
+
+
+
 
   insSelectDetails() {
     let header = new HttpHeaders();
@@ -602,6 +635,9 @@ export class StudentListComponent implements OnInit {
   //   this.mytable.offset = 5;
   // }
 
+
+
+
   onPaginated(e) {
     // console.log("current page info : ", e);
     // console.log("current page : ", e.offset + 1);
@@ -610,6 +646,12 @@ export class StudentListComponent implements OnInit {
     localStorage.setItem("curPage", JSON.stringify(curPage));
     this.offset = e.offset;
   }
+
+
+
+
+
+
 
   loadOnPrevPageNo() {
     let curP = JSON.parse(localStorage.getItem("curPage"));
