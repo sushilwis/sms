@@ -34,6 +34,10 @@ import {
   MatDatepickerModule,
   MatNativeDateModule
 } from "@angular/material";
+import { UserAccessControlComponent } from "./pages/user-access-control/user-access-control.component";
+import { TimeTableConfigurationComponent } from "./pages/time-table-configuration/time-table-configuration.component";
+import { ViewTimeComponent } from "./pages/view-time/view-time.component";
+import { IssuseNewCertificateComponent } from "./pages/issuse-new-certificate/issuse-new-certificate.component";
 
 // import {MatSelectModule} from '@angular/material/select';
 
@@ -82,7 +86,26 @@ const routes: Routes = [
         path: "students/editDetails/:id",
         component: EditStudentDetailsComponent,
         canActivate: [GuardGuard]
-      }
+      },
+      {
+        path: "user/user-access-control",
+        component: UserAccessControlComponent,
+      },
+
+      {
+        path: "user-config/timetable",
+        component: TimeTableConfigurationComponent,
+      },
+
+      {
+        path: "teacher-activity/view-time-table",
+        component: ViewTimeComponent,
+      },
+
+      {
+        path: "certificate-management/issuse-new-certificate",
+        component: IssuseNewCertificateComponent,
+      },
     ]
   },
   {

@@ -4571,6 +4571,18 @@ a.text-danger:focus {
   padding-left: 1rem;
 }
 
+#sidebar-collapse .nav-tabs .nav-link.active {
+  
+  font-size: 12px!important;
+ 
+}
+
+#sidebar-collapse .nav-tabs .nav-link {
+  
+  font-size: 12px!important;
+ 
+}
+
 .side-menu .heading {
   padding: 8px 12px;
   display: block;
