@@ -39,7 +39,7 @@
                   <div class="row student-info pl-3">
 
                   
-                      <div class="col-md-4 mb-4 new-users">
+                      <div class="col-md-5 new-users">
 
                         <div *ngFor="let feature of featureList; let i = index">
                           <div class="panel-bar">
@@ -51,7 +51,8 @@
                           </div>
                           <div id="{{feature.featureHeader}}" class="collapse panel-text">
                               <p *ngFor="let subFeature of feature.subFeatures" class="">
-                                <mat-checkbox [checked]=subFeature.is_checked value="{{subFeature.id}}">{{subFeature.featureName}}</mat-checkbox>
+                                <mat-checkbox (change)="selectFeatureHeader($event, 'child', feature.featureHeader)" [checked]=subFeature.is_checked value="{{subFeature.id}}">{{subFeature.featureName}}                           
+                                </mat-checkbox>
                               </p>
                               <!-- <p><mat-checkbox>Add Marks</mat-checkbox></p>
                               <p><mat-checkbox>Hall Ticket</mat-checkbox></p> -->
@@ -81,7 +82,7 @@
 
                <div class="col-md-12 mt-4">
                   <div class="form-group">
-                    <button class="btn btn-success btn-lg" type="submit">Submit</button>
+                    <button class="btn btn-success btn-lg" type="submit" [disabled]="btnDisabled()" (click)="onSubmitFeatures()">Submit</button>
                   </div>
                 </div>
             </div>

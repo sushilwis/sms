@@ -33,10 +33,14 @@ import { transition, trigger, style, animate } from "@angular/animations";
   ]
 })
 export class UserAccessControlComponent implements OnInit {
+
   usersList: any;
   position: any;
   featureList: any;
   filterFeature: any = [];
+  featureArr: any = []; 
+  feature: any = [];
+  userId: any;
 
   constructor(
     private authServ: AuthService,
@@ -129,34 +133,158 @@ export class UserAccessControlComponent implements OnInit {
 
 
   selectFeatureHeader(e,p,h) {
-    console.log(e);
-    console.log(e.checked); 
-    console.log(p); 
-    console.log(h);
-    
-    if(e.checked && p == 'parent'){
-      this.filterFeature = this.featureList.filter(ele => {
-        return ele.featureHeader == h;
-      });
+    // console.log(e);
+    // console.log(e.checked); 
+    // console.log(p); 
+    // console.log(h);
 
-      console.log(this.filterFeature[0].subFeatures);
-      if(this.filterFeature[0] && this.filterFeature[0].subFeatures.length > 0){
-        this.filterFeature[0].subFeatures.forEach(element => {
-          element.is_checked = true;
-        });
-      }            
-    }else{
-      this.filterFeature = this.featureList.filter(ele => {
-        return ele.featureHeader == h;
-      });
+    if(p == 'parent'){
+      if(e.checked){
 
-      console.log(this.filterFeature[0].subFeatures);
-      if(this.filterFeature[0] && this.filterFeature[0].subFeatures.length > 0){
-        this.filterFeature[0].subFeatures.forEach(element => {
-          element.is_checked = false;
+        this.filterFeature = this.featureList.filter(ele => {
+          return ele.featureHeader == h;
         });
-      }            
+  
+        // console.log('if block', this.filterFeature[0].subFeatures);
+        // console.log('if block', this.filterFeature[0].subFeatures.length);
+  
+        if(this.filterFeature[0].subFeatures.length > 0){
+          this.filterFeature[0].subFeatures.forEach(element => {
+            this.pushToArrayIfDontExist(element);
+            element.is_checked = true;                   
+          });  
+        }       
+        
+      }else{
+        this.filterFeature = this.featureList.filter(ele => {
+          return ele.featureHeader == h;
+        });
+  
+        if(this.filterFeature[0] && this.filterFeature[0].subFeatures.length > 0){
+          this.filterFeature[0].subFeatures.forEach(element => {
+            this.deleteFromArray(element);
+            element.is_checked = false;
+          });
+        }            
+      }
     }
+    
+    
+
+
+
+
+
+    if(p == 'child'){
+      if(e.checked) {
+
+        // console.log('add value : ...', e.source.value);
+        console.log('child check value : ...', e.checked);
+  
+        this.feature = this.featureArr.filter(ele => {
+          return ele.featureID == e.source.value;
+        });
+  
+        console.log('child if block :... ', this.feature);
+        // console.log('if block :... ', this.filterFeature[0].subFeatures.length);
+  
+        if(this.feature.length > 0) {
+          
+        }else{
+          let obj = {
+            userID: this.userId,
+            institutionID: this.cookie.get("insID"),
+            featureID: parseInt(e.source.value),
+            createdBy: this.cookie.get("uID"),
+          };
+  
+          this.featureArr.push(obj);
+          console.log('child after add item :...', this.featureArr);
+        }       
+        
+      } else {
+  
+        console.log('child remove value : ...', e.source.value);
+        console.log('child check value : ...', e.checked);
+        this.feature = this.featureArr.filter(ele => {
+          return ele.featureID != e.source.value;
+        });
+  
+        this.featureArr = this.feature;
+        console.log('child after remove item :...', this.featureArr);            
+      }
+    }
+    
+  }
+
+
+
+
+
+
+
+  pushToArrayIfDontExist(element) {
+
+    // if(this.featureArr.length > 0){
+      var foundItem = this.featureArr.filter((ele)=>{
+        return ele.featureID == element.id;
+      });
+
+      if(foundItem.length > 0){
+
+      }else{
+
+        let obj = {
+          userID: this.userId,
+          institutionID: this.cookie.get("insID"),
+          featureID: element.id,
+          createdBy: this.cookie.get("uID"),
+        };
+
+        this.featureArr.push(obj);
+        console.log('after add item :...', this.featureArr);        
+      }
+    // }
+    
+
+    // this.featureArr.push(obj);
+  }
+
+
+
+
+
+
+
+  deleteFromArray(element) {
+
+    if(this.featureArr.length > 0){
+      // let foundIndex = this.featureArr.indexOf(element);
+      // if(foundIndex > -1){
+      //   this.featureArr.splice(foundIndex);
+      // }
+      var foundItem = this.featureArr.filter((ele)=>{
+        return ele.featureID != element.id;
+      });
+
+      this.featureArr = foundItem;
+      console.log('after remove item :...', this.featureArr);
+      // if(foundItem.length > 0){
+
+      // }
+      // else{
+
+      //   let obj = {
+      //     userID: this.cookie.get("uID"),
+      //     institutionID: this.cookie.get("insID"),
+      //     featureID: element.id,
+      //     createdBy: this.cookie.get("uID")
+      //   };
+
+      //   this.featureArr.push(obj);
+      // }
+    }
+    // this.featureArr.push(obj);
   }
 
 
@@ -166,6 +294,7 @@ export class UserAccessControlComponent implements OnInit {
 
 
   addToast(options): any {
+
     if (options.closeOther) {
       this.toastyService.clearAll();
     }
@@ -209,6 +338,101 @@ export class UserAccessControlComponent implements OnInit {
         break;
     }
   }
+
+
+
+
+
+
+
+  btnDisabled() {
+    if(this.featureArr.length > 0) {
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+
+
+
+
+
+
+  onSubmitFeatures() {
+    let header = new HttpHeaders();
+    header.set("Content-Type", "application/json");
+    
+    let postData = {
+      data: this.featureArr,
+    };
+
+    console.log('sent data : ', postData);   
+
+    this.http.post(`${environment.apiUrl}institution/mapUserWithFeature`, postData, { headers: header }).map(res => { return res; }).subscribe((data: any) => {
+        console.log('responce after submit : ...', data);
+        if(data.success){
+          // this.featureList = data.data;
+          // this.featureList.forEach(ele => {
+          //   ele.subFeatures.forEach(e => {
+          //     e.is_checked = false;
+          //   });
+          // });
+          // console.log('Added is checked feature list : ...', this.featureList);
+          this.addToast({
+            title: "SUCCESS!",
+            msg: data.response,
+            timeout: 5000,
+            theme: "default",
+            position: "top-right",
+            type: "success"
+          });          
+
+          // this.featureList.forEach(ele => {
+          //   ele.subFeatures.forEach(e => {
+          //     e.is_checked = false;
+          //   });
+          // });
+
+          // this.filterFeature[0].subFeatures.forEach(element => {
+          //   element.is_checked = false;
+          // });
+          this.getAllFeatureList();
+          this.featureArr = [];
+          
+        } else {
+
+          this.addToast({
+            title: "FAIL!",
+            msg: data.response,
+            timeout: 5000,
+            theme: "default",
+            position: "top-right",
+            type: "error"
+          });
+
+          // this.getAllFeatureList();
+
+          // this.featureList.forEach(ele => {
+          //   ele.subFeatures.forEach(e => {
+          //     e.is_checked = false;
+          //   });
+          // });
+
+          // this.filterFeature[0].subFeatures.forEach(element => {
+          //   element.is_checked = false;
+          // });
+
+          this.featureArr = [];
+
+        }        
+    });
+  }
+
+
+
+
+
 
 
 
