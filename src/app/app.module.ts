@@ -44,6 +44,7 @@ import { UserAccessControlComponent } from './pages/user-access-control/user-acc
 import { TimeTableConfigurationComponent } from './pages/time-table-configuration/time-table-configuration.component';
 import { IssuseNewCertificateComponent } from './pages/issuse-new-certificate/issuse-new-certificate.component';
 import { ViewTimeComponent } from './pages/view-time/view-time.component';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { ViewTimeComponent } from './pages/view-time/view-time.component';
     MatNativeDateModule,
     Ng2ImgMaxModule,
     ToastyModule.forRoot(),
+    NgxMaterialTimepickerModule.forRoot(),
   ],
 
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
