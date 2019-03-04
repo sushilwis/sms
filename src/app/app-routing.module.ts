@@ -90,21 +90,25 @@ const routes: Routes = [
       {
         path: "user/user-access-control",
         component: UserAccessControlComponent,
+        canActivate: [GuardGuard]
       },
 
       {
         path: "user-config/timetable",
         component: TimeTableConfigurationComponent,
+        canActivate: [GuardGuard]
       },
 
       {
         path: "teacher-activity/view-time-table",
         component: ViewTimeComponent,
+        canActivate: [GuardGuard]
       },
 
       {
         path: "certificate-management/issuse-new-certificate",
         component: IssuseNewCertificateComponent,
+        canActivate: [GuardGuard]
       },
     ]
   },

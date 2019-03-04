@@ -55,6 +55,8 @@ export class TimeTableConfigurationComponent implements OnInit {
   periodArr: any = [];
   totalDays: string;
   daysArr: any = [];
+  subjects: any = [];
+  teachers: any = [];
 
   constructor(
     private authServ: AuthService,
@@ -198,9 +200,10 @@ export class TimeTableConfigurationComponent implements OnInit {
 
 
   onSubmitTimeTable() {
+    this.showTimeTable = true;
     console.log('time table submit called');
     console.log('value', this.timeTableAddForm.value);
-    this.showTimeTable = true;
+    
     this.totalPeriod = this.timeTableAddForm.value.period;
     this.totalDays = this.timeTableAddForm.value.noOfDays;
     this.periodArr = [];
@@ -229,6 +232,7 @@ export class TimeTableConfigurationComponent implements OnInit {
       this.daysArr.push(obj);
     }
 
+
     this.getSubjectListForClass(this.timeTableAddForm.value.class);
     this.getTeacherListForClassSection(this.timeTableAddForm.value.class, this.timeTableAddForm.value.section);
     // console.log('period arr : ', this.periodArr);
@@ -249,12 +253,11 @@ export class TimeTableConfigurationComponent implements OnInit {
     };
 
     this.http.post(`${environment.apiUrl}admin/getAssociatedSubjectsForClass`, postData, { headers: header }).map(res => { return res; }).subscribe((data: any) => {
-        console.log('subject list data : ...', data);
-
-        // if(data && data.success){
-        //   this.academicList = data.academicList;
-        //   this.classList = data.classList;
-        // }
+        // console.log('subject list data : ...', data);
+        this.setPeriodTimeValues(this.timeTableAddForm.value.startTime);
+        if(data && data.success){
+          this.subjects = data.data;
+        }
     });
   }
 
@@ -274,12 +277,11 @@ export class TimeTableConfigurationComponent implements OnInit {
     };
 
     this.http.post(`${environment.apiUrl}users/getAssociatedTeacherForClassSec`, postData, { headers: header }).map(res => { return res; }).subscribe((data: any) => {
-        console.log('teacher list data : ...', data);
+        console.log('teacher list data : ...', data); 
 
-        // if(data && data.success){
-        //   this.academicList = data.academicList;
-        //   this.classList = data.classList;
-        // }
+        if(data && data.success){
+          this.teachers = data.data;
+        }        
     });
   }
 
@@ -287,10 +289,43 @@ export class TimeTableConfigurationComponent implements OnInit {
 
 
   
-  printValue(value: any){
-    console.log(value);
-    var containputiner = document.querySelector("#"+value);
-    console.log(containputiner);
+  setPeriodTimeValues(time){
+    // console.log(time);
+    let startTime = time;
+    this.periodArr.forEach(element => {
+      let inputEleFrom = <HTMLInputElement>document.querySelector('#from_'+element.id);
+      let inputEleTo = <HTMLInputElement>document.querySelector('#to_'+element.id);
+      inputEleFrom.value = startTime;
+      startTime = this.addTwoTimes(startTime, this.timeTableAddForm.value.periodDuration);
+      inputEleTo.value = startTime;
+      console.log(startTime);      
+    });
+  }
+
+
+
+
+
+  addTwoTimes(time: any, diff: any){
+    console.log(time, diff);    
+    let hoursMinArrForTime = time.toString().split(':');
+    let hoursMinArrForDiff = diff.toString().split(':');
+    let increasedMin = parseInt(hoursMinArrForTime[1])+parseInt(hoursMinArrForDiff[1]);
+    if(increasedMin > 59){
+      let newHours = parseInt(hoursMinArrForTime[0])+1;
+      let newMin = increasedMin - 60;
+      if(newMin == 0){
+        var newMinInZero = '00';
+        return `${newHours}:${newMinInZero}`;
+      }else{
+        return `${newHours}:${newMin}`;
+      }
+      
+    }else{
+      let newHours = hoursMinArrForTime[0];
+      let newMin = increasedMin;
+      return `${newHours}:${newMin}`;
+    }
   }
 
 
