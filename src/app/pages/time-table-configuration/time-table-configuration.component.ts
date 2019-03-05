@@ -57,6 +57,9 @@ export class TimeTableConfigurationComponent implements OnInit {
   daysArr: any = [];
   subjects: any = [];
   teachers: any = [];
+  filterTeacherarr: any = {};
+  currentSubjectId: any;
+  routineData: any = [];
 
   constructor(
     private authServ: AuthService,
@@ -67,6 +70,7 @@ export class TimeTableConfigurationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.authServ.getLogedInUserData();
     this.createFormGroup();
     this.institutionSelectDetails();
   }
@@ -253,7 +257,7 @@ export class TimeTableConfigurationComponent implements OnInit {
     };
 
     this.http.post(`${environment.apiUrl}admin/getAssociatedSubjectsForClass`, postData, { headers: header }).map(res => { return res; }).subscribe((data: any) => {
-        // console.log('subject list data : ...', data);
+        console.log('subject list data : ...', data);
         this.setPeriodTimeValues(this.timeTableAddForm.value.startTime);
         if(data && data.success){
           this.subjects = data.data;
@@ -326,6 +330,154 @@ export class TimeTableConfigurationComponent implements OnInit {
       let newMin = increasedMin;
       return `${newHours}:${newMin}`;
     }
+  }
+
+
+
+
+
+
+  onSelectSubject(e, id) {
+    console.log('subject value : ', e.value, id); 
+    this.currentSubjectId = e.value;
+    let arr = [];
+
+    this.teachers.forEach((element)=>{     
+      element.subjectList.forEach(ele => {
+        // console.log(ele);
+        if (ele.subjectID == e.value) {
+          arr.push(element);
+        }        
+      });
+    });
+
+    this.filterTeacherarr[id] = arr; 
+    console.log(this.filterTeacherarr); 
+
+  }
+
+
+
+
+
+  onSelectTeacher(e, dayName, day, period) {
+    console.log(e.value, dayName, day, period);
+    // let inputEleTeacher = <HTMLInputElement>document.querySelector('#'+id);
+    // inputEleTeacher.value = e.value;
+    // inputEleTeacher.disabled = true; 
+    day = day+1;
+    let subjectInputID = `subject_${dayName}_${period}`;
+    console.log('#'+ subjectInputID);     
+    let subID = <HTMLSelectElement>document.querySelector('#'+ subjectInputID);
+    console.log(subID);    
+    let from = <HTMLInputElement>document.querySelector('#from_'+ period);
+    let to = <HTMLInputElement>document.querySelector('#to_'+ period);
+
+    var obj = {
+      day : day,
+      teacherID : e.value,
+      subjectID : subID.value,
+      fromTime : from.value,
+      toTime : to.value,
+    }
+
+    let isDataPresent = this.routineData.filter(data => {
+      return data.day == day && data.fromTime == from.value;
+    });
+
+    console.log(isDataPresent.length);
+    console.log('match item',isDataPresent.length);
+    
+    if(isDataPresent.length > 0) {
+      console.log('data present...'); 
+      let index = this.routineData.indexOf(isDataPresent[0]);
+      this.routineData.splice(index, 1, obj);
+      console.log('ROUTINE DATA....: ',this.routineData);     
+    }else{
+      console.log('data is not present...');
+      this.routineData.push(obj);
+      console.log('ROUTINE DATA....: ',this.routineData);
+    }
+
+
+
+    // this.routineData.forEach((ele)=>{
+    //   if(ele.day == day){
+    //     if(ele.fromTime == from && ele.toTime == to){
+    //       let index = this.routineData.indexOf(ele);
+
+    //       let obj = {
+    //         day : day,
+    //         teacherID : e.value,
+    //         subjectID : this.currentSubjectId,
+    //         fromTime : from.value,
+    //         toTime : to.value,
+    //       }
+
+    //       this.routineData.splice(index, 1, obj);
+    //     }else{
+
+    //       let obj = {
+    //         day : day,
+    //         teacherID : e.value,
+    //         subjectID : this.currentSubjectId,
+    //         fromTime : from.value,
+    //         toTime : to.value,
+    //       }
+
+    //       this.routineData.push(obj);
+    //     }
+    //   }else{
+    //     let obj = {
+    //       day : day,
+    //       teacherID : e.value,
+    //       subjectID : this.currentSubjectId,
+    //       fromTime : from.value,
+    //       toTime : to.value,
+    //     }
+
+    //     this.routineData.push(obj);
+    //   }
+    // });
+    
+    // let obj = {
+    //   day : day,
+    //   teacherID : e.value,
+    //   subjectID : this.currentSubjectId,
+    //   fromTime : from.value,
+    //   toTime : to.value,
+    // } 
+
+    
+        
+  }
+
+
+
+
+
+
+
+  onSubmitRoutine(){
+    let header = new HttpHeaders();
+    header.set("Content-Type", "application/json");
+    
+    let postData = {
+      data: this.routineData,
+      classID : this.timeTableAddForm.value.class,
+      sectionID : this.timeTableAddForm.value.section,
+      institutionID : this.cookie.get("insID"),
+      createdBy : this.cookie.get("uID"),
+      academicID : this.timeTableAddForm.value.academic,
+    };
+
+    this.http.post(`${environment.apiUrl}admin/addClassTimeTable`, postData, { headers: header }).map(res => { return res; }).subscribe((data: any) => {
+        console.log('teacher list data : ...', data); 
+
+        // if(data && data.success){
+        //   this.teachers = data.data;
+        // }        
+    });
   }
 
 
