@@ -8,6 +8,7 @@ import { environment } from '../../../environments/environment';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { transition, trigger, style, animate } from "@angular/animations";
 import { getLocaleDayNames } from '@angular/common';
+import { Helpers } from "../../helpers";
 
 @Component({
   selector: 'app-time-table-configuration',
@@ -58,6 +59,8 @@ export class TimeTableConfigurationComponent implements OnInit {
   subjects: any = [];
   teachers: any = [];
   filterTeacherarr: any = {};
+  subject: any = {};
+  teacher: any = {};
   currentSubjectId: any;
   routineData: any = [];
 
@@ -205,20 +208,20 @@ export class TimeTableConfigurationComponent implements OnInit {
 
   onSubmitTimeTable() {
     this.showTimeTable = true;
-    console.log('time table submit called');
-    console.log('value', this.timeTableAddForm.value);
+    // console.log('time table submit called');
+    // console.log('value', this.timeTableAddForm.value);
     
     this.totalPeriod = this.timeTableAddForm.value.period;
     this.totalDays = this.timeTableAddForm.value.noOfDays;
     this.periodArr = [];
     this.daysArr = [];
     let days = [
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday'
+      'monday',
+      'tuesday',
+      'wednesday',
+      'thursday',
+      'friday',
+      'saturday'
     ];
 
     for(let i=1; i<=parseInt(this.totalPeriod); i++){
@@ -257,7 +260,7 @@ export class TimeTableConfigurationComponent implements OnInit {
     };
 
     this.http.post(`${environment.apiUrl}admin/getAssociatedSubjectsForClass`, postData, { headers: header }).map(res => { return res; }).subscribe((data: any) => {
-        console.log('subject list data : ...', data);
+        // console.log('subject list data : ...', data);
         this.setPeriodTimeValues(this.timeTableAddForm.value.startTime);
         if(data && data.success){
           this.subjects = data.data;
@@ -281,7 +284,7 @@ export class TimeTableConfigurationComponent implements OnInit {
     };
 
     this.http.post(`${environment.apiUrl}users/getAssociatedTeacherForClassSec`, postData, { headers: header }).map(res => { return res; }).subscribe((data: any) => {
-        console.log('teacher list data : ...', data); 
+        // console.log('teacher list data : ...', data); 
 
         if(data && data.success){
           this.teachers = data.data;
@@ -302,7 +305,7 @@ export class TimeTableConfigurationComponent implements OnInit {
       inputEleFrom.value = startTime;
       startTime = this.addTwoTimes(startTime, this.timeTableAddForm.value.periodDuration);
       inputEleTo.value = startTime;
-      console.log(startTime);      
+      // console.log(startTime);      
     });
   }
 
@@ -311,7 +314,7 @@ export class TimeTableConfigurationComponent implements OnInit {
 
 
   addTwoTimes(time: any, diff: any){
-    console.log(time, diff);    
+    // console.log(time, diff);    
     let hoursMinArrForTime = time.toString().split(':');
     let hoursMinArrForDiff = diff.toString().split(':');
     let increasedMin = parseInt(hoursMinArrForTime[1])+parseInt(hoursMinArrForDiff[1]);
@@ -338,7 +341,7 @@ export class TimeTableConfigurationComponent implements OnInit {
 
 
   onSelectSubject(e, id) {
-    console.log('subject value : ', e.value, id); 
+    // console.log('subject value : ', e.value, id); 
     this.currentSubjectId = e.value;
     let arr = [];
 
@@ -352,7 +355,7 @@ export class TimeTableConfigurationComponent implements OnInit {
     });
 
     this.filterTeacherarr[id] = arr; 
-    console.log(this.filterTeacherarr); 
+    // console.log(this.filterTeacherarr); 
 
   }
 
@@ -361,22 +364,23 @@ export class TimeTableConfigurationComponent implements OnInit {
 
 
   onSelectTeacher(e, dayName, day, period) {
-    console.log(e.value, dayName, day, period);
+    // console.log(e.value, dayName, day, period);
     // let inputEleTeacher = <HTMLInputElement>document.querySelector('#'+id);
     // inputEleTeacher.value = e.value;
     // inputEleTeacher.disabled = true; 
     day = day+1;
     let subjectInputID = `subject_${dayName}_${period}`;
-    console.log('#'+ subjectInputID);     
-    let subID = <HTMLSelectElement>document.querySelector('#'+ subjectInputID);
-    console.log(subID);    
+    // console.log('#'+ subjectInputID);     
+    // let subID = <HTMLSelectElement>document.querySelector('#'+ subjectInputID);
+    // let subID = <HTMLSelectElement>document.getElementById(subjectInputID);
+    // console.log('input value :....', subID);    
     let from = <HTMLInputElement>document.querySelector('#from_'+ period);
     let to = <HTMLInputElement>document.querySelector('#to_'+ period);
 
     var obj = {
       day : day,
       teacherID : e.value,
-      subjectID : subID.value,
+      subjectID : this.subject[`${dayName}${period}`],
       fromTime : from.value,
       toTime : to.value,
     }
@@ -385,71 +389,22 @@ export class TimeTableConfigurationComponent implements OnInit {
       return data.day == day && data.fromTime == from.value;
     });
 
-    console.log(isDataPresent.length);
-    console.log('match item',isDataPresent.length);
+    // console.log(isDataPresent.length);
+    // console.log('match item',isDataPresent.length);
     
     if(isDataPresent.length > 0) {
-      console.log('data present...'); 
+      // console.log('data present...'); 
       let index = this.routineData.indexOf(isDataPresent[0]);
       this.routineData.splice(index, 1, obj);
-      console.log('ROUTINE DATA....: ',this.routineData);     
+      // console.log('ROUTINE DATA....: ',this.routineData);     
     }else{
-      console.log('data is not present...');
+      // console.log('data is not present...');
       this.routineData.push(obj);
-      console.log('ROUTINE DATA....: ',this.routineData);
+      // console.log('ROUTINE DATA....: ',this.routineData);
     }
 
-
-
-    // this.routineData.forEach((ele)=>{
-    //   if(ele.day == day){
-    //     if(ele.fromTime == from && ele.toTime == to){
-    //       let index = this.routineData.indexOf(ele);
-
-    //       let obj = {
-    //         day : day,
-    //         teacherID : e.value,
-    //         subjectID : this.currentSubjectId,
-    //         fromTime : from.value,
-    //         toTime : to.value,
-    //       }
-
-    //       this.routineData.splice(index, 1, obj);
-    //     }else{
-
-    //       let obj = {
-    //         day : day,
-    //         teacherID : e.value,
-    //         subjectID : this.currentSubjectId,
-    //         fromTime : from.value,
-    //         toTime : to.value,
-    //       }
-
-    //       this.routineData.push(obj);
-    //     }
-    //   }else{
-    //     let obj = {
-    //       day : day,
-    //       teacherID : e.value,
-    //       subjectID : this.currentSubjectId,
-    //       fromTime : from.value,
-    //       toTime : to.value,
-    //     }
-
-    //     this.routineData.push(obj);
-    //   }
-    // });
-    
-    // let obj = {
-    //   day : day,
-    //   teacherID : e.value,
-    //   subjectID : this.currentSubjectId,
-    //   fromTime : from.value,
-    //   toTime : to.value,
-    // } 
-
-    
-        
+    // console.log('ng model teacher :...', this.teacher);
+    // console.log('ng model subject :...', this.subject);       
   }
 
 
@@ -459,6 +414,7 @@ export class TimeTableConfigurationComponent implements OnInit {
 
 
   onSubmitRoutine(){
+    Helpers.setLoading(true);
     let header = new HttpHeaders();
     header.set("Content-Type", "application/json");
     
@@ -471,12 +427,41 @@ export class TimeTableConfigurationComponent implements OnInit {
       academicID : this.timeTableAddForm.value.academic,
     };
 
+
+    // console.log('sent data for add routine : ...', postData);
+    
     this.http.post(`${environment.apiUrl}admin/addClassTimeTable`, postData, { headers: header }).map(res => { return res; }).subscribe((data: any) => {
+        Helpers.setLoading(false);
         console.log('teacher list data : ...', data); 
 
-        // if(data && data.success){
-        //   this.teachers = data.data;
-        // }        
+        if(data && data.success){
+          
+          this.addToast({
+            title: "SUCCESS!",
+            msg: data.response,
+            timeout: 5000,
+            theme: "default",
+            position: "top-right",
+            type: "success"
+          });
+
+          this.timeTableAddForm.reset();
+          this.subject = {};
+          this.teacher = {};
+          this.showTimeTable = false;
+
+        }else{
+
+          this.addToast({
+            title: "FAIL!",
+            msg: data.response,
+            timeout: 5000,
+            theme: "default",
+            position: "top-right",
+            type: "error"
+          });
+
+        }       
     });
   }
 

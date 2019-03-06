@@ -182,13 +182,15 @@
                               <td *ngFor="let period of periodArr; let p = index"> 
 
                                 <mat-form-field class="new-width pb-0 mb-0 pt-0 mt-0">
-                                  <mat-select placeholder="Select Subject *" (change)="onSelectSubject($event, day?.day+period?.id)" id="subject_{{day?.day}}_{{period?.id}}">
-                                    <mat-option *ngFor="let subject of subjects" value="{{subject?.subjectID}}">{{subject?.subjectName}}</mat-option>
+                                  <mat-select placeholder="Select Subject *" (change)="onSelectSubject($event, day?.day+period?.id)" id="subject_{{day?.day}}_{{period?.id}}" [(ngModel)]="subject[day?.day+period?.id]">
+                                    <mat-option *ngFor="let subject of subjects" value="{{subject?.subjectID}}">
+                                      {{subject?.subjectName}}
+                                    </mat-option>
                                   </mat-select>
                                 </mat-form-field>
 
                                 <mat-form-field class="new-width pb-0 mb-0 pt-0 mt-0">
-                                    <mat-select placeholder="Select Teacher *" (change)="onSelectTeacher($event, day?.day, i, period?.id)" id="teacher_{{day?.day}}_{{period?.id}}">
+                                    <mat-select placeholder="Select Teacher *" (change)="onSelectTeacher($event, day?.day, i, period?.id)" id="teacher_{{day?.day}}_{{period?.id}}" [(ngModel)]="teacher[day?.day+period?.id]">
                                       <mat-option *ngFor="let teacher of filterTeacherarr[day?.day+period?.id]" value="{{teacher?.userID}}">{{teacher?.firstName}} {{teacher?.lastName}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -196,6 +198,8 @@
                               </td>                              
                             </tr>
                           </tbody>
+
+
                         </table>
 
                         <div class="row">                                    
