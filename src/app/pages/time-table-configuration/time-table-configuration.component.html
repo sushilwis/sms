@@ -234,55 +234,74 @@
 
 
 
+
+
+
+
+
                 <div class="ibox tab-pane" id="studentProfileDetails" role="tabpanel" aria-labelledby="studentProfileDetails-tab">
-                    <div class="ibox-head">
+                    <!-- <div class="ibox-head">
                       
-                    </div>
+                    </div> -->
 
                     <div class="ibox-body">
-                        <form id="edit-student-profile-details-form"  >
+                        <form id="edit-student-profile-details-form" [formGroup]="timeTableSearchForm" (ngSubmit)="onSubmitSearchTimeTable()">
                           <div class="row student-info pl-3">
                             <!-- <div class="col-md-12 mb-3">
                               <h6 class="h6 font-weight-bold sub-heading">Previous Institution Information</h6>
                             </div> -->
 
-                            <div class="col-sm-3 pr-4 pl-4">
+                            <!-- <div class="col-sm-3 pr-4 pl-4">
                                 <mat-form-field class="example-full-width ">
                                     <mat-select placeholder="Select Academic *" name="bloodGroup">
                                       <mat-option value="b+">Annual 2018-19</mat-option>
                                       <mat-option value="o+">Annual 2019-20</mat-option>
                                     </mat-select>
                                   </mat-form-field>
+                              </div> -->
+
+                              <div class="col-sm-3">
+                                <mat-form-field class="example-full-width">
+                                  <mat-select placeholder="Select Academic *" name="searchAcademic" formControlName="searchAcademic">
+                                    <mat-option *ngFor="let academic of academicList" [value]=academic.id>{{academic.academicType}} ({{academic.academic}})</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
                               </div>
 
-                              <div class="col-sm-3 pr-4 pl-4">
+                                <div class="col-sm-3">
                                   <mat-form-field class="example-full-width">
-                                      <mat-select placeholder="Select Class *" name="bloodGroup">
-                                        <mat-option value="b+">IX</mat-option>
-                                        <mat-option value="o+">X</mat-option>
-                                        <mat-option value="b+">XI</mat-option>
-                                        <mat-option value="o+">XII</mat-option>
-                                      </mat-select>
-                                    </mat-form-field>
+                                    <mat-select placeholder="Select Class *" name="searchClass" (change)="onChangeClass($event)" formControlName="searchClass">
+                                        <mat-option *ngFor="let class of classListForSearch" [value]=class.classID>{{class.className}}</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
                                 </div>
 
-                                <div class="col-sm-3 pr-4 pl-4">
-                                    <mat-form-field class="example-full-width ">
-                                        <mat-select placeholder="Select section *" name="bloodGroup">
-                                          <mat-option value="b+">A</mat-option>
-                                          <mat-option value="o+">B</mat-option>
-                                          <mat-option value="o+">C</mat-option>
-                                        </mat-select>
-                                      </mat-form-field>
-                                  </div>
+                                <div class="col-sm-3">
+                                  <mat-form-field class="example-full-width">
+                                    <mat-select placeholder="Select Section *" name="searchSection" formControlName="searchSection">
+                                      <mat-option *ngFor="let sec of sectionListForSearch" [value]=sec.sectionID>{{sec.sectionName}}</mat-option>
+                                    </mat-select>
+                                    <!-- <mat-error *ngIf="gender.hasError('required')">
+                                      Field is required.
+                                    </mat-error> -->
+                                  </mat-form-field>
+                                </div>
 
-                                  <div class="col-sm-3 pr-4 pl-4">
+                                  <!-- <div class="col-sm-3 pr-4 pl-4">
                                       <div class="col-md-12 mt-4">
                                           <div class="form-group">
                                             <button class="btn btn-success btn-lg" type="submit">Prepare Time Table</button>
                                           </div>
                                         </div>
-                                    </div>
+                                    </div> -->
+
+                                  <div class="row pl-3">                                    
+                                      <div class="col-md-12">
+                                        <div class="form-group">
+                                          <button class="btn btn-success btn-lg" type="submit" [disabled]="!timeTableSearchForm.valid">Prepare Time Table</button>
+                                        </div>
+                                      </div>
+                                  </div>
 
                                    
 
@@ -291,243 +310,63 @@
 
 
                         
-                    <div class="row student-info pl-3">
+                    <div class="row student-info pl-3" *ngIf="showTimeTableForClass">
                         <div class="col-sm-12 table-responsive">
 
-                            <table class="table table-bordered">
-                                <thead>
-                                  <tr>
-                                    <th>
-                                      Day/Period
-                                      
-                                    </th>
-                                    <th>
-                                      <p>Period 1</p>
-                                      <p>From: 9:00 AM<br>
-                                      To: 10:0 AM</p>
-                                    </th>
-                                    <th>
-                                      <p>Period 2</p>
-                                      <p>From: 10:00 AM<br>
-                                      To: 11:0 AM</p>
-                                    </th>
-                                    <th>
-                                      <p>Period 3</p>
-                                      <p>From: 11:00 AM<br>
-                                      To: 12:0 AM</p>
-                                    </th>
-                                    <th>
-                                      <p>Period 4</p>
-                                      <p>From: 12:00 AM<br>
-                                      To: 1:0 AM</p>
-                                    </th>
-                                    <th>
-                                      <p>Period 5</p>
-                                      <p>From: 1:00 AM<br>
-                                      To: 2:0 AM</p>
-                                    </th>
-                                    <th>
-                                      <p>Period 6</p>
-                                      <p>From: 2:00 AM<br>
-                                      To: 3:0 AM</p>
-                                    </th>
-                                    <th>
-                                      <p>Period 7</p>
-                                      <p>From: 3:00 AM<br>
-                                      To: 4:0 AM</p>
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td class="days-name">Monday</td>
-                                    <td>
-                                      <p>Subject: Kannada</p>
-                                      <p>Teacher: Nagaraj R</p>
-                                    </td>
-                                    <td>
-                                      <p>Subject: English</p>
-                                      <p>Teacher: Sharmila P</p>
-                                      </td>
-                                    <td>
-                                      <p>Subject: Hindi</p>
-                                      <p>Teacher: Chethan K</p>
-                                    </td>
-                                    <td>
-                                      <p>Subject: Science</p>
-                                      <p>Teacher: Shrusti M</p>
-                                    </td>
-                                    <td>
-                                      <p>Subject: Mathematics</p>
-                                       <p>Teacher: Vishveshwar M</p>
-                                    </td>
-                                    <td>
-                                      <p>Subject: Social Science</p>
-                                      <p>Teacher: shashank S</p>
-                                    </td>
-                                    <td>
-                                      <p>Subject: English</p>
-                                      <p>Teacher: Sharmila P</p>
-                                    </td>
+                          <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <td></td>
+                                <th *ngFor="let period of timeTableDataForClassSection[0]?.periods; let i = index">
+                                    <p class="mb-0">Period {{i+1}}</p>
+                                    <div class="form-group mb-0 text-center">
+                                        <label for="" class="labelSchedule mb-0">From : {{period?.periodStart}}</label>
+                                        <!-- <div class='input-group'>          
+                                          <input type='time' class="form-control" id="from_{{period.id}}"/>
+                                        </div> -->
+                                    </div>
                                     
-                                  </tr>
-                                  <tr>
-                                    <td class="days-name">Tuesday</td>
-                                    <td>
-                                        <p>Subject: Kannada</p>
-                                        <p>Teacher: Nagaraj R</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: English</p>
-                                        <p>Teacher: Sharmila P</p>
-                                        </td>
-                                      <td>
-                                        <p>Subject: Hindi</p>
-                                        <p>Teacher: Chethan K</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: Science</p>
-                                        <p>Teacher: Shrusti M</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: Mathematics</p>
-                                         <p>Teacher: Vishveshwar M</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: Social Science</p>
-                                        <p>Teacher: shashank S</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: English</p>
-                                        <p>Teacher: Sharmila P</p>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                    <td class="days-name">Wednesday</td>
-                                    <td>
-                                        <p>Subject: Kannada</p>
-                                        <p>Teacher: Nagaraj R</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: English</p>
-                                        <p>Teacher: Sharmila P</p>
-                                        </td>
-                                      <td>
-                                        <p>Subject: Hindi</p>
-                                        <p>Teacher: Chethan K</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: Science</p>
-                                        <p>Teacher: Shrusti M</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: Mathematics</p>
-                                         <p>Teacher: Vishveshwar M</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: Social Science</p>
-                                        <p>Teacher: shashank S</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: English</p>
-                                        <p>Teacher: Sharmila P</p>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                  <td class="days-name">Thursday</td>
-                                  <td>
-                                      <p>Subject: Kannada</p>
-                                      <p>Teacher: Nagaraj R</p>
-                                    </td>
-                                    <td>
-                                      <p>Subject: English</p>
-                                      <p>Teacher: Sharmila P</p>
-                                      </td>
-                                    <td>
-                                      <p>Subject: Hindi</p>
-                                      <p>Teacher: Chethan K</p>
-                                    </td>
-                                    <td>
-                                      <p>Subject: Science</p>
-                                      <p>Teacher: Shrusti M</p>
-                                    </td>
-                                    <td>
-                                      <p>Subject: Mathematics</p>
-                                       <p>Teacher: Vishveshwar M</p>
-                                    </td>
-                                    <td>
-                                      <p>Subject: Social Science</p>
-                                      <p>Teacher: shashank S</p>
-                                    </td>
-                                    <td>
-                                      <p>Subject: English</p>
-                                      <p>Teacher: Sharmila P</p>
-                                    </td>
-                                    </tr>
-                                  <tr>
-                                    <td class="days-name">Friday</td>
-                                    <td>
-                                        <p>Subject: Kannada</p>
-                                        <p>Teacher: Nagaraj R</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: English</p>
-                                        <p>Teacher: Sharmila P</p>
-                                        </td>
-                                      <td>
-                                        <p>Subject: Hindi</p>
-                                        <p>Teacher: Chethan K</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: Science</p>
-                                        <p>Teacher: Shrusti M</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: Mathematics</p>
-                                         <p>Teacher: Vishveshwar M</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: Social Science</p>
-                                        <p>Teacher: shashank S</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: English</p>
-                                        <p>Teacher: Sharmila P</p>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                    <td class="days-name">Saturday</td>
-                                    <td>
-                                        <p>Subject: Kannada</p>
-                                        <p>Teacher: Nagaraj R</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: English</p>
-                                        <p>Teacher: Sharmila P</p>
-                                        </td>
-                                      <td>
-                                        <p>Subject: Hindi</p>
-                                        <p>Teacher: Chethan K</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: Science</p>
-                                        <p>Teacher: Shrusti M</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: Mathematics</p>
-                                         <p>Teacher: Vishveshwar M</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: Social Science</p>
-                                        <p>Teacher: shashank S</p>
-                                      </td>
-                                      <td>
-                                        <p>Subject: English</p>
-                                        <p>Teacher: Sharmila P</p>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                              </table>
+                                    <div class="form-group mb-0 text-center">
+                                        <label for="" class="labelSchedule mb-0">To : {{period?.periodEnd}}</label>
+                                        <!-- <div class='input-group'>
+                                          <input type='time' class="form-control" id="to_{{period.id}}"/> 
+                                        </div> -->
+                                    </div>
+                                </th>
+                              </tr>
+                            </thead>
+  
+  
+                            <tbody>
+                              <tr *ngFor="let day of timeTableDataForClassSection; let i = index">
+                                <td class="days-name pt-4 text-uppercase">{{day?.dayName}}</td>
+                                <td *ngFor="let period of day?.periods; let p = index"> 
+
+                                  <label class="text-capitalize subTeaFont">subject: <br/><span class="font-weight-bold">{{period?.subjectName}}</span></label>
+                                  <br/>
+                                  <label class="text-capitalize subTeaFont">teacher: <br/><span class="font-weight-bold">{{period?.teacherName}}</span></label>
+  
+                                  <!-- <mat-form-field class="new-width pb-0 mb-0 pt-0 mt-0">
+                                    <mat-select placeholder="Select Subject *" (change)="onSelectSubject($event, day?.day+period?.id)" id="subject_{{day?.day}}_{{period?.id}}" [(ngModel)]="subject[day?.day+period?.id]">
+                                      <mat-option *ngFor="let subject of subjects" value="{{subject?.subjectID}}">
+                                        {{subject?.subjectName}}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+  
+                                  <mat-form-field class="new-width pb-0 mb-0 pt-0 mt-0">
+                                      <mat-select placeholder="Select Teacher *" (change)="onSelectTeacher($event, day?.day, i, period?.id)" id="teacher_{{day?.day}}_{{period?.id}}" [(ngModel)]="teacher[day?.day+period?.id]">
+                                        <mat-option *ngFor="let teacher of filterTeacherarr[day?.day+period?.id]" value="{{teacher?.userID}}">{{teacher?.firstName}} {{teacher?.lastName}}</mat-option>
+                                      </mat-select>
+                                  </mat-form-field> -->
+  
+                                </td>                              
+                              </tr>
+                            </tbody>
+  
+  
+                          </table>  
+
                         </div>
                     </div>
                       </div>

@@ -42,6 +42,7 @@ export class TimeTableConfigurationComponent implements OnInit {
   sectionList: any;
 
   timeTableAddForm: FormGroup;
+  timeTableSearchForm: FormGroup;
   academic: FormControl;
   class: FormControl;
   section: FormControl;
@@ -49,6 +50,8 @@ export class TimeTableConfigurationComponent implements OnInit {
   periodDuration: FormControl;
   noOfDays: FormControl;
   period: FormControl;
+
+  searchAcademic: FormControl;
 
 
   showTimeTable: boolean = false;
@@ -63,6 +66,19 @@ export class TimeTableConfigurationComponent implements OnInit {
   teacher: any = {};
   currentSubjectId: any;
   routineData: any = [];
+  classListForSearch: any;
+  sectionListForSearch: any;
+  showTimeTableForClass: boolean = false;
+  timeTableDataForClassSection: any = [];
+
+  days: any = [
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday'
+  ];
 
   constructor(
     private authServ: AuthService,
@@ -75,6 +91,7 @@ export class TimeTableConfigurationComponent implements OnInit {
   ngOnInit() {
     this.authServ.getLogedInUserData();
     this.createFormGroup();
+    this.createFormGroupForSearch();
     this.institutionSelectDetails();
   }
 
@@ -93,6 +110,18 @@ export class TimeTableConfigurationComponent implements OnInit {
     });
   }
 
+  createFormGroupForSearch() {
+    this.timeTableSearchForm = new FormGroup({
+      searchAcademic: new FormControl("", [Validators.required]),
+      searchClass: new FormControl("", [Validators.required]),
+      searchSection: new FormControl("", [Validators.required]),
+      // startTime: new FormControl("", [Validators.required]),
+      // periodDuration: new FormControl("", [Validators.required]),
+      // noOfDays: new FormControl("", [Validators.required]),
+      // period: new FormControl("", [Validators.required]),
+    });
+  }
+
 
 
 
@@ -105,11 +134,12 @@ export class TimeTableConfigurationComponent implements OnInit {
     };
 
     this.http.post(`${environment.apiUrl}institution/getInsSpecificSelectDetails`, postData, { headers: header }).map(res => { return res; }).subscribe((data: any) => {
-        console.log('select data : ...', data);
+        // console.log('select data : ...', data);
 
         if(data && data.success){
           this.academicList = data.academicList;
           this.classList = data.classList;
+          this.classListForSearch = data.classList; 
         }
         
         // if(data && data.success){
@@ -192,13 +222,14 @@ export class TimeTableConfigurationComponent implements OnInit {
 
 
   onChangeClass(e) {
-    console.log(e.value);
+    // console.log(e.value);
     let selectedClass = this.classList.filter((ele)=>{
       return ele.classID == e.value;
     });
 
-    console.log();   
+    // console.log();   
     this.sectionList = selectedClass[0].sectionDetails;
+    this.sectionListForSearch = selectedClass[0].sectionDetails;
   }
 
 
@@ -215,14 +246,14 @@ export class TimeTableConfigurationComponent implements OnInit {
     this.totalDays = this.timeTableAddForm.value.noOfDays;
     this.periodArr = [];
     this.daysArr = [];
-    let days = [
-      'monday',
-      'tuesday',
-      'wednesday',
-      'thursday',
-      'friday',
-      'saturday'
-    ];
+    // let days = [
+    //   'monday',
+    //   'tuesday',
+    //   'wednesday',
+    //   'thursday',
+    //   'friday',
+    //   'saturday'
+    // ];
 
     for(let i=1; i<=parseInt(this.totalPeriod); i++){
       let obj = {
@@ -234,7 +265,7 @@ export class TimeTableConfigurationComponent implements OnInit {
     for(let i=1; i<=parseInt(this.totalDays); i++){
       let obj = {
         id: i,
-        day: days[i-1],        
+        day: this.days[i-1],        
       }
       this.daysArr.push(obj);
     }
@@ -243,6 +274,68 @@ export class TimeTableConfigurationComponent implements OnInit {
     this.getSubjectListForClass(this.timeTableAddForm.value.class);
     this.getTeacherListForClassSection(this.timeTableAddForm.value.class, this.timeTableAddForm.value.section);
     // console.log('period arr : ', this.periodArr);
+  }
+
+
+
+
+
+
+
+  onSubmitSearchTimeTable() {
+    // console.log('submit pressed...', this.timeTableSearchForm.value); 
+    Helpers.setLoading(true);
+    let header = new HttpHeaders();
+    header.set("Content-Type", "application/json");
+    
+    let postData = {
+      day: 0,
+	    dayFilter: false,
+	    academicID: this.timeTableSearchForm.value.searchAcademic,
+	    classID: this.timeTableSearchForm.value.searchClass,
+	    sectionID: this.timeTableSearchForm.value.searchSection,
+    };
+
+
+    // console.log('sent data for add routine : ...', postData);
+    
+    this.http.post(`${environment.apiUrl}admin/getTimeTableDetailsForClass`, postData, { headers: header }).map(res => { return res; }).subscribe((data: any) => {
+        Helpers.setLoading(false);
+
+        console.log('time table data : ...', data);
+
+        if(data && data.success){
+          
+          this.addToast({
+            title: "SUCCESS!",
+            msg: data.response,
+            timeout: 5000,
+            theme: "default",
+            position: "top-right",
+            type: "success"
+          });
+
+          this.timeTableDataForClassSection = data.data;
+
+          this.timeTableDataForClassSection.forEach((data, i) => {
+            data.dayName = this.days[i];
+          });
+
+          this.showTimeTableForClass = true;
+
+        }else{
+
+          this.addToast({
+            title: "FAIL!",
+            msg: data.response,
+            timeout: 5000,
+            theme: "default",
+            position: "top-right",
+            type: "error"
+          });
+
+        }       
+    });   
   }
 
 
