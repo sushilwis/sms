@@ -50,8 +50,12 @@ export class TimeTableConfigurationComponent implements OnInit {
   periodDuration: FormControl;
   noOfDays: FormControl;
   period: FormControl;
+  breakDuration: FormControl;
+  numOfBreak: FormControl;
 
   searchAcademic: FormControl;
+  searchClass: FormControl;
+  searchSection: FormControl;
 
 
   showTimeTable: boolean = false;
@@ -80,6 +84,16 @@ export class TimeTableConfigurationComponent implements OnInit {
     'saturday'
   ];
 
+  // periodNameArr: any = [
+  //   'Period 1',
+  //   'Period 1',
+  //   'Period 1',
+  //   'Period 1',
+  //   'Period 1',
+  //   'Period 1'
+  // ];
+  periods: any = [];
+
   constructor(
     private authServ: AuthService,
     private router: Router,
@@ -107,6 +121,9 @@ export class TimeTableConfigurationComponent implements OnInit {
       periodDuration: new FormControl("", [Validators.required]),
       noOfDays: new FormControl("", [Validators.required]),
       period: new FormControl("", [Validators.required]),
+      breakDuration: new FormControl("", [Validators.required]),
+      numOfBreak: new FormControl("", [Validators.required]),
+      afterPeriod: new FormControl("", [Validators.required]),
     });
   }
 
@@ -120,6 +137,20 @@ export class TimeTableConfigurationComponent implements OnInit {
       // noOfDays: new FormControl("", [Validators.required]),
       // period: new FormControl("", [Validators.required]),
     });
+  }
+
+
+
+  onChangeNoOfPeriod(){
+    this.periods = [];
+    let period = this.timeTableAddForm.value.period;
+    for(let i=1; i<=parseInt(period); i++){
+      let obj = {
+        id: i,
+        name: `Period ${i}`,         
+      }
+      this.periods.push(obj);
+    }
   }
 
 
