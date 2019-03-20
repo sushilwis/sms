@@ -145,7 +145,7 @@
 
                                               <div class="col-sm-3">
                                                   <mat-form-field class="example-full-width">
-                                                    <input matInput placeholder="Number of Break *" type="number" name="numOfBreak" formControlName="numOfBreak">
+                                                    <input matInput placeholder="Number of Break *" type="number" name="numOfBreak" formControlName="numOfBreak" (keyup)="onChangeNumberOfBreak()">
                                                     <!-- <mat-error *ngIf="lastName.hasError('required')">
                                                       Field is required.
                                                     </mat-error> -->
@@ -158,10 +158,10 @@
                                                   </mat-form-field>
                                               </div> -->
 
-                                              <div class="col-sm-3">
+                                              <div class="col-sm-3" *ngFor="let break of breakArr">
                                                   <mat-form-field class="example-full-width">
-                                                    <mat-select placeholder="After which period *" name="afterPeriod" formControlName="afterPeriod">
-                                                        <mat-option *ngFor="let period of periods" [value]=period.id>{{period.name}}</mat-option>
+                                                    <mat-select placeholder="After which period *" name="breakAfterPeriod" [(ngModel)]="breakAfterPeriod['break'+break]" [ngModelOptions]="{standalone: true}">
+                                                        <mat-option *ngFor="let period of periods" [value]=period.id+1>{{period.name}}</mat-option>
                                                     </mat-select>
                                                   </mat-form-field>
                                               </div>
@@ -210,7 +210,7 @@
                               <td class="days-name pt-4 text-uppercase">{{day?.day}}</td>
                               <td *ngFor="let period of periodArr; let p = index"> 
 
-                                <mat-form-field class="new-width pb-0 mb-0 pt-0 mt-0">
+                                <mat-form-field *ngIf="period.period" class="new-width pb-0 mb-0 pt-0 mt-0">
                                   <mat-select placeholder="Select Subject *" (change)="onSelectSubject($event, day?.day+period?.id)" id="subject_{{day?.day}}_{{period?.id}}" [(ngModel)]="subject[day?.day+period?.id]">
                                     <mat-option *ngFor="let subject of subjects" value="{{subject?.subjectID}}">
                                       {{subject?.subjectName}}
@@ -218,11 +218,15 @@
                                   </mat-select>
                                 </mat-form-field>
 
-                                <mat-form-field class="new-width pb-0 mb-0 pt-0 mt-0">
+                                <mat-form-field *ngIf="period.period" class="new-width pb-0 mb-0 pt-0 mt-0">
                                     <mat-select placeholder="Select Teacher *" (change)="onSelectTeacher($event, day?.day, i, period?.id)" id="teacher_{{day?.day}}_{{period?.id}}" [(ngModel)]="teacher[day?.day+period?.id]">
                                       <mat-option *ngFor="let teacher of filterTeacherarr[day?.day+period?.id]" value="{{teacher?.userID}}">{{teacher?.firstName}} {{teacher?.lastName}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
+
+                                <div *ngIf="period.break" class="new-width pb-4 mb-0 pt-4 mt-4">
+                                  <p class="text-center"> BREAK </p>
+                                </div>
 
                               </td>                              
                             </tr>

@@ -75,6 +75,8 @@ export class TimeTableConfigurationComponent implements OnInit {
   showTimeTableForClass: boolean = false;
   timeTableDataForClassSection: any = [];
 
+  breakAfterPeriod: any = {};
+
   days: any = [
     'monday',
     'tuesday',
@@ -93,6 +95,8 @@ export class TimeTableConfigurationComponent implements OnInit {
   //   'Period 1'
   // ];
   periods: any = [];
+  breakArr: number[];
+  totalBreaks: any;
 
   constructor(
     private authServ: AuthService,
@@ -122,8 +126,7 @@ export class TimeTableConfigurationComponent implements OnInit {
       noOfDays: new FormControl("", [Validators.required]),
       period: new FormControl("", [Validators.required]),
       breakDuration: new FormControl("", [Validators.required]),
-      numOfBreak: new FormControl("", [Validators.required]),
-      afterPeriod: new FormControl("", [Validators.required]),
+      numOfBreak: new FormControl(null, [Validators.required]),
     });
   }
 
@@ -141,7 +144,7 @@ export class TimeTableConfigurationComponent implements OnInit {
 
 
 
-  onChangeNoOfPeriod(){
+  onChangeNoOfPeriod() {
     this.periods = [];
     let period = this.timeTableAddForm.value.period;
     for(let i=1; i<=parseInt(period); i++){
@@ -150,6 +153,28 @@ export class TimeTableConfigurationComponent implements OnInit {
         name: `Period ${i}`,         
       }
       this.periods.push(obj);
+    }
+  }
+
+
+
+
+  onChangeNumberOfBreak() {
+    let value = this.timeTableAddForm.value.numOfBreak;
+    // console.log(value);    
+    let noOfPeriod = this.timeTableAddForm.value.period;
+    if(value > noOfPeriod) {
+      this.addToast({
+        title: "SORRY!",
+        msg: 'Break should not be greater than total period.',
+        timeout: 5000,
+        theme: "default",
+        position: "top-right",
+        type: "error"
+      });
+    }else{
+      this.breakArr = Array(value).fill(value).map((x,i)=>i+1);
+      console.log('Number array :...', this.breakArr);      
     }
   }
 
@@ -269,14 +294,17 @@ export class TimeTableConfigurationComponent implements OnInit {
 
 
   onSubmitTimeTable() {
+    console.log('after period :... ', this.breakAfterPeriod);    
     this.showTimeTable = true;
     // console.log('time table submit called');
     // console.log('value', this.timeTableAddForm.value);
     
     this.totalPeriod = this.timeTableAddForm.value.period;
+    this.totalBreaks = this.timeTableAddForm.value.numOfBreak;
     this.totalDays = this.timeTableAddForm.value.noOfDays;
     this.periodArr = [];
     this.daysArr = [];
+
     // let days = [
     //   'monday',
     //   'tuesday',
@@ -286,12 +314,42 @@ export class TimeTableConfigurationComponent implements OnInit {
     //   'saturday'
     // ];
 
-    for(let i=1; i<=parseInt(this.totalPeriod); i++){
-      let obj = {
-        id: i,        
+    for(let i=1; i<=parseInt(this.totalPeriod)+parseInt(this.totalBreaks); i++){
+      var obj;
+      var is_break = false;
+      
+      // console.log(probkey.toString(), this.breakAfterPeriod[probkey.toString()], i);
+      // console.log(this.breakAfterPeriod[probkey.toString()]);
+      for(let x=1; x<=parseInt(this.totalPeriod); x++) { 
+        let probkey = `break${x}`;     
+        if(i == this.breakAfterPeriod[probkey.toString()]) {
+          // obj = {
+          //   id: i,
+          //   period: false,
+          //   break: true,        
+          // }
+          is_break = true;
+        }
       }
-      this.periodArr.push(obj);
+
+
+      if(is_break) {
+        obj = {
+          id: i,
+          period: false,
+          break: true,        
+        }
+      }else{
+        obj = {
+          id: i,
+          period: true,
+          break: false,        
+        }
+      }
+      
+      this.periodArr.push(obj);     
     } 
+    console.log('period arr :...', this.periodArr);
 
     for(let i=1; i<=parseInt(this.totalDays); i++){
       let obj = {
@@ -556,7 +614,7 @@ export class TimeTableConfigurationComponent implements OnInit {
     
     this.http.post(`${environment.apiUrl}admin/addClassTimeTable`, postData, { headers: header }).map(res => { return res; }).subscribe((data: any) => {
         Helpers.setLoading(false);
-        console.log('teacher list data : ...', data); 
+        // console.log('teacher list data : ...', data); 
 
         if(data && data.success){
           
